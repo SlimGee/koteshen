@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Onboarding\BusinessController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/auth/{social}/redirect', [SocialiteController::class, 'redirect'])
@@ -16,9 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])
+Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
     ->prefix('app')
     ->name('app.')
     ->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+        Route::prefix('onboarding')
+            ->name('onboarding.')
+            ->group(function () {
+                Route::resource('business', BusinessController::class)
+                    ->only(['create', 'store'])
+                    ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class]);
+            });
     });

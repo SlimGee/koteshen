@@ -1,4 +1,4 @@
-<aside class="w-full bg-white border-r md:w-64 md:min-h-screen" {{ stimulus_controller('menu') }}>
+<aside class="w-full border-r md:w-64 md:min-h-screen bg-slate-100" {{ stimulus_controller('menu') }}>
     <div class="flex justify-between items-center p-4 h-10 dark:bg-slate-900">
         <a href="#" class="flex items-center">
             <span class="mx-2 text-xl font-semibold text-slate-900 dark:text-slate-300">Koteshen</span>

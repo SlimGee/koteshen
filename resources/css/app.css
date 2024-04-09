@@ -1,4 +1,9 @@
+@import "animate.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+.choices__list--dropdown {
+    @apply min-w-40 !important;
+}

@@ -7,12 +7,17 @@ use App\Jobs\QueuedPasswordResetJob;
 use App\Jobs\QueuedVerifyEmailJob;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Onboard\Concerns\GetsOnboarded;
+use Spatie\Onboard\Concerns\Onboardable;
+use Spatie\Permission\Traits\HasPermissions;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, Onboardable
 {
-    use HasFactory, Notifiable;
+    use GetsOnboarded, HasFactory, HasPermissions, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -48,15 +53,23 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    /**
+     * Get the businesses for the user.
+     */
+    public function businesses(): HasMany
+    {
+        return $this->hasMany(Business::class);
+    }
+
     public function sendEmailVerificationNotification()
     {
-        //dispactches the job to the queue passing it this User object
+        // dispactches the job to the queue passing it this User object
         QueuedVerifyEmailJob::dispatch($this);
     }
 
     public function sendPasswordResetNotification($token)
     {
-        //dispactches the job to the queue passing it this User object
+        // dispactches the job to the queue passing it this User object
         QueuedPasswordResetJob::dispatch($this, $token);
     }
 }

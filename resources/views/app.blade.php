@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="min-h-screen bg-gray-200 font-base">
+<body class="min-h-screen font-sans bg-white">
     <div id="app">
 
         <div class="flex flex-col md:flex-row">
