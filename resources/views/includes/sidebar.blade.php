@@ -1,0 +1,39 @@
+<aside class="w-full bg-white border-r md:w-64 md:min-h-screen" {{ stimulus_controller('menu') }}>
+    <div class="flex justify-between items-center p-4 h-10 dark:bg-slate-900">
+        <a href="#" class="flex items-center">
+            <span class="mx-2 text-xl font-semibold text-slate-900 dark:text-slate-300">Koteshen</span>
+        </a>
+        <div class="flex md:hidden">
+            <button type="button" {{ stimulus_action('menu', 'toggle') }}
+                class="focus:outline-none text-slate-300 hover:text-slate-500 focus:text-slate-500">
+                <svg class="w-8 fill-current" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="hidden py-6 px-2 md:block" {{ stimulus_target('menu', 'nav') }}>
+        <ul class="">
+            <li @class([
+                'py-3 px-2 mt-2 rounded hover:bg-slate-900',
+                'bg-slate-900' => Route::is('app.home.*'),
+            ])>
+                <a href="{{ route('app.home.index') }}" class="flex items-center">
+                    <i class="w-6 bi bi-house text-slate-500"></i>
+                    <span class="mx-2 text-slate-300">Dashboard</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="-mx-2 mt-2 border-t md:hidden border-slate-700"></div>
+        <ul class="mt-6 md:hidden">
+            <li class="py-3 px-2 mt-2 rounded hover:bg-slate-900">
+                <a href="#" class="mx-2 text-slate-300">Account Settings</a>
+            </li>
+            <li class="py-3 px-2 mt-2 rounded hover:bg-slate-900">
+                <button class="mx-2 text-slate-300" @click="logout">Logout</button>
+            </li>
+        </ul>
+    </div>
+</aside>

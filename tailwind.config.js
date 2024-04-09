@@ -1,20 +1,16 @@
-/** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
-
-export default {
+module.exports = {
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./app/**/*.php",
     ],
     darkMode: "class",
-
     theme: {
         extend: {
             fontFamily: {
-                sans: ["'Figtree'", ...defaultTheme.fontFamily.sans],
+                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
-
             colors: {
                 red: {
                     50: "#ffebee",
@@ -309,7 +305,29 @@ export default {
                     900: "#3e2723",
                 },
             },
+            spacing: {
+                7: "1.75rem",
+                9: "2.25rem",
+                28: "7rem",
+                80: "20rem",
+                96: "24rem",
+            },
+            height: {
+                "1/2": "50%",
+            },
+            scale: {
+                30: ".3",
+            },
+            boxShadow: {
+                outline: "0 0 0 3px rgba(101, 31, 255, 0.4)",
+            },
         },
+    },
+    variants: {
+        scale: ["responsive", "hover", "focus", "group-hover"],
+        textColor: ["responsive", "hover", "focus", "group-hover"],
+        opacity: ["responsive", "hover", "focus", "group-hover"],
+        backgroundColor: ["responsive", "hover", "focus", "group-hover"],
     },
     plugins: [
         require("@tailwindcss/forms"),

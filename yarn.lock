@@ -173,6 +173,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/stimulus@npm:^3.1.0":
+  version: 3.2.2
+  resolution: "@hotwired/stimulus@npm:3.2.2"
+  checksum: 10c0/3793919e353d28424f57d07e6b634bf6e8821c227acfa2a608aaa8bdfe7e80479acef12705168ca866f3c231399f4a939fb0cd089aaae04c406b3d885a3b35ea
+  languageName: node
+  linkType: hard
+
+"@hotwired/strada@npm:^1.0.0-beta1":
+  version: 1.0.0-beta1
+  resolution: "@hotwired/strada@npm:1.0.0-beta1"
+  peerDependencies:
+    "@hotwired/stimulus": ^3.2.1
+  checksum: 10c0/fe7d7cc22b3e06b7b1317d98431cf75520b1ab1c34c067d49d8e2142ce76ac602f4dad2a2a8b2e13fb9e452bbef400af48c8fc0943feb69c8a444ece8386e019
+  languageName: node
+  linkType: hard
+
+"@hotwired/turbo@npm:^8.0.4":
+  version: 8.0.4
+  resolution: "@hotwired/turbo@npm:8.0.4"
+  checksum: 10c0/3e7174d550adf3b9a0a4c45ff5d1b71d47c20de6ae01f646fbbaf8ed447677bd1a5fb6dbd46e95b14645a663fe58a6187c1c6d2a688b0981b5cf437379c5e00a
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -1201,6 +1224,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"laravel-echo@npm:^1.15.0":
+  version: 1.16.0
+  resolution: "laravel-echo@npm:1.16.0"
+  checksum: 10c0/1620fe77e1ce939dde2926152b9204ef7ee7c1fdf7dda84398a9b3d50595fa0fd37eb3137333f2fdfdedaea12fc92aec2e3462bbeea2a7be9b6eb7c2ce35a1df
+  languageName: node
+  linkType: hard
+
 "laravel-vite-plugin@npm:^1.0":
   version: 1.0.2
   resolution: "laravel-vite-plugin@npm:1.0.2"
@@ -1712,6 +1742,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pusher-js@npm:^8.0.1":
+  version: 8.3.0
+  resolution: "pusher-js@npm:8.3.0"
+  dependencies:
+    tweetnacl: "npm:^1.0.3"
+  checksum: 10c0/a641c96cfdcdc4df1b8b6eb37182d03eae3814f6d0700c09e3041677b714be73d0576668aee8f382b567d3c43ba817f91c88a5ecaa63fbf70a748e80d9c29234
+  languageName: node
+  linkType: hard
+
 "queue-microtask@npm:^1.2.2":
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
@@ -1841,12 +1880,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    "@hotwired/stimulus": "npm:^3.1.0"
+    "@hotwired/strada": "npm:^1.0.0-beta1"
+    "@hotwired/turbo": "npm:^8.0.4"
     "@tailwindcss/forms": "npm:^0.5.7"
     "@tailwindcss/typography": "npm:^0.5.12"
     autoprefixer: "npm:^10.4.19"
     axios: "npm:^1.6.4"
+    laravel-echo: "npm:^1.15.0"
     laravel-vite-plugin: "npm:^1.0"
     postcss: "npm:^8.4.38"
+    pusher-js: "npm:^8.0.1"
     tailwindcss: "npm:^3.4.3"
     vite: "npm:^5.0"
   languageName: unknown
@@ -2096,6 +2140,13 @@ __metadata:
   version: 0.1.13
   resolution: "ts-interface-checker@npm:0.1.13"
   checksum: 10c0/232509f1b84192d07b81d1e9b9677088e590ac1303436da1e92b296e9be8e31ea042e3e1fd3d29b1742ad2c959e95afe30f63117b8f1bc3a3850070a5142fea7
+  languageName: node
+  linkType: hard
+
+"tweetnacl@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tweetnacl@npm:1.0.3"
+  checksum: 10c0/069d9df51e8ad4a89fbe6f9806c68e06c65be3c7d42f0701cc43dba5f0d6064686b238bbff206c5addef8854e3ce00c643bff59432ea2f2c639feab0ee1a93f9
   languageName: node
   linkType: hard
 

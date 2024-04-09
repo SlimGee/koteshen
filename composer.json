@@ -7,14 +7,17 @@
     "require": {
         "php": "^8.2",
         "butschster/meta-tags": "^3.0",
+        "flixtechs-labs/stimulus-extra": "^0.0.5",
+        "hotwired-laravel/turbo-laravel": "^2.0.0-beta1",
         "laravel/fortify": "^1.21",
         "laravel/framework": "^11.0",
         "laravel/socialite": "^5.12",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "maddhatter/laravel-view-generator": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
+        "laravel/pint": "^1.15",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",

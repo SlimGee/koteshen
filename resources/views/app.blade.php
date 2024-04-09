@@ -21,18 +21,30 @@
             @include('includes.sidebar')
 
             <div class="w-full md:flex-1">
-                <nav class="hidden justify-between items-center p-4 h-16 bg-white shadow-md md:flex">
+                <nav class="hidden justify-between items-center p-4 h-16 bg-white border-b md:flex">
                     <div>
                     </div>
-                    <div>
-                        <a href="{{ route('logout') }}" class="mx-2 text-gray-700 focus:outline-none">
-                            <svg class="h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="flex items-center space-x-3">
+                        <div class="p-1 px-2 rounded-full bg-slate-300">
+                            <div class="relative">
+                                @if (auth()->user()->notifications->count() > 0)
+                                    <span
+                                        class="absolute -top-3 -right-3 p-0.5 px-1 text-sm font-semibold text-white rounded-full bg-red-accent-400">
+                                        {{ auth()->user()->notifications->count() }}
+                                    </span>
+                                @endif
+                                <i class="bi bi-bell"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-1 px-2 space-x-2 rounded-full bg-slate-300">
+                            <div class="w-6 h-6 rounded-full">
+                                <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}&color=7F9CF5&background=EBF4FF"
+                                    alt="John Doe" class="w-6 h-6 rounded-full">
+                            </div>
+                            <div>
+                                <span class="font-medium md:text-sm">{{ auth()->user()->name }}</span>
+                            </div>
+                        </div>
                     </div>
                 </nav>
                 <main>

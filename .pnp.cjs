@@ -26,12 +26,17 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@hotwired/stimulus", "npm:3.2.2"],\
+          ["@hotwired/strada", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.0-beta1"],\
+          ["@hotwired/turbo", "npm:8.0.4"],\
           ["@tailwindcss/forms", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.7"],\
           ["@tailwindcss/typography", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.12"],\
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
+          ["laravel-echo", "npm:1.16.0"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
+          ["pusher-js", "npm:8.3.0"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["vite", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.2.8"]\
         ],\
@@ -250,6 +255,46 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/unplugged/@esbuild-win32-x64-npm-0.20.2-4f45bbb49b/node_modules/@esbuild/win32-x64/",\
         "packageDependencies": [\
           ["@esbuild/win32-x64", "npm:0.20.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@hotwired/stimulus", [\
+      ["npm:3.2.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/@hotwired-stimulus-npm-3.2.2-e1e064f1fe-10c0.zip/node_modules/@hotwired/stimulus/",\
+        "packageDependencies": [\
+          ["@hotwired/stimulus", "npm:3.2.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@hotwired/strada", [\
+      ["npm:1.0.0-beta1", {\
+        "packageLocation": "../../../.yarn/berry/cache/@hotwired-strada-npm-1.0.0-beta1-44a4dd87f6-10c0.zip/node_modules/@hotwired/strada/",\
+        "packageDependencies": [\
+          ["@hotwired/strada", "npm:1.0.0-beta1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.0-beta1", {\
+        "packageLocation": "./.yarn/__virtual__/@hotwired-strada-virtual-e066690ff2/4/.yarn/berry/cache/@hotwired-strada-npm-1.0.0-beta1-44a4dd87f6-10c0.zip/node_modules/@hotwired/strada/",\
+        "packageDependencies": [\
+          ["@hotwired/strada", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.0-beta1"],\
+          ["@hotwired/stimulus", "npm:3.2.2"],\
+          ["@types/hotwired__stimulus", null]\
+        ],\
+        "packagePeers": [\
+          "@hotwired/stimulus",\
+          "@types/hotwired__stimulus"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@hotwired/turbo", [\
+      ["npm:8.0.4", {\
+        "packageLocation": "../../../.yarn/berry/cache/@hotwired-turbo-npm-8.0.4-2390e067c8-10c0.zip/node_modules/@hotwired/turbo/",\
+        "packageDependencies": [\
+          ["@hotwired/turbo", "npm:8.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1429,6 +1474,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["laravel-echo", [\
+      ["npm:1.16.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/laravel-echo-npm-1.16.0-94a886c6be-10c0.zip/node_modules/laravel-echo/",\
+        "packageDependencies": [\
+          ["laravel-echo", "npm:1.16.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["laravel-vite-plugin", [\
       ["npm:1.0.2", {\
         "packageLocation": "../../../.yarn/berry/cache/laravel-vite-plugin-npm-1.0.2-221e6d2339-10c0.zip/node_modules/laravel-vite-plugin/",\
@@ -2054,6 +2108,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["pusher-js", [\
+      ["npm:8.3.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/pusher-js-npm-8.3.0-c9c67210eb-10c0.zip/node_modules/pusher-js/",\
+        "packageDependencies": [\
+          ["pusher-js", "npm:8.3.0"],\
+          ["tweetnacl", "npm:1.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["queue-microtask", [\
       ["npm:1.2.3", {\
         "packageLocation": "../../../.yarn/berry/cache/queue-microtask-npm-1.2.3-fcc98e4e2d-10c0.zip/node_modules/queue-microtask/",\
@@ -2144,12 +2208,17 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["root-workspace-0b6124", "workspace:."],\
+          ["@hotwired/stimulus", "npm:3.2.2"],\
+          ["@hotwired/strada", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.0-beta1"],\
+          ["@hotwired/turbo", "npm:8.0.4"],\
           ["@tailwindcss/forms", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.7"],\
           ["@tailwindcss/typography", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.12"],\
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
+          ["laravel-echo", "npm:1.16.0"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
+          ["pusher-js", "npm:8.3.0"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["vite", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.2.8"]\
         ],\
@@ -2419,6 +2488,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/ts-interface-checker-npm-0.1.13-0c7b064494-10c0.zip/node_modules/ts-interface-checker/",\
         "packageDependencies": [\
           ["ts-interface-checker", "npm:0.1.13"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tweetnacl", [\
+      ["npm:1.0.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/tweetnacl-npm-1.0.3-b7eef04660-10c0.zip/node_modules/tweetnacl/",\
+        "packageDependencies": [\
+          ["tweetnacl", "npm:1.0.3"]\
         ],\
         "linkType": "HARD"\
       }]\
