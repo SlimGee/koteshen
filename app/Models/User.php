@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Jobs\QueuedPasswordResetJob;
 use App\Jobs\QueuedVerifyEmailJob;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -59,6 +60,11 @@ class User extends Authenticatable implements MustVerifyEmail, Onboardable
     public function businesses(): HasMany
     {
         return $this->hasMany(Business::class);
+    }
+
+    public function business(): Attribute
+    {
+        return Attribute::make(get: fn() => $this->businesses()->where('current', true)->first());
     }
 
     public function sendEmailVerificationNotification()

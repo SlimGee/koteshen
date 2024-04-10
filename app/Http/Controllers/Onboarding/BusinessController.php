@@ -25,6 +25,7 @@ class BusinessController extends Controller
 
         $request->user()->businesses()->create([
             'phone_country' => $request->phone_country,
+            'current' => !auth()->user()->businesses()->exists(),
             ...$data,
         ]);
 

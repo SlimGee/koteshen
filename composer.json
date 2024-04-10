@@ -17,6 +17,7 @@
         "maddhatter/laravel-view-generator": "dev-master",
         "propaganistas/laravel-phone": "^5.2",
         "spatie/laravel-onboard": "^2.6",
+        "spatie/laravel-query-builder": "^5.8",
         "spatie/laravel-sluggable": "^3.6"
     },
     "require-dev": {

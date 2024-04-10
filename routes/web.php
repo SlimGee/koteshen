@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Onboarding\BusinessController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
@@ -31,4 +32,6 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
                     ->only(['create', 'store'])
                     ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class]);
             });
+
+        Route::resource('clients', ClientController::class);
     });

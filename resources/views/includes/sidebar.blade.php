@@ -24,6 +24,17 @@
                     <span class="mx-2 text-slate-300">Dashboard</span>
                 </a>
             </li>
+
+            <li @class([
+                'py-3 px-2 mt-2 rounded hover:bg-slate-900 group dark:text-slate-500 group-hover:text-slate-300s',
+                'bg-slate-900 text-slate-300' => Route::is('app.clients.*'),
+            ])>
+                <a href="{{ route('app.clients.index') }}" class="flex items-center">
+                    <i class="w-6 bi bi-buildings"></i>
+                    <span class="mx-2">Clients</span>
+                </a>
+            </li>
+
         </ul>
 
         <div class="-mx-2 mt-2 border-t md:hidden border-slate-700"></div>
