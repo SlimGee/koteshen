@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enum\ClientType;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
@@ -18,10 +20,32 @@ class Client extends Model
     protected $guarded = [];
 
     /**
+     * The attributes that should be cast
+     *
+     * @var array
+     */
+    protected $casts = [
+        'type' => ClientType::class,
+    ];
+
+    /**
      * The business that owns this Client
      */
     public function business(): BelongsTo
     {
         return $this->belongsTo(Business::class);
+    }
+
+    /**
+     * The currency for this client
+     */
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function name(): Attribute
+    {
+        return Attribute::make(get: fn($value, $attributes) => is_null($value) ? $attributes['first_name'] . ' ' . $attributes['last_name'] : $value);
     }
 }

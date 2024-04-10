@@ -19,6 +19,7 @@ class ClientController extends Controller
         $clients = QueryBuilder::for(auth()->user()->business->clients())
             ->allowedFilters(['name', 'email', 'phone'])
             ->allowedSorts('name', 'email', 'phone')
+            ->defaultSort('-created_at')
             ->paginate();
 
         return view('app.clients.index', ['clients' => $clients]);

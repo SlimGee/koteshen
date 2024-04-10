@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Business;
+use App\Models\Client;
 use App\Models\User;
 use FlixtechsLabs\LaravelAuthorizer\Facades\Authorizer;
 use Illuminate\Console\Command;
@@ -48,6 +49,7 @@ class Deploy extends Command
             'permissions' => implode('|', [
                 'view app dashboard',
                 ...Authorizer::getPermissionsFor(Business::class),
+                ...Authorizer::getPermissionsFor(Client::class),
             ]),
         ]);
 

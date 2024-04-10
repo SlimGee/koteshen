@@ -15,6 +15,7 @@
         "laravel/socialite": "^5.12",
         "laravel/tinker": "^2.9",
         "maddhatter/laravel-view-generator": "dev-master",
+        "predis/predis": "*",
         "propaganistas/laravel-phone": "^5.2",
         "spatie/laravel-onboard": "^2.6",
         "spatie/laravel-query-builder": "^5.8",

@@ -2,9 +2,14 @@
 
 @section('content')
     <section>
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center md:items-baseline">
             <div>
-                <h1 class="text-lg font-semibold md:text-2xl text-slate-700">Clients</h1>
+                <h1 class="text-xl font-semibold md:text-2xl text-slate-700">Clients</h1>
+            </div>
+            <div>
+                <a href="{{ route('app.clients.create') }}">
+                    <x-button>Add new client</x-button>
+                </a>
             </div>
         </div>
     </section>
@@ -13,7 +18,7 @@
     <section class="pt-10 pb-2">
 
 
-        <form class="flex items-center max-w-lg">
+        <form class="flex items-center w-full md:max-w-lg">
             <label for="voice-search" class="sr-only">Search</label>
             <div class="relative w-full">
 

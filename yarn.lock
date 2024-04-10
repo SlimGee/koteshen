@@ -454,6 +454,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xmldom/xmldom@npm:^0.8.10":
+  version: 0.8.10
+  resolution: "@xmldom/xmldom@npm:0.8.10"
+  checksum: 10c0/c7647c442502720182b0d65b17d45d2d95317c1c8c497626fe524bda79b4fb768a9aa4fae2da919f308e7abcff7d67c058b102a9d641097e9a57f0b80187851f
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:^2.0.0":
   version: 2.0.0
   resolution: "abbrev@npm:2.0.0"
@@ -1107,6 +1114,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-to-json-parser@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "html-to-json-parser@npm:2.0.1"
+  dependencies:
+    "@xmldom/xmldom": "npm:^0.8.10"
+  checksum: 10c0/864dd4d837fecc1923dc7a2336346984f51814f754f9791da81d3025449cd9bb2ce551e82bc04844e051aa626c92638280b3c94a5c30222c64948fc9bb66bd39
+  languageName: node
+  linkType: hard
+
 "http-cache-semantics@npm:^4.1.1":
   version: 4.1.1
   resolution: "http-cache-semantics@npm:4.1.1"
@@ -1233,6 +1249,13 @@ __metadata:
   version: 3.1.1
   resolution: "isexe@npm:3.1.1"
   checksum: 10c0/9ec257654093443eb0a528a9c8cbba9c0ca7616ccb40abd6dde7202734d96bb86e4ac0d764f0f8cd965856aacbff2f4ce23e730dc19dfb41e3b0d865ca6fdcc7
+  languageName: node
+  linkType: hard
+
+"izitoast@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "izitoast@npm:1.4.0"
+  checksum: 10c0/8aace597d46a0329356fbec34872469f7bced397b00e1971e6fa5530ce6865e0f585ffc82cc6cb485e33079b24cc6490737307dd300be82afb1148cf6cda775e
   languageName: node
   linkType: hard
 
@@ -1946,6 +1969,8 @@ __metadata:
     autoprefixer: "npm:^10.4.19"
     axios: "npm:^1.6.4"
     choices.js: "npm:^10.2.0"
+    html-to-json-parser: "npm:^2.0.1"
+    izitoast: "npm:^1.4.0"
     laravel-echo: "npm:^1.15.0"
     laravel-vite-plugin: "npm:^1.0"
     postcss: "npm:^8.4.38"

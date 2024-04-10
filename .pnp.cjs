@@ -35,6 +35,8 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
           ["choices.js", "npm:10.2.0"],\
+          ["html-to-json-parser", "npm:2.0.1"],\
+          ["izitoast", "npm:1.4.0"],\
           ["laravel-echo", "npm:1.16.0"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
@@ -638,6 +640,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/@types-estree-npm-1.0.5-5b7faed3b4-10c0.zip/node_modules/@types/estree/",\
         "packageDependencies": [\
           ["@types/estree", "npm:1.0.5"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@xmldom/xmldom", [\
+      ["npm:0.8.10", {\
+        "packageLocation": "../../../.yarn/berry/cache/@xmldom-xmldom-npm-0.8.10-c1bd991e61-10c0.zip/node_modules/@xmldom/xmldom/",\
+        "packageDependencies": [\
+          ["@xmldom/xmldom", "npm:0.8.10"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1344,6 +1355,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["html-to-json-parser", [\
+      ["npm:2.0.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/html-to-json-parser-npm-2.0.1-9fd6e63f27-10c0.zip/node_modules/html-to-json-parser/",\
+        "packageDependencies": [\
+          ["html-to-json-parser", "npm:2.0.1"],\
+          ["@xmldom/xmldom", "npm:0.8.10"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["http-cache-semantics", [\
       ["npm:4.1.1", {\
         "packageLocation": "../../../.yarn/berry/cache/http-cache-semantics-npm-4.1.1-1120131375-10c0.zip/node_modules/http-cache-semantics/",\
@@ -1492,6 +1513,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/isexe-npm-3.1.1-9c0061eead-10c0.zip/node_modules/isexe/",\
         "packageDependencies": [\
           ["isexe", "npm:3.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["izitoast", [\
+      ["npm:1.4.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/izitoast-npm-1.4.0-3ba3997f1b-10c0.zip/node_modules/izitoast/",\
+        "packageDependencies": [\
+          ["izitoast", "npm:1.4.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2287,6 +2317,8 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
           ["choices.js", "npm:10.2.0"],\
+          ["html-to-json-parser", "npm:2.0.1"],\
+          ["izitoast", "npm:1.4.0"],\
           ["laravel-echo", "npm:1.16.0"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
