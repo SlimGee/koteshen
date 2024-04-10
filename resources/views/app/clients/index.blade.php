@@ -153,6 +153,10 @@
 
                         </tbody>
                     </table>
+
+                    <div class="py-10 px-5">
+                        {{ $clients->links('pagination::tailwind') }}
+                    </div>
                 </div>
             </div>
         </div>
