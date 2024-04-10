@@ -422,6 +422,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stimulus-components/dropdown@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@stimulus-components/dropdown@npm:3.0.0"
+  dependencies:
+    stimulus-use: "npm:^0.52.2"
+  peerDependencies:
+    "@hotwired/stimulus": ^3.0.0
+  checksum: 10c0/7b704eadbde908c8a25d048b0e624cc17a8b67cff69858454dedcadd76e6630b210376fcdcddf930380f62784821b582f3a9ed43860d041eaed708af96527604
+  languageName: node
+  linkType: hard
+
 "@tailwindcss/forms@npm:^0.5.7":
   version: 0.5.7
   resolution: "@tailwindcss/forms@npm:0.5.7"
@@ -1963,6 +1974,7 @@ __metadata:
     "@hotwired/stimulus": "npm:^3.1.0"
     "@hotwired/strada": "npm:^1.0.0-beta1"
     "@hotwired/turbo": "npm:^8.0.4"
+    "@stimulus-components/dropdown": "npm:^3.0.0"
     "@tailwindcss/forms": "npm:^0.5.7"
     "@tailwindcss/typography": "npm:^0.5.12"
     animate.css: "npm:^4.1.1"
@@ -2078,6 +2090,16 @@ __metadata:
   dependencies:
     minipass: "npm:^7.0.3"
   checksum: 10c0/b091f2ae92474183c7ac5ed3f9811457e1df23df7a7e70c9476eaa9a0c4a0c8fc190fb45acefbf023ca9ee864dd6754237a697dc52a0fb182afe65d8e77443d8
+  languageName: node
+  linkType: hard
+
+"stimulus-use@npm:^0.52.2":
+  version: 0.52.2
+  resolution: "stimulus-use@npm:0.52.2"
+  peerDependencies:
+    "@hotwired/stimulus": ">= 3"
+    hotkeys-js: ">= 3"
+  checksum: 10c0/69ccc9f5be11026e14381589f224d68ac28cb003ffecdb8a6d4b48acc7369bf51a315554badb9f94b79c75f15df77672049268629fc3d3d643a12c08b160f348
   languageName: node
   linkType: hard
 

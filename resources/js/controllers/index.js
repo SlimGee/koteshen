@@ -2,17 +2,19 @@
 // Run that command whenever you add a new controller or create them with
 // `php artisan stimulus:make controllerName`
 
-import { Stimulus } from '../libs/stimulus'
+import { Stimulus } from "../libs/stimulus";
+import Dropdown from "@stimulus-components/dropdown";
 
+import ChoicesController from "./choices_controller";
+Stimulus.register("choices", ChoicesController);
 
-import ChoicesController from './choices_controller'
-Stimulus.register('choices', ChoicesController)
+import ClientTypeController from "./client-type_controller";
+Stimulus.register("client-type", ClientTypeController);
 
-import ClientTypeController from './client-type_controller'
-Stimulus.register('client-type', ClientTypeController)
+import HelloController from "./hello_controller";
+Stimulus.register("hello", HelloController);
 
-import HelloController from './hello_controller'
-Stimulus.register('hello', HelloController)
+import ToastController from "./toast_controller";
+Stimulus.register("toast", ToastController);
 
-import ToastController from './toast_controller'
-Stimulus.register('toast', ToastController)
+Stimulus.register("dropdown", Dropdown);
