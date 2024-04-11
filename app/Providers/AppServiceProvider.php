@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if ($this->app->runningInConsole()) {
+            return;
+        }
+
         View::share('countries', Cache::remember('db-countries', 60 * 60 * 24 * 7, function () {
             return Country::all();
         }));
@@ -34,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
             return Currency::all();
         }));
 
-        Gate::before(fn(User $user) => $user->hasRole('super admin') ? true : null);
+        Gate::before(fn (User $user) => $user->hasRole('super admin') ? true : null);
 
         Onboard::addStep('Setup your business')
             ->link('/app/onboarding/business/create')

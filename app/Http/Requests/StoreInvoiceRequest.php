@@ -22,7 +22,11 @@ class StoreInvoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'client_id' => 'required|exists:clients,id',
+            'number' => 'nullable|string',
+            'notes' => 'nullable|string',
+            'due_at' => 'required_if|due_in:custom|nullable|date',
+            'due_in' => 'require|string|7 days,14 days,30 days,60 days,90 days,custom',
         ];
     }
 }

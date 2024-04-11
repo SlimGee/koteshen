@@ -86,11 +86,11 @@
                                 <div class="flex items-start space-x-2">
                                     <div class="w-3/12">
                                         <x-form.select name="phone_country" class="mt-1 w-full" data-controller="choices">
-                                            <option selected value="ZW">+263</option>
-                                            <option value="ZM">+264</option>
-                                            <option value="Finance">Finance</option>
-                                            <option value="Health">Health</option>
-                                            <option value="Tax">Tax</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->code }}" @selected(old('phone_country') == $country->code)>
+                                                    {{ $country->dial_code }}
+                                                </option>
+                                            @endforeach
                                         </x-form.select>
                                     </div>
                                     <div class="w-full">
@@ -114,12 +114,12 @@
                                 Currency
                             </x-form.label>
 
-                            <x-form.select name="currency" class="mt-1 w-full" data-controller="choices">
-                                <option selected value="USD">United States Dollar (USD)</option>
-                                <option value="ZiG">Zimbabwe Gold (ZiG)</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Health">Health</option>
-                                <option value="Tax">Tax</option>
+                            <x-form.select name="currency_id" class="mt-1 w-full" data-controller="choices">
+                                @foreach ($currencies as $currency)
+                                    <option value="{{ $currency->id }}" @selected(old('currency_id') == $currency->id)>{{ $currency->name }}
+                                        ({{ $currency->code }})
+                                    </option>
+                                @endforeach
                             </x-form.select>
                         </div>
 
@@ -160,11 +160,11 @@
                                 </x-form.label>
 
                                 <x-form.select name="country" class="mt-1 w-full" data-controller="choices">
-                                    <option selected>Zimbabwe</option>
-                                    <option value="IT">IT</option>
-                                    <option value="Finance">Finance</option>
-                                    <option value="Health">Health</option>
-                                    <option value="Tax">Tax</option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->name }}" @selected(old('country') == $country->name)>
+                                            {{ $country->name }}
+                                        </option>
+                                    @endforeach
                                 </x-form.select>
                             </div>
 

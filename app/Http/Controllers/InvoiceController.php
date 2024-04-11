@@ -67,7 +67,9 @@ class InvoiceController extends Controller
      */
     public function update(UpdateInvoiceRequest $request, Invoice $invoice)
     {
-        //
+        $invoice->update($request->validated());
+
+        return to_route('app.invoices.index')->with('success', 'Invoice updated successfully');
     }
 
     /**

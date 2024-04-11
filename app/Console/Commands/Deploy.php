@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\Business;
 use App\Models\Client;
+use App\Models\Country;
+use App\Models\Currency;
 use App\Models\User;
 use FlixtechsLabs\LaravelAuthorizer\Facades\Authorizer;
 use Illuminate\Console\Command;
@@ -59,6 +61,13 @@ class Deploy extends Command
                 'view self service portal',
             ]),
         ]);
+
+        if (Country::count() < 1) {
+            $this->call('db:seed', ['class' => 'CountrySeeder']);
+        }
+        if (Currency::count() < 1) {
+            $this->call('db:seed', ['class' => 'CurrencySeeder']);
+        }
 
         $this->info('Done! Application is now ready to be deployed.');
         $this->call('up');
