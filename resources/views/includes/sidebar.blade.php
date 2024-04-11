@@ -35,6 +35,17 @@
                 </a>
             </li>
 
+            <li @class([
+                'py-3 px-2 mt-2 rounded hover:bg-slate-900 group dark:text-slate-500 hover:text-slate-300',
+                'bg-slate-900 text-slate-300' => Route::is('app.invoices.*'),
+            ])>
+                <a href="{{ route('app.invoices.index') }}" class="flex items-center">
+                    <i class="w-6 bi bi-file-earmark-check"></i>
+                    <span class="mx-2">Invoices</span>
+                </a>
+            </li>
+
+
         </ul>
 
         <div class="-mx-2 mt-2 border-t md:hidden border-slate-700"></div>

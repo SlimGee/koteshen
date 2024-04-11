@@ -66,4 +66,12 @@ class Business extends Model
     {
         return $this->hasMany(Client::class);
     }
+
+    /**
+     * The invoices that belongs to this business
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

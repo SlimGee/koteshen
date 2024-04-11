@@ -3,6 +3,7 @@
 use App\Http\Controllers\Onboarding\BusinessController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,5 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
             });
 
         Route::resource('clients', ClientController::class);
+        Route::resource('invoices', InvoiceController::class);
     });
