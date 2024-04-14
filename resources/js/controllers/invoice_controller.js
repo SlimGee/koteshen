@@ -9,9 +9,16 @@ export default class extends Controller {
         "customDueDateTemplate",
         "customDateSelect",
         "lineItem",
+        "lineItemTemplate",
+        "lineItemsContainer",
+        "currencyCode",
+        "total",
+        "subtotal",
+        "balance",
+        "currency",
     ];
 
-    currency;
+    static values = { currency: Object };
 
     connect() {
         this.selectDueDate({ target: this.customDateSelectTarget });
@@ -21,23 +28,54 @@ export default class extends Controller {
         this.ensureLineItemExists();
     }
 
+    currencyValueChanged() {
+        this.lineItemTargets.forEach((lineItem) => {
+            lineItem.setAttribute(
+                "data-line-item-currency-value",
+                JSON.stringify(this.currencyValue),
+            );
+        });
+
+        this.currencyCodeTargets.forEach((code) => {
+            code.textContent = this.currencyValue.code || "USD";
+        });
+
+        this.dispatch("currency-changed", { detail: this.currencyValue.id });
+    }
+
     ensureLineItemExists() {
         if (this.lineItemTargets.length === 0) {
             this.addLineItem();
         }
-        if (this.lineItemTargets.length === 1) {
-            this.lineItemTargets[0]
-                .querySelector("[data-remove]")
-                .classList.add("hidden");
+    }
+
+    addLineItem({ target } = { target: null }) {
+        if (target) {
+            target.blur();
         }
+        const html = this.lineItemTemplateTarget.innerHTML;
+        this.lineItemsContainerTarget.insertAdjacentHTML("beforeend", html);
+        this.lineItemTargets
+            .at(-1)
+            .setAttribute(
+                "data-line-item-currency-value",
+                JSON.stringify(this.currencyValue),
+            );
     }
 
     updateTotal() {
-        const total = Array.from(this.lineItemTargets).reduce((acc, item) => {
-            const price = parseFloat(item.querySelector("[name=rate]").value);
-            return acc + price;
-        }, 0);
-        this.totalTarget.value = total.toFixed(2);
+        const total = Array.from(this.lineItemTargets)
+            .reduce((acc, item) => {
+                const price = parseFloat(
+                    item.querySelector("[name=total]").value,
+                );
+                return acc + price;
+            }, 0)
+            .toFixed(this.currencyValue.rounding || 2);
+
+        this.totalTarget.textContent = total;
+        this.balanceTarget.textContent = total;
+        this.subtotalTarget.textContent = total;
     }
 
     selectClient({ target }) {
@@ -47,9 +85,12 @@ export default class extends Controller {
             )
         )
             return;
+
         const client = JSON.parse(target.value);
-        this.currency = client.currency;
+
+        this.currencyValue = client.currency;
         this.dispatch("client-selected", { detail: { client } });
+
         const html = this.clientTemplateTarget.innerHTML
             .replace(/NAME/, client.name)
             .replace(/ADDRESS/, client.address)

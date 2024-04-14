@@ -3,18 +3,23 @@ import Choices from "choices.js";
 
 import "choices.js/public/assets/styles/choices.css";
 
+let choices;
+
 // Connects to data-controller="select2"
 export default class extends Controller {
     static classes = ["invalid"];
 
+    instance;
+
     connect() {
         const options = JSON.parse(this.data.get("config")) || {};
 
-        const choices = new Choices(
+        this.instance = new Choices(
             this.element,
             Object.assign(
                 {
                     classNames: {
+                        ontainerOuter: "choices",
                         containerInner:
                             "choices__inner border !border-gray-300 !p-2 !text-sm !mt-1 !bg-white",
                         input: "choices__input",
@@ -43,5 +48,10 @@ export default class extends Controller {
                 options,
             ),
         );
+    }
+
+    setChoiceByValue({ detail }) {
+        console.log(detail);
+        this.instance.setChoiceByValue(detail);
     }
 }

@@ -2,17 +2,23 @@ import { ApplicationController as Controller, useDebounce } from "stimulus-use";
 
 // Connects to data-controller="line-item"
 export default class extends Controller {
-    static targets = ["quantity", "price", "total"];
+    static targets = ["quantity", "price", "total", "symbol"];
     static values = { currency: Object };
     static debounces = ["updateTotal"];
 
     connect() {
         useDebounce(this);
+        this.updateTotal();
     }
 
-    setCurrentCurrenc(event) {
-        console.log(event);
-        const currency = event.detail.currency;
+    currencyValueChanged() {
+        this.symbolTargets.forEach((symbol) => {
+            symbol.textContent = this.currencyValue.symbol || "USD";
+        });
+    }
+
+    setCurrentCurrency(event) {
+        const currency = event.detail.client.currency;
         this.currencyValue = currency;
     }
 
@@ -24,5 +30,11 @@ export default class extends Controller {
         this.totalTarget.value = total.toFixed(
             this.currencyValue.rounding || 2,
         );
+
+        super.dispatch("total", { detail: total });
+    }
+
+    remove() {
+        this.element.remove();
     }
 }

@@ -38,14 +38,14 @@
                     </div>
                     <div class="hidden mt-3" {{ stimulus_target('invoice', 'customDueDate') }}>
                     </div>
+
                     <template {{ stimulus_target('invoice', 'customDueDateTemplate') }}>
                         <x-form.label for="due_date">Custom Due Date</x-form.label>
                         <x-form.input data-controller="datepicker" name="due_date" id="due_date" class="mt-1 w-full"
                             type="text" />
                     </template>
-
-
                 </div>
+
                 <div class="px-2 w-full md:w-4/12">
                     <div
                         class="flex justify-center items-center w-full h-2/3 text-blue-900 bg-blue-50 rounded border border-blue-700 border-dashed">
@@ -118,38 +118,44 @@
             </div>
 
 
-            <div class="mt-4 rounded border" {{ stimulus_target('invoice', 'lineItemsContainer') }}>
+            <div class="mt-4 rounded border">
                 <div class="grid grid-cols-12">
                     <div class="col-span-5 p-3 bg-slate-100">Description</div>
-                    <div class="col-span-2 p-3 bg-slate-100">Quantity</div>
+                    <div class="col-span-1 p-3 bg-slate-100">Qty</div>
                     <div class="col-span-2 p-3 bg-slate-100">Rate</div>
-                    <div class="col-span-2 p-3 bg-slate-100">Total Price</div>
+                    <div class="col-span-3 p-3 bg-slate-100">Total Price</div>
                     <div class="col-span-1 p-3 bg-slate-100"></div>
                 </div>
-                <div>
+                <div {{ stimulus_target('invoice', 'lineItemsContainer') }}>
                     <template {{ stimulus_target('invoice', 'lineItemTemplate') }}>
 
-                        <div class="grid grid-cols-12">
-                            <div class="col-span-5 py-3 px-2">
-                                <x-form.input class="mt-1 w-full !p-2.5" id="description" name="description"
-                                    type="text" />
+                        <div class="grid grid-cols-12" {{ stimulus_target('invoice', 'lineItem') }}
+                            {{ stimulus_controller('line-item') }}>
+                            <div class="col-span-5 py-3 px-2"
+                                {{ stimulus_action('line-item', 'setCurrentCurrency', 'invoice:client-selected@window') }}>
+                                <x-form.input class="mt-1 w-full !p-2.5" id="description" name="description" type="text"
+                                    placeholder="Item name" />
                             </div>
-                            <div class="col-span-2 py-3 px-1">
-                                <x-form.input class="mt-1 w-full" id="quantity" name="quantity" type="text" />
+                            <div class="col-span-1 py-3 px-1">
+                                <x-form.input class="mt-1 w-full" id="quantity" name="quantity" type="text"
+                                    value="1" data-line-item-target="quantity" data-action="line-item#updateTotal" />
                             </div>
                             <div class="col-span-2 py-3 px-1">
                                 <div class="flex items-center mt-1">
-                                    <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0">$</x-secondary-button>
-                                    <x-form.input class="w-full" id="rate" name="rate" type="text" />
+                                    <x-form.input class="w-full" id="rate" name="rate" type="text"
+                                        :value="0" data-line-item-target="price"
+                                        data-action="line-item#updateTotal" />
                                 </div>
                             </div>
-                            <div class="col-span-1 col-span-2 py-3 px-1">
+                            <div class="col-span-1 col-span-3 py-3 px-1">
                                 <div class="flex items-center mt-1">
-                                    <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0">$</x-secondary-button>
-                                    <x-form.input class="w-full" id="rate" name="rate" type="text" />
+                                    <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0"
+                                        data-line-item-target="symbol">$</x-secondary-button>
+                                    <x-form.input class="w-full" id="rate" name="total" type="text"
+                                        :value="number_format(0.0, 2)" data-line-item-target="total" />
                                 </div>
                             </div>
-                            <div class="col-span-1 py-3 mt-1">
+                            <div class="col-span-1 py-3 mt-1" data-remove="">
                                 <div data-controller="dropdown" class="relative">
                                     <x-secondary-button class="!py-3 !px-2" type="button"
                                         data-action="dropdown#toggle click@window->dropdown#hide">
@@ -158,7 +164,7 @@
                                     </x-secondary-button>
 
                                     <div data-dropdown-target="menu"
-                                        class="hidden absolute right-0 w-32 bg-white rounded-b border shadow transition transform origin-top-right"
+                                        class="hidden absolute right-0 z-50 w-32 bg-white rounded-b border shadow transition transform origin-top-right"
                                         data-transition-enter-from="opacity-0 scale-95"
                                         data-transition-enter-to="opacity-100 scale-100"
                                         data-transition-leave-from="opacity-100 scale-100"
@@ -166,7 +172,8 @@
 
                                         <ul class="">
                                             <li class='py-3 px-2 text-slate-700 hover:bg-slate-900 hover:text-slate-200'>
-                                                <a href="{{ route('app.home.index') }}" class="flex items-center">
+                                                <a href="#" {{ stimulus_action('line-item', 'remove:prevent') }}
+                                                    class="flex items-center">
                                                     <span class="mx-2">Delete</span>
                                                 </a>
                                             </li>
@@ -182,31 +189,40 @@
                             </div>
                         </div>
                     </template>
+
                     <div class="grid grid-cols-12" {{ stimulus_target('invoice', 'lineItem') }}
                         {{ stimulus_controller('line-item') }}>
+
                         <div class="col-span-5 py-3 px-2"
-                            {{ stimulus_action('line-item', 'updateCurrentCurrency', 'invoice:client-selected') }}>
+                            {{ stimulus_action('line-item', 'setCurrentCurrency', 'invoice:client-selected@window') }}>
                             <x-form.input class="mt-1 w-full !p-2.5" id="description" name="description" type="text"
                                 placeholder="Item name" />
                         </div>
-                        <div class="col-span-2 py-3 px-1">
+
+                        <div class="col-span-1 py-3 px-1">
                             <x-form.input class="mt-1 w-full" id="quantity" name="quantity" type="text"
                                 value="1" data-line-item-target="quantity" data-action="line-item#updateTotal" />
                         </div>
+
                         <div class="col-span-2 py-3 px-1">
                             <div class="flex items-center mt-1">
-                                <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0">$</x-secondary-button>
                                 <x-form.input class="w-full" id="rate" name="rate" type="text"
                                     :value="0" data-line-item-target="price" data-action="line-item#updateTotal" />
                             </div>
                         </div>
-                        <div class="col-span-1 col-span-2 py-3 px-1">
+
+                        <div class="col-span-1 col-span-3 py-3 px-1">
                             <div class="flex items-center mt-1">
-                                <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0">$</x-secondary-button>
-                                <x-form.input class="w-full" id="rate" name="rate" type="text"
+                                <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0"
+                                    data-line-item-target="symbol">
+                                    $
+                                </x-secondary-button>
+
+                                <x-form.input class="w-full" id="rate" name="total" type="text"
                                     :value="number_format(0.0, 2)" data-line-item-target="total" />
                             </div>
                         </div>
+
                         <div class="col-span-1 py-3 mt-1" data-remove="">
                             <div data-controller="dropdown" class="relative">
                                 <x-secondary-button class="!py-3 !px-2" type="button"
@@ -216,7 +232,7 @@
                                 </x-secondary-button>
 
                                 <div data-dropdown-target="menu"
-                                    class="hidden absolute right-0 w-32 bg-white rounded-b border shadow transition transform origin-top-right"
+                                    class="hidden absolute right-0 z-50 w-32 bg-white rounded-b border shadow transition transform origin-top-right"
                                     data-transition-enter-from="opacity-0 scale-95"
                                     data-transition-enter-to="opacity-100 scale-100"
                                     data-transition-leave-from="opacity-100 scale-100"
@@ -242,20 +258,20 @@
                     </div>
                 </div>
                 <div class="flex justify-center mt-3">
-                    <x-secondary-button class="justify-center w-full !border-x-0 !border-b-0">+ Add Line
+                    <x-secondary-button class="justify-center w-full !border-x-0 !border-b-0"
+                        data-action="invoice#addLineItem">+ Add Line
                         Item</x-secondary-button>
                 </div>
             </div>
 
-            <div class="flex justify-end mt-8">
+            <div class="flex justify-end mt-8" {{ stimulus_action('invoice', 'updateTotal', 'line-item:total@window') }}>
                 <div class="space-y-4 w-full md:w-7/12">
                     <div class="flex justify-between items-start">
                         <div>
                             <h2>Subtotal</h2>
                         </div>
                         <div>
-                            <span>$</span>
-                            <span>0.00</span>
+                            <span {{ stimulus_target('invoice', 'subtotal') }}>0.00</span>
                         </div>
                     </div>
 
@@ -264,27 +280,26 @@
                             <h2>Tax</h2>
                         </div>
                         <div>
-                            <span>$</span>
                             <span>0.00</span>
                         </div>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
-                            <h2>Total</h2>
+                            <h2 class="font-semibold text-slate-900">
+                                Total (<span {{ stimulus_target('invoice', 'currencyCode') }}>USD</span>)
+                            </h2>
                         </div>
                         <div>
-                            <span>$</span>
-                            <span>0.00</span>
+                            <span {{ stimulus_target('invoice', 'total') }}>0.00</span>
                         </div>
                     </div>
 
                     <div class="flex justify-between items-start">
                         <div>
-                            <h2>Amount Due</h2>
+                            <h2>Amount Due (<span {{ stimulus_target('invoice', 'currencyCode') }}>USD</span>)</h2>
                         </div>
                         <div>
-                            <span>$</span>
-                            <span>0.00</span>
+                            <span {{ stimulus_target('invoice', 'balance') }}>0.00</span>
                         </div>
                     </div>
                 </div>
