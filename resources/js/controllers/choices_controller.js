@@ -8,14 +8,36 @@ let choices;
 // Connects to data-controller="select2"
 export default class extends Controller {
     static classes = ["invalid"];
+    static targets = ["element"];
 
     instance;
+    static values = {
+        selected: String,
+    };
+
+    wrap(el, wrapper) {
+        if (el && el.parentNode) {
+            el.parentNode.insertBefore(wrapper, el);
+            wrapper.appendChild(el);
+        }
+    }
 
     connect() {
+        if (this.element.type === "select-one") {
+            this.element.setAttribute("data-choices-target", "element");
+            this.element.removeAttribute("data-controller");
+            const wrapper = document.createElement("div");
+
+            this.element.parentElement.appendChild(wrapper);
+            this.wrap(this.element, wrapper);
+            wrapper.setAttribute("data-controller", "choices");
+            return;
+        }
+
         const options = JSON.parse(this.data.get("config")) || {};
 
         this.instance = new Choices(
-            this.element,
+            this.elementTarget,
             Object.assign(
                 {
                     classNames: {
@@ -50,8 +72,7 @@ export default class extends Controller {
         );
     }
 
-    setChoiceByValue({ detail }) {
-        console.log(detail);
-        this.instance.setChoiceByValue(detail);
+    update({ detail }) {
+        this.instance.setChoiceByValue(detail.toString());
     }
 }

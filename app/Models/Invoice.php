@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
@@ -21,13 +22,18 @@ class Invoice extends Model
     /**
      * Get the items for the invoice.
      */
-    public function items(): BelongsToMany
+    public function items(): HasMany
     {
-        return $this->belongsToMany(Item::class)->withPivot(['quantity', 'price']);
+        return $this->hasMany(Item::class);
     }
 
     public function business(): BelongsTo
     {
         return $this->belongsTo(Business::class);
+    }
+
+    public function number(): Attribute
+    {
+        return Attribute::make(set: fn($value) => $value ?: 'INV-' . date('mds-Y'));
     }
 }

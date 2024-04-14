@@ -6,6 +6,7 @@ use App\Models\Business;
 use App\Models\Client;
 use App\Models\Country;
 use App\Models\Currency;
+use App\Models\Invoice;
 use App\Models\User;
 use FlixtechsLabs\LaravelAuthorizer\Facades\Authorizer;
 use Illuminate\Console\Command;
@@ -52,6 +53,7 @@ class Deploy extends Command
                 'view app dashboard',
                 ...Authorizer::getPermissionsFor(Business::class),
                 ...Authorizer::getPermissionsFor(Client::class),
+                ...Authorizer::getPermissionsFor(Invoice::class),
             ]),
         ]);
 

@@ -18,7 +18,11 @@ export default class extends Controller {
         "currency",
     ];
 
-    static values = { currency: Object };
+    static values = {
+        currency: Object,
+        clients: Array,
+        currencies: Array,
+    };
 
     connect() {
         this.selectDueDate({ target: this.customDateSelectTarget });
@@ -43,6 +47,13 @@ export default class extends Controller {
         this.dispatch("currency-changed", { detail: this.currencyValue.id });
     }
 
+    setCurrentCurrey({ target }) {
+        const currency = this.currenciesValue.find(
+            (item) => item.id == target.value,
+        );
+        this.currencyValue = currency;
+    }
+
     ensureLineItemExists() {
         if (this.lineItemTargets.length === 0) {
             this.addLineItem();
@@ -53,7 +64,10 @@ export default class extends Controller {
         if (target) {
             target.blur();
         }
-        const html = this.lineItemTemplateTarget.innerHTML;
+        const html = this.lineItemTemplateTarget.innerHTML.replaceAll(
+            /INDEX/g,
+            this.lineItemTargets.length,
+        );
         this.lineItemsContainerTarget.insertAdjacentHTML("beforeend", html);
         this.lineItemTargets
             .at(-1)
@@ -86,7 +100,9 @@ export default class extends Controller {
         )
             return;
 
-        const client = JSON.parse(target.value);
+        const client = this.clientsValue.find((item) => {
+            return item.id == target.value;
+        });
 
         this.currencyValue = client.currency;
         this.dispatch("client-selected", { detail: { client } });

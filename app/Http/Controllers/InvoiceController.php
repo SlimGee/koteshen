@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Invoice;
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -42,7 +43,24 @@ class InvoiceController extends Controller
      */
     public function store(StoreInvoiceRequest $request): RedirectResponse
     {
-        auth()->user()->business->invoices()->create($request->validated());
+        $items = collect($request->validated('items'))->map(
+            fn($item) => [
+                ...$item,
+                'total' => $item['quantity'] * $item['price'],
+            ]
+        );
+
+        $data = [
+            ...$request->safe()->except('items', 'due_at', 'due_in'),
+            'total' => $items->sum('total'),
+            'balance' => $items->sum('total'),
+            'status' => 'created',
+            'due_at' => $request->validated('due_in') === 'custom' ? $request->validated('due_at') : Carbon::parse($request->validated('due_in')),
+        ];
+
+        $invoice = auth()->user()->business->invoices()->create($data);
+
+        $invoice->items()->createMany($items);
 
         return to_route('app.invoices.index')->with('success', 'Invoices created successfully');
     }

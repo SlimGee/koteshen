@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Invoice;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreInvoiceRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreInvoiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', Invoice::class);
     }
 
     /**
@@ -23,10 +24,15 @@ class StoreInvoiceRequest extends FormRequest
     {
         return [
             'client_id' => 'required|exists:clients,id',
+            'currency_id' => 'required|exists:currencies,id',
+            'items' => 'required|array',
+            'items.*.name' => 'required|string|max:255',
+            'items.*.quantity' => 'required|numeric|min:1',
+            'items.*.price' => 'required|numeric|min:0',
             'number' => 'nullable|string',
             'notes' => 'nullable|string',
-            'due_at' => 'required_if|due_in:custom|nullable|date',
-            'due_in' => 'require|string|7 days,14 days,30 days,60 days,90 days,custom',
+            'due_at' => 'required_if:due_in,custom|nullable|date',
+            'due_in' => 'required|string|in:now,7 days,14 days,30 days,60 days,90 days,custom',
         ];
     }
 }
