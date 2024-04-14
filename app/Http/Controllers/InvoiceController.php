@@ -33,6 +33,7 @@ class InvoiceController extends Controller
 
         return view('app.invoices.create', [
             'clients' => $clients,
+            'business' => auth()->user()->business,
         ]);
     }
 

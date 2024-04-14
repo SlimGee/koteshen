@@ -1,10 +1,12 @@
-import { Application } from '@hotwired/stimulus'
+import { Application } from "@hotwired/stimulus";
+import Dropdown from "@stimulus-components/dropdown";
 
-const Stimulus = Application.start()
+const Stimulus = Application.start();
+Stimulus.register("dropdown", Dropdown);
 
 // Configure Stimulus development experience
-Stimulus.debug = false
+Stimulus.debug = false;
 
-window.Stimulus = Stimulus
+window.Stimulus = Stimulus;
 
-export { Stimulus }
+export { Stimulus };

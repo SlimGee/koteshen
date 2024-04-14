@@ -29,6 +29,13 @@ class Client extends Model
     ];
 
     /**
+     * The attributes that should be eager loaded
+     *
+     * @var array
+     */
+    protected $with = ['currency'];
+
+    /**
      * The business that owns this Client
      */
     public function business(): BelongsTo
@@ -41,7 +48,7 @@ class Client extends Model
      */
     public function currency(): BelongsTo
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Currency::class);
     }
 
     public function name(): Attribute

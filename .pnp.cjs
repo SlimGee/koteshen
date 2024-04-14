@@ -29,9 +29,11 @@ const RAW_RUNTIME_STATE =
           ["@hotwired/stimulus", "npm:3.2.2"],\
           ["@hotwired/strada", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.0-beta1"],\
           ["@hotwired/turbo", "npm:8.0.4"],\
+          ["@popperjs/core", "npm:2.11.8"],\
           ["@stimulus-components/dropdown", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:3.0.0"],\
           ["@tailwindcss/forms", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.7"],\
           ["@tailwindcss/typography", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.12"],\
+          ["air-datepicker", "npm:3.5.0"],\
           ["animate.css", "npm:4.1.1"],\
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
@@ -42,6 +44,7 @@ const RAW_RUNTIME_STATE =
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
           ["pusher-js", "npm:8.3.0"],\
+          ["stimulus-use", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.52.2"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["vite", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.2.8"]\
         ],\
@@ -452,6 +455,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@popperjs/core", [\
+      ["npm:2.11.8", {\
+        "packageLocation": "../../../.yarn/berry/cache/@popperjs-core-npm-2.11.8-f1692e11a0-10c0.zip/node_modules/@popperjs/core/",\
+        "packageDependencies": [\
+          ["@popperjs/core", "npm:2.11.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@rollup/rollup-android-arm-eabi", [\
       ["npm:4.14.1", {\
         "packageLocation": "./.yarn/unplugged/@rollup-rollup-android-arm-eabi-npm-4.14.1-a363de085d/node_modules/@rollup/rollup-android-arm-eabi/",\
@@ -601,7 +613,7 @@ const RAW_RUNTIME_STATE =
           ["@stimulus-components/dropdown", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:3.0.0"],\
           ["@hotwired/stimulus", "npm:3.2.2"],\
           ["@types/hotwired__stimulus", null],\
-          ["stimulus-use", "virtual:d048275000b5c4a565ade4d1bf6b47cedb15e3825be8f8b49a847230f55a3073685d48fbf5b00fafaa7d1e3637ebff7dac059f4cf85b6179bcd053f88b5ea361#npm:0.52.2"]\
+          ["stimulus-use", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.52.2"]\
         ],\
         "packagePeers": [\
           "@hotwired/stimulus",\
@@ -703,6 +715,15 @@ const RAW_RUNTIME_STATE =
           ["aggregate-error", "npm:3.1.0"],\
           ["clean-stack", "npm:2.2.0"],\
           ["indent-string", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["air-datepicker", [\
+      ["npm:3.5.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/air-datepicker-npm-3.5.0-ff349fdf2e-10c0.zip/node_modules/air-datepicker/",\
+        "packageDependencies": [\
+          ["air-datepicker", "npm:3.5.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2335,9 +2356,11 @@ const RAW_RUNTIME_STATE =
           ["@hotwired/stimulus", "npm:3.2.2"],\
           ["@hotwired/strada", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.0-beta1"],\
           ["@hotwired/turbo", "npm:8.0.4"],\
+          ["@popperjs/core", "npm:2.11.8"],\
           ["@stimulus-components/dropdown", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:3.0.0"],\
           ["@tailwindcss/forms", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.7"],\
           ["@tailwindcss/typography", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.12"],\
+          ["air-datepicker", "npm:3.5.0"],\
           ["animate.css", "npm:4.1.1"],\
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
@@ -2348,6 +2371,7 @@ const RAW_RUNTIME_STATE =
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
           ["pusher-js", "npm:8.3.0"],\
+          ["stimulus-use", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.52.2"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["vite", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.2.8"]\
         ],\
@@ -2479,10 +2503,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:d048275000b5c4a565ade4d1bf6b47cedb15e3825be8f8b49a847230f55a3073685d48fbf5b00fafaa7d1e3637ebff7dac059f4cf85b6179bcd053f88b5ea361#npm:0.52.2", {\
-        "packageLocation": "./.yarn/__virtual__/stimulus-use-virtual-823379bfdc/4/.yarn/berry/cache/stimulus-use-npm-0.52.2-22cb27e749-10c0.zip/node_modules/stimulus-use/",\
+      ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.52.2", {\
+        "packageLocation": "./.yarn/__virtual__/stimulus-use-virtual-fd1c5e910a/4/.yarn/berry/cache/stimulus-use-npm-0.52.2-22cb27e749-10c0.zip/node_modules/stimulus-use/",\
         "packageDependencies": [\
-          ["stimulus-use", "virtual:d048275000b5c4a565ade4d1bf6b47cedb15e3825be8f8b49a847230f55a3073685d48fbf5b00fafaa7d1e3637ebff7dac059f4cf85b6179bcd053f88b5ea361#npm:0.52.2"],\
+          ["stimulus-use", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.52.2"],\
           ["@hotwired/stimulus", "npm:3.2.2"],\
           ["@types/hotkeys-js", null],\
           ["@types/hotwired__stimulus", null],\
