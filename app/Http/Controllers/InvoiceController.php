@@ -8,6 +8,7 @@ use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class InvoiceController extends Controller
@@ -22,6 +23,7 @@ class InvoiceController extends Controller
             ->defaultSort('-created_at')
             ->allowedFilters([
                 'status',
+                AllowedFilter::scope('search', 'whereScout'),
             ])
             ->paginate(7);
 

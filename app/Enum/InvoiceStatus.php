@@ -14,6 +14,7 @@ enum InvoiceStatus: string
     case PARTIALLY_PAID = 'partially_paid';
     case PARTIALLY_REFUNDED = 'partially_refunded';
     case ARCHIVED = 'archived';
+    case CREATED = 'created';
 
     public function classes()
     {
