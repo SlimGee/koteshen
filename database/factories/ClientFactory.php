@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Currency;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,7 +24,7 @@ class ClientFactory extends Factory
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail,
-            'currency' => $this->faker->currencyCode,
+            'currency_id' => Currency::all()->random(),
             'address' => $this->faker->streetAddress,
             'city' => $this->faker->city,
             'country' => $this->faker->country,

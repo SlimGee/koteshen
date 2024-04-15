@@ -20,7 +20,10 @@ class InvoiceController extends Controller
         $invoice = QueryBuilder::for(auth()->user()->business->invoices())
             ->allowedSorts(['created_at', 'due_at', 'total'])
             ->defaultSort('-created_at')
-            ->paginate();
+            ->allowedFilters([
+                'status',
+            ])
+            ->paginate(7);
 
         return view('app.invoices.index', ['invoices' => $invoice]);
     }
