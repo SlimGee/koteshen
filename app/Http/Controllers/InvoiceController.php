@@ -56,7 +56,7 @@ class InvoiceController extends Controller
         );
 
         $data = [
-            ...$request->safe()->except('items', 'due_at', 'due_in'),
+            ...$request->safe()->except('items', 'due_at'),
             'total' => $items->sum('total'),
             'balance' => $items->sum('total'),
             'status' => 'created',
@@ -83,7 +83,13 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        return view('app.invoices.edit', ['invoice' => $invoice]);
+        $clients = auth()->user()->business->clients;
+
+        return view('app.invoices.edit', [
+            'invoice' => $invoice,
+            'clients' => $clients,
+            'business' => auth()->user()->business,
+        ]);
     }
 
     /**
@@ -91,9 +97,26 @@ class InvoiceController extends Controller
      */
     public function update(UpdateInvoiceRequest $request, Invoice $invoice)
     {
-        $invoice->update($request->validated());
+        $items = collect($request->validated('items'))->map(
+            fn($item) => [
+                ...$item,
+                'total' => $item['quantity'] * $item['price'],
+            ]
+        );
 
-        return to_route('app.invoices.index')->with('success', 'Invoice updated successfully');
+        $data = [
+            ...$request->safe()->except('items', 'due_at'),
+            'total' => $items->sum('total'),
+            'balance' => $items->sum('total'),
+            'status' => 'created',
+            'due_at' => $request->validated('due_in') === 'custom' ? $request->validated('due_at') : Carbon::parse($request->validated('due_in')),
+        ];
+
+        $invoice->update($data);
+
+        $invoice->items()->sync($items->toArray());
+
+        return to_route('app.invoices.show', $invoice)->with('success', 'Invoice updated successfully');
     }
 
     /**

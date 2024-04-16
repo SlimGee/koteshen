@@ -29,6 +29,7 @@ enum InvoiceStatus: string
             self::ARCHIVED => 'bg-gray-800 text-white',
             self::SENT => 'bg-blue-800 text-white',
             self::DRAFT => 'bg-gray-700 text-gray-100',
+            self::CREATED => 'bg-gray-700 text-gray-100',
         };
     }
 }

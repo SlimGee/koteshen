@@ -28,6 +28,7 @@ class Invoice extends Model
     protected $casts = [
         'status' => InvoiceStatus::class,
         'due_at' => 'datetime',
+        'date' => 'datetime',
     ];
 
     /**

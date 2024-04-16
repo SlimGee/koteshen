@@ -11,9 +11,6 @@ export default class extends Controller {
     static targets = ["element"];
 
     instance;
-    static values = {
-        selected: String,
-    };
 
     wrap(el, wrapper) {
         if (el && el.parentNode) {

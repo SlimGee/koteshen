@@ -11,7 +11,7 @@ class UpdateInvoiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('invoice'));
     }
 
     /**
@@ -22,7 +22,17 @@ class UpdateInvoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'client_id' => 'required|exists:clients,id',
+            'currency_id' => 'required|exists:currencies,id',
+            'items' => 'required|array',
+            'items.*.name' => 'required|string|max:255',
+            'items.*.quantity' => 'required|numeric|min:1',
+            'items.*.price' => 'required|numeric|min:0',
+            'items.*.id' => 'nullable|exists:items,id',
+            'number' => 'nullable|string',
+            'notes' => 'nullable|string',
+            'due_at' => 'required_if:due_in,custom|nullable|date',
+            'due_in' => 'required|string|in:now,7 days,14 days,30 days,60 days,90 days,custom',
         ];
     }
 }
