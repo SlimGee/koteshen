@@ -55,4 +55,11 @@ class Client extends Model
     {
         return Attribute::make(get: fn($value, $attributes) => is_null($value) ? $attributes['first_name'] . ' ' . $attributes['last_name'] : $value);
     }
+
+    public function contact(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attributes) => $attributes['first_name'] . ' ' . $attributes['last_name'],
+        );
+    }
 }
