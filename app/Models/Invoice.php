@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enum\InvoiceStatus;
+use App\Events\InvoiceSaved;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -29,6 +30,10 @@ class Invoice extends Model
         'status' => InvoiceStatus::class,
         'due_at' => 'datetime',
         'date' => 'datetime',
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => InvoiceSaved::class,
     ];
 
     /**

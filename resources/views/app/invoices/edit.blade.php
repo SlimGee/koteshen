@@ -1,6 +1,22 @@
 @extends('app')
 
 @section('content')
+    <section class="mb-10">
+        <div class="flex justify-between items-center md:items-baseline">
+            <div class="flex items-center space-x-6">
+                <a href="{{ route('app.invoices.show', $invoice) }}">
+                    <x-secondary-button class="!py-2 !px-3 !text-xs">
+                        <i class="bi bi-caret-left-fill"></i>
+                        Invoice
+                    </x-secondary-button>
+                </a>
+                <h1 class="ml-4 text-xl font-semibold md:text-2xl text-slate-700">Invoice #{{ $invoice->number }}</h1>
+            </div>
+        </div>
+    </section>
+
+
+
     <section
         {{ stimulus_controller('invoice', [
             'clients' => $clients,

@@ -6,9 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "barryvdh/laravel-dompdf": "^2.1",
+        "barryvdh/laravel-snappy": "^1.0",
         "butschster/meta-tags": "^3.0",
         "flixtechs-labs/laravel-authorizer": "^0.1.0",
         "flixtechs-labs/stimulus-extra": "^0.0.5",
+        "h4cc/wkhtmltoimage-amd64": "^0.12.4",
+        "h4cc/wkhtmltopdf-amd64": "^0.12.4",
         "hotwired-laravel/turbo-laravel": "^2.0.0-beta1",
         "http-interop/http-factory-guzzle": "^1.2",
         "korridor/laravel-has-many-sync": "^3.0",
@@ -24,6 +28,7 @@
         "predis/predis": "*",
         "propaganistas/laravel-phone": "^5.2",
         "spatie/laravel-onboard": "^2.6",
+        "spatie/laravel-pdf": "^1.5",
         "spatie/laravel-query-builder": "^5.8",
         "spatie/laravel-sluggable": "^3.6"
     },
