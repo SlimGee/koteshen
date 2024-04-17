@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
+use Butschster\Head\Facades\Meta;
+use Butschster\Head\Packages\Entities\OpenGraphPackage;
+use Butschster\Head\Packages\Entities\TwitterCardPackage;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -16,6 +19,26 @@ class ClientController extends Controller
      */
     public function index(): Renderable
     {
+        Meta::prependTitle('Clients')
+            ->setDescription('Manage your clients and their details.')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle('Clients')
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle('Clients')
+                    ->setDescription('Manage your clients and their details.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         $clients = QueryBuilder::for(auth()->user()->business->clients())
             ->allowedFilters(['name', 'email', 'phone'])
             ->allowedSorts('name', 'email', 'phone')
@@ -30,6 +53,26 @@ class ClientController extends Controller
      */
     public function create(): Renderable
     {
+        Meta::prependTitle('Create Client')
+            ->setDescription('Manage your clients and their details.')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle('Create Client')
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle('Create Client')
+                    ->setDescription('Manage your clients and their details.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         return view('app.clients.create');
     }
 
@@ -52,6 +95,26 @@ class ClientController extends Controller
      */
     public function show(Client $client): Renderable
     {
+        Meta::prependTitle($client->name)
+            ->setDescription('Manage your clients and their details.')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle($client->name)
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle($client->name)
+                    ->setDescription('Manage your clients and their details.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         return view('app.clients.show', ['client' => $client]);
     }
 
@@ -60,6 +123,26 @@ class ClientController extends Controller
      */
     public function edit(Client $client): Renderable
     {
+        Meta::prependTitle('Edit client ' . $client->name)
+            ->setDescription('Manage your clients and their details.')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle('Edit client ' . $client->name)
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle('Edit client ' . $client->name)
+                    ->setDescription('Manage your clients and their details.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         return view('app.clients.edit', ['client' => $client]);
     }
 

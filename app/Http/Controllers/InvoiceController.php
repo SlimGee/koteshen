@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Invoice;
+use Butschster\Head\Facades\Meta;
+use Butschster\Head\Packages\Entities\OpenGraphPackage;
+use Butschster\Head\Packages\Entities\TwitterCardPackage;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -18,6 +21,26 @@ class InvoiceController extends Controller
      */
     public function index(): Renderable
     {
+        Meta::prependTitle('Invoices')
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle('Invoices')
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle('Invoices')
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         $invoice = QueryBuilder::for(auth()->user()->business->invoices())
             ->allowedSorts(['created_at', 'due_at', 'total'])
             ->defaultSort('-created_at')
@@ -35,6 +58,26 @@ class InvoiceController extends Controller
      */
     public function create(): Renderable
     {
+        Meta::prependTitle('Create Invoices')
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle('Create Invoices')
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle('Create Invoices')
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         $clients = auth()->user()->business->clients;
 
         return view('app.invoices.create', [
@@ -75,6 +118,26 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
+        Meta::prependTitle($invoice->number)
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle($invoice->number)
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle($invoice->number)
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         return view('app.invoices.show', ['invoice' => $invoice]);
     }
 
@@ -83,6 +146,26 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
+        Meta::prependTitle('Edit Invoice ' . $invoice->number)
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
+            ->registerPackage(
+                (new OpenGraphPackage('website'))
+                    ->setUrl(route('app.invoices.index'))
+                    ->setTitle('Edit Invoice ' . $invoice->number)
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->addImage(asset('images/cover.jpg'))
+            )
+            ->registerPackage(
+                (new TwitterCardPackage('summary_large_image'))
+                    ->setType('summary')
+                    ->setSite('@koteshen')
+                    ->setCreator('@ncubegiven_')
+                    ->setTitle('Edit Invoice ' . $invoice->number)
+                    ->setDescription('Create and manage invoices for your business.')
+                    ->setImage(asset('images/cover.jpg'))
+            );
+
         $clients = auth()->user()->business->clients;
 
         return view('app.invoices.edit', [
