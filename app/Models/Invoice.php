@@ -30,6 +30,8 @@ class Invoice extends Model
         'status' => InvoiceStatus::class,
         'due_at' => 'datetime',
         'date' => 'datetime',
+        'emailed' => 'boolean',
+        'emailed_at' => 'datetime',
     ];
 
     protected $dispatchesEvents = [

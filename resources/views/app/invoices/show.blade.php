@@ -64,7 +64,11 @@
                                         <a href="{{ route('app.invoices.send', $invoice) }}"
                                             class="w-full text-sm font-semibold text-slate-700">
                                             <i class="mr-1 bi bi-send"></i>
-                                            Send Invoice
+                                            @if ($invoice->emailed)
+                                                Resend Invoice
+                                            @else
+                                                Send Invoice
+                                            @endif
                                         </a>
                                     </li>
 

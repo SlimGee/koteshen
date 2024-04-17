@@ -6,11 +6,13 @@ use App\Http\Requests\SendInvoiceRrequest;
 use App\Mail\InvoiceDelivery;
 use App\Models\EmailTemplate;
 use App\Models\Invoice;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 
 class SendInvoiceController extends Controller
 {
-    public function create(Invoice $invoice)
+    public function create(Invoice $invoice): Renderable
     {
         $template = EmailTemplate::whereName('Default Invoice Email Template')->first();
 
@@ -35,9 +37,14 @@ class SendInvoiceController extends Controller
         ]);
     }
 
-    public function store(SendInvoiceRrequest $request, Invoice $invoice)
+    public function store(SendInvoiceRrequest $request, Invoice $invoice): RedirectResponse
     {
         Mail::send(new InvoiceDelivery($invoice, $request->validated()));
+
+        $invoice->update([
+            'emailed' => true,
+            'emailed_at' => now(),
+        ]);
 
         return to_route('app.invoices.show', $invoice)->with('success', 'Invoice sent successfully!');
     }

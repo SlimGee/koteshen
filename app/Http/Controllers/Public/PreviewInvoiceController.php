@@ -10,7 +10,7 @@ class PreviewInvoiceController extends Controller
 {
     public function show(Invoice $invoice): Renderable
     {
-        return view('invoices.template', [
+        return view('invoices.preview', [
             'invoice' => $invoice,
         ]);
     }
