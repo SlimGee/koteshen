@@ -20,7 +20,10 @@ export default class extends Controller {
     }
 
     connect() {
-        if (this.element.type === "select-one") {
+        if (
+            this.element.type === "select-one" ||
+            ["INPUT", "SELECT"].includes(this.element.nodeName)
+        ) {
             this.element.setAttribute("data-choices-target", "element");
             this.element.removeAttribute("data-controller");
             const wrapper = document.createElement("div");

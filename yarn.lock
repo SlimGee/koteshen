@@ -2656,6 +2656,7 @@ __metadata:
     postcss: "npm:^8.4.38"
     puppeteer: "npm:^22.6.5"
     pusher-js: "npm:^8.0.1"
+    stimulus-textarea-autogrow: "npm:^4.1.0"
     stimulus-use: "npm:^0.52.2"
     tailwindcss: "npm:^3.4.3"
     vite: "npm:^5.0"
@@ -2767,6 +2768,15 @@ __metadata:
   dependencies:
     minipass: "npm:^7.0.3"
   checksum: 10c0/b091f2ae92474183c7ac5ed3f9811457e1df23df7a7e70c9476eaa9a0c4a0c8fc190fb45acefbf023ca9ee864dd6754237a697dc52a0fb182afe65d8e77443d8
+  languageName: node
+  linkType: hard
+
+"stimulus-textarea-autogrow@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "stimulus-textarea-autogrow@npm:4.1.0"
+  peerDependencies:
+    "@hotwired/stimulus": ^3.2.1
+  checksum: 10c0/15867126903d60af7736630c6ed9154a2865532ce550fb337b5966627e26dabcdbbd29139818ec9d93a2b2883594edaacf31370ca29b8a9fa8cf93e1afb6b08e
   languageName: node
   linkType: hard
 

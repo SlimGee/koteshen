@@ -30,6 +30,7 @@
         "html-to-json-parser": "^2.0.1",
         "izitoast": "^1.4.0",
         "puppeteer": "^22.6.5",
+        "stimulus-textarea-autogrow": "^4.1.0",
         "stimulus-use": "^0.52.2"
     }
 }

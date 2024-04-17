@@ -25,6 +25,7 @@
         "maddhatter/laravel-view-generator": "dev-master",
         "meilisearch/meilisearch-php": "^1.7",
         "opcodesio/log-viewer": "^3.8",
+        "osiemsiedem/laravel-autolink": "^8.0",
         "predis/predis": "*",
         "propaganistas/laravel-phone": "^5.2",
         "spatie/laravel-onboard": "^2.6",

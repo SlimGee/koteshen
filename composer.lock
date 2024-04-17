@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bbff8ae13a15ccc12e7697d82ed9bb5e",
+    "content-hash": "e8ce24fbaa5faa60ba9b4c50ac721426",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4164,6 +4164,75 @@
             "time": "2023-11-19T08:47:43+00:00"
         },
         {
+            "name": "osiemsiedem/laravel-autolink",
+            "version": "8.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/osiemsiedem/laravel-autolink.git",
+                "reference": "4ca54e7f1ebb42e040447a7aa1aa141babbe2c87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/osiemsiedem/laravel-autolink/zipball/4ca54e7f1ebb42e040447a7aa1aa141babbe2c87",
+                "reference": "4ca54e7f1ebb42e040447a7aa1aa141babbe2c87",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^11.0",
+                "php": "^8.2",
+                "spatie/laravel-html": "^3.6",
+                "symfony/polyfill-mbstring": "^1.29"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "OsiemSiedem\\Autolink\\AutolinkServiceProvider"
+                    ],
+                    "aliases": {
+                        "Autolink": "OsiemSiedem\\Autolink\\Facades\\Autolink"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "OsiemSiedem\\Autolink\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marek Szymczuk",
+                    "email": "marek@osiemsiedem.com",
+                    "homepage": "http://osiemsiedem.com"
+                }
+            ],
+            "description": "A Laravel package for converting URLs in a given string of text into clickable links.",
+            "keywords": [
+                "autolink",
+                "email",
+                "html",
+                "laravel",
+                "url",
+                "www"
+            ],
+            "support": {
+                "issues": "https://github.com/osiemsiedem/laravel-autolink/issues",
+                "source": "https://github.com/osiemsiedem/laravel-autolink/tree/8.0.0"
+            },
+            "time": "2024-03-20T18:32:51+00:00"
+        },
+        {
             "name": "paragonie/constant_time_encoding",
             "version": "v2.6.3",
             "source": {
@@ -5753,6 +5822,84 @@
                 }
             ],
             "time": "2024-04-01T08:19:46+00:00"
+        },
+        {
+            "name": "spatie/laravel-html",
+            "version": "3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-html.git",
+                "reference": "df15763c190954ee46a74e0bf5b4b5bbf2e1f170"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-html/zipball/df15763c190954ee46a74e0bf5b4b5bbf2e1f170",
+                "reference": "df15763c190954ee46a74e0bf5b4b5bbf2e1f170",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "^8.0|^9.0",
+                "pestphp/pest": "^2.34"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Html": "Spatie\\Html\\Facades\\Html"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Html\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A fluent html builder",
+            "homepage": "https://github.com/spatie/laravel-html",
+            "keywords": [
+                "html",
+                "spatie"
+            ],
+            "support": {
+                "source": "https://github.com/spatie/laravel-html/tree/3.7.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-03-23T11:28:29+00:00"
         },
         {
             "name": "spatie/laravel-onboard",

@@ -45,6 +45,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.38"],\
           ["puppeteer", "npm:22.6.5"],\
           ["pusher-js", "npm:8.3.0"],\
+          ["stimulus-textarea-autogrow", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.1.0"],\
           ["stimulus-use", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.52.2"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["vite", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.2.9"]\
@@ -3113,6 +3114,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.38"],\
           ["puppeteer", "npm:22.6.5"],\
           ["pusher-js", "npm:8.3.0"],\
+          ["stimulus-textarea-autogrow", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.1.0"],\
           ["stimulus-use", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.52.2"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["vite", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.2.9"]\
@@ -3242,6 +3244,28 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["ssri", "npm:10.0.5"],\
           ["minipass", "npm:7.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["stimulus-textarea-autogrow", [\
+      ["npm:4.1.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/stimulus-textarea-autogrow-npm-4.1.0-f3856ae6c5-10c0.zip/node_modules/stimulus-textarea-autogrow/",\
+        "packageDependencies": [\
+          ["stimulus-textarea-autogrow", "npm:4.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/stimulus-textarea-autogrow-virtual-2c7e045837/4/.yarn/berry/cache/stimulus-textarea-autogrow-npm-4.1.0-f3856ae6c5-10c0.zip/node_modules/stimulus-textarea-autogrow/",\
+        "packageDependencies": [\
+          ["stimulus-textarea-autogrow", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.1.0"],\
+          ["@hotwired/stimulus", "npm:3.2.2"],\
+          ["@types/hotwired__stimulus", null]\
+        ],\
+        "packagePeers": [\
+          "@hotwired/stimulus",\
+          "@types/hotwired__stimulus"\
         ],\
         "linkType": "HARD"\
       }]\
