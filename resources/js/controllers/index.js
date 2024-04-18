@@ -8,5 +8,23 @@ import { Stimulus } from '../libs/stimulus'
 import ChoicesController from './choices_controller'
 Stimulus.register('choices', ChoicesController)
 
+import ClientTypeController from './client-type_controller'
+Stimulus.register('client-type', ClientTypeController)
+
+import DatepickerController from './datepicker_controller'
+Stimulus.register('datepicker', DatepickerController)
+
 import HelloController from './hello_controller'
 Stimulus.register('hello', HelloController)
+
+import InvoiceController from './invoice_controller'
+Stimulus.register('invoice', InvoiceController)
+
+import LineItemController from './line-item_controller'
+Stimulus.register('line-item', LineItemController)
+
+import SearchController from './search_controller'
+Stimulus.register('search', SearchController)
+
+import ToastController from './toast_controller'
+Stimulus.register('toast', ToastController)

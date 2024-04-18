@@ -19,6 +19,7 @@ test('the business setup page can be accessed', function () {
 
 test('a new business can be created', function () {
     $user = User::factory()->create();
+    $user->assignRole('user');
     $this
         ->actingAs($user)
         ->from(route('app.onboarding.business.create'))
@@ -27,10 +28,11 @@ test('a new business can be created', function () {
             'address' => '123 Main St',
             'phone' => '719071581',
             'industry' => 'Technology',
-            'country_code' => 'ZW',
+            'phone_country' => 'ZW',
             'city' => 'Harare',
             'country' => 'Zimbabwe',
-        ]);
+        ])
+        ->assertRedirect();
 
     $this->assertDatabaseHas('businesses', [
         'user_id' => $user->id,

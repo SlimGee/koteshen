@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
 use Spatie\Sluggable\HasSlug;
@@ -56,5 +57,21 @@ class Business extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * The clients that belong to this business
+     */
+    public function clients(): HasMany
+    {
+        return $this->hasMany(Client::class);
+    }
+
+    /**
+     * The invoices that belongs to this business
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
     }
 }

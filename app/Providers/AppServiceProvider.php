@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Country;
+use App\Models\Currency;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Onboard\Facades\Onboard;
 
@@ -22,7 +26,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::before(fn(User $user) => $user->hasRole('super admin') ? true : null);
+        if ($this->app->runningInConsole()) {
+            return;
+        }
+
+        View::share('countries', Cache::remember('db-countries', 60 * 60 * 24 * 7, function () {
+            return Country::all();
+        }));
+
+        View::share('currencies', Cache::remember('db-currencies', 60 * 60 * 24 * 7, function () {
+            return Currency::all();
+        }));
+
+        Gate::before(fn (User $user) => $user->hasRole('super admin') ? true : null);
 
         Onboard::addStep('Setup your business')
             ->link('/app/onboarding/business/create')

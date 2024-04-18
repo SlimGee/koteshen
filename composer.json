@@ -6,17 +6,34 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "barryvdh/laravel-dompdf": "^2.1",
+        "barryvdh/laravel-snappy": "^1.0",
         "butschster/meta-tags": "^3.0",
+        "convertkit/convertkitapi": "^2.0",
         "flixtechs-labs/laravel-authorizer": "^0.1.0",
         "flixtechs-labs/stimulus-extra": "^0.0.5",
+        "h4cc/wkhtmltoimage-amd64": "^0.12.4",
+        "h4cc/wkhtmltopdf-amd64": "^0.12.4",
         "hotwired-laravel/turbo-laravel": "^2.0.0-beta1",
+        "http-interop/http-factory-guzzle": "^1.2",
+        "korridor/laravel-has-many-sync": "^3.0",
         "laravel/fortify": "^1.21",
         "laravel/framework": "^11.0",
+        "laravel/scout": "^10.8",
         "laravel/socialite": "^5.12",
+        "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.9",
         "maddhatter/laravel-view-generator": "dev-master",
+        "mailerlite/mailerlite-php": "^1.0",
+        "meilisearch/meilisearch-php": "^1.7",
+        "moosend/phpwrapper": "200069478",
+        "opcodesio/log-viewer": "^3.8",
+        "osiemsiedem/laravel-autolink": "^8.0",
+        "predis/predis": "*",
         "propaganistas/laravel-phone": "^5.2",
         "spatie/laravel-onboard": "^2.6",
+        "spatie/laravel-pdf": "^1.5",
+        "spatie/laravel-query-builder": "^5.8",
         "spatie/laravel-sluggable": "^3.6"
     },
     "require-dev": {
@@ -35,7 +52,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+         "files": [
+                "app/helpers.php"
+            ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -45,7 +65,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan app:deploy"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"

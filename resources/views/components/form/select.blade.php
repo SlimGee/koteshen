@@ -3,8 +3,8 @@
         'class' =>
             $attributes->has('name') &&
             $errors->{$attributes->has('bag') ? $attributes->get('bag') : 'default'}->has($attributes->get('name'))
-                ? 'block border dark:text-slate-300 dark:placeholder:text-slate-400  border-gray-focus:border-blue-300 rounded-sm p-2 border-red-400  dark:bg-slate-800'
-                : 'block border border-gray-300 rounded-sm p-2.5  disabled:bg-whitertext-sm',
+                ? 'block border dark:text-slate-300 dark:placeholder:text-slate-400  border-gray-focus:border-blue-300 rounded p-2 border-red-400  dark:bg-slate-800'
+                : 'block border border-gray-300 rounded p-2.5  disabled:bg-whitertext-sm',
     ]) }}>
     {{ $slot }}
 </select>

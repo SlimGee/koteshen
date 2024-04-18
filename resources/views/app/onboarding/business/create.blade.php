@@ -48,7 +48,7 @@
                                 <div class="w-3/12">
                                     <x-form.select name="phone_country" class="mt-1 w-full" data-controller="choices">
                                         <option selected value="ZW">+263</option>
-                                        <option value="ZM">+264</option>
+                                        <option value="IT">+264</option>
                                         <option value="Finance">Finance</option>
                                         <option value="Health">Health</option>
                                         <option value="Tax">Tax</option>
