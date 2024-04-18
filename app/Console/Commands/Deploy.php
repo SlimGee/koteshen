@@ -64,6 +64,10 @@ class Deploy extends Command
             ]),
         ]);
 
+        $this->call('permission:create-permission', [
+            'name' => 'access app under development',
+        ]);
+
         if (Country::count() < 1) {
             $this->call('db:seed', ['class' => 'CountrySeeder']);
         }

@@ -21,7 +21,7 @@ class BusinessController extends Controller
             ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
             ->registerPackage(
                 (new OpenGraphPackage('website'))
-                    ->setUrl(route('onboarding.business.create'))
+                    ->setUrl(route('app.onboarding.business.create'))
                     ->setTitle('Create your business profile')
                     ->setDescription('Start by creating your business profile to get started with invoicing.')
                     ->addImage(asset('images/cover.jpg'))

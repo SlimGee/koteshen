@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8ce24fbaa5faa60ba9b4c50ac721426",
+    "content-hash": "02e567f8a6825736aac3534447e30098",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -483,6 +483,60 @@
                 }
             ],
             "time": "2023-12-20T15:40:13+00:00"
+        },
+        {
+            "name": "convertkit/convertkitapi",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConvertKit/ConvertKitSDK-PHP.git",
+                "reference": "20c7bcad4e1637bd37fa2ca917720e2b49e161a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConvertKit/ConvertKitSDK-PHP/zipball/20c7bcad4e1637bd37fa2ca917720e2b49e161a4",
+                "reference": "20c7bcad4e1637bd37fa2ca917720e2b49e161a4",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "monolog/monolog": "^2.5|^3.0",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^9.0",
+                "squizlabs/php_codesniffer": "^3.3",
+                "vlucas/phpdotenv": "^5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ConvertKit_API\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "ConvertKit and contributors",
+                    "homepage": "https://github.com/convertkit/convertkitsdk-php/contributors"
+                }
+            ],
+            "description": "ConvertKit PHP SDK for the ConvertKit API",
+            "homepage": "https://convertkit.com/",
+            "keywords": [
+                "ConvertKit",
+                "Forms",
+                "api"
+            ],
+            "support": {
+                "issues": "https://github.com/ConvertKit/ConvertKitSDK-PHP/issues",
+                "source": "https://github.com/ConvertKit/ConvertKitSDK-PHP/tree/2.0"
+            },
+            "time": "2024-04-17T13:11:13+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -3387,6 +3441,71 @@
             "time": "2022-06-24T11:12:54+00:00"
         },
         {
+            "name": "mailerlite/mailerlite-php",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mailerlite/mailerlite-php.git",
+                "reference": "b33a65e4f1b28895212e825ffd8ba639501ef444"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mailerlite/mailerlite-php/zipball/b33a65e4f1b28895212e825ffd8ba639501ef444",
+                "reference": "b33a65e4f1b28895212e825ffd8ba639501ef444",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4|^8.0",
+                "php-http/client-common": "^2.2",
+                "php-http/discovery": "^1.9",
+                "php-http/httplug": "^2.1",
+                "psr/http-client-implementation": "^1.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.18",
+                "guzzlehttp/psr7": "^2.6.1",
+                "http-interop/http-factory-guzzle": "^1.0",
+                "mockery/mockery": "^0.9.4",
+                "php-http/guzzle7-adapter": "^0.1",
+                "php-http/message": "^1.0",
+                "php-http/mock-client": "^1.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^7.5.15 || ^8.4 || ^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MailerLite\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Remigijus Rekerta",
+                    "email": "remigijus.rekerta@mailerlite.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "MailerLite PHP SDK",
+            "homepage": "https://github.com/mailerlite/mailerlite-php",
+            "keywords": [
+                "email",
+                "mailerlite",
+                "marketing",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/mailerlite/mailerlite-php/issues",
+                "source": "https://github.com/mailerlite/mailerlite-php/tree/v1.0.3"
+            },
+            "time": "2024-02-13T14:18:08+00:00"
+        },
+        {
             "name": "masterminds/html5",
             "version": "2.9.0",
             "source": {
@@ -3621,6 +3740,62 @@
                 }
             ],
             "time": "2023-10-27T15:32:31+00:00"
+        },
+        {
+            "name": "moosend/phpwrapper",
+            "version": "200069478",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moosend/api-wrappers-php.git",
+                "reference": "97c34315d73bf8e018a21a57ec0fe1c9b3d6870c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moosend/api-wrappers-php/zipball/97c34315d73bf8e018a21a57ec0fe1c9b3d6870c",
+                "reference": "97c34315d73bf8e018a21a57ec0fe1c9b3d6870c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~1.12",
+                "phpunit/phpunit": "~4.8",
+                "satooshi/php-coveralls": "~1.0",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swagger\\Client\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Moosend",
+                    "homepage": "https://moosend.com"
+                }
+            ],
+            "homepage": "http://moosend.com",
+            "keywords": [
+                "api",
+                "moosend",
+                "php",
+                "sdk",
+                "wrapper"
+            ],
+            "support": {
+                "issues": "https://github.com/moosend/api-wrappers-php/issues",
+                "source": "https://github.com/moosend/api-wrappers-php/tree/1100694782015.0.1"
+            },
+            "time": "2020-02-25T17:48:58+00:00"
         },
         {
             "name": "nesbot/carbon",
