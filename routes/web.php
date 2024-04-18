@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Onboarding\BusinessController;
+use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DownloadInvoiceController;
@@ -19,9 +20,7 @@ Route::get('/auth/{social}/callback', [SocialiteController::class, 'callback'])
     ->name('socialite.callback')
     ->whereIn('social', ['google']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AppHomeController::class, 'index'])->name('home.index');
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
     ->prefix('app')
