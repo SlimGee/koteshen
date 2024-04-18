@@ -20,14 +20,14 @@ class HomeController extends Controller
                     ->setUrl(route('home.index'))
                     ->setTitle('Invoicing Stress & Wasted Time? Get Koteshen & Get Back to Business')
                     ->setDescription('Ditch clunky spreadsheets and invoicing dread. Koteshen automates your billing, so you get paid faster, reduce errors, and gain the financial clarity you need.')
-                    ->addImage(asset('images/og-image.png'))
+                    ->addImage(asset('images/banner.jpg'))
             )
             ->registerPackage(
                 (new TwitterCardPackage('summary_large_image'))
                     ->setType('summary_large_image')
                     ->setTitle('Invoicing Stress & Wasted Time? Get Koteshen & Get Back to Business')
                     ->setDescription('Ditch clunky spreadsheets and invoicing dread. Koteshen automates your billing, so you get paid faster, reduce errors, and gain the financial clarity you need.')
-                    ->setImage(asset('images/og-image.png'))
+                    ->setImage(asset('images/banner.jpg'))
             );
 
         return view('home.index');
