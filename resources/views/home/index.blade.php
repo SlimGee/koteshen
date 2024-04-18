@@ -1,65 +1,6 @@
-@extends('template')
+@extends('layouts.app')
 
 @section('content')
-    <!-- ========== HEADER ========== -->
-    <header class="flex z-50 flex-wrap w-full text-sm md:flex-nowrap md:justify-start">
-        <nav class="relative py-3 px-4 mx-2 mt-6 w-full bg-white border md:flex md:justify-between md:items-center md:py-0 md:px-6 lg:px-8 xl:mx-auto border-slate-200 max-w-[85rem] rounded-[36px]"
-            aria-label="Global">
-            <div class="flex justify-between items-center">
-                <a class="flex-none text-xl font-semibold" href="{{ route('home.index') }}" aria-label="Koteshen">
-                    <img src="{{ asset('images/logo/1.png') }}" alt="Koteshen logo" class="w-32">
-                </a>
-                <div class="md:hidden">
-                    <button type="button"
-                        class="flex justify-center items-center text-sm font-semibold rounded-full border disabled:opacity-50 disabled:pointer-events-none text-slate-800 border-slate-200 hs-collapse-toggle size-8 hover:bg-slate-100"
-                        data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation"
-                        aria-label="Toggle navigation">
-                        <svg class="flex-shrink-0 hs-collapse-open:hidden size-4" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="3" x2="21" y1="6" y2="6" />
-                            <line x1="3" x2="21" y1="12" y2="12" />
-                            <line x1="3" x2="21" y1="18" y2="18" />
-                        </svg>
-                        <svg class="hidden flex-shrink-0 hs-collapse-open:block size-4" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 6 6 18" />
-                            <path d="m6 6 12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div id="navbar-collapse-with-animation"
-                class="hidden overflow-hidden transition-all duration-300 md:block hs-collapse basis-full grow">
-                <div
-                    class="flex flex-col gap-x-0 gap-y-4 mt-5 md:flex-row md:gap-y-0 md:gap-x-7 md:justify-end md:items-center md:mt-0 md:ps-7">
-                    <a class="font-medium text-blue-600 md:py-6" href="#" aria-current="page">Home</a>
-                    <a class="font-medium md:py-6 text-slate-500 hover:text-slate-400" target="_blank"
-                        href="https://x.com/ncubegiven_">Twitter</a>
-
-
-
-                    <a class="flex gap-x-2 items-center font-medium md:my-6 hover:text-blue-600 text-slate-500 md:border-slate-300 md:border-s md:ps-6"
-                        href="{{ route('login') }}">
-                        <i class="bi bi-person-circle"></i>
-                        Get early access
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- ========== END HEADER ========== -->
-
-    <!-- ========== MAIN CONTENT ========== -->
-    <main id="content">
-        <div class="px-4 pt-12 pb-10 mx-auto sm:px-6 md:pt-24 lg:px-8 max-w-[85rem]">
-            <!-- your content goes here ... -->
-        </div>
-    </main>
-    <!-- ========== END MAIN CONTENT ========== -->
-
-
     <!-- Hero -->
     <div class="overflow-hidden">
         <div class="py-20 px-4 mx-auto sm:px-6 lg:px-8 max-w-[85rem]">
@@ -100,7 +41,7 @@
                         </div>
                         <div class="grid pt-2 sm:block sm:pt-0 sm:flex-[0_0_auto]">
                             <a href="{{ route('register') }}">
-                                <x-button>
+                                <x-button class="justify-center w-full md:w-auto">
                                     Get 50% off early access
                                 </x-button>
                             </a>
@@ -149,7 +90,7 @@
     </div>
 
     <!-- Features -->
-    <div class="py-10 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
+    <div class="py-16 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
         <!-- Grid -->
         <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center xl:gap-32">
             <div>
@@ -178,8 +119,8 @@
                             <span
                                 class="flex justify-center items-center mt-0.5 text-blue-600 bg-blue-50 rounded-full size-5">
                                 <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                             </span>
@@ -194,8 +135,8 @@
                             <span
                                 class="flex justify-center items-center mt-0.5 text-blue-600 bg-blue-50 rounded-full size-5">
                                 <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                             </span>
@@ -230,7 +171,7 @@
     </div>
 
 
-    <div class="py-10 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
+    <div class="py-16 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
         <!-- Grid -->
         <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center xl:gap-32">
             <!-- End Col -->
@@ -313,7 +254,7 @@
 
 
     <!-- Pricing -->
-    <div class="py-10 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
+    <div class="py-16 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
         <!-- Title -->
         <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
             <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Pricing</h2>
@@ -331,19 +272,6 @@
 
             <label class="relative text-sm text-slate-500 min-w-14 ms-3">
                 Annual
-                <span class="absolute -top-10 start-auto -end-28">
-                    <span class="flex items-center">
-                        <svg class="w-14 h-8 -me-6" width="45" height="25" viewBox="0 0 45 25" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M43.2951 3.47877C43.8357 3.59191 44.3656 3.24541 44.4788 2.70484C44.5919 2.16427 44.2454 1.63433 43.7049 1.52119L43.2951 3.47877ZM4.63031 24.4936C4.90293 24.9739 5.51329 25.1423 5.99361 24.8697L13.8208 20.4272C14.3011 20.1546 14.4695 19.5443 14.1969 19.0639C13.9242 18.5836 13.3139 18.4152 12.8336 18.6879L5.87608 22.6367L1.92723 15.6792C1.65462 15.1989 1.04426 15.0305 0.563943 15.3031C0.0836291 15.5757 -0.0847477 16.1861 0.187863 16.6664L4.63031 24.4936ZM43.7049 1.52119C32.7389 -0.77401 23.9595 0.99522 17.3905 5.28788C10.8356 9.57127 6.58742 16.2977 4.53601 23.7341L6.46399 24.2659C8.41258 17.2023 12.4144 10.9287 18.4845 6.96211C24.5405 3.00476 32.7611 1.27399 43.2951 3.47877L43.7049 1.52119Z"
-                                fill="currentColor" class="fill-slate-300" />
-                        </svg>
-                        <span
-                            class="inline-block py-1 px-2.5 mt-3 font-semibold tracking-wide leading-5 text-white uppercase whitespace-nowrap bg-blue-600 rounded-full text-[11px]">Save
-                            up to 10%</span>
-                    </span>
-                </span>
             </label>
         </div>
         <!-- End Switch -->
@@ -743,112 +671,4 @@
             </div>
         </div>
     </section>
-
-
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="py-16 px-4 mx-auto mt-auto w-screen border-t sm:px-6 lg:px-8">
-        <div class="container mx-auto max-w-[85rem]">
-            <!-- Grid -->
-            <div class="grid grid-cols-2 gap-6 mb-10 md:grid-cols-4 lg:grid-cols-5">
-                <div class="hidden col-span-full lg:block lg:col-span-1">
-                    <a class="flex-none text-xl font-semibold" href="{{ route('home.index') }}" aria-label="Brand">
-                        <img src="{{ asset('images/logo/1.png') }}" alt="Koteshen logo" class="w-28">
-                    </a>
-                    <p class="mt-1 text-xs sm:text-sm text-slate-600">&copy; {{ date('Y') }} Koteshen.</p>
-                </div>
-                <!-- End Col -->
-
-                <div>
-                    <h4 class="text-xs font-semibold uppercase text-slate-900">Product</h4>
-
-                    <div class="grid mt-3 space-y-3 text-sm">
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">Pricing</a>
-                        </p>
-
-                    </div>
-                </div>
-                <!-- End Col -->
-
-                <div>
-                    <h4 class="text-xs font-semibold uppercase text-slate-900">Company</h4>
-
-                    <div class="grid mt-3 space-y-3 text-sm">
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">About us</a>
-                        </p>
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">Blog</a></p>
-
-                    </div>
-                </div>
-                <!-- End Col -->
-
-                <div>
-                    <h4 class="text-xs font-semibold uppercase text-slate-900">Resources</h4>
-
-                    <div class="grid mt-3 space-y-3 text-sm">
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">Community</a>
-                        </p>
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">Help &
-                                Support</a>
-                        </p>
-
-                    </div>
-                </div>
-                <!-- End Col -->
-
-                <div>
-                    <h4 class="text-xs font-semibold uppercase text-slate-900">You</h4>
-
-                    <div class="grid mt-3 space-y-3 text-sm">
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800"
-                                href="{{ route('register') }}">Register</a></p>
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800"
-                                href="{{ route('login') }}">Login</a></p>
-                        <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800"
-                                href="{{ route('app.invoices.create') }}">Create invoice</a></p>
-                    </div>
-
-
-                </div>
-                <!-- End Col -->
-            </div>
-            <!-- End Grid -->
-
-            <div class="pt-5 mt-5 border-t border-slate-200">
-                <div class="sm:flex sm:justify-between sm:items-center">
-                    <div class="flex gap-x-3 items-center">
-                        <!-- Language Dropdown -->
-
-                        <div class="space-x-4 text-sm ms-4">
-                            <a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">Terms</a>
-                            <a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">Privacy</a>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center">
-                        <div class="mt-3 sm:hidden">
-                            <a class="flex-none text-xl font-semibold" href="{{ route('home.index') }}"
-                                aria-label="Brand">
-                                <img src="{{ asset('images/logo/1.png') }}" alt="Koteshen logo" class="w-20 h-20">
-                            </a>
-                            <p class="mt-1 text-xs sm:text-sm text-slate-600">&apmp; {{ date('Y') }} Koteshen.</p>
-                        </div>
-
-                        <!-- Social Brands -->
-                        <div class="space-x-4">
-                            <a class="inline-block text-slate-500 hover:text-slate-800"
-                                href="https://linkedin.com/company/koteshen" target="_blank">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                        </div>
-                        <!-- End Social Brands -->
-                    </div>
-                    <!-- End Col -->
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- ========== END FOOTER ========== -->
-    <!-- End Features -->
-    <!-- End Hero -->
 @endsection
