@@ -21,6 +21,22 @@
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 
+    @production
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKXDK8KVML"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-EKXDK8KVML');
+        </script>
+
+    @endproduction
+
 </head>
 
 <body class="antialiased dark:bg-slate-800">
