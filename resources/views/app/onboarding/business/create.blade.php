@@ -33,11 +33,9 @@
                             </x-form.label>
 
                             <x-form.select name="industry" class="mt-1 w-full" data-controller="choices">
-                                <option selected>Please select</option>
-                                <option value="IT">IT</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Health">Health</option>
-                                <option value="Tax">Tax</option>
+                                @foreach ($categories as $category)
+                                    <option>{{ $category }}</option>
+                                @endforeach
                             </x-form.select>
                         </div>
                         <div class="mb-3">
@@ -47,11 +45,11 @@
                             <div class="flex items-start space-x-2">
                                 <div class="w-3/12">
                                     <x-form.select name="phone_country" class="mt-1 w-full" data-controller="choices">
-                                        <option selected value="ZW">+263</option>
-                                        <option value="IT">+264</option>
-                                        <option value="Finance">Finance</option>
-                                        <option value="Health">Health</option>
-                                        <option value="Tax">Tax</option>
+                                        @foreach ($countries as $country)
+                                            <option @selected(old('phone_country', $country->code) == 'ZW') value="{{ $country->code }}">
+                                                {{ $country->dial_code }}
+                                            </option>
+                                        @endforeach
                                     </x-form.select>
                                 </div>
                                 <div class="w-full">
