@@ -15,7 +15,7 @@
                 <h4 class="text-xs font-semibold uppercase text-slate-900">Product</h4>
 
                 <div class="grid mt-3 space-y-3 text-sm">
-                    <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="#">Pricing</a>
+                    <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="/#pricing">Pricing</a>
                     </p>
 
                 </div>

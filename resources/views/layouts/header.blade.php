@@ -30,7 +30,8 @@
             class="hidden overflow-hidden transition-all duration-300 md:block hs-collapse basis-full grow">
             <div
                 class="flex flex-col gap-x-0 gap-y-4 mt-5 md:flex-row md:gap-y-0 md:gap-x-7 md:justify-end md:items-center md:mt-0 md:ps-7">
-                <a class="font-medium text-blue-600 md:py-6" href="#" aria-current="page">Home</a>
+                <a class="font-medium text-blue-600 md:py-6" href="{{ route('home.index') }}"
+                    aria-current="page">Home</a>
                 <a class="font-medium md:py-6 text-slate-500 hover:text-slate-400" target="_blank"
                     href="https://x.com/ncubegiven_">Twitter</a>
 
