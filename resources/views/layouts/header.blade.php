@@ -37,7 +37,7 @@
 
 
                 <a class="flex gap-x-2 items-center font-medium md:my-6 hover:text-blue-600 text-slate-500 md:border-slate-300 md:border-s md:ps-6"
-                    href="{{ route('login') }}">
+                    href="/#pricing">
                     <i class="bi bi-person-circle"></i>
                     Get early access
                 </a>

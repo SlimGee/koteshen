@@ -52,8 +52,8 @@
                 <h4 class="text-xs font-semibold uppercase text-slate-900">You</h4>
 
                 <div class="grid mt-3 space-y-3 text-sm">
-                    <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800"
-                            href="{{ route('register') }}">Register</a></p>
+                    <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800" href="/#pricing">Register</a>
+                    </p>
                     <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800"
                             href="{{ route('login') }}">Login</a></p>
                     <p><a class="inline-flex gap-x-2 text-slate-600 hover:text-slate-800"

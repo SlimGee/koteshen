@@ -22,25 +22,9 @@
                 <!-- Avatar Group -->
                 <!-- Form -->
                 <form>
-                    <div
-                        class="p-3 mx-auto max-w-2xl bg-white rounded-lg border shadow-lg sm:flex sm:space-x-3 shadow-slate-100 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-slate-900/20">
-                        <div class="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
-                            <label for="hs-hero-name-1" class="block text-sm font-medium dark:text-white"><span
-                                    class="sr-only">Your name</span></label>
-                            <x-form.input type="text" id="hs-hero-name-1"
-                                class="block py-3 px-4 w-full text-sm rounded-lg border-transparent dark:border-transparent focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Your name" />
-                        </div>
-                        <div
-                            class="pt-2 sm:pt-0 sm:ps-3 border-t border-slate-200 sm:border-t-0 sm:border-s sm:flex-[1_0_0%] dark:border-neutral-700">
-                            <label for="hs-hero-email-1" class="block text-sm font-medium dark:text-white"><span
-                                    class="sr-only">Your email address</span></label>
-                            <x-form.input type="email" id="hs-hero-email-1"
-                                class="block py-3 px-4 w-full text-sm rounded-lg border-transparent dark:border-transparent focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Email" />
-                        </div>
+                    <div class="flex justify-center">
                         <div class="grid pt-2 sm:block sm:pt-0 sm:flex-[0_0_auto]">
-                            <a href="{{ route('register') }}">
+                            <a href="#pricing">
                                 <x-button class="justify-center w-full md:w-auto">
                                     Get 50% off early access
                                 </x-button>
@@ -151,8 +135,8 @@
                             <span
                                 class="flex justify-center items-center mt-0.5 text-blue-600 bg-blue-50 rounded-full size-5">
                                 <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                             </span>
@@ -254,11 +238,13 @@
 
 
     <!-- Pricing -->
-    <div class="py-16 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
+    <div class="py-16 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]" id="pricing">
         <!-- Title -->
         <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
             <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Pricing</h2>
-            <p class="mt-1 text-slate-600">Whatever your status, our offers evolve according to your needs.</p>
+            <p class="mt-1 text-slate-600">
+                Finally, a price tag that you can afford
+            </p>
         </div>
         <!-- End Title -->
 
@@ -268,7 +254,7 @@
 
             <input type="checkbox" id="hs-basic-with-description"
                 class="relative p-px h-7 text-transparent rounded-full border-transparent transition-colors duration-200 ease-in-out cursor-pointer checked:text-blue-600 checked:bg-none checked:border-blue-600 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none bg-slate-100 w-[3.25rem] before:inline-block before:size-6 before:bg-white before:translate-x-0 before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 checked:before:bg-white checked:before:translate-x-full focus:checked:border-blue-600"
-                checked>
+                disabled>
 
             <label class="relative text-sm text-slate-500 min-w-14 ms-3">
                 Annual
@@ -286,7 +272,7 @@
                     9.99
                     <span class="-ml-3 text-2xl font-bold">/mo</span>
                 </span>
-                <p class="mt-2 text-sm text-slate-500">Everything you need for a growing business</p>
+                <p class="mt-2 text-sm text-slate-500">50% off first 3 months</p>
 
                 <ul class="mt-7 space-y-2.5 text-sm">
                     <li class="flex space-x-2">
@@ -346,9 +332,9 @@
 
                 </ul>
 
-                <a class="mt-3" href="{{ route('register') }}">
+                <a class="mt-3" href="{{ route('register', ['plan' => 'starter']) }}">
                     <x-secondary-button>
-                        Get early access
+                        Get 50% off first 3 months
                     </x-secondary-button>
                 </a>
             </div>
@@ -370,7 +356,7 @@
                     <span class="-ml-3 text-2xl font-bold">/mo</span>
 
                 </span>
-                <p class="mt-2 text-sm text-slate-500">All the basics for starting a new business</p>
+                <p class="mt-2 text-sm text-slate-500">50% off first 3 months</p>
 
                 <ul class="mt-7 space-y-2.5 text-sm">
                     <li class="flex space-x-2">
@@ -476,9 +462,9 @@
 
                 </ul>
 
-                <a class="mt-3" href="{{ route('register') }}">
+                <a class="mt-3" href="{{ route('register', ['plan' => 'pro']) }}">
                     <x-button>
-                        Get early access
+                        Get 50% off first 3 months
                     </x-button>
                 </a>
             </div>
@@ -493,8 +479,12 @@
                 <span class="mt-5 text-5xl font-bold text-slate-800">
                     <span class="text-2xl font-bold -me-2">$</span>
                     60
+                    <span class="-ml-3 text-2xl font-bold">/mo</span>
+
                 </span>
-                <p class="mt-2 text-sm text-slate-500">Advanced features for scaling your business</p>
+                <p class="mt-2 text-sm text-slate-500">
+                    50% off first 3 months
+                </p>
 
                 <ul class="mt-7 space-y-2.5 text-sm">
 
@@ -634,9 +624,9 @@
 
                 </ul>
 
-                <a class="mt-3" href="{{ route('register') }}">
+                <a class="mt-3" href="{{ route('register', ['plan' => 'premium']) }}">
                     <x-secondary-button>
-                        Get early access
+                        Get 50% off first 3 months
                     </x-secondary-button>
                 </a>
             </div>
@@ -662,9 +652,9 @@
                     Sign up now and start creating invoices in minutes.
                 </p>
                 <div class="flex flex-col justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                    <a href="{{ route('register') }}">
+                    <a href="/#pricing">
                         <x-button>
-                            Get on the List
+                            Get 50% off first 3 months
                         </x-button>
                     </a>
                 </div>
