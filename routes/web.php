@@ -9,6 +9,7 @@ use App\Http\Controllers\DownloadInvoiceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SendInvoiceController;
+use App\Http\Controllers\SendReminderController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\RedirectPrelaunch;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
@@ -52,4 +53,10 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
             ->name('invoices.send');
         Route::post('/invoices/{invoice}/send', [SendInvoiceController::class, 'store'])
             ->name('invoices.send');
+
+        Route::get('/invoices/{invoice}/reminder', [SendReminderController::class, 'create'])
+            ->name('invoices.reminder.create');
+
+        Route::post('/invoices/{invoice}/reminder', [SendReminderController::class, 'store'])
+            ->name('invoices.reminder.store');
     });

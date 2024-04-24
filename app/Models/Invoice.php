@@ -34,6 +34,13 @@ class Invoice extends Model
         'emailed_at' => 'datetime',
     ];
 
+    /**
+     * The attributes that should be eager loaded
+     *
+     * @var array
+     */
+    protected $with = ['currency'];
+
     protected $dispatchesEvents = [
         'saved' => InvoiceSaved::class,
     ];
@@ -76,6 +83,14 @@ class Invoice extends Model
     public function number(): Attribute
     {
         return Attribute::make(set: fn($value) => $value ?: 'INV-' . date('mds-Y'));
+    }
+
+    public function toArray(): array
+    {
+        return array_merge(parent::toArray(), [
+            'due_at' => $this->due_at->format('d M Y'),
+            'days_due' => $this->due_at->diffInDays(now()),
+        ]);
     }
 
     /**
