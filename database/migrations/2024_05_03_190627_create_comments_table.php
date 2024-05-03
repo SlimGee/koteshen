@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->longText('comment');
+            $table->longText('body');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('commentable_type');
             $table->integer('commentable_id');
