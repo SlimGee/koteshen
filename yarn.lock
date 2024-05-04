@@ -346,7 +346,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.11.8":
+"@popperjs/core@npm:^2.11.2, @popperjs/core@npm:^2.11.8":
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
   checksum: 10c0/4681e682abc006d25eb380d0cf3efc7557043f53b6aea7a5057d0d1e7df849a00e281cd8ea79c902a35a414d7919621fc2ba293ecec05f413598e0b23d5a1e63
@@ -2375,6 +2375,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preline@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "preline@npm:2.1.0"
+  dependencies:
+    "@popperjs/core": "npm:^2.11.2"
+  checksum: 10c0/95a6d2b44416b3c961f994efd70d1e93669655cabcf33e655c4dd70c249b1bd5465209c258331ec00d622c0acee77a11e4f59fb56e82d21a356e72c4219dbca8
+  languageName: node
+  linkType: hard
+
 "proc-log@npm:^3.0.0":
   version: 3.0.0
   resolution: "proc-log@npm:3.0.0"
@@ -2654,6 +2663,7 @@ __metadata:
     laravel-echo: "npm:^1.15.0"
     laravel-vite-plugin: "npm:^1.0"
     postcss: "npm:^8.4.38"
+    preline: "npm:^2.1.0"
     puppeteer: "npm:^22.6.5"
     pusher-js: "npm:^8.0.1"
     stimulus-textarea-autogrow: "npm:^4.1.0"

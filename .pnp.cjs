@@ -43,6 +43,7 @@ const RAW_RUNTIME_STATE =
           ["laravel-echo", "npm:1.16.1"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
+          ["preline", "npm:2.1.0"],\
           ["puppeteer", "npm:22.6.5"],\
           ["pusher-js", "npm:8.3.0"],\
           ["stimulus-textarea-autogrow", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.1.0"],\
@@ -2855,6 +2856,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["preline", [\
+      ["npm:2.1.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/preline-npm-2.1.0-38ce14529f-10c0.zip/node_modules/preline/",\
+        "packageDependencies": [\
+          ["preline", "npm:2.1.0"],\
+          ["@popperjs/core", "npm:2.11.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["proc-log", [\
       ["npm:3.0.0", {\
         "packageLocation": "../../../.yarn/berry/cache/proc-log-npm-3.0.0-a8c21c2f0f-10c0.zip/node_modules/proc-log/",\
@@ -3112,6 +3123,7 @@ const RAW_RUNTIME_STATE =
           ["laravel-echo", "npm:1.16.1"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
           ["postcss", "npm:8.4.38"],\
+          ["preline", "npm:2.1.0"],\
           ["puppeteer", "npm:22.6.5"],\
           ["pusher-js", "npm:8.3.0"],\
           ["stimulus-textarea-autogrow", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.1.0"],\

@@ -4,6 +4,7 @@ module.exports = {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./app/**/*.php",
+        "./node_modules/preline/dist/*.js",
     ],
     darkMode: "class",
     theme: {
@@ -332,5 +333,6 @@ module.exports = {
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
+        require("preline/plugin"),
     ],
 };

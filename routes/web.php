@@ -5,8 +5,10 @@ use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PageController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
@@ -59,4 +61,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
 
         Route::post('/invoices/{invoice}/reminder', [SendReminderController::class, 'store'])
             ->name('invoices.reminder.store');
+
+        Route::resource('invoices.comments', InvoiceCommentController::class);
+        Route::resource('commentables.comments', CommentController::class);
     });

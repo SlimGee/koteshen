@@ -42,7 +42,7 @@
 </head>
 
 <body class="relative min-h-screen font-sans bg-white">
-    <div id="app">
+    <div id="app" class="relative">
 
         <div class="flex flex-col md:flex-row">
 
@@ -50,7 +50,7 @@
             @include('includes.flash')
 
             <div class="w-full md:flex-1">
-                <nav class="hidden justify-between items-center p-4 h-16 bg-white border-b md:flex">
+                <nav class="hidden sticky top-0 z-50 justify-between items-center p-4 h-16 bg-white border-b md:flex">
                     <div>
                     </div>
                     <div class="flex items-center space-x-3">
@@ -78,7 +78,7 @@
                 </nav>
                 <main>
                     <!-- Replace with your content -->
-                    <div class="py-6 px-8">
+                    <div class="relative py-6 px-8">
                         @yield('content')
                     </div>
                     <!-- /End replace -->

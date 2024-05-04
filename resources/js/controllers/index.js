@@ -23,6 +23,9 @@ Stimulus.register('invoice', InvoiceController)
 import LineItemController from './line-item_controller'
 Stimulus.register('line-item', LineItemController)
 
+import ResetFormController from './reset-form_controller'
+Stimulus.register('reset-form', ResetFormController)
+
 import SearchController from './search_controller'
 Stimulus.register('search', SearchController)
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreClientRequest;
+use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\Invoice;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
 
 class InvoiceCommentController extends Controller
 {
@@ -16,6 +18,10 @@ class InvoiceCommentController extends Controller
      */
     public function index(Invoice $invoice): Renderable
     {
+        Meta::prependTitle('Invoice Comments')
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
+
         return view('app.invoices.comments.index', [
             'comments' => $invoice->comments,
             'invoice' => $invoice,
@@ -29,19 +35,19 @@ class InvoiceCommentController extends Controller
     {
         if ($request->wasFromTurboFrame(dom_id($invoice, 'create_comment'))) {
             return view('app.invoices.comments._form', [
-                'invoice' => $invoice,
+                'commentable' => $invoice,
             ]);
         }
 
         return view('app.invoices.comments.create', [
-            'invoice' => $invoice,
+            'commentable' => $invoice,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClientRequest $request, Invoice $invoice)
+    public function store(StoreCommentRequest $request, Invoice $invoice)
     {
         $comment = $invoice->comments()->create([
             ...$request->validated(),
@@ -50,8 +56,16 @@ class InvoiceCommentController extends Controller
 
         if (request()->wantsTurboStream()) {
             return turbo_stream([
-                turbo_stream($comment)
+                turbo_stream()
+                    ->target(dom_id($invoice, 'comments'))
+                    ->action('prepend')
                     ->view('app.invoices.comments._comment', ['comment' => $comment]),
+                turbo_stream()->update(
+                    dom_id($invoice, 'comments_count'),
+                    new HtmlString(
+                        $invoice->comments()->count()
+                    ),
+                ),
             ]);
         }
 
