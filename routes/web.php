@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceActivityController;
 use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\InvoiceStatusController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
 use App\Http\Controllers\SocialiteController;
@@ -67,4 +68,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
         Route::resource('commentables.comments', CommentController::class);
         Route::resource('invoices.activities', InvoiceActivityController::class)
             ->only(['index']);
+
+        Route::post('/invoices/{invoice}/status/{status}', [InvoiceStatusController::class, 'update'])
+            ->name('invoices.status.update');
     });

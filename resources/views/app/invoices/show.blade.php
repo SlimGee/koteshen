@@ -45,19 +45,48 @@
                             data-transition-leave-to="opacity-0 scale-95">
                             <div class="">
                                 <ul class="list-unstyled">
-                                    <li class="py-3 px-2.5 hover:bg-slate-100">
-                                        <a href="#"
-                                            class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-check2-square"></i>
-                                            Mark as Paid
-                                        </a>
-                                    </li>
+                                    @if ($invoice->status->value == 'sent' || $invoice->status->value == 'draft' || $invoice->status->value == 'created')
+                                        <li class="py-3 px-2.5 hover:bg-slate-100">
+                                            <a href="{{ route('app.invoices.status.update', [$invoice, 'paid']) }}"
+                                                data-turbo-method="post"
+                                                class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
+                                                <i class="mr-1 bi bi-check2-square"></i>
+                                                Mark as Paid
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($invoice->status == 'paid')
+                                        <li class="py-3 px-2.5 hover:bg-slate-100">
+                                            <a href="{{ route('app.invoices.status.update', [$invoice, 'unpaid']) }}"
+                                                data-turbo-method="post"
+                                                class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
+                                                <i class="mr-1 bi bi-check2-square"></i>
+                                                Mark as unpaid
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($invoice->status->value == 'draft' || $invoice->status->value == 'created')
+                                        <li class="py-3 px-2.5 hover:bg-slate-100">
+                                            <a href="{{ route('app.invoices.status.update', [$invoice, 'sent']) }}"
+                                                data-turbo-method="post"
+                                                class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
+                                                <i class="mr-1 bi bi-check2-square"></i>
+                                                Mark as sent
+                                            </a>
+                                        </li>
+                                    @endif
 
                                     <li class="flex items-center py-3 px-2 hover:bg-slate-100">
                                         <a href="{{ route('app.invoices.reminder.create', $invoice) }}"
                                             class="w-full text-sm font-semibold text-slate-700">
                                             <i class="mr-1 bi bi-clock-history"></i>
-                                            Send Reminder
+                                            @if (is_null($invoice->reminder_last_sent_at))
+                                                Send Reminder
+                                            @else
+                                                Resend Reminder
+                                            @endif
                                         </a>
                                     </li>
 
