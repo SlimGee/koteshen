@@ -8,6 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceActivityController;
 use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SendInvoiceController;
@@ -64,4 +65,6 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
 
         Route::resource('invoices.comments', InvoiceCommentController::class);
         Route::resource('commentables.comments', CommentController::class);
+        Route::resource('invoices.activities', InvoiceActivityController::class)
+            ->only(['index']);
     });

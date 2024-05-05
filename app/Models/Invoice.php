@@ -12,10 +12,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Invoice extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, LogsActivity, Searchable;
 
     /**
      * The attributes that aren't mass assignable.
@@ -113,5 +115,12 @@ class Invoice extends Model
                 ->get()
                 ->pluck('id'),
         );
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->setDescriptionForEvent(fn(string $eventName) => "Invoice has been {$eventName}")
+            ->logUnguarded();
     }
 }
