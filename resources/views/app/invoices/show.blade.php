@@ -148,19 +148,41 @@
                                         </a>
                                     </li>
 
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="#" class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-x-square"></i>
-                                            Cancel
-                                        </a>
-                                    </li>
+                                    @if ($invoice->status->value != 'cancelled')
+                                        <li class="flex items-center py-3 px-2 hover:bg-slate-100">
+                                            <a href="{{ route('app.invoices.status.update', [$invoice, 'cancelled']) }}"
+                                                data-turbo-confirm="Are you sure, this action cannot be undone?"
+                                                data-turbo-method="post"
+                                                class="w-full text-sm font-semibold text-slate-700">
+                                                <i class="mr-1 bi bi-x-square"></i>
+                                                Cancel
+                                            </a>
+                                        </li>
+                                    @endif
 
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="#" class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-archive"></i>
-                                            Archive
-                                        </a>
-                                    </li>
+                                    @if ($invoice->status->value != 'archived')
+                                        <li class="flex items-center py-3 px-2 hover:bg-slate-100">
+                                            <a href="{{ route('app.invoices.status.update', [$invoice, 'archived']) }}"
+                                                data-turbo-method="post"
+                                                data-turbo-confirm="Are you sure, this could have unintended consequences?"
+                                                class="w-full text-sm font-semibold text-slate-700">
+                                                <i class="mr-1 bi bi-archive"></i>
+                                                Archive
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($invoice->status->value == 'archived')
+                                        <li class="flex items-center py-3 px-2 hover:bg-slate-100">
+                                            <a href="{{ route('app.invoices.status.update', [$invoice, 'draft']) }}"
+                                                data-turbo-method="post"
+                                                data-turbo-confirm="Are you sure, this could have unintended consequences?"
+                                                class="w-full text-sm font-semibold text-slate-700">
+                                                <i class="mr-1 bi bi-archive"></i>
+                                                Unarchive
+                                            </a>
+                                        </li>
+                                    @endif
 
 
                                     <li class="flex items-center py-3 px-2 hover:bg-slate-100">

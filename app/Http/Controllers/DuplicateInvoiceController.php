@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Enum\InvoiceStatus;
 use App\Models\Invoice;
+use Illuminate\Http\RedirectResponse;
 
 class DuplicateInvoiceController extends Controller
 {
-    public function store(Invoice $invoice)
+    public function store(Invoice $invoice): RedirectResponse
     {
         $duplicate = $invoice->replicate();
         $duplicate->number = null;
@@ -16,6 +17,7 @@ class DuplicateInvoiceController extends Controller
         $duplicate->emailed = false;
 
         $duplicate->date = now();
+        $duplicate->reminder_last_sent_at = null;
 
         $duplicate->save();
 
