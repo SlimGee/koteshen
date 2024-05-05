@@ -91,8 +91,8 @@ class Invoice extends Model
     public function toArray(): array
     {
         return array_merge(parent::toArray(), [
-            'due_at' => $this->due_at->format('d M Y'),
-            'days_due' => $this->due_at->diffInDays(now()),
+            'due_at' => $this->due_at?->format('d M Y'),
+            'days_due' => $this->due_at?->diffInDays(now()),
         ]);
     }
 

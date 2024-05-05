@@ -7,6 +7,7 @@ use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
+use App\Http\Controllers\DuplicateInvoiceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceActivityController;
 use App\Http\Controllers\InvoiceCommentController;
@@ -71,4 +72,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
 
         Route::post('/invoices/{invoice}/status/{status}', [InvoiceStatusController::class, 'update'])
             ->name('invoices.status.update');
+
+        Route::post('/invoices/{invoice}/duplicate', [DuplicateInvoiceController::class, 'store'])
+            ->name('invoices.duplicate');
     });

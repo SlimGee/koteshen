@@ -134,7 +134,8 @@
                                     </li>
 
                                     <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="#" class="w-full text-sm font-semibold text-slate-700">
+                                        <a href="{{ route('app.invoices.duplicate', $invoice) }}" data-turbo-method="post"
+                                            class="w-full text-sm font-semibold text-slate-700">
                                             <i class="mr-1 bi bi-copy"></i>
                                             Duplicate Invoice
                                         </a>

@@ -19,7 +19,7 @@
             class="py-1.5 px-3 text-sm font-semibold {{ $invoice->status->classes() }} rounded-sm">{{ $invoice->status }}</span>
     </div>
     <div class="flex col-span-2 justify-start items-center px-2">
-        <div>Due: {{ $invoice->due_at->format('d M Y') }}</div>
+        <div>Due: {{ $invoice->due_at?->format('d M Y') }}</div>
     </div>
 
     <div class="flex col-span-2 justify-end items-center text-end">
