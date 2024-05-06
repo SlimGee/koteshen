@@ -8,7 +8,7 @@ import "air-datepicker/air-datepicker.css";
 export default class extends Controller {
     connect() {
         new AirDatepicker(this.element, {
-            selectedDates: [new Date()],
+            selectedDates: [this.element.value || new Date()],
             locale: localeEn,
         });
     }

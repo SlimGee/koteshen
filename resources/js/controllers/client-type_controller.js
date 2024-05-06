@@ -10,26 +10,42 @@ export default class extends Controller {
         showif: String,
     };
 
+    elementMap;
+    removedElements = [];
+
     connect() {
+        this.elementMap = new WeakMap();
         this.handle();
+    }
+
+    removeAndRestore(element) {
+        const parentNode = element.parentNode;
+        const nextSibling = element.nextSibling;
+        element.remove();
+        this.elementMap.set(element, { parentNode, nextSibling });
+    }
+
+    restore(element) {
+        const { parentNode, nextSibling } = this.elementMap.get(element);
+        if (nextSibling) {
+            parentNode.insertBefore(element, nextSibling);
+        } else {
+            parentNode.appendChild(element);
+        }
+        this.elementMap.delete(element);
     }
 
     handle() {
         if (this.selectTarget.value == this.hideifValue) {
             this.hideableTargets.forEach((element) => {
-                element.style.display = "none";
-                element.removeAttribute("data-client-type-target");
-                element.setAttribute("data-client-type-target", "showable");
+                this.removeAndRestore(element);
+                this.removedElements.push(element);
             });
-
-            console.log(this.showableTargets);
         }
 
         if (this.selectTarget.value == this.showifValue) {
-            this.showableTargets.forEach((element) => {
-                element.style.display = "block";
-                element.removeAttribute("data-client-type-target");
-                element.setAttribute("data-client-type-target", "hideable");
+            this.removedElements.forEach((element) => {
+                this.restore(element);
             });
         }
     }

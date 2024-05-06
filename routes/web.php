@@ -7,12 +7,14 @@ use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
+use App\Http\Controllers\DuplicateInvoiceAsRecurringController;
 use App\Http\Controllers\DuplicateInvoiceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceActivityController;
 use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoiceStatusController;
+use App\Http\Controllers\RecurringInvoiceController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
 use App\Http\Controllers\SocialiteController;
@@ -75,4 +77,12 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
 
         Route::post('/invoices/{invoice}/duplicate', [DuplicateInvoiceController::class, 'store'])
             ->name('invoices.duplicate');
+
+        Route::post('/invoices/{invoice}/recurring', [DuplicateInvoiceAsRecurringController::class, 'store'])
+            ->name('invoices.recurring.store');
+
+        Route::resource('invoices.subscriptions', RecurringInvoiceController::class)
+            ->except(['edit']);
+        Route::post('/invoices/{invoice}/subscriptions/{subscription}/restore', [RecurringInvoiceController::class, 'restore'])
+            ->name('invoices.subscriptions.restore');
     });
