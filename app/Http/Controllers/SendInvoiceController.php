@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\InvoiceStatus;
 use App\Http\Requests\SendInvoiceRrequest;
 use App\Mail\InvoiceDelivery;
 use App\Models\EmailTemplate;
@@ -67,6 +68,7 @@ class SendInvoiceController extends Controller
         $invoice->update([
             'emailed' => true,
             'emailed_at' => now(),
+            'status' => InvoiceStatus::SENT,
         ]);
 
         return to_route('app.invoices.show', $invoice)->with('success', 'Invoice sent successfully!');

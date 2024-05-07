@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
@@ -86,7 +87,7 @@ class Invoice extends Model
      */
     public function number(): Attribute
     {
-        return Attribute::make(set: fn($value) => $value ?: 'INV-' . date('mds-Y'));
+        return Attribute::make(set: fn($value) => $value ?: 'INV-' . strtoupper(Str::random(4)) . '-' . date('my'));
     }
 
     public function toArray(): array
