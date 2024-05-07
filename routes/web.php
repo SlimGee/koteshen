@@ -9,6 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
 use App\Http\Controllers\DuplicateInvoiceAsRecurringController;
 use App\Http\Controllers\DuplicateInvoiceController;
+use App\Http\Controllers\EstimateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceActivityController;
 use App\Http\Controllers\InvoiceCommentController;
@@ -85,4 +86,6 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
             ->except(['edit']);
         Route::post('/invoices/{invoice}/subscriptions/{subscription}/restore', [RecurringInvoiceController::class, 'restore'])
             ->name('invoices.subscriptions.restore');
+
+        Route::resource('estimates', EstimateController::class);
     });

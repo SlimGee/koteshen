@@ -26,8 +26,6 @@
                 </a>
             </li>
 
-
-
             <li @class([
                 'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
                 'bg-blue-900 text-white' => Route::is('app.clients.*'),
@@ -47,6 +45,17 @@
                     <span class="mx-2">Invoices</span>
                 </a>
             </li>
+
+            <li @class([
+                'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
+                'bg-blue-900 text-white' => Route::is('app.estimates.*'),
+            ])>
+                <a href="{{ route('app.estimates.index') }}" class="flex items-center">
+                    <i class="w-6 bi bi-quote"></i>
+                    <span class="mx-2">Estimates</span>
+                </a>
+            </li>
+
 
 
         </ul>
