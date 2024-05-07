@@ -1,8 +1,8 @@
 <aside class="sticky top-0 w-full h-screen border-r md:w-64 md:min-h-screen bg-slate-100"
     {{ stimulus_controller('menu') }}>
-    <div class="flex justify-between items-center p-4 h-10 dark:bg-blue-900">
-        <a href="#" class="flex items-center">
-            <span class="mx-2 text-xl font-semibold text-blue-900 dark:text-white">Koteshen</span>
+    <div class="flex justify-between items-center p-4 dark:bg-blue-900">
+        <a href="{{ route('app.home.index') }}" class="flex items-center">
+            <img src="{{ asset('images/logo/koteshen_cropped.png') }}" alt="Koteshen logo" class="w-32">
         </a>
         <div class="flex md:hidden">
             <button type="button" {{ stimulus_action('menu', 'toggle') }}
