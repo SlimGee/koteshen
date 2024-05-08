@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Client;
+use App\Models\Estimate;
 use Illuminate\Database\Seeder;
 
 class EstimateSeeder extends Seeder
@@ -12,6 +13,13 @@ class EstimateSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Client::all()->each(function (Client $client) {
+            Estimate::factory(10)
+                ->for($client->business)
+                ->create([
+                    'currency_id' => $client->currency_id,
+                    'client_id' => $client->id,
+                ]);
+        });
     }
 }

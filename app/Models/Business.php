@@ -74,4 +74,12 @@ class Business extends Model
     {
         return $this->hasMany(Invoice::class);
     }
+
+    /**
+     * Get the estimates that belong to this business
+     */
+    public function estimates(): HasMany
+    {
+        return $this->hasMany(Estimate::class);
+    }
 }
