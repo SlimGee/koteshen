@@ -1,193 +1,40 @@
 @extends('app')
 
 @section('content')
-    <section>
-        <div class="flex justify-between items-center md:items-baseline">
+    <section class="">
+        <div class="flex sticky top-0 justify-between items-center md:items-baseline">
             <div class="flex items-center space-x-6">
-                <a href="{{ route('app.estimates.index') }}">
+                <a href="{{ route('app.estimates.show', $estimate) }}">
                     <x-secondary-button class="!py-2 !px-3 !text-xs">
                         <i class="bi bi-caret-left-fill"></i>
-                        Estimates
+                        Estimate
                     </x-secondary-button>
                 </a>
                 <h1 class="ml-4 text-xl font-semibold md:text-2xl text-slate-700">Estimate #{{ $estimate->number }}</h1>
-            </div>
-            <div class="flex space-x-2">
-                <div>
-                    <a href="{{ URL::signedRoute('estimates.preview', $estimate) }}" target="_blank">
-                        <x-secondary-button class="!py-2 !px-3 !text-xs">
-                            <i class="mr-1 bi bi-eye"></i>
-                            Preview
-                        </x-secondary-button>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="{{ route('app.estimates.edit', $estimate) }}">
-                        <x-secondary-button class="!py-2 !px-3 !text-xs">
-                            <i class="mr-1 bi bi-pencil-square"></i>
-                            Edit
-                        </x-secondary-button>
-                    </a>
-                </div>
-                <div>
-                    <div data-controller="dropdown" class="relative w-full md:w-1/2 float-end">
-                        <x-secondary-button class="!items-baseline float-end !py-2 !px-3 !text-xs" type="button"
-                            data-action="dropdown#toggle click@window->dropdown#hide">
-                            Actions
-                            <i class="ml-1 bi bi-caret-down-fill"></i>
-                        </x-secondary-button>
-
-                        <div data-dropdown-target="menu"
-                            class="hidden absolute right-0 top-10 w-48 bg-white rounded-b border shadow-sm transition transform origin-top-right"
-                            data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100"
-                            data-transition-leave-from="opacity-100 scale-100"
-                            data-transition-leave-to="opacity-0 scale-95">
-                            <div class="">
-                                <ul class="list-unstyled">
-                                    @if ($estimate->status->value == 'sent' || $estimate->status->value == 'draft' || $estimate->status->value == 'rejected')
-                                        <li class="py-3 px-2.5 hover:bg-slate-100">
-                                            <a href="{{ route('app.estimates.status.update', [$estimate, 'accepted']) }}"
-                                                data-turbo-method="post"
-                                                class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
-                                                <i class="mr-1 bi bi-check2-square"></i>
-                                                Mark as Accepted
-                                            </a>
-                                        </li>
-                                    @endif
-
-                                    @if ($estimate->status->value == 'accepted')
-                                        <li class="py-3 px-2.5 hover:bg-slate-100">
-                                            <a href="{{ route('app.estimates.status.update', [$estimate, 'rejected']) }}"
-                                                data-turbo-method="post"
-                                                class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
-                                                <i class="mr-1 bi bi-check2-square"></i>
-                                                Mark as Rejected
-                                            </a>
-                                        </li>
-                                    @endif
-
-                                    @if ($estimate->status->value == 'draft')
-                                        <li class="py-3 px-2.5 hover:bg-slate-100">
-                                            <a href="{{ route('app.estimates.status.update', [$estimate, 'sent']) }}"
-                                                data-turbo-method="post"
-                                                class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
-                                                <i class="mr-1 bi bi-check2-square"></i>
-                                                Mark as Sent
-                                            </a>
-                                        </li>
-                                    @endif
-
-                                    @if (
-                                        $estimate->status->value == 'sent' ||
-                                            $estimate->status->value == 'rejected' ||
-                                            $estimate->status->value == 'accepted')
-                                        <li class="py-3 px-2.5 hover:bg-slate-100">
-                                            <a href="{{ route('app.estimates.status.update', [$estimate, 'draft']) }}"
-                                                data-turbo-method="post"
-                                                class="flex items-center space-x-2 w-full text-sm font-semibold text-slate-700">
-                                                <i class="mr-1 bi bi-check2-square"></i>
-                                                Mark as Draft
-                                            </a>
-                                        </li>
-                                    @endif
-
-
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="{{ route('app.invoices.send', $estimate) }}"
-                                            class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-send"></i>
-                                            @if ($estimate->emailed)
-                                                Resend Estimate
-                                            @else
-                                                Send Estimate
-                                            @endif
-                                        </a>
-                                    </li>
-
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a data-turbo="false" href="{{ route('estimates.download', $estimate) }}"
-                                            class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-file-pdf"></i>
-                                            Download as PDF
-                                        </a>
-                                    </li>
-
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="{{ route('app.estimates.activities.index', $estimate) }}"
-                                            class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-activity"></i>
-                                            Estimate Activity
-                                        </a>
-                                    </li>
-
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="{{ route('app.estimates.comments.index', $estimate) }}"
-                                            class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-chat-left"></i>
-                                            Comments
-                                        </a>
-                                    </li>
-
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="{{ route('app.estimates.show', $estimate) }}" data-turbo-method="post"
-                                            class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-copy"></i>
-                                            Create Invoice
-                                        </a>
-                                    </li>
-
-                                    @if ($estimate->status->value != 'archived')
-                                        <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                            <a href="{{ route('app.estimates.status.update', [$estimate, 'archived']) }}"
-                                                data-turbo-method="post"
-                                                data-turbo-confirm="Are you sure, this could have unintended consequences?"
-                                                class="w-full text-sm font-semibold text-slate-700">
-                                                <i class="mr-1 bi bi-archive"></i>
-                                                Archive
-                                            </a>
-                                        </li>
-                                    @endif
-
-                                    @if ($estimate->status->value == 'archived')
-                                        <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                            <a href="{{ route('app.estimates.status.update', [$estimate, 'draft']) }}"
-                                                data-turbo-method="post"
-                                                data-turbo-confirm="Are you sure, this could have unintended consequences?"
-                                                class="w-full text-sm font-semibold text-slate-700">
-                                                <i class="mr-1 bi bi-archive"></i>
-                                                Unarchive
-                                            </a>
-                                        </li>
-                                    @endif
-
-
-                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="{{ route('app.estimates.destroy', $estimate) }}"
-                                            data-turbo-method="delete"
-                                            data-turbo-confirm="This action cannot be undone. Are you sure?"
-                                            class="w-full text-sm font-semibold text-slate-700">
-                                            <i class="mr-1 bi bi-trash"></i>
-
-                                            Delete
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
     </section>
 
 
+    <section class="relative justify-between py-8 antialiased bg-white md:flex lg:py-16 dark:bg-gray-900">
+        <div class="px-4 w-1/2 max-w-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-gray-900 lg:text-2xl dark:text-white">Discussion (<span
+                        id="@domid($estimate, 'comments_count')">{{ $comments->count() }}</span>)</h2>
+            </div>
+            <div class="sticky top-16 z-10 py-7 bg-white">
+                <x-turbo::frame :id="[$estimate, 'create_comment']"
+                    src="{{ route('app.commentables.comments.create', [commentable($estimate)]) }}">
+                </x-turbo::frame>
+            </div>
+            <div id="@domid($estimate, 'comments')">
+                @each('app.comments._comment', $comments, 'comment')
+            </div>
+        </div>
 
-    <div class="flex">
-        <!-- estimate -->
-        <div class="flex-1 px-2 my-4 sm:px-6 sm:my-10 lg:px-2 max-w-[60rem]">
-            <div class="w-full">
+
+        <div class="px-2 my-4 sm:px-6 sm:my-10 lg:px-2 max-w-[85rem]">
+            <div class="sticky top-20">
                 <!-- Card -->
                 <div class="flex flex-col p-4 bg-white rounded border shadow-sm sm:p-10 dark:bg-neutral-800">
                     <!-- Grid -->
@@ -255,7 +102,7 @@
                                         {{ $estimate->created_at->format('d M Y') }}</dd>
                                 </dl>
                                 <dl class="grid gap-x-3 sm:grid-cols-5">
-                                    <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Expiry date:
+                                    <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Expires at:
                                     </dt>
                                     <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
                                         {{ $estimate->expires_at->format('d M Y') }}
@@ -341,8 +188,7 @@
                                     </dl>
 
                                     <dl class="grid gap-x-3 sm:grid-cols-5">
-                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Total:
-                                        </dt>
+                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Total:</dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
                                             {{ $estimate->currency->symbol }}
                                             {{ Number::format($estimate->total, $estimate->currency->decimal_digits) }}
@@ -400,7 +246,5 @@
                     <!-- End Buttons -->
                 </div>
             </div>
-        </div>
-
-    </div>
+    </section>
 @endsection

@@ -37,7 +37,7 @@
                              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
                      </li>
                      <li>
-                         <a href="{{ route('app.invoices.comments.destroy', [$comment->commentable, $comment]) }}"
+                         <a href="{{ route('app.commentables.comments.destroy', [commentable($comment->commentable), $comment]) }}"
                              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
                      </li>
                  </ul>

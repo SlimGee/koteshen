@@ -11,10 +11,13 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Estimate extends Model
 {
     use HasFactory;
+    use LogsActivity;
     use Searchable;
 
     /**
@@ -53,6 +56,14 @@ class Estimate extends Model
     }
 
     /**
+     * The comments for this Model
+     */
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at', 'desc');
+    }
+
+    /**
      * The client that owns this estimate
      */
     public function client(): BelongsTo
@@ -87,5 +98,12 @@ class Estimate extends Model
                 ->get()
                 ->pluck('id'),
         );
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->setDescriptionForEvent(fn(string $eventName) => "Estimate has been {$eventName}")
+            ->logUnguarded();
     }
 }

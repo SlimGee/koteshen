@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Estimate\Public\PreviewController;
+use App\Http\Controllers\Estimate\ActivityController;
 use App\Http\Controllers\Estimate\DownloadController;
+use App\Http\Controllers\Estimate\EstimateCommentController;
 use App\Http\Controllers\Estimate\StatusController;
 use App\Http\Controllers\Onboarding\BusinessController;
 use App\Http\Controllers\Public\HomeController as AppHomeController;
@@ -98,4 +100,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
         Route::resource('estimates', EstimateController::class);
         Route::post('/estimates/{estimate}/status/{status}', [StatusController::class, 'update'])
             ->name('estimates.status.update');
+        Route::resource('estimates.comments', EstimateCommentController::class);
+        Route::resource('estimates.activities', ActivityController::class)
+            ->only(['index']);
     });
