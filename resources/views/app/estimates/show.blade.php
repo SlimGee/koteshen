@@ -130,10 +130,10 @@
                                     </li>
 
                                     <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="{{ route('app.estimates.show', $estimate) }}" data-turbo-method="post"
-                                            class="w-full text-sm font-semibold text-slate-700">
+                                        <a href="{{ route('app.estimates.duplicate', $estimate) }}"
+                                            data-turbo-method="post" class="w-full text-sm font-semibold text-slate-700">
                                             <i class="mr-1 bi bi-copy"></i>
-                                            Create Invoice
+                                            Duplicate Estimate
                                         </a>
                                     </li>
 

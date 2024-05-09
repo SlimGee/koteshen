@@ -3,6 +3,7 @@
 use App\Http\Controllers\Estimate\Public\PreviewController;
 use App\Http\Controllers\Estimate\ActivityController;
 use App\Http\Controllers\Estimate\DownloadController;
+use App\Http\Controllers\Estimate\DuplicateController;
 use App\Http\Controllers\Estimate\EstimateCommentController;
 use App\Http\Controllers\Estimate\StatusController;
 use App\Http\Controllers\Onboarding\BusinessController;
@@ -103,4 +104,6 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
         Route::resource('estimates.comments', EstimateCommentController::class);
         Route::resource('estimates.activities', ActivityController::class)
             ->only(['index']);
+        Route::post('/estimates/{estimate}/duplicate', [DuplicateController::class, 'store'])
+            ->name('estimates.duplicate');
     });

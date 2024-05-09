@@ -7,10 +7,10 @@
                 <a href="{{ route('app.estimates.show', $estimate) }}">
                     <x-secondary-button class="!py-2 !px-3 !text-xs">
                         <i class="bi bi-caret-left-fill"></i>
-                        estimate
+                        Estimate
                     </x-secondary-button>
                 </a>
-                <h1 class="ml-4 text-xl font-semibold md:text-2xl text-slate-700">estimate #{{ $estimate->number }}</h1>
+                <h1 class="ml-4 text-xl font-semibold md:text-2xl text-slate-700">Estimate #{{ $estimate->number }}</h1>
             </div>
         </div>
     </section>
@@ -27,7 +27,7 @@
             @method('PATCH')
             <div class="p-4 py-10 w-full rounded border md:w-6/12">
                 <div class="mb-10">
-                    <h1 class="text-lg font-semibold md:text-2xl text-slate-700">estimates</h1>
+                    <h1 class="text-lg font-semibold md:text-2xl text-slate-700">Estimates</h1>
                 </div>
 
                 <div class="flex space-x-4">
