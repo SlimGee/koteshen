@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Estimate\Public\PreviewController;
 use App\Http\Controllers\Estimate\ActivityController;
+use App\Http\Controllers\Estimate\CreateInvoiceController;
 use App\Http\Controllers\Estimate\DownloadController;
 use App\Http\Controllers\Estimate\DuplicateController;
 use App\Http\Controllers\Estimate\EstimateCommentController;
+use App\Http\Controllers\Estimate\SendEstimateController;
 use App\Http\Controllers\Estimate\StatusController;
 use App\Http\Controllers\Onboarding\BusinessController;
 use App\Http\Controllers\Public\HomeController as AppHomeController;
@@ -106,4 +108,13 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
             ->only(['index']);
         Route::post('/estimates/{estimate}/duplicate', [DuplicateController::class, 'store'])
             ->name('estimates.duplicate');
+
+        Route::post('/estimates/{estimate}/send', [SendEstimateController::class, 'store'])
+            ->name('estimates.send');
+
+        Route::get('/estimates/{estimate}/send', [SendEstimateController::class, 'create'])
+            ->name('estimates.send');
+
+        Route::post('/estimates/{estimate}/invoice', [CreateInvoiceController::class, 'store'])
+            ->name('estimates.invoice');
     });

@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->string('purchase_order')->nullable();
             $table->string('expires_in');
             $table->longText('notes')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

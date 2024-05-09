@@ -30,5 +30,17 @@
   {
     "name": "invoice deliver 3",
     "content": "Hi {{client.name}},\n\nGood news – your invoice {{invoice.number}} is ready!\n\nYou can view, download, and pay securely online with a few clicks: {{payment_link}}\n\n* Amount Due: {{invoice.total}}\n* Due Date: {{invoice.due_at}}\n\nQuestions?  Just hit reply!\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "estimate delivery 1",
+    "content": "Hi {{client.name}},\n\nYour estimate for {{estimate.description}} is ready!\n\nYou can review and download it securely online: {{estimate.link}}\n\nIf you have any questions or would like to proceed, just hit reply to this email.\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "estimate delivery 2",
+    "content": "Hi {{client.name}},\n\nWe've prepared your estimate for {{estimate.description}}.\n\nWith this estimate, you can:\n\n* Review it online\n* Accept it with a click\n* Ask any questions directly through this email\n\nCheck out your estimate here: {{estimate.link}}\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "estimate follow up 1",
+    "content": "Hi {{client.name}},\n\nJust wanted to check if you had a chance to review your estimate.\n\nLet me know if you have any questions or are ready to proceed!\n\nHere's the link again: {{estimate.link}}\n\nThanks,\n{{business.name}}"
   }
 ]

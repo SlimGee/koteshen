@@ -85,7 +85,7 @@ class Invoice extends Model
      */
     public function number(): Attribute
     {
-        return Attribute::make(set: fn($value) => $value ?: 'INV-' . strtoupper(bin2hex(random_bytes(2))) . '-' . random_int(1000, 9999));
+        return Attribute::make(set: fn($value = null) => $value ?: 'INV-' . strtoupper(bin2hex(random_bytes(2))) . '-' . random_int(1000, 9999));
     }
 
     public function toArray(): array

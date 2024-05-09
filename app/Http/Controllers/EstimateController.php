@@ -105,6 +105,10 @@ class EstimateController extends Controller
      */
     public function edit(Estimate $estimate): Renderable
     {
+        Meta::prependTitle('Edit ' . $estimate->number)
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
+
         return view('app.estimates.edit', [
             'estimate' => $estimate,
             'clients' => auth()->user()->business->clients,

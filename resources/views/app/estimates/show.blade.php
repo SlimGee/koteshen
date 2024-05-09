@@ -94,7 +94,7 @@
 
 
                                     <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="{{ route('app.invoices.send', $estimate) }}"
+                                        <a href="{{ route('app.estimates.send', $estimate) }}"
                                             class="w-full text-sm font-semibold text-slate-700">
                                             <i class="mr-1 bi bi-send"></i>
                                             @if ($estimate->emailed)
@@ -104,6 +104,14 @@
                                             @endif
                                         </a>
                                     </li>
+                                    <li class="flex items-center py-3 px-2 hover:bg-slate-100">
+                                        <a href="{{ route('app.estimates.invoice', $estimate) }}" data-turbo-method="post"
+                                            class="w-full text-sm font-semibold text-slate-700">
+                                            <i class="mr-1 bi bi-file-earmark-check"></i>
+                                            Create Invoice
+                                        </a>
+                                    </li>
+
 
                                     <li class="flex items-center py-3 px-2 hover:bg-slate-100">
                                         <a data-turbo="false" href="{{ route('estimates.download', $estimate) }}"
@@ -266,6 +274,16 @@
                         </div>
                         <!-- Col -->
                     </div>
+
+                    <div class="grid gap-3 mt-8 sm:grid-cols-2">
+                        <div class="col-span-full">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-neutral-200">Description:</h3>
+                            <h3 class="text-lg font-medium text-gray-800 dark:text-neutral-200">
+                                {{ $estimate->description }}
+                            </h3>
+                        </div>
+                    </div>
+
                     <!-- End Grid -->
 
                     <!-- Table -->

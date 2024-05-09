@@ -67,11 +67,16 @@
                             </x-form.select>
                         </div>
 
+                        <div class="mb-3">
+                            <x-form.label for="reference">Description</x-form.label>
+                            <x-form.textarea name="description" class="mt-1 w-full"
+                                placeholder="Web design and development">{{ old('description') }}</x-form.textarea>
+                        </div>
                     </div>
 
                     <div class="px-2 w-full md:w-4/12">
                         <div
-                            class="flex justify-center items-center w-full h-2/3 text-blue-900 bg-blue-50 rounded border border-blue-700 border-dashed">
+                            class="flex justify-center items-center w-full text-blue-900 bg-blue-50 rounded border border-blue-700 border-dashed">
                             <div class="text-center">
                                 <i class="block text-2xl bi bi-image"></i>
                                 <span class="text-sm font-semibold">Add Logo</span>

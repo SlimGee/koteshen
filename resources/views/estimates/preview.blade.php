@@ -83,6 +83,16 @@
                 </div>
                 <!-- End Grid -->
 
+                <div class="grid gap-3 mt-8 sm:grid-cols-2">
+                    <div class="col-span-full">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-neutral-200">Description:</h3>
+                        <h3 class="text-lg font-medium text-gray-800 dark:text-neutral-200">
+                            {{ $estimate->description }}
+                        </h3>
+                    </div>
+                </div>
+
+
                 <!-- Table -->
                 <div class="mt-6">
                     <div class="p-4 space-y-4 rounded-lg border border-gray-200 dark:border-neutral-700">

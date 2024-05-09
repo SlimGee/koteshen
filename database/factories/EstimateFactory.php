@@ -31,6 +31,7 @@ class EstimateFactory extends Factory
             'total' => $this->faker->randomFloat(2, 0, 1000),
             'purchase_order' => $this->faker->word,
             'status' => $this->faker->randomElement(EstimateStatus::cases()),
+            'description' => $this->faker->realText(100),
         ];
     }
 }
