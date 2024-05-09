@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +21,6 @@ class ItemFactory extends Factory
             'quantity' => $this->faker->randomNumber(2),
             'price' => $this->faker->randomFloat(2, 0, 1000),
             'total' => $this->faker->randomFloat(2, 0, 1000),
-            'invoice_id' => Invoice::factory(),
         ];
     }
 }

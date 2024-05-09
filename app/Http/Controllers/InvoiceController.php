@@ -110,7 +110,7 @@ class InvoiceController extends Controller
 
         $invoice->items()->createMany($items);
 
-        return to_route('app.invoices.index')->with('success', 'Invoices created successfully');
+        return to_route('app.invoices.show', $invoice)->with('success', 'Invoices created successfully');
     }
 
     /**

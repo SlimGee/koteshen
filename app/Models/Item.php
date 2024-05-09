@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
@@ -14,8 +15,11 @@ class Item extends Model
      */
     protected $guarded = [];
 
-    public function invoices()
+    /**
+     * The itemable Model
+     */
+    public function itemable(): MorphTo
     {
-        return $this->belongsToMany(Invoice::class);
+        return $this->morphTo();
     }
 }

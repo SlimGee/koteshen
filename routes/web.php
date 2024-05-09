@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Estimate\DownloadController;
+use App\Http\Controllers\Estimate\StatusController;
 use App\Http\Controllers\Onboarding\BusinessController;
 use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PageController;
@@ -40,6 +42,9 @@ Route::get('/invoices/{invoice}/preview', [PreviewInvoiceController::class, 'sho
 
 Route::get('/invoices/{invoice}/download', [DownloadInvoiceController::class, 'show'])
     ->name('invoices.download');
+
+Route::get('/estimates/{estimate}/download', [DownloadController::class, 'show'])
+    ->name('estimates.download');
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class])
     ->prefix('app')
@@ -88,4 +93,6 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
             ->name('invoices.subscriptions.restore');
 
         Route::resource('estimates', EstimateController::class);
+        Route::post('/estimates/{estimate}/status/{status}', [StatusController::class, 'update'])
+            ->name('estimates.status.update');
     });

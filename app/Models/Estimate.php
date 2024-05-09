@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Enum\EstimateStatus;
+use App\Events\EstimateSaved;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -31,6 +33,10 @@ class Estimate extends Model
         'expires_at' => 'datetime',
         'date' => 'datetime',
         'status' => EstimateStatus::class,
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => EstimateSaved::class,
     ];
 
     public function number(): Attribute
@@ -60,6 +66,14 @@ class Estimate extends Model
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    /**
+     * Get the items for this estimate
+     */
+    public function items(): MorphMany
+    {
+        return $this->morphMany(Item::class, 'itemable');
     }
 
     /**

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\EstimateStatus;
 use App\Http\Requests\StoreEstimateRequest;
 use App\Http\Requests\UpdateEstimateRequest;
+use App\Models\Currency;
 use App\Models\Estimate;
+use Butschster\Head\Facades\Meta;
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -17,6 +21,10 @@ class EstimateController extends Controller
      */
     public function index(): Renderable
     {
+        Meta::prependTitle('Estimates')
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
+
         $estimates = QueryBuilder::for(auth()->user()->business->estimates())
             ->defaultSort('-created_at')
             ->allowedFilters([
@@ -35,7 +43,15 @@ class EstimateController extends Controller
      */
     public function create(): Renderable
     {
-        return view('app.estimates.create');
+        Meta::prependTitle('Create Estimate')
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
+
+        return view('app.estimates.create', [
+            'clients' => auth()->user()->business->clients,
+            'currencies' => Currency::all(),
+            'business' => auth()->user()->business,
+        ]);
     }
 
     /**
@@ -43,11 +59,29 @@ class EstimateController extends Controller
      */
     public function store(StoreEstimateRequest $request): RedirectResponse
     {
+        $items = collect($request->validated('items'))->map(
+            fn($item) => [
+                ...$item,
+                'total' => $item['quantity'] * $item['price'],
+            ]
+        );
+
+        $data = [
+            ...$request->safe()->except('items', 'expires_at', 'expires_in'),
+            'total' => $items->sum('total'),
+            'subtotal' => $items->sum('total'),
+            'date' => now(),
+            'status' => EstimateStatus::DRAFT,
+            'expires_at' => $request->validated('expires_in') === 'custom' ? $request->validated('expires_at') : Carbon::parse($request->validated('expires_in')),
+        ];
+
         $estimate = auth()
             ->user()
             ->business
             ->estimates()
-            ->create($request->validated());
+            ->create($data);
+
+        $estimate->items()->createMany($items);
 
         return to_route('app.estimates.show', $estimate)->with('success', 'You have successfully added a new estimate');
     }
@@ -57,6 +91,10 @@ class EstimateController extends Controller
      */
     public function show(Estimate $estimate): Renderable
     {
+        Meta::prependTitle($estimate->number)
+            ->setDescription('Create and manage invoices for your business')
+            ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
+
         return view('app.estimates.show', [
             'estimate' => $estimate,
         ]);

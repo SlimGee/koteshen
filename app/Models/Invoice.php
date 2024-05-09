@@ -7,7 +7,6 @@ use App\Events\InvoiceSaved;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Builder;
@@ -52,9 +51,9 @@ class Invoice extends Model
     /**
      * Get the items for the invoice.
      */
-    public function items(): HasMany
+    public function items(): MorphMany
     {
-        return $this->hasMany(Item::class);
+        return $this->morphMany(Item::class, 'itemable');
     }
 
     /**
