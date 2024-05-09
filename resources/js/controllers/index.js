@@ -14,6 +14,9 @@ Stimulus.register('client-type', ClientTypeController)
 import DatepickerController from './datepicker_controller'
 Stimulus.register('datepicker', DatepickerController)
 
+import EstimateController from './estimate_controller'
+Stimulus.register('estimate', EstimateController)
+
 import HelloController from './hello_controller'
 Stimulus.register('hello', HelloController)
 

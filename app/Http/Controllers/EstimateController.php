@@ -67,7 +67,7 @@ class EstimateController extends Controller
         );
 
         $data = [
-            ...$request->safe()->except('items', 'expires_at', 'expires_in'),
+            ...$request->safe()->except('items', 'expires_at'),
             'total' => $items->sum('total'),
             'subtotal' => $items->sum('total'),
             'date' => now(),
@@ -107,6 +107,9 @@ class EstimateController extends Controller
     {
         return view('app.estimates.edit', [
             'estimate' => $estimate,
+            'clients' => auth()->user()->business->clients,
+            'currencies' => Currency::all(),
+            'business' => auth()->user()->business,
         ]);
     }
 
@@ -115,7 +118,25 @@ class EstimateController extends Controller
      */
     public function update(UpdateEstimateRequest $request, Estimate $estimate): RedirectResponse
     {
-        $estimate->update($request->validated());
+        $items = collect($request->validated('items'))->map(
+            fn($item) => [
+                ...$item,
+                'total' => $item['quantity'] * $item['price'],
+            ]
+        );
+
+        $data = [
+            ...$request->safe()->except('items', 'expires_at'),
+            'total' => $items->sum('total'),
+            'subtotal' => $items->sum('total'),
+            'date' => now(),
+            'status' => EstimateStatus::DRAFT,
+            'expires_at' => $request->validated('expires_in') === 'custom' ? $request->validated('expires_at') : Carbon::parse($request->validated('expires_in')),
+        ];
+
+        $estimate->update($data);
+
+        $estimate->items()->sync($items->toArray());
 
         return to_route('app.estimates.show', $estimate)->with('success', 'You have updated this estimate');
     }

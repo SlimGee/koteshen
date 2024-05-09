@@ -11,7 +11,7 @@ class UpdateEstimateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('estimate'));
     }
 
     /**
@@ -22,7 +22,16 @@ class UpdateEstimateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'number' => 'sometimes|nullable|string',
+            'currency_id' => 'required|exists:currencies,id',
+            'client_id' => 'required|exists:clients,id',
+            'notes' => 'sometimes|nullable|string',
+            'items' => 'required|array',
+            'items.*.name' => 'required|string|max:255',
+            'items.*.quantity' => 'required|numeric|min:1',
+            'items.*.price' => 'required|numeric|min:0',
+            'expires_at' => 'required_if:due_in,custom|nullable|date',
+            'expires_in' => 'required|string|in:now,7 days,14 days,30 days,60 days,90 days,custom',
         ];
     }
 }

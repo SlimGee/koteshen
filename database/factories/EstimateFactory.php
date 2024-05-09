@@ -23,6 +23,7 @@ class EstimateFactory extends Factory
             'business_id' => 1,
             'number' => null,
             'date' => $this->faker->date(),
+            'expires_in' => 'custom',
             'expires_at' => $this->faker->date(),
             'currency_id' => Currency::factory(),
             'client_id' => Client::factory(),

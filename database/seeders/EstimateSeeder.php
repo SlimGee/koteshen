@@ -16,6 +16,7 @@ class EstimateSeeder extends Seeder
         Client::all()->each(function (Client $client) {
             Estimate::factory(10)
                 ->for($client->business)
+                ->hasItems(rand(2, 7))
                 ->create([
                     'currency_id' => $client->currency_id,
                     'client_id' => $client->id,
