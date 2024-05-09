@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Estimate\Public\PreviewController;
 use App\Http\Controllers\Estimate\DownloadController;
 use App\Http\Controllers\Estimate\StatusController;
 use App\Http\Controllers\Onboarding\BusinessController;
@@ -45,6 +46,8 @@ Route::get('/invoices/{invoice}/download', [DownloadInvoiceController::class, 's
 
 Route::get('/estimates/{estimate}/download', [DownloadController::class, 'show'])
     ->name('estimates.download');
+Route::get('/estimates/{estimate}/preview', [PreviewController::class, 'show'])
+    ->name('estimates.preview');
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class])
     ->prefix('app')

@@ -14,7 +14,7 @@
             </div>
             <div class="flex space-x-2">
                 <div>
-                    <a href="{{ URL::signedRoute('invoices.preview', $estimate) }}" target="_blank">
+                    <a href="{{ URL::signedRoute('estimates.preview', $estimate) }}" target="_blank">
                         <x-secondary-button class="!py-2 !px-3 !text-xs">
                             <i class="mr-1 bi bi-eye"></i>
                             Preview
