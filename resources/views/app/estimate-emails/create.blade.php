@@ -39,7 +39,7 @@
 
                     <div class="mb-3">
                         <x-form.label for="to">Subject</x-form.label>
-                        <x-form.input name="subject" class="mt-1 w-full" :value="'estimate ' . $estimate->number . ' from ' . $estimate->business->name" />
+                        <x-form.input name="subject" class="mt-1 w-full" :value="'Estimate ' . $estimate->number . ' from ' . $estimate->business->name" />
                     </div>
 
                     <div class="mb-3">

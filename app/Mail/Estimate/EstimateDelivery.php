@@ -36,7 +36,7 @@ class EstimateDelivery extends Mailable implements ShouldQueue
             subject: $this->payload['subject'],
             to: $this->payload['to'],
             cc: $this->payload['copy'],
-            replyTo: new Address($this->estimate->business->user->email, $this->estimate->business->name),
+            replyTo: [new Address($this->estimate->business->user->email, $this->estimate->business->name)],
             from: new Address($this->estimate->business->user->email, $this->estimate->business->name)
         );
     }
