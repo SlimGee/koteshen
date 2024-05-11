@@ -26,6 +26,7 @@ use App\Http\Controllers\InvoiceStatusController;
 use App\Http\Controllers\RecurringInvoiceController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\RedirectPrelaunch;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
@@ -117,4 +118,6 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
 
         Route::post('/estimates/{estimate}/invoice', [CreateInvoiceController::class, 'store'])
             ->name('estimates.invoice');
+
+        Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     });

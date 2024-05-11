@@ -56,7 +56,15 @@
                 </a>
             </li>
 
-
+            <li @class([
+                'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
+                'bg-blue-900 text-white' => Route::is('app.settings.*'),
+            ])>
+                <a href="{{ route('app.settings.index') }}" class="flex items-center">
+                    <i class="w-6 bi bi-gear"></i>
+                    <span class="mx-2">Settings</span>
+                </a>
+            </li>
 
         </ul>
 

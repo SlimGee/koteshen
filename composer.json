@@ -31,6 +31,7 @@
         "osiemsiedem/laravel-autolink": "^8.0",
         "predis/predis": "*",
         "propaganistas/laravel-phone": "^5.2",
+        "rawilk/laravel-settings": "^3.3",
         "spatie/laravel-activitylog": "^4.8",
         "spatie/laravel-onboard": "^2.6",
         "spatie/laravel-pdf": "^1.5",
