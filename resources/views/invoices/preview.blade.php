@@ -7,20 +7,8 @@
             <div class="flex flex-col p-4 bg-white rounded border shadow-sm sm:p-10 dark:bg-neutral-800">
                 <!-- Grid -->
                 <div class="flex justify-between">
-                    <div>
-                        <svg class="size-10" width="26" height="26" viewBox="0 0 26 26" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1 26V13C1 6.37258 6.37258 1 13 1C19.6274 1 25 6.37258 25 13C25 19.6274 19.6274 25 13 25H12"
-                                class="stroke-blue-600 dark:stroke-white" stroke="currentColor" stroke-width="2" />
-                            <path
-                                d="M5 26V13.16C5 8.65336 8.58172 5 13 5C17.4183 5 21 8.65336 21 13.16C21 17.6666 17.4183 21.32 13 21.32H12"
-                                class="stroke-blue-600 dark:stroke-white" stroke="currentColor" stroke-width="2" />
-                            <circle cx="13" cy="13.0214" r="5" fill="currentColor"
-                                class="fill-blue-600 dark:fill-white" />
-                        </svg>
-
-                        <h1 class="mt-2 text-lg font-semibold text-blue-600 md:text-xl dark:text-white">Preline Inc.</h1>
+                    <div class="max-w-32">
+                        <img src="{{ asset($invoice->business->logo) }}" alt="logo" class="object-contain">
                     </div>
                     <!-- Col -->
 
@@ -211,9 +199,9 @@
                     </a>
                     <a class="inline-flex gap-x-2 items-center py-2 px-3 text-sm font-semibold text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                         href="#">
-                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
                             <polyline points="6 9 6 2 18 2 18 9" />
                             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
                             <rect width="12" height="8" x="6" y="14" />

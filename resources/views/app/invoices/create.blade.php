@@ -13,7 +13,7 @@
                     <h1 class="text-lg font-semibold md:text-2xl text-slate-700">Invoices</h1>
                 </div>
 
-                <div class="flex space-x-4">
+                <div class="flex justify-between space-x-4">
                     <div class="w-full md:w-8/12">
                         <div class="mb-3">
                             <x-form.label for="number">Number</x-form.label>
@@ -69,13 +69,9 @@
 
                     </div>
 
-                    <div class="px-2 w-full md:w-4/12">
-                        <div
-                            class="flex justify-center items-center w-full h-2/3 text-blue-900 bg-blue-50 rounded border border-blue-700 border-dashed">
-                            <div class="text-center">
-                                <i class="block text-2xl bi bi-image"></i>
-                                <span class="text-sm font-semibold">Add Logo</span>
-                            </div>
+                    <div class="px-2">
+                        <div class="max-w-32">
+                            <img src="{{ asset($business->logo) }}" alt="logo" class="object-contain">
                         </div>
                     </div>
                 </div>

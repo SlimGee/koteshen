@@ -10,12 +10,12 @@
 
 /* use a hand cursor instead of arrow for the action buttons */
 .filepond--file-action-button {
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 /* the text color of the drop label*/
 .filepond--drop-label {
-    color: #555;
+    color: #555 !important;
 }
 
 /* underline color for "Browse" button */
@@ -25,7 +25,7 @@
 
 /* the background color of the filepond drop area */
 .filepond--panel-root {
-    @apply !important;
+    @apply bg-transparent !important;
 }
 
 /* the border radius of the drop area */
@@ -35,17 +35,17 @@
 
 /* the border radius of the file item */
 .filepond--item-panel {
-    @apply rounded border-red-500  !important;
+    @apply rounded bg-transparent !important;
 }
 
 /* the background color of the file and file panel (used when dropping an image) */
 .filepond--item-panel {
-    @apply border-red-500 !important;
+    @apply bg-transparent !important;
 }
 
 /* the background color of the drop circle */
 .filepond--drip-blob {
-    @apply border-red-500 !important;
+    @apply bg-transparent !important;
 }
 
 /* the background color of the black action buttons */
