@@ -51,6 +51,7 @@ class Deploy extends Command
             'name' => 'user',
             'permissions' => implode('|', [
                 'view app dashboard',
+                'upload images',
                 ...Authorizer::getPermissionsFor(Business::class),
                 ...Authorizer::getPermissionsFor(Client::class),
                 ...Authorizer::getPermissionsFor(Invoice::class),
@@ -66,6 +67,10 @@ class Deploy extends Command
 
         $this->call('permission:create-permission', [
             'name' => 'access app under development',
+        ]);
+
+        $this->call('permission:create-permission', [
+            'name' => 'upload images',
         ]);
 
         if (Country::count() < 1) {

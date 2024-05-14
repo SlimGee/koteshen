@@ -40,6 +40,11 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.6.8"],\
           ["choices.js", "npm:10.2.0"],\
           ["dropify", "npm:0.2.2"],\
+          ["filepond", "npm:4.31.1"],\
+          ["filepond-plugin-file-validate-type", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.9"],\
+          ["filepond-plugin-image-exif-orientation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.11"],\
+          ["filepond-plugin-image-preview", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.6.12"],\
+          ["filepond-plugin-image-validate-size", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.7"],\
           ["html-to-json-parser", "npm:2.0.1"],\
           ["izitoast", "npm:1.4.0"],\
           ["laravel-echo", "npm:1.16.1"],\
@@ -1808,6 +1813,103 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["filepond", [\
+      ["npm:4.31.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/filepond-npm-4.31.1-3dd2661814-10c0.zip/node_modules/filepond/",\
+        "packageDependencies": [\
+          ["filepond", "npm:4.31.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["filepond-plugin-file-validate-type", [\
+      ["npm:1.2.9", {\
+        "packageLocation": "../../../.yarn/berry/cache/filepond-plugin-file-validate-type-npm-1.2.9-2676d22e20-10c0.zip/node_modules/filepond-plugin-file-validate-type/",\
+        "packageDependencies": [\
+          ["filepond-plugin-file-validate-type", "npm:1.2.9"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.9", {\
+        "packageLocation": "./.yarn/__virtual__/filepond-plugin-file-validate-type-virtual-32283d3777/4/.yarn/berry/cache/filepond-plugin-file-validate-type-npm-1.2.9-2676d22e20-10c0.zip/node_modules/filepond-plugin-file-validate-type/",\
+        "packageDependencies": [\
+          ["filepond-plugin-file-validate-type", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.9"],\
+          ["@types/filepond", null],\
+          ["filepond", "npm:4.31.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/filepond",\
+          "filepond"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["filepond-plugin-image-exif-orientation", [\
+      ["npm:1.0.11", {\
+        "packageLocation": "../../../.yarn/berry/cache/filepond-plugin-image-exif-orientation-npm-1.0.11-d1da53d274-10c0.zip/node_modules/filepond-plugin-image-exif-orientation/",\
+        "packageDependencies": [\
+          ["filepond-plugin-image-exif-orientation", "npm:1.0.11"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.11", {\
+        "packageLocation": "./.yarn/__virtual__/filepond-plugin-image-exif-orientation-virtual-9158bc4bff/4/.yarn/berry/cache/filepond-plugin-image-exif-orientation-npm-1.0.11-d1da53d274-10c0.zip/node_modules/filepond-plugin-image-exif-orientation/",\
+        "packageDependencies": [\
+          ["filepond-plugin-image-exif-orientation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.11"],\
+          ["@types/filepond", null],\
+          ["filepond", "npm:4.31.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/filepond",\
+          "filepond"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["filepond-plugin-image-preview", [\
+      ["npm:4.6.12", {\
+        "packageLocation": "../../../.yarn/berry/cache/filepond-plugin-image-preview-npm-4.6.12-3f368c4f68-10c0.zip/node_modules/filepond-plugin-image-preview/",\
+        "packageDependencies": [\
+          ["filepond-plugin-image-preview", "npm:4.6.12"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.6.12", {\
+        "packageLocation": "./.yarn/__virtual__/filepond-plugin-image-preview-virtual-bc9aecab2e/4/.yarn/berry/cache/filepond-plugin-image-preview-npm-4.6.12-3f368c4f68-10c0.zip/node_modules/filepond-plugin-image-preview/",\
+        "packageDependencies": [\
+          ["filepond-plugin-image-preview", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.6.12"],\
+          ["@types/filepond", null],\
+          ["filepond", "npm:4.31.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/filepond",\
+          "filepond"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["filepond-plugin-image-validate-size", [\
+      ["npm:1.2.7", {\
+        "packageLocation": "../../../.yarn/berry/cache/filepond-plugin-image-validate-size-npm-1.2.7-bb332030ef-10c0.zip/node_modules/filepond-plugin-image-validate-size/",\
+        "packageDependencies": [\
+          ["filepond-plugin-image-validate-size", "npm:1.2.7"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.7", {\
+        "packageLocation": "./.yarn/__virtual__/filepond-plugin-image-validate-size-virtual-2f700fb57c/4/.yarn/berry/cache/filepond-plugin-image-validate-size-npm-1.2.7-bb332030ef-10c0.zip/node_modules/filepond-plugin-image-validate-size/",\
+        "packageDependencies": [\
+          ["filepond-plugin-image-validate-size", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.7"],\
+          ["@types/filepond", null],\
+          ["filepond", "npm:4.31.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/filepond",\
+          "filepond"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["fill-range", [\
       ["npm:7.0.1", {\
         "packageLocation": "../../../.yarn/berry/cache/fill-range-npm-7.0.1-b8b1817caa-10c0.zip/node_modules/fill-range/",\
@@ -3288,6 +3390,11 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.6.8"],\
           ["choices.js", "npm:10.2.0"],\
           ["dropify", "npm:0.2.2"],\
+          ["filepond", "npm:4.31.1"],\
+          ["filepond-plugin-file-validate-type", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.9"],\
+          ["filepond-plugin-image-exif-orientation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.11"],\
+          ["filepond-plugin-image-preview", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.6.12"],\
+          ["filepond-plugin-image-validate-size", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.7"],\
           ["html-to-json-parser", "npm:2.0.1"],\
           ["izitoast", "npm:1.4.0"],\
           ["laravel-echo", "npm:1.16.1"],\

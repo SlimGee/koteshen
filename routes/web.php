@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Business\BusinessController as BusinessBusinessController;
 use App\Http\Controllers\Estimate\Public\PreviewController;
 use App\Http\Controllers\Estimate\ActivityController;
 use App\Http\Controllers\Estimate\CreateInvoiceController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\DuplicateInvoiceAsRecurringController;
 use App\Http\Controllers\DuplicateInvoiceController;
 use App\Http\Controllers\EstimateController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InvoiceActivityController;
 use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
@@ -54,6 +56,16 @@ Route::get('/estimates/{estimate}/download', [DownloadController::class, 'show']
     ->name('estimates.download');
 Route::get('/estimates/{estimate}/preview', [PreviewController::class, 'show'])
     ->name('estimates.preview');
+
+Route::post('/imagess/uploads', [ImageController::class, 'store'])->name(
+    'images.store',
+);
+Route::get('/imagess/uploads', [ImageController::class, 'show'])->name(
+    'images.show',
+);
+Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])->name(
+    'images.destroy',
+);
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class])
     ->prefix('app')
@@ -120,4 +132,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
             ->name('estimates.invoice');
 
         Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+
+        Route::resource('businesses', BusinessBusinessController::class)
+            ->only(['edit', 'update', 'destroy']);
     });

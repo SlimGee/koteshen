@@ -1498,6 +1498,49 @@ __metadata:
   languageName: node
   linkType: hard
 
+"filepond-plugin-file-validate-type@npm:^1.2.9":
+  version: 1.2.9
+  resolution: "filepond-plugin-file-validate-type@npm:1.2.9"
+  peerDependencies:
+    filepond: ">=1.x <5.x"
+  checksum: 10c0/abdccf0f432dbe097fe450627aa70e0ca8b9cea1976cc2e80e4b596d292e73fd3e4df8ee0188f282bd1d2fdbbe88327fcd2633a6f565146dda5f6f098f888385
+  languageName: node
+  linkType: hard
+
+"filepond-plugin-image-exif-orientation@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "filepond-plugin-image-exif-orientation@npm:1.0.11"
+  peerDependencies:
+    filepond: ">=3.x <5.x"
+  checksum: 10c0/150a89e3ddc531afd05dd2ca98b5aeab20ad9ed04752f91c08a3010099a1ae3e01be405c3394cc25265c1cde279796f6a56b856673877163a6e0cbcffc984d83
+  languageName: node
+  linkType: hard
+
+"filepond-plugin-image-preview@npm:^4.6.12":
+  version: 4.6.12
+  resolution: "filepond-plugin-image-preview@npm:4.6.12"
+  peerDependencies:
+    filepond: ">=4.x <5.x"
+  checksum: 10c0/3947b9f2b00420d43ab9025ceba59666b034693579e0770eb26977b18552effea230c1ddc2baccf72107f847b7f7df6cb9dd5985d001dbe06eb76221ad72e5b4
+  languageName: node
+  linkType: hard
+
+"filepond-plugin-image-validate-size@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "filepond-plugin-image-validate-size@npm:1.2.7"
+  peerDependencies:
+    filepond: ">=1.8.x <5.x"
+  checksum: 10c0/dd940fab4433ffd6e0f79569bf5fcc82050f3b2084221c14682b76dca9a9a980f5a54fbba090a588967c4a9dc02c03c2313f82ace031852a0235e8cc7748be49
+  languageName: node
+  linkType: hard
+
+"filepond@npm:^4.31.1":
+  version: 4.31.1
+  resolution: "filepond@npm:4.31.1"
+  checksum: 10c0/201cb5b978882d7b1929ece3c17a08db6575a6f692953b602fb48bf6bf1d0d1b3a54615712cff08d39d607c144d072d1a8b3d15f72bc3142666b756d70f76ea8
+  languageName: node
+  linkType: hard
+
 "fill-range@npm:^7.0.1":
   version: 7.0.1
   resolution: "fill-range@npm:7.0.1"
@@ -2860,6 +2903,11 @@ __metadata:
     axios: "npm:^1.6.4"
     choices.js: "npm:^10.2.0"
     dropify: "npm:^0.2.2"
+    filepond: "npm:^4.31.1"
+    filepond-plugin-file-validate-type: "npm:^1.2.9"
+    filepond-plugin-image-exif-orientation: "npm:^1.0.11"
+    filepond-plugin-image-preview: "npm:^4.6.12"
+    filepond-plugin-image-validate-size: "npm:^1.2.7"
     html-to-json-parser: "npm:^2.0.1"
     izitoast: "npm:^1.4.0"
     laravel-echo: "npm:^1.15.0"

@@ -20,6 +20,9 @@ Stimulus.register('dropify', DropifyController)
 import EstimateController from './estimate_controller'
 Stimulus.register('estimate', EstimateController)
 
+import FilepondController from './filepond_controller'
+Stimulus.register('filepond', FilepondController)
+
 import HelloController from './hello_controller'
 Stimulus.register('hello', HelloController)
 
