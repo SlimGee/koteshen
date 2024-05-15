@@ -24,6 +24,7 @@
         "laravel/socialite": "^5.12",
         "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.9",
+        "lasserafn/php-initial-avatar-generator": "^4.3",
         "maddhatter/laravel-view-generator": "dev-master",
         "mailerlite/mailerlite-php": "^1.0",
         "meilisearch/meilisearch-php": "^1.7",

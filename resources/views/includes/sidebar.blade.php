@@ -1,81 +1,67 @@
-<aside class="sticky top-0 w-full h-screen border-r md:w-64 md:min-h-screen bg-slate-100"
-    {{ stimulus_controller('menu') }}>
-    <div class="flex justify-between items-center p-4 dark:bg-blue-900">
-        <a href="{{ route('app.home.index') }}" class="flex items-center">
-            <img src="{{ asset('images/logo/koteshen_cropped.png') }}" alt="Koteshen logo" class="w-32">
-        </a>
-        <div class="flex md:hidden">
-            <button type="button" {{ stimulus_action('menu', 'toggle') }}
-                class="text-white hover:text-blue-500 focus:text-blue-500 focus:outline-none">
-                <svg class="w-8 fill-current" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                    stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-    <div class="hidden py-6 px-2 md:block" {{ stimulus_target('menu', 'nav') }}>
-        <ul class="">
-            <li @class([
-                'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
-                'bg-blue-900 text-white' => Route::is('app.home.*'),
-            ])>
-                <a href="{{ route('app.home.index') }}" class="flex items-center">
-                    <i class="w-6 bi bi-buildings"></i>
-                    <span class="mx-2">Dashboard</span>
-                </a>
-            </li>
+ <div {{ stimulus_controller('menu') }} id="application-sidebar"
+     class="hidden fixed inset-y-0 bg-white border-gray-200 transition-all duration-300 transform -translate-x-full lg:block lg:bottom-0 lg:translate-x-0 hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 w-[260px] start-0 z-[60] border-e lg:end-auto dark:bg-neutral-800 dark:border-neutral-700">
+     <div class="px-8 pt-4">
+         <!-- Logo -->
+         <a href="{{ route('app.home.index') }}"
+             class="inline-block flex-none text-xl font-semibold rounded-xl focus:opacity-80 focus:outline-none">
+             <img src="{{ asset('images/logo/koteshen_cropped.png') }}" alt="Koteshen logo" class="w-32">
+         </a>
+         <!-- End Logo -->
+     </div>
 
-            <li @class([
-                'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
-                'bg-blue-900 text-white' => Route::is('app.clients.*'),
-            ])>
-                <a href="{{ route('app.clients.index') }}" class="flex items-center">
-                    <i class="w-6 bi bi-people"></i>
-                    <span class="mx-2">Clients</span>
-                </a>
-            </li>
+     <nav class="flex flex-col flex-wrap p-6 w-full hs-accordion-group" data-hs-accordion-always-open>
+         <ul class="space-y-1.5">
+             <li>
+                 <a href="{{ route('app.home.index') }}" @class([
+                     'flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded hover:bg-blue-500 hover:text-white text-neutral-700 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300',
+                     'bg-blue-accent-400 text-white' => Route::is('app.home.*'),
+                 ])>
+                     <i class="bi bi-house"></i>
+                     </svg>
+                     Dashboard
+                 </a>
+             </li>
+             <li>
+                 <a href="{{ route('app.clients.index') }}" @class([
+                     'flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded hover:bg-blue-500 hover:text-white text-neutral-700 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300',
+                     'bg-blue-accent-400 text-white' => Route::is('app.clients.*'),
+                 ])>
+                     <i class="bi bi-buildings"></i>
+                     </svg>
+                     Clients
+                 </a>
+             </li>
+             <li>
+                 <a href="{{ route('app.invoices.index') }}" @class([
+                     'flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded hover:bg-blue-500 hover:text-white text-neutral-700 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300',
+                     'bg-blue-accent-400 text-white' => Route::is('app.invoices.*'),
+                 ])>
+                     <i class="bi bi-file-earmark-check"></i>
+                     </svg>
+                     Invoices
+                 </a>
+             </li>
 
-            <li @class([
-                'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
-                'bg-blue-900 text-white' => Route::is('app.invoices.*'),
-            ])>
-                <a href="{{ route('app.invoices.index') }}" class="flex items-center">
-                    <i class="w-6 bi bi-file-earmark-check"></i>
-                    <span class="mx-2">Invoices</span>
-                </a>
-            </li>
+             <li>
+                 <a href="{{ route('app.estimates.index') }}" @class([
+                     'flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded hover:bg-blue-500 hover:text-white text-neutral-700 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300',
+                     'bg-blue-accent-400 text-white' => Route::is('app.estimates.*'),
+                 ])>
+                     <i class="bi bi-quote"></i>
+                     </svg>
+                     Estimates
+                 </a>
+             </li>
+             <li>
+                 <a href="{{ route('app.settings.index') }}" @class([
+                     'flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded hover:bg-blue-500 hover:text-white text-neutral-700 dark:hover:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300',
+                     'bg-blue-accent-400 text-white' => Route::is('app.settings.*'),
+                 ])>
+                     <i class="bi bi-gear"></i>
+                     Settings
+                 </a>
+             </li>
 
-            <li @class([
-                'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
-                'bg-blue-900 text-white' => Route::is('app.estimates.*'),
-            ])>
-                <a href="{{ route('app.estimates.index') }}" class="flex items-center">
-                    <i class="w-6 bi bi-quote"></i>
-                    <span class="mx-2">Estimates</span>
-                </a>
-            </li>
-
-            <li @class([
-                'py-3 px-2 mt-2 rounded hover:bg-blue-900 group dark:text-blue-500 hover:text-white',
-                'bg-blue-900 text-white' => Route::is('app.settings.*'),
-            ])>
-                <a href="{{ route('app.settings.index') }}" class="flex items-center">
-                    <i class="w-6 bi bi-gear"></i>
-                    <span class="mx-2">Settings</span>
-                </a>
-            </li>
-
-        </ul>
-
-        <div class="-mx-2 mt-2 border-t border-blue-700 md:hidden"></div>
-        <ul class="mt-6 md:hidden">
-            <li class="py-3 px-2 mt-2 rounded hover:bg-blue-900">
-                <a href="#" class="mx-2 text-white">Account Settings</a>
-            </li>
-            <li class="py-3 px-2 mt-2 rounded hover:bg-blue-900">
-                <button class="mx-2 text-white" @click="logout">Logout</button>
-            </li>
-        </ul>
-    </div>
-</aside>
+         </ul>
+     </nav>
+ </div>

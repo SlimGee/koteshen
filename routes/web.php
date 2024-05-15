@@ -19,6 +19,7 @@ use App\Http\Controllers\DownloadInvoiceController;
 use App\Http\Controllers\DuplicateInvoiceAsRecurringController;
 use App\Http\Controllers\DuplicateInvoiceController;
 use App\Http\Controllers\EstimateController;
+use App\Http\Controllers\GenerateAvatarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InvoiceActivityController;
@@ -66,6 +67,8 @@ Route::get('/imagess/uploads', [ImageController::class, 'show'])->name(
 Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])->name(
     'images.destroy',
 );
+
+Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('avatars.show');
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class])
     ->prefix('app')
