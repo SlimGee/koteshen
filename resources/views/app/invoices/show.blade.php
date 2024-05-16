@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="flex justify-between items-center md:items-baseline">
+        <div class="flex flex-col justify-between space-y-4 sm:flex-row sm:items-center sm:space-y-0 md:items-baseline">
             <div class="flex items-center space-x-6">
                 <a href="{{ route('app.invoices.index') }}">
                     <x-secondary-button class="!py-2 !px-3 !text-xs">
@@ -209,22 +209,24 @@
 
     <div class="flex">
         <!-- Invoice -->
-        <div class="flex-1 px-2 my-4 sm:px-6 sm:my-10 lg:px-2 max-w-[60rem]">
+        <div class="flex-1 my-8 sm:px-6 sm:my-10 lg:px-2 max-w-[60rem]">
             <div class="w-full">
                 <!-- Card -->
                 <div class="flex flex-col p-4 bg-white rounded border shadow-sm sm:p-10 dark:bg-neutral-800">
                     <!-- Grid -->
-                    <div class="flex justify-between items-start">
-                        <div class="max-w-32">
+                    <div class="flex justify-between items-start sm:space-y-0 md:flex-row">
+                        <div class="mt-1 w-20 sm:mt-0 sm:w-auto max-w-32">
                             <img src="{{ asset($invoice->business->logo) }}" alt="logo" class="object-contain">
                         </div>
                         <!-- Col -->
 
-                        <div class="text-end">
+                        <div class="w-full text-end">
                             <h2
-                                class="flex items-center space-x-3 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-neutral-200">
+                                class="flex justify-end items-center space-x-3 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-neutral-200">
                                 <span
-                                    class="py-1.5 px-3 text-sm font-semibold mr-2 {{ $invoice->status->classes() }} rounded-sm">{{ $invoice->status }}</span>
+                                    class="sm:py-1.5 sm:px-3 px-1.5  text-sm font-semibold mr-2 {{ $invoice->status->classes() }} rounded-sm">
+                                    {{ $invoice->status }}
+                                </span>
                                 #{{ $invoice->number }}
                             </h2>
                             <!--span class="block mt-1 text-gray-500 dark:text-neutral-500">{{ $invoice->number }}</span -->

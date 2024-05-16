@@ -4,7 +4,7 @@
     <section>
         <div class="flex justify-between items-center md:items-baseline">
             <div>
-                <h1 class="text-xl font-semibold md:text-2xl text-slate-700">Invoices</h1>
+                <h1 class="text-lg font-semibold md:text-xl md:text-2xl text-slate-700">Invoices</h1>
             </div>
             <div>
                 <a href="{{ route('app.invoices.create') }}">
@@ -92,7 +92,7 @@
 
         </div>
 
-        <div class="flex relative items-center mt-4 md:mt-0">
+        <div class="flex relative items-center mt-4 w-full md:mt-0">
             <span class="absolute">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="mx-3 w-5 h-5 text-slate-400 dark:text-slate-600">
@@ -115,7 +115,7 @@
     </div>
 
     <div class="flex flex-col mt-6">
-        <div class="overflow-x-auto -my-2 -mx-4 sm:-mx-6 lg:-mx-8">
+        <div class="overflow-x-auto -my-2 sm:-mx-6 lg:-mx-8">
             <div class="inline-block py-2 min-w-full align-middle md:px-6 lg:px-8">
                 <div class="overflow-hidden border shadow-sm md:rounded border-slate-200 dark:border-slate-700">
                     <div class="min-w-full border-b divide-y dark:divide-slate-700">

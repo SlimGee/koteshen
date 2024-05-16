@@ -25,9 +25,16 @@
         <form action="{{ route('app.invoices.update', $invoice) }}" method="post">
             @csrf
             @method('PATCH')
-            <div class="p-4 py-10 w-full rounded border md:w-6/12">
-                <div class="mb-10">
+            <div class="p-4 w-full bg-white rounded border sm:py-10 md:w-6/12">
+                <div class="flex justify-between items-start mb-10">
                     <h1 class="text-lg font-semibold md:text-2xl text-slate-700">Invoices</h1>
+
+                    <div class="px-2">
+                        <div class="w-20 sm:w-auto max-w-32">
+                            <img src="{{ asset($business->logo) }}" alt="logo" class="object-contain">
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="flex justify-between space-x-4">
@@ -86,14 +93,9 @@
 
                     </div>
 
-                    <div class="px-2">
-                        <div class="max-w-32">
-                            <img src="{{ asset($business->logo) }}" alt="logo" class="object-contain">
-                        </div>
-                    </div>
                 </div>
 
-                <div class="flex my-8 space-x-4">
+                <div class="flex flex-col my-8 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                     <div class="w-full md:w-1/2">
                         <x-form.label for="customer">Bill from</x-form.label>
 
@@ -117,7 +119,8 @@
                         <div class="flex justify-between items-center">
                             <x-form.label for="customer">To</x-form.label>
                             <span>
-                                <a href="#" class="text-sm font-bold text-blue-500">New Client</a>
+                                <a href="{{ route('app.clients.create') }}" class="text-sm font-bold text-blue-500">New
+                                    Client</a>
                             </span>
                         </div>
                         <div {{ stimulus_target('invoice', 'select') }} class="mt-2">
@@ -158,7 +161,7 @@
 
 
                 <div class="mt-4 rounded border">
-                    <div class="grid grid-cols-12">
+                    <div class="hidden grid-cols-12 sm:grid">
                         <div class="col-span-5 p-3 bg-slate-100">Description</div>
                         <div class="col-span-1 p-3 bg-slate-100">Qty</div>
                         <div class="col-span-2 p-3 bg-slate-100">Rate</div>
@@ -168,34 +171,42 @@
                     <div {{ stimulus_target('invoice', 'lineItemsContainer') }}>
                         <template {{ stimulus_target('invoice', 'lineItemTemplate') }}>
 
-                            <div class="grid grid-cols-12" {{ stimulus_target('invoice', 'lineItem') }}
+                            <div class="grid grid-cols-12 py-6 border-b-2" {{ stimulus_target('invoice', 'lineItem') }}
                                 {{ stimulus_controller('line-item') }}>
-                                <div class="col-span-5 py-3 px-2"
+                                <div class="col-span-full px-2 sm:col-span-5 sm:py-3"
                                     {{ stimulus_action('line-item', 'setCurrentCurrency', 'invoice:client-selected@window') }}>
+                                    <x-form.label class="sm:hidden">Description</x-form.label>
+
                                     <x-form.input class="mt-1 w-full !p-2.5" id="description" name="items[INDEX][name]"
                                         type="text" placeholder="Item name" />
                                 </div>
-                                <div class="col-span-1 py-3 px-1">
+                                <div class="col-span-full py-1 px-2 sm:col-span-1 sm:py-3 sm:px-1">
+                                    <x-form.label class="sm:hidden">Quantity</x-form.label>
+
                                     <x-form.input class="mt-1 w-full" id="quantity" name="items[INDEX][quantity]"
                                         type="text" value="1" data-line-item-target="quantity"
                                         data-action="line-item#updateTotal" />
                                 </div>
-                                <div class="col-span-2 py-3 px-1">
+                                <div class="col-span-full py-1 px-2 sm:col-span-2 sm:py-3 sm:px-1">
+                                    <x-form.label class="sm:hidden">Rate</x-form.label>
+
                                     <div class="flex items-center mt-1">
                                         <x-form.input class="w-full" id="rate" name="items[INDEX][price]"
                                             type="text" :value="0" data-line-item-target="price"
                                             data-action="line-item#updateTotal" />
                                     </div>
                                 </div>
-                                <div class="col-span-1 col-span-3 py-3 px-1">
+                                <div class="col-span-full py-1 px-2 sm:col-span-3 sm:py-3 sm:px-1">
+                                    <x-form.label class="sm:hidden">Total Price</x-form.label>
+
                                     <div class="flex items-center mt-1">
-                                        <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0"
+                                        <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0 !rounded-r-none"
                                             data-line-item-target="symbol">$</x-secondary-button>
-                                        <x-form.input class="w-full" id="rate" name="total" type="text"
-                                            :value="number_format(0.0, 2)" data-line-item-target="total" />
+                                        <x-form.input class="w-full !rounded-r-none" id="rate" name="total"
+                                            type="text" :value="number_format(0.0, 2)" data-line-item-target="total" />
                                     </div>
                                 </div>
-                                <div class="col-span-1 py-3 mt-1" data-remove="">
+                                <div class="col-span-full py-1 px-2 mt-1 sm:col-span-1 sm:py-3 sm:px-0" data-remove="">
                                     <div data-controller="dropdown" class="relative">
                                         <x-secondary-button class="!py-3 !px-2" type="button"
                                             data-action="dropdown#toggle click@window->dropdown#hide">
@@ -204,7 +215,7 @@
                                         </x-secondary-button>
 
                                         <div data-dropdown-target="menu"
-                                            class="hidden absolute right-0 z-50 w-32 bg-white rounded-b border shadow transition transform origin-top-right"
+                                            class="hidden absolute left-0 z-50 w-32 bg-white rounded-b border shadow transition transform origin-top-right sm:right-0"
                                             data-transition-enter-from="opacity-0 scale-95"
                                             data-transition-enter-to="opacity-100 scale-100"
                                             data-transition-leave-from="opacity-100 scale-100"
@@ -233,36 +244,43 @@
 
 
                         @foreach (old('items', $invoice->items->toArray()) as $index => $value)
-                            <div class="grid grid-cols-12" {{ stimulus_target('invoice', 'lineItem') }}
-                                {{ stimulus_controller('line-item') }}>
-                                <div class="col-span-5 py-3 px-2"
+                            <div class="grid grid-cols-12 py-6 border-b-2 sm:py-0 sm:border-none"
+                                {{ stimulus_target('invoice', 'lineItem') }} {{ stimulus_controller('line-item') }}>
+                                <div class="col-span-full py-1 px-2 sm:col-span-5 sm:py-3"
                                     {{ stimulus_action('line-item', 'setCurrentCurrency', 'invoice:client-selected@window') }}>
+                                    <x-form.label class="sm:hidden">Description</x-form.label>
                                     <x-form.input class="mt-1 w-full !p-2.5" id="description" :name="'items[' . $index . '][name]'"
                                         type="text" placeholder="Item name" :value="$value['name'] ?? ''" />
                                     <input type="hidden" name="items[{{ $index }}][id]"
                                         value="{{ $value['id'] ?? null }}">
                                 </div>
-                                <div class="col-span-1 py-3 px-1">
+                                <div class="col-span-full py-1 px-2 sm:col-span-1 sm:py-3 sm:px-1">
+                                    <x-form.label class="sm:hidden">Quantity</x-form.label>
+
                                     <x-form.input class="mt-1 w-full" id="quantity" :name="'items[' . $index . '][quantity]'" type="text"
                                         value="1" data-line-item-target="quantity"
                                         data-action="line-item#updateTotal" :value="$value['quantity'] ?? ''" />
                                 </div>
-                                <div class="col-span-2 py-3 px-1">
+                                <div class="col-span-full py-1 px-2 sm:col-span-2 sm:py-3 sm:px-1">
+                                    <x-form.label class="sm:hidden">Rate</x-form.label>
+
                                     <div class="flex items-center mt-1">
                                         <x-form.input class="w-full" id="rate" :name="'items[' . $index . '][price]'" type="text"
                                             :value="0" data-line-item-target="price"
                                             data-action="line-item#updateTotal" :value="$value['price'] ?? ''" />
                                     </div>
                                 </div>
-                                <div class="col-span-3 py-3 px-1">
+                                <div class="col-span-full py-1 px-2 sm:col-span-3 sm:py-3 sm:px-1">
+                                    <x-form.label class="sm:hidden">Total Price</x-form.label>
+
                                     <div class="flex items-center mt-1">
-                                        <x-secondary-button class="!py-3 !bg-slate-200 !border-r-0"
+                                        <x-secondary-button class="!py-3 !bg-slate-200 !rounded-r-none !border-r-0"
                                             data-line-item-target="symbol">$</x-secondary-button>
-                                        <x-form.input class="w-full" id="rate" name="total" type="text"
-                                            :value="$value['total'] ?? ''" data-line-item-target="total" />
+                                        <x-form.input class="w-full !rounded-l-none " id="rate" name="total"
+                                            type="text" :value="$value['total'] ?? ''" data-line-item-target="total" />
                                     </div>
                                 </div>
-                                <div class="col-span-1 py-3 mt-1" data-remove="">
+                                <div class="col-span-full px-2 mt-1 sm:col-span-1 sm:py-3 sm:px-0" data-remove="">
                                     <div data-controller="dropdown" class="relative">
                                         <x-secondary-button class="!py-3 !px-2" type="button"
                                             data-action="dropdown#toggle click@window->dropdown#hide">
@@ -271,7 +289,7 @@
                                         </x-secondary-button>
 
                                         <div data-dropdown-target="menu"
-                                            class="hidden absolute right-0 z-50 w-32 bg-white rounded-b border shadow transition transform origin-top-right"
+                                            class="hidden absolute left-0 z-50 w-32 bg-white rounded-b border shadow transition transform origin-top-right sm:right-0"
                                             data-transition-enter-from="opacity-0 scale-95"
                                             data-transition-enter-to="opacity-100 scale-100"
                                             data-transition-leave-from="opacity-100 scale-100"
