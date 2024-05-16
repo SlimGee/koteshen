@@ -32,6 +32,9 @@ Stimulus.register('invoice', InvoiceController)
 import LineItemController from './line-item_controller'
 Stimulus.register('line-item', LineItemController)
 
+import MenuController from './menu_controller'
+Stimulus.register('menu', MenuController)
+
 import ResetFormController from './reset-form_controller'
 Stimulus.register('reset-form', ResetFormController)
 

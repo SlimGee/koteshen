@@ -1,5 +1,5 @@
- <div {{ stimulus_controller('menu') }} id="application-sidebar"
-     class="hidden fixed inset-y-0 bg-white border-gray-200 transition-all duration-300 transform -translate-x-full lg:block lg:bottom-0 lg:translate-x-0 hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 w-[260px] start-0 z-[60] border-e lg:end-auto dark:bg-neutral-800 dark:border-neutral-700">
+ <div {{ stimulus_target('menu', 'menu') }} {{ stimulus_action('menu', 'close', 'menu:click:outside') }}
+     class="fixed inset-y-0 bg-white border-gray-200 transition-all duration-300 transform -translate-x-full md:shadow-none lg:block lg:bottom-0 lg:translate-x-0 shadow-blue-accent-200 --x-full hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 w-[260px] start-0 z-[60] border-e lg:end-auto dark:bg-neutral-800 dark:border-neutral-700">
      <div class="px-8 pt-4">
          <!-- Logo -->
          <a href="{{ route('app.home.index') }}"
