@@ -36,6 +36,7 @@ class Estimate extends Model
         'expires_at' => 'datetime',
         'date' => 'datetime',
         'status' => EstimateStatus::class,
+        'invoiced_at' => 'datetime',
     ];
 
     protected $dispatchesEvents = [

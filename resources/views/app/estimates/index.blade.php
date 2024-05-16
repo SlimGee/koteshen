@@ -24,7 +24,7 @@
                     'bg-blue-700 text-white ' =>
                         (request()->query('filter', [])['status'] ?? null) == null,
                 ])>
-                    View all
+                    All
                 </button>
             </a>
 
@@ -115,7 +115,7 @@
     </div>
 
     <div class="flex flex-col mt-6">
-        <div class="overflow-x-auto -my-2 -mx-4 sm:-mx-6 lg:-mx-8">
+        <div class="overflow-x-auto -my-2 sm:-mx-6 lg:-mx-8">
             <div class="inline-block py-2 min-w-full align-middle md:px-6 lg:px-8">
                 <div class="overflow-hidden border shadow-sm md:rounded border-slate-200 dark:border-slate-700">
                     <div class="min-w-full border-b divide-y dark:divide-slate-700">
