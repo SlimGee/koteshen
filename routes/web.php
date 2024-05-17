@@ -10,6 +10,8 @@ use App\Http\Controllers\Estimate\EstimateCommentController;
 use App\Http\Controllers\Estimate\SendEstimateController;
 use App\Http\Controllers\Estimate\StatusController;
 use App\Http\Controllers\Onboarding\BusinessController;
+use App\Http\Controllers\Payment\PaymentController as PaymentPaymentController;
+use App\Http\Controllers\Public\Invoice\PaymentController;
 use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PageController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
@@ -49,10 +51,8 @@ Route::get('/pages/{page}', [PageController::class, 'show'])->name('pages.show')
 
 Route::get('/invoices/{invoice}/preview', [PreviewInvoiceController::class, 'show'])
     ->name('invoices.preview');
-
 Route::get('/invoices/{invoice}/download', [DownloadInvoiceController::class, 'show'])
     ->name('invoices.download');
-
 Route::get('/estimates/{estimate}/download', [DownloadController::class, 'show'])
     ->name('estimates.download');
 Route::get('/estimates/{estimate}/preview', [PreviewController::class, 'show'])
@@ -64,9 +64,10 @@ Route::post('/imagess/uploads', [ImageController::class, 'store'])->name(
 Route::get('/imagess/uploads', [ImageController::class, 'show'])->name(
     'images.show',
 );
-Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])->name(
-    'images.destroy',
-);
+Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])
+    ->name(
+        'images.destroy'
+    );
 
 Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('avatars.show');
 
@@ -85,57 +86,41 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
             });
 
         Route::resource('clients', ClientController::class);
-        Route::resource('invoices', InvoiceController::class);
-        Route::get('/invoices/{invoice}/send', [SendInvoiceController::class, 'create'])
-            ->name('invoices.send');
-        Route::post('/invoices/{invoice}/send', [SendInvoiceController::class, 'store'])
-            ->name('invoices.send');
 
-        Route::get('/invoices/{invoice}/reminder', [SendReminderController::class, 'create'])
-            ->name('invoices.reminder.create');
-
-        Route::post('/invoices/{invoice}/reminder', [SendReminderController::class, 'store'])
-            ->name('invoices.reminder.store');
-
-        Route::resource('invoices.comments', InvoiceCommentController::class);
         Route::resource('commentables.comments', CommentController::class);
-        Route::resource('invoices.activities', InvoiceActivityController::class)
-            ->only(['index']);
 
-        Route::post('/invoices/{invoice}/status/{status}', [InvoiceStatusController::class, 'update'])
-            ->name('invoices.status.update');
-
-        Route::post('/invoices/{invoice}/duplicate', [DuplicateInvoiceController::class, 'store'])
-            ->name('invoices.duplicate');
-
-        Route::post('/invoices/{invoice}/recurring', [DuplicateInvoiceAsRecurringController::class, 'store'])
-            ->name('invoices.recurring.store');
-
-        Route::resource('invoices.subscriptions', RecurringInvoiceController::class)
-            ->except(['edit']);
+        Route::resource('invoices', InvoiceController::class);
+        Route::get('/invoices/{invoice}/send', [SendInvoiceController::class, 'create'])->name('invoices.send');
+        Route::post('/invoices/{invoice}/send', [SendInvoiceController::class, 'store'])->name('invoices.send');
+        Route::get('/invoices/{invoice}/reminder', [SendReminderController::class, 'create'])->name('invoices.reminder.create');
+        Route::post('/invoices/{invoice}/reminder', [SendReminderController::class, 'store'])->name('invoices.reminder.store');
+        Route::resource('invoices.comments', InvoiceCommentController::class);
+        Route::resource('invoices.activities', InvoiceActivityController::class)->only(['index']);
+        Route::post('/invoices/{invoice}/status/{status}', [InvoiceStatusController::class, 'update'])->name('invoices.status.update');
+        Route::post('/invoices/{invoice}/duplicate', [DuplicateInvoiceController::class, 'store'])->name('invoices.duplicate');
+        Route::post('/invoices/{invoice}/recurring', [DuplicateInvoiceAsRecurringController::class, 'store'])->name('invoices.recurring.store');
+        Route::resource('invoices.subscriptions', RecurringInvoiceController::class)->except(['edit']);
         Route::post('/invoices/{invoice}/subscriptions/{subscription}/restore', [RecurringInvoiceController::class, 'restore'])
             ->name('invoices.subscriptions.restore');
 
         Route::resource('estimates', EstimateController::class);
-        Route::post('/estimates/{estimate}/status/{status}', [StatusController::class, 'update'])
-            ->name('estimates.status.update');
+        Route::post('/estimates/{estimate}/status/{status}', [StatusController::class, 'update'])->name('estimates.status.update');
         Route::resource('estimates.comments', EstimateCommentController::class);
-        Route::resource('estimates.activities', ActivityController::class)
-            ->only(['index']);
-        Route::post('/estimates/{estimate}/duplicate', [DuplicateController::class, 'store'])
-            ->name('estimates.duplicate');
-
-        Route::post('/estimates/{estimate}/send', [SendEstimateController::class, 'store'])
-            ->name('estimates.send');
-
-        Route::get('/estimates/{estimate}/send', [SendEstimateController::class, 'create'])
-            ->name('estimates.send');
-
-        Route::post('/estimates/{estimate}/invoice', [CreateInvoiceController::class, 'store'])
-            ->name('estimates.invoice');
+        Route::resource('estimates.activities', ActivityController::class)->only(['index']);
+        Route::post('/estimates/{estimate}/duplicate', [DuplicateController::class, 'store'])->name('estimates.duplicate');
+        Route::post('/estimates/{estimate}/send', [SendEstimateController::class, 'store'])->name('estimates.send');
+        Route::get('/estimates/{estimate}/send', [SendEstimateController::class, 'create'])->name('estimates.send');
+        Route::post('/estimates/{estimate}/invoice', [CreateInvoiceController::class, 'store'])->name('estimates.invoice');
 
         Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 
-        Route::resource('businesses', BusinessBusinessController::class)
-            ->only(['edit', 'update', 'destroy']);
+        Route::resource('businesses', BusinessBusinessController::class)->only(['edit', 'update', 'destroy']);
+
+        Route::resource('payables.payments', PaymentPaymentController::class);
     });
+
+// Laravel 8 & 9
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
+// Laravel 8 & 9
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::get('/test-pay', [PaymentController::class, 'test']);

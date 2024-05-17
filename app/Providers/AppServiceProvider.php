@@ -39,6 +39,14 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
+        Route::bind('payable', function (string $value) {
+            try {
+                return payable($value);
+            } catch (\Throwable $th) {
+                abort(404);
+            }
+        });
+
         View::share('countries', Cache::remember('db-countries', 60 * 60 * 24 * 7, function () {
             return Country::all();
         }));

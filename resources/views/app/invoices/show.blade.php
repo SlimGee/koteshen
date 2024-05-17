@@ -127,7 +127,8 @@
                                     </li>
 
                                     <li class="flex items-center py-3 px-2 hover:bg-slate-100">
-                                        <a href="#" class="w-full text-sm font-semibold text-slate-700">
+                                        <a href="{{ route('app.payables.payments.index', payable($invoice)) }}"
+                                            class="w-full text-sm font-semibold text-slate-700">
                                             <i class="mr-1 bi bi-wallet"></i>
                                             Manage Payments
                                         </a>

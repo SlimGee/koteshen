@@ -46,3 +46,33 @@ if (!function_exists('commentable')) {
         throw new BadMethodCallException('Invalid argument passed to commentable()');
     }
 }
+
+if (!function_exists('payable')) {
+    function payable($payable)
+    {
+        if ($payable instanceof Model) {
+            return Str::of(get_class($payable))
+                ->explode('\\')
+                ->map(fn($part) => Str::snake($part))
+                ->join('.') . ':' . $payable->getRouteKey();
+        }
+        if (is_string($payable)) {
+            if (Str::contains($payable, ':')) {
+                [$payable, $id] = explode(':', $payable);
+                $class = Str::of($payable)
+                    ->explode('.')
+                    ->map(fn($part) => Str::studly($part))
+                    ->join('\\');
+                $instance = new $class;
+
+                return $instance::where($instance->getRouteKeyName(), $id)->firstOrFail();
+            }
+
+            return Str::of($payable)
+                ->explode('.')
+                ->map(fn($part) => Str::studly($part))
+                ->join('\\');
+        }
+        throw new BadMethodCallException('Invalid argument passed to payable()');
+    }
+}

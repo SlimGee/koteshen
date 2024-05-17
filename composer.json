@@ -38,7 +38,8 @@
         "spatie/laravel-onboard": "^2.6",
         "spatie/laravel-pdf": "^1.5",
         "spatie/laravel-query-builder": "^5.8",
-        "spatie/laravel-sluggable": "^3.6"
+        "spatie/laravel-sluggable": "^3.6",
+        "unicodeveloper/laravel-paystack": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",

@@ -131,4 +131,12 @@ class Invoice extends Model
     {
         return $this->hasOne(Subscription::class);
     }
+
+    /**
+     * Get the payments for the invoice.
+     */
+    public function payments(): MorphMany
+    {
+        return $this->morphMany(Payment::class, 'payable');
+    }
 }
