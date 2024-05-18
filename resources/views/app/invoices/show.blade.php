@@ -383,7 +383,7 @@
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
                                             {{ $invoice->currency->symbol }}
-                                            {{ Number::format($invoice->total, $invoice->currency->decimal_digits) }}
+                                            {{ Number::format($invoice->balance, $invoice->currency->decimal_digits) }}
                                         </dd>
                                     </dl>
                                 </div>

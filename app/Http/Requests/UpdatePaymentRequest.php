@@ -11,7 +11,7 @@ class UpdatePaymentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('payment'));
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdatePaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'amount' => ['required', 'numeric', 'max:' . (float) round($this->route('payment')->amount + $this->route('payable')->balance) + 2],
+            'channel' => 'required|string',
+            'currency' => 'required|string',
+            'paid_at' => 'required|date',
         ];
     }
 }

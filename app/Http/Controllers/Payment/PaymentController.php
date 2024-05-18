@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Models\Payment;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Carbon;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PaymentController extends Controller
 {
@@ -19,8 +22,14 @@ class PaymentController extends Controller
      */
     public function index($payable): Renderable
     {
+        Meta::prependTitle('Payments');
+
+        $payments = QueryBuilder::for($payable->payments())
+            ->defaultSort('-created_at')
+            ->paginate(10);
+
         return view('app.payments.index', [
-            'payments' => $payable->payments,
+            'payments' => $payments,
             'payable' => $payable,
         ]);
     }
@@ -42,10 +51,13 @@ class PaymentController extends Controller
     {
         $payment = $payable->payments()->create([
             ...$request->validated(),
+            'paid_at' => Carbon::parse($request->validated('paid_at')),
+            'reference' => null,
             'user_id' => auth()->user()->id,
+            'client_id' => $payable->client_id,
         ]);
 
-        return redirect()->route('app.payments.index', $payable)->with('success', 'Payment successfully saved');
+        return redirect()->route('app.payables.payments.index', payable($payable))->with('success', 'Payment successfully saved');
     }
 
     /**
@@ -62,7 +74,7 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Payment $payment): Renderable
+    public function edit($payable, Payment $payment): Renderable
     {
         return view('app.payments.edit', [
             'payment' => $payment,
@@ -79,13 +91,13 @@ class PaymentController extends Controller
     {
         $payment->update($request->validated());
 
-        return redirect()->route('app.payments.index', $payable)->with('success', 'Payment successfully updated');
+        return redirect()->route('app.payables.payments.index', payable($payable))->with('success', 'Payment successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Payment $payment): RedirectResponse
+    public function destroy($payable, Payment $payment): RedirectResponse
     {
         $payment->delete();
 

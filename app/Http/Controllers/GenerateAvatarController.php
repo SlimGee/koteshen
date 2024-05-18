@@ -15,7 +15,8 @@ class GenerateAvatarController extends Controller
         return $avatar
             ->name($user->name)
             ->autoFont()
-            ->autoColor()
+            ->color('#fff')
+            ->background('#5576ff')
             ->rounded()
             ->smooth()
             ->generate()

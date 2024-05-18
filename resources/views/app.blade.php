@@ -155,7 +155,7 @@
 
         <main>
             <!-- Replace with your content -->
-            <div class="relative py-6 px-3 md:px-8 xl:px-28 bg-slate-50">
+            <div class="relative py-6 px-3 min-h-screen md:px-8 xl:px-28 bg-slate-50">
                 @yield('content')
             </div>
             <!-- /End replace -->

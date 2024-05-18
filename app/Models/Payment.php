@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Events\PaymentSaved;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Payment extends Model
 {
@@ -17,6 +20,42 @@ class Payment extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'paid_at' => 'datetime',
+        'amount' => 'float',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array<string, string>
+     */
+    protected $dispatchesEvents = [
+        'saved' => PaymentSaved::class,
+    ];
+
+    /**
+     * The attributes that should be appended to the model's array form.
+     *
+     * @var array<string>
+     */
+    protected $attributes = [
+        'reference' => null,
+    ];
+
+    /**
+     * Get the reference attribute.
+     */
+    public function reference(): Attribute
+    {
+        return Attribute::make(set: fn($value) => is_null($value) ? Str::uuid() : $value);
+    }
 
     /**
      * Get the owning payable model.

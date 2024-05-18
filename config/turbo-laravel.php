@@ -69,5 +69,6 @@ return [
     'redirect_guessing_exceptions' => [
         // '/some-page'
         '/app/businesses/*',
+        '/app/payables/*',
     ],
 ];

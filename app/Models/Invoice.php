@@ -35,6 +35,9 @@ class Invoice extends Model
         'date' => 'datetime',
         'emailed' => 'boolean',
         'emailed_at' => 'datetime',
+        'total' => 'float',
+        'balance' => 'float',
+        'subtotal' => 'float',
     ];
 
     /**

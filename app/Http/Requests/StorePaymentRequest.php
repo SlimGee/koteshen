@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Payment;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePaymentRequest extends FormRequest
@@ -11,7 +12,7 @@ class StorePaymentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', Payment::class);
     }
 
     /**
@@ -22,7 +23,10 @@ class StorePaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'amount' => ['required', 'numeric', 'max:' . (float) round($this->route('payable')->balance) + 2],
+            'channel' => 'required|string',
+            'currency' => 'required|string',
+            'paid_at' => 'required|date',
         ];
     }
 }
