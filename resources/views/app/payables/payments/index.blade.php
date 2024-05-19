@@ -9,7 +9,7 @@
                 <h1 class="text-lg font-semibold md:text-xl md:text-2xl text-slate-700">Payments</h1>
             </div>
             <div>
-                <a href="{{ route('app.payments.create') }}">
+                <a href="{{ route('app.payables.payments.create', payable($payable)) }}">
                     <x-button>Enter payment</x-button>
                 </a>
             </div>
@@ -135,11 +135,11 @@
                                         <td class="whitespace-nowrap size-px">
                                             <div class="py-1.5 px-6">
                                                 <a class="inline-flex gap-x-1 items-center text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline decoration-2"
-                                                    href="{{ route('app.payments.edit', $payment) }}">
+                                                    href="{{ route('app.payables.payments.edit', [payable($payment->payable), $payment]) }}">
                                                     Edit
                                                 </a>
 
-                                                <a href="{{ route('app.payments.destroy', $payment) }}"
+                                                <a href="{{ route('app.payables.payments.destroy', [payable($payment->payable), $payment]) }}"
                                                     data-turbo-method="delete"
                                                     data-turbo-confirm="This cannot be undone. Are you sure?">
                                                     <button

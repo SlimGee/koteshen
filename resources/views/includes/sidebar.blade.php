@@ -52,6 +52,19 @@
                      Estimates
                  </a>
              </li>
+
+             <li>
+                 <a href="{{ route('app.payments.index') }}" @class([
+                     'flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded hover:bg-blue-500 hover:text-white text-neutral-700 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300',
+                     'bg-blue-accent-400 text-white' =>
+                         Route::is('app.payments.*') || Route::is('app.payables.payments.*'),
+                 ])>
+                     <i class="bi bi-currency-dollar"></i>
+                     </svg>
+                     Payments
+                 </a>
+             </li>
+
              <li>
                  <a href="{{ route('app.settings.index') }}" @class([
                      'flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded hover:bg-blue-500 hover:text-white text-neutral-700 dark:hover:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300',

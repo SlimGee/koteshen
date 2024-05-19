@@ -1,18 +1,21 @@
 @extends('app')
 
 @section('title', 'Payments')
+@extends('app')
+
+@section('title', 'Payments')
 
 @section('content')
     <section class="mb-10">
         <div class="flex justify-between items-center md:items-baseline">
             <div class="flex items-center space-x-6">
-                <a href="{{ route('app.payables.payments.index', payable($payable)) }}">
+                <a href="{{ route('app.payments.index') }}">
                     <x-secondary-button class="!py-2 !px-3 !text-xs">
                         <i class="bi bi-caret-left-fill"></i>
-                        Payment
+                        Payments
                     </x-secondary-button>
                 </a>
-                <h1 class="ml-4 text-xl font-semibold md:text-2xl text-slate-700">Payment</h1>
+                <h1 class="ml-4 text-xl font-semibold md:text-2xl text-slate-700">Payment {{ $payment->reference }}</h1>
             </div>
         </div>
     </section>
@@ -21,19 +24,35 @@
     <section>
 
         <div class="md:w-1/2">
-            <form action="{{ route('app.payables.payments.update', [payable($payable), $payment]) }}" method="POST">
+            <form action="{{ route('app.payments.update', $payment) }}" method="POST">
                 @csrf
                 @method('PATCH')
 
                 <div class="px-3 bg-white rounded border shadow-sm">
 
+
+
                     <div class="p-3 mt-3">
+
+
+
+                        <div class="mb-3">
+                            <x-form.label for="invoice_id" class="mb-1">Select Invoice</x-form.label>
+                            <x-form.select name="invoice_id" class="w-full" data-controller="choices">
+                                @foreach ($invoices as $invoice)
+                                    <option value="{{ $invoice->id }}" @selected(old('invoice_id', $payment->payable_id) == $invoice->id)>
+                                        {{ $invoice->number }} {{ $invoice->currency->symbol }}{{ $invoice->balance }}
+                                    </option>
+                                @endforeach
+                            </x-form.select>
+                        </div>
+
                         <div class="mb-3">
                             <x-form.label for="date">
                                 Date
                             </x-form.label>
-                            <x-form.input data-controller="datepicker" name="paid_at" class="mt-1 w-full"
-                                :value="$payment->paid_at->format('Y-m-d')" />
+                            <x-form.input data-controller="datepicker" :value="$payment->paid_at" name="paid_at"
+                                class="mt-1 w-full" />
                         </div>
 
                         <div class="mb-3">

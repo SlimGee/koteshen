@@ -6,7 +6,7 @@
     <section class="mb-10">
         <div class="flex justify-between items-center md:items-baseline">
             <div class="flex items-center space-x-6">
-                <a href="{{ route('app.payments.index') }}">
+                <a href="{{ route('app.payables.payments.index', payable($payable)) }}">
                     <x-secondary-button class="!py-2 !px-3 !text-xs">
                         <i class="bi bi-caret-left-fill"></i>
                         Payments
@@ -21,28 +21,12 @@
     <section>
 
         <div class="md:w-1/2">
-            <form action="{{ route('app.payments.store') }}" method="POST">
+            <form action="{{ route('app.payables.payments.store', payable($payable)) }}" method="POST">
                 @csrf
 
                 <div class="px-3 bg-white rounded border shadow-sm">
 
-
-
                     <div class="p-3 mt-3">
-
-
-
-                        <div class="mb-3">
-                            <x-form.label for="invoice_id" class="mb-1">Select Invoice</x-form.label>
-                            <x-form.select name="invoice_id" class="w-full" data-controller="choices">
-                                @foreach ($invoices as $invoice)
-                                    <option value="{{ $invoice->id }}" @selected(old('invoice_id') == $invoice->id)>
-                                        {{ $invoice->number }} {{ $invoice->currency->symbol }}{{ $invoice->balance }}
-                                    </option>
-                                @endforeach
-                            </x-form.select>
-                        </div>
-
                         <div class="mb-3">
                             <x-form.label for="date">
                                 Date
@@ -65,7 +49,7 @@
 
                             <x-form.select name="currency" class="mt-1 w-full" data-choices-target="element">
                                 @foreach ($currencies as $currency)
-                                    <option value="{{ $currency->code }}" @selected(old('currency') == $currency->code)>
+                                    <option value="{{ $currency->code }}" @selected(old('currency', $payable->currency->code) == $currency->code)>
                                         {{ $currency->name }} ({{ $currency->code }})
                                     </option>
                                 @endforeach

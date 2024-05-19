@@ -28,6 +28,7 @@ use App\Http\Controllers\InvoiceActivityController;
 use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoiceStatusController;
+use App\Http\Controllers\PaymentController as ControllersPaymentController;
 use App\Http\Controllers\RecurringInvoiceController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
@@ -117,6 +118,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPr
         Route::resource('businesses', BusinessBusinessController::class)->only(['edit', 'update', 'destroy']);
 
         Route::resource('payables.payments', PaymentPaymentController::class);
+        Route::resource('payments', ControllersPaymentController::class);
     });
 
 // Laravel 8 & 9

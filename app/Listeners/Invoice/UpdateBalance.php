@@ -4,9 +4,8 @@ namespace App\Listeners\Invoice;
 
 use App\Enum\InvoiceStatus;
 use App\Events\PaymentSaved;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UpdateBalance implements ShouldQueue
+class UpdateBalance
 {
     /**
      * Create the event listener.

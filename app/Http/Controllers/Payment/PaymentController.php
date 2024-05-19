@@ -28,7 +28,7 @@ class PaymentController extends Controller
             ->defaultSort('-created_at')
             ->paginate(10);
 
-        return view('app.payments.index', [
+        return view('app.payables.payments.index', [
             'payments' => $payments,
             'payable' => $payable,
         ]);
@@ -39,7 +39,7 @@ class PaymentController extends Controller
      */
     public function create($payable): Renderable
     {
-        return view('app.payments.create', [
+        return view('app.payables.payments.create', [
             'payable' => $payable,
         ]);
     }
@@ -65,7 +65,7 @@ class PaymentController extends Controller
      */
     public function show(Payment $payment): Renderable
     {
-        return view('app.payments.show', [
+        return view('app.payables.payments.show', [
             'payment' => $payment,
             'payable' => $payment->payable,
         ]);
@@ -76,7 +76,7 @@ class PaymentController extends Controller
      */
     public function edit($payable, Payment $payment): Renderable
     {
-        return view('app.payments.edit', [
+        return view('app.payables.payments.edit', [
             'payment' => $payment,
             'payable' => $payment->payable,
         ]);
