@@ -120,6 +120,11 @@ class Invoice extends Model
         );
     }
 
+    public function scopeOverdue(Builder $builder): Builder
+    {
+        return $builder->where('due_at', '<', now())->where('balance', '>', 0);
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

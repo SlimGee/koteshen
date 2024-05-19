@@ -29,7 +29,9 @@
                 {{ $invoice->currency->symbol }}
                 {{ Number::format($invoice->total, $invoice->currency->decimal_digits) }}
             </div>
-            <div class="text-sm font-medium text-slate-600">Paid April 15 2024</div>
+            <div class="text-sm font-medium text-slate-600">Paid
+                {{ $invoice->payments->last()->created_at->format('d, M Y') }}
+            </div>
         </div>
     </div>
 

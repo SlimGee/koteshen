@@ -5,6 +5,9 @@
 import { Stimulus } from '../libs/stimulus'
 
 
+import ApexchartsController from './apexcharts_controller'
+Stimulus.register('apexcharts', ApexchartsController)
+
 import ChoicesController from './choices_controller'
 Stimulus.register('choices', ChoicesController)
 

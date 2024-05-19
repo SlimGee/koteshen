@@ -36,6 +36,7 @@ const RAW_RUNTIME_STATE =
           ["@tailwindcss/typography", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.12"],\
           ["air-datepicker", "npm:3.5.0"],\
           ["animate.css", "npm:4.1.1"],\
+          ["apexcharts", "npm:3.49.1"],\
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
           ["choices.js", "npm:10.2.0"],\
@@ -49,6 +50,7 @@ const RAW_RUNTIME_STATE =
           ["izitoast", "npm:1.4.0"],\
           ["laravel-echo", "npm:1.16.1"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
+          ["lodash", "npm:4.17.21"],\
           ["postcss", "npm:8.4.38"],\
           ["preline", "npm:2.1.0"],\
           ["puppeteer", "npm:22.6.5"],\
@@ -909,6 +911,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@yr/monotone-cubic-spline", [\
+      ["npm:1.0.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/@yr-monotone-cubic-spline-npm-1.0.3-a6469f7958-10c0.zip/node_modules/@yr/monotone-cubic-spline/",\
+        "packageDependencies": [\
+          ["@yr/monotone-cubic-spline", "npm:1.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["abbrev", [\
       ["npm:2.0.0", {\
         "packageLocation": "../../../.yarn/berry/cache/abbrev-npm-2.0.0-0eb38a17e5-10c0.zip/node_modules/abbrev/",\
@@ -1014,6 +1025,22 @@ const RAW_RUNTIME_STATE =
           ["anymatch", "npm:3.1.3"],\
           ["normalize-path", "npm:3.0.0"],\
           ["picomatch", "npm:2.3.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["apexcharts", [\
+      ["npm:3.49.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/apexcharts-npm-3.49.1-9738d44035-10c0.zip/node_modules/apexcharts/",\
+        "packageDependencies": [\
+          ["apexcharts", "npm:3.49.1"],\
+          ["@yr/monotone-cubic-spline", "npm:1.0.3"],\
+          ["svg.draggable.js", "npm:2.2.2"],\
+          ["svg.easing.js", "npm:2.0.0"],\
+          ["svg.filter.js", "npm:2.0.2"],\
+          ["svg.pathmorphing.js", "npm:0.1.3"],\
+          ["svg.resize.js", "npm:1.4.3"],\
+          ["svg.select.js", "npm:3.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2459,6 +2486,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["lodash", [\
+      ["npm:4.17.21", {\
+        "packageLocation": "../../../.yarn/berry/cache/lodash-npm-4.17.21-6382451519-10c0.zip/node_modules/lodash/",\
+        "packageDependencies": [\
+          ["lodash", "npm:4.17.21"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["lodash.castarray", [\
       ["npm:4.4.0", {\
         "packageLocation": "../../../.yarn/berry/cache/lodash.castarray-npm-4.4.0-f3706198e9-10c0.zip/node_modules/lodash.castarray/",\
@@ -3386,6 +3422,7 @@ const RAW_RUNTIME_STATE =
           ["@tailwindcss/typography", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.5.12"],\
           ["air-datepicker", "npm:3.5.0"],\
           ["animate.css", "npm:4.1.1"],\
+          ["apexcharts", "npm:3.49.1"],\
           ["autoprefixer", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:10.4.19"],\
           ["axios", "npm:1.6.8"],\
           ["choices.js", "npm:10.2.0"],\
@@ -3399,6 +3436,7 @@ const RAW_RUNTIME_STATE =
           ["izitoast", "npm:1.4.0"],\
           ["laravel-echo", "npm:1.16.1"],\
           ["laravel-vite-plugin", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.0.2"],\
+          ["lodash", "npm:4.17.21"],\
           ["postcss", "npm:8.4.38"],\
           ["preline", "npm:2.1.0"],\
           ["puppeteer", "npm:22.6.5"],\
@@ -3668,6 +3706,84 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/supports-preserve-symlinks-flag-npm-1.0.0-f17c4d0028-10c0.zip/node_modules/supports-preserve-symlinks-flag/",\
         "packageDependencies": [\
           ["supports-preserve-symlinks-flag", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["svg.draggable.js", [\
+      ["npm:2.2.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.draggable.js-npm-2.2.2-91cd7475f3-10c0.zip/node_modules/svg.draggable.js/",\
+        "packageDependencies": [\
+          ["svg.draggable.js", "npm:2.2.2"],\
+          ["svg.js", "npm:2.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["svg.easing.js", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.easing.js-npm-2.0.0-0c84ce8158-10c0.zip/node_modules/svg.easing.js/",\
+        "packageDependencies": [\
+          ["svg.easing.js", "npm:2.0.0"],\
+          ["svg.js", "npm:2.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["svg.filter.js", [\
+      ["npm:2.0.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.filter.js-npm-2.0.2-f65ff6d47e-10c0.zip/node_modules/svg.filter.js/",\
+        "packageDependencies": [\
+          ["svg.filter.js", "npm:2.0.2"],\
+          ["svg.js", "npm:2.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["svg.js", [\
+      ["npm:2.7.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.js-npm-2.7.1-c232ccf7aa-10c0.zip/node_modules/svg.js/",\
+        "packageDependencies": [\
+          ["svg.js", "npm:2.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["svg.pathmorphing.js", [\
+      ["npm:0.1.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.pathmorphing.js-npm-0.1.3-83b910d5a4-10c0.zip/node_modules/svg.pathmorphing.js/",\
+        "packageDependencies": [\
+          ["svg.pathmorphing.js", "npm:0.1.3"],\
+          ["svg.js", "npm:2.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["svg.resize.js", [\
+      ["npm:1.4.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.resize.js-npm-1.4.3-9e6b42a70f-10c0.zip/node_modules/svg.resize.js/",\
+        "packageDependencies": [\
+          ["svg.resize.js", "npm:1.4.3"],\
+          ["svg.js", "npm:2.7.1"],\
+          ["svg.select.js", "npm:2.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["svg.select.js", [\
+      ["npm:2.1.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.select.js-npm-2.1.2-d8be268fcb-10c0.zip/node_modules/svg.select.js/",\
+        "packageDependencies": [\
+          ["svg.select.js", "npm:2.1.2"],\
+          ["svg.js", "npm:2.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.0.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/svg.select.js-npm-3.0.1-9baa0ca5b5-10c0.zip/node_modules/svg.select.js/",\
+        "packageDependencies": [\
+          ["svg.select.js", "npm:3.0.1"],\
+          ["svg.js", "npm:2.7.1"]\
         ],\
         "linkType": "HARD"\
       }]\

@@ -28,7 +28,7 @@ class Payment extends Model
      */
     protected $casts = [
         'paid_at' => 'datetime',
-        'amount' => 'float',
+        'amount' => 'float:2',
     ];
 
     /**
