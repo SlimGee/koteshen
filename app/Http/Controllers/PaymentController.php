@@ -20,7 +20,7 @@ class PaymentController extends Controller
     {
         Meta::prependTitle('Payments');
 
-        $payments = QueryBuilder::for(Payment::class)
+        $payments = QueryBuilder::for(auth()->user()->business->payments())
             ->defaultSort('-created_at')
             ->paginate(10);
 
@@ -76,6 +76,7 @@ class PaymentController extends Controller
             'currency' => $data['currency'],
             'reference' => null,
             'user_id' => auth()->user()->id,
+            'business_id' => auth()->user()->business->id,
         ]);
 
         return redirect()->route('app.payments.index')->with('success', 'Payment successfully saved');

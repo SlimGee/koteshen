@@ -82,4 +82,9 @@ class Business extends Model
     {
         return $this->hasMany(Estimate::class);
     }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

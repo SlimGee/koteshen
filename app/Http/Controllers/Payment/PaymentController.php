@@ -55,6 +55,7 @@ class PaymentController extends Controller
             'reference' => null,
             'user_id' => auth()->user()->id,
             'client_id' => $payable->client_id,
+            'business_id' => auth()->user()->business->id,
         ]);
 
         return redirect()->route('app.payables.payments.index', payable($payable))->with('success', 'Payment successfully saved');

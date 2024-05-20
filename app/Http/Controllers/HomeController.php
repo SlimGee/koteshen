@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
-use App\Models\Invoice;
-use App\Models\Payment;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
@@ -34,13 +31,15 @@ class HomeController extends Controller
                     ->setImage(asset('images/cover.jpg'))
             );
 
-        $outstanding = Invoice::query()->sum('balance');
-        $revenue = Payment::query()->sum('amount');
-        $totalClients = Client::query()->count();
-        $overdueInvoices = Invoice::overdue()->get()->count();
-        $invoices = Invoice::latest()->limit(6)->get();
+        $business = auth()->user()->business;
 
-        $incomeChart = Payment::all()->groupBy(function ($payment) {
+        $outstanding = $business->invoices()->sum('balance');
+        $revenue = $business->payments()->sum('amount');
+        $totalClients = $business->clients()->count();
+        $overdueInvoices = $business->invoices()->overdue()->get()->count();
+        $invoices = $business->invoices()->latest()->limit(6)->get();
+
+        $incomeChart = $business->payments()->get()->groupBy(function ($payment) {
             return $payment->created_at->format('d M');
         })->map(function ($payments) {
             return $payments->sum('amount');

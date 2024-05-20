@@ -29,9 +29,11 @@
                 {{ $invoice->currency->symbol }}
                 {{ Number::format($invoice->total, $invoice->currency->decimal_digits) }}
             </div>
-            <div class="text-sm font-medium text-slate-600">Paid
-                {{ $invoice->payments->last()->created_at->format('d, M Y') }}
-            </div>
+            @if ($invoice->payments->count() > 0)
+                <div class="text-sm font-medium text-slate-600">Paid
+                    {{ $invoice->payments->last()?->created_at->format('d, M Y') }}
+                </div>
+            @endif
         </div>
     </div>
 
