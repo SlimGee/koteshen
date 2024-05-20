@@ -85,7 +85,7 @@
                             </div>
                             <div class="py-2 mt-2 first:pt-0 last:pb-0">
                                 <a class="flex gap-x-3.5 items-center py-2 px-3 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 hover:bg-slate-100"
-                                    href="#">
+                                    href="{{ route('app.profile.edit') }}">
                                     <i class="bi bi-person"></i>
                                     My Account
                                 </a>
@@ -93,12 +93,6 @@
                                     href="#">
                                     <i class="bi bi-currency-dollar"></i>
                                     Billing
-                                </a>
-
-                                <a class="flex gap-x-3.5 items-center py-2 px-3 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 hover:bg-slate-100"
-                                    href="#">
-                                    <i class="bi bi-people"></i>
-                                    Team Account
                                 </a>
 
                                 <a class="flex gap-x-3.5 items-center py-2 px-3 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 hover:bg-slate-100"
@@ -138,8 +132,8 @@
             <button type="button" {{ stimulus_action('menu', 'toggle') }}
                 class="flex gap-x-1.5 justify-center items-center py-2 px-3 text-xs text-gray-500 rounded-lg border border-gray-200 hover:text-gray-600 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200">
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
                     <path d="M17 8L21 12L17 16M3 12H13M3 6H13M3 18H13" />
                 </svg>
                 <span class="sr-only">Sidebar</span>
