@@ -59,7 +59,7 @@
                             </x-form.label>
 
 
-                            <div class="w-1/2"
+                            <div class="w-32"
                                 {{ stimulus_controller('filepond', [
                                     'process' => route('images.store'),
                                     'restore' => route('images.show'),

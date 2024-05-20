@@ -33,7 +33,7 @@ export default class extends Controller {
     connect() {
         const pond = FilePond.create(this.inputTarget, {
             labelIdle: this.labelValue,
-            imagePreviewHeight: 250,
+            imagePreviewHeight: 100,
             imageCropAspectRatio: "1:1",
             imageResizeTargetWidth: 200,
             imageResizeTargetHeight: 200,
