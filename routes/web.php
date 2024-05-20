@@ -73,7 +73,7 @@ Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])
 
 Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('avatars.show');
 
-Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class])
+Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
     ->prefix('app')
     ->name('app.')
     ->group(function () {
