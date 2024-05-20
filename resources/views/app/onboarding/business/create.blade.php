@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="flex flex-col mb-3 space-y-3 md:flex-row md:space-y-0 md:space-x-3">
-                            <div class="">
+                            <div class="w-full md:w-1/2">
                                 <x-form.label for="city">
                                     City
                                 </x-form.label>
@@ -83,11 +83,10 @@
                                 </x-form.label>
 
                                 <x-form.select name="country" class="mt-1 w-full" data-controller="choices">
-                                    <option selected>Zimbabwe</option>
-                                    <option value="IT">IT</option>
-                                    <option value="Finance">Finance</option>
-                                    <option value="Health">Health</option>
-                                    <option value="Tax">Tax</option>
+                                    @foreach ($countries as $country)
+                                        <option @selected(old('country') == $country->name)>{{ $country->name }}</option>
+                                    @endforeach
+
                                 </x-form.select>
                             </div>
 

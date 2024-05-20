@@ -25,7 +25,7 @@
             <form action="{{ route('app.clients.store') }}" method="POST">
                 @csrf
 
-                <div class="rounded border shadow-sm">
+                <div class="bg-white rounded border shadow-sm">
                     <div class="p-4 bg-slate-50">
                         <h4 class="text-sm font-semibold text-slate-700">Basic information</h4>
                     </div>
@@ -128,7 +128,7 @@
 
 
 
-                <div class="mt-8 rounded border shadow-sm">
+                <div class="mt-8 bg-white rounded border shadow-sm">
                     <div class="p-4 bg-slate-50">
                         <h4 class="text-sm font-semibold text-slate-700">Address</h4>
                     </div>
@@ -174,7 +174,7 @@
                 </div>
 
 
-                <div class="mt-8 rounded border shadow-sm">
+                <div class="mt-8 bg-white rounded border shadow-sm">
                     <div class="p-4 bg-slate-50">
                         <h4 class="text-sm font-semibold text-slate-700">Additional Information</h4>
                     </div>

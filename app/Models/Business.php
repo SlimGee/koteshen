@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
-use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class Business extends Model
 {
-    use HasFactory;
-    use HasSlug;
+    use HasFactory, HasSlug, SoftDeletes;
 
     /**
      * The attributes that aren't mass assignable.
@@ -28,7 +28,7 @@ class Business extends Model
      * @var array
      */
     protected $casts = [
-        'phone' => E164PhoneNumberCast::class . ':phone_country',
+        'phone' => RawPhoneNumberCast::class . ':phone_country',
     ];
 
     /**
@@ -73,5 +73,18 @@ class Business extends Model
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     * Get the estimates that belong to this business
+     */
+    public function estimates(): HasMany
+    {
+        return $this->hasMany(Estimate::class);
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
     }
 }

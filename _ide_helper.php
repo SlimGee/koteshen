@@ -4086,7 +4086,7 @@ namespace Illuminate\Support\Facades {
          * @static 
          */        public static function lock($name, $seconds = 0, $owner = null)
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\RedisStore $instance */
                         return $instance->lock($name, $seconds, $owner);
         }
                     /**
@@ -4098,19 +4098,8 @@ namespace Illuminate\Support\Facades {
          * @static 
          */        public static function restoreLock($name, $owner)
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\RedisStore $instance */
                         return $instance->restoreLock($name, $owner);
-        }
-                    /**
-         * Remove an item from the cache if it is expired.
-         *
-         * @param string $key
-         * @return bool 
-         * @static 
-         */        public static function forgetIfExpired($key)
-        {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
-                        return $instance->forgetIfExpired($key);
         }
                     /**
          * Remove all items from the cache.
@@ -4119,29 +4108,70 @@ namespace Illuminate\Support\Facades {
          * @static 
          */        public static function flush()
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\RedisStore $instance */
                         return $instance->flush();
         }
                     /**
-         * Get the underlying database connection.
+         * Remove all expired tag set entries.
          *
-         * @return \Illuminate\Database\MariaDbConnection 
+         * @return void 
          * @static 
-         */        public static function getConnection()
+         */        public static function flushStaleTags()
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
-                        return $instance->getConnection();
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        $instance->flushStaleTags();
+        }
+                    /**
+         * Get the Redis connection instance.
+         *
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @static 
+         */        public static function connection()
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->connection();
+        }
+                    /**
+         * Get the Redis connection instance that should be used to manage locks.
+         *
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @static 
+         */        public static function lockConnection()
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->lockConnection();
+        }
+                    /**
+         * Specify the name of the connection that should be used to store data.
+         *
+         * @param string $connection
+         * @return void 
+         * @static 
+         */        public static function setConnection($connection)
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        $instance->setConnection($connection);
         }
                     /**
          * Specify the name of the connection that should be used to manage locks.
          *
-         * @param \Illuminate\Database\ConnectionInterface $connection
-         * @return \Illuminate\Cache\DatabaseStore 
+         * @param string $connection
+         * @return \Illuminate\Cache\RedisStore 
          * @static 
          */        public static function setLockConnection($connection)
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\RedisStore $instance */
                         return $instance->setLockConnection($connection);
+        }
+                    /**
+         * Get the Redis database instance.
+         *
+         * @return \Illuminate\Contracts\Redis\Factory 
+         * @static 
+         */        public static function getRedis()
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->getRedis();
         }
                     /**
          * Get the cache key prefix.
@@ -4150,8 +4180,19 @@ namespace Illuminate\Support\Facades {
          * @static 
          */        public static function getPrefix()
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\RedisStore $instance */
                         return $instance->getPrefix();
+        }
+                    /**
+         * Set the cache key prefix.
+         *
+         * @param string $prefix
+         * @return void 
+         * @static 
+         */        public static function setPrefix($prefix)
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        $instance->setPrefix($prefix);
         }
             }
             /**
@@ -17928,6 +17969,576 @@ namespace Illuminate\Support\Facades {
             }
     }
 
+namespace Barryvdh\DomPDF\Facade {
+            /**
+     * 
+     *
+     * @method static BasePDF setBaseHost(string $baseHost)
+     * @method static BasePDF setBasePath(string $basePath)
+     * @method static BasePDF setCanvas(\Dompdf\Canvas $canvas)
+     * @method static BasePDF setCallbacks(array $callbacks)
+     * @method static BasePDF setCss(\Dompdf\Css\Stylesheet $css)
+     * @method static BasePDF setDefaultView(string $defaultView, array $options)
+     * @method static BasePDF setDom(\DOMDocument $dom)
+     * @method static BasePDF setFontMetrics(\Dompdf\FontMetrics $fontMetrics)
+     * @method static BasePDF setHttpContext(resource|array $httpContext)
+     * @method static BasePDF setPaper(string|float[] $paper, string $orientation = 'portrait')
+     * @method static BasePDF setProtocol(string $protocol)
+     * @method static BasePDF setTree(\Dompdf\Frame\FrameTree $tree)
+     */        class Pdf {
+                    /**
+         * Get the DomPDF instance
+         *
+         * @static 
+         */        public static function getDomPDF()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->getDomPDF();
+        }
+                    /**
+         * Show or hide warnings
+         *
+         * @static 
+         */        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setWarnings($warnings);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadHTML($string, $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadHTML($string, $encoding);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @static 
+         */        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * Add metadata info
+         *
+         * @param array<string, string> $info
+         * @static 
+         */        public static function addInfo($info)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->addInfo($info);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param array<string, mixed> $data
+         * @param array<string, mixed> $mergeData
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadView($view, $data = [], $mergeData = [], $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadView($view, $data, $mergeData, $encoding);
+        }
+                    /**
+         * Set/Change an option (or array of options) in Dompdf
+         *
+         * @param array<string, mixed>|string $attribute
+         * @param null|mixed $value
+         * @static 
+         */        public static function setOption($attribute, $value = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOption($attribute, $value);
+        }
+                    /**
+         * Replace all the Options from DomPDF
+         *
+         * @deprecated Use setOption to override individual options.
+         * @param array<string, mixed> $options
+         * @static 
+         */        public static function setOptions($options)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOptions($options);
+        }
+                    /**
+         * Output the PDF as a string.
+         * 
+         * The options parameter controls the output. Accepted options are:
+         * 
+         * 'compress' = > 1 or 0 - apply content stream compression, this is
+         *    on (1) by default
+         *
+         * @param array<string, int> $options
+         * @return string The rendered PDF as string
+         * @static 
+         */        public static function output($options = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->output($options);
+        }
+                    /**
+         * Save the PDF to a file
+         *
+         * @static 
+         */        public static function save($filename, $disk = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->save($filename, $disk);
+        }
+                    /**
+         * Make the PDF downloadable by the user
+         *
+         * @static 
+         */        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @static 
+         */        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->stream($filename);
+        }
+                    /**
+         * Render the PDF
+         *
+         * @static 
+         */        public static function render()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param array<string> $pc
+         * @static 
+         */        public static function setEncryption($password, $ownerpassword = '', $pc = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setEncryption($password, $ownerpassword, $pc);
+        }
+            }
+    }
+
+namespace Barryvdh\Snappy\Facades {
+            /**
+     * 
+     *
+     * @method static BasePDF setBaseHost(string $baseHost)
+     * @method static BasePDF setBasePath(string $basePath)
+     * @method static BasePDF setCanvas(\Dompdf\Canvas $canvas)
+     * @method static BasePDF setCallbacks(array $callbacks)
+     * @method static BasePDF setCss(\Dompdf\Css\Stylesheet $css)
+     * @method static BasePDF setDefaultView(string $defaultView, array $options)
+     * @method static BasePDF setDom(\DOMDocument $dom)
+     * @method static BasePDF setFontMetrics(\Dompdf\FontMetrics $fontMetrics)
+     * @method static BasePDF setHttpContext(resource|array $httpContext)
+     * @method static BasePDF setProtocol(string $protocol)
+     * @method static BasePDF setTree(\Dompdf\Frame\FrameTree $tree)
+     * @method static BasePDF addInfo(array $info)
+     */        class SnappyPdf {
+                    /**
+         * Get the Snappy instance.
+         *
+         * @return \Knp\Snappy\Pdf 
+         * @static 
+         */        public static function snappy()
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->snappy();
+        }
+                    /**
+         * Set temporary folder
+         *
+         * @param string $path
+         * @static 
+         */        public static function setTemporaryFolder($path)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->setTemporaryFolder($path);
+        }
+                    /**
+         * Set the paper size (default A4)
+         *
+         * @param string $paper
+         * @param string $orientation
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function setPaper($paper, $orientation = null)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->setPaper($paper, $orientation);
+        }
+                    /**
+         * Set the orientation (default portrait)
+         *
+         * @param string $orientation
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function setOrientation($orientation)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->setOrientation($orientation);
+        }
+                    /**
+         * Show or hide warnings
+         *
+         * @param bool $warnings
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @deprecated 
+         * @static 
+         */        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->setWarnings($warnings);
+        }
+                    /**
+         * 
+         *
+         * @param string $name
+         * @param mixed $value
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function setOption($name, $value)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->setOption($name, $value);
+        }
+                    /**
+         * 
+         *
+         * @param array $options
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function setOptions($options)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->setOptions($options);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param Array|string|\Illuminate\Contracts\Support\Renderable $html
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function loadHTML($html)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->loadHTML($html);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @param string $file
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param string $view
+         * @param array $data
+         * @param array $mergeData
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function loadView($view, $data = [], $mergeData = [])
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->loadView($view, $data, $mergeData);
+        }
+                    /**
+         * Output the PDF as a string.
+         *
+         * @return string The rendered PDF as string
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function output()
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->output();
+        }
+                    /**
+         * Save the PDF to a file
+         *
+         * @param $filename
+         * @return \Barryvdh\Snappy\PdfWrapper 
+         * @static 
+         */        public static function save($filename, $overwrite = false)
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->save($filename, $overwrite);
+        }
+                    /**
+         * Make the PDF downloadable by the user
+         *
+         * @param string $filename
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @param string $filename
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */        public static function inline($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->inline($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @param string $filename
+         * @return \Symfony\Component\HttpFoundation\StreamedResponse 
+         * @deprecated use inline() instead
+         * @static 
+         */        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\Snappy\PdfWrapper $instance */
+                        return $instance->stream($filename);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function assertViewIs($value)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertViewIs($value);
+        }
+                    /**
+         * Assert that the response view has a given piece of bound data.
+         *
+         * @param string|array $key
+         * @param mixed $value
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertViewHas($key, $value = null)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertViewHas($key, $value);
+        }
+                    /**
+         * Assert that the response view has a given list of bound data.
+         *
+         * @param array $bindings
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertViewHasAll($bindings)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertViewHasAll($bindings);
+        }
+                    /**
+         * Assert that the response view is missing a piece of bound data.
+         *
+         * @param string $key
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertViewMissing($key)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertViewMissing($key);
+        }
+                    /**
+         * Assert that the given string is contained within the response.
+         *
+         * @param string $value
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertSee($value)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertSee($value);
+        }
+                    /**
+         * Assert that the given string is contained within the response text.
+         *
+         * @param string $value
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertSeeText($value)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertSeeText($value);
+        }
+                    /**
+         * Assert that the given string is not contained within the response.
+         *
+         * @param string $value
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertDontSee($value)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertDontSee($value);
+        }
+                    /**
+         * Assert that the given string is not contained within the response text.
+         *
+         * @param string $value
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertDontSeeText($value)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertDontSeeText($value);
+        }
+                    /**
+         * Assert that the given string is equal to the saved filename.
+         *
+         * @param string $value
+         * @return \Barryvdh\Snappy\PdfFaker 
+         * @static 
+         */        public static function assertFileNameIs($value)
+        {
+                        /** @var \Barryvdh\Snappy\PdfFaker $instance */
+                        return $instance->assertFileNameIs($value);
+        }
+            }
+            /**
+     * 
+     *
+     */        class SnappyImage {
+                    /**
+         * Get the Snappy instance.
+         *
+         * @return \Knp\Snappy\Image 
+         * @static 
+         */        public static function snappy()
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->snappy();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setOption($name, $value)
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->setOption($name, $value);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setOptions($options)
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->setOptions($options);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string $string
+         * @return static 
+         * @static 
+         */        public static function loadHTML($string)
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->loadHTML($string);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @param string $file
+         * @return static 
+         * @static 
+         */        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function loadView($view, $data = [], $mergeData = [])
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->loadView($view, $data, $mergeData);
+        }
+                    /**
+         * Output the PDF as a string.
+         *
+         * @return string The rendered PDF as string
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function output()
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->output();
+        }
+                    /**
+         * Save the image to a file
+         *
+         * @param $filename
+         * @return static 
+         * @static 
+         */        public static function save($filename, $overwrite = false)
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->save($filename, $overwrite);
+        }
+                    /**
+         * Make the image downloadable by the user
+         *
+         * @param string $filename
+         * @return \Symfony\Component\HttpFoundation\Response 
+         * @static 
+         */        public static function download($filename = 'image.jpg')
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the image to show in the browser
+         *
+         * @param string $filename
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */        public static function inline($filename = 'image.jpg')
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->inline($filename);
+        }
+                    /**
+         * Return a response with the image to show in the browser
+         *
+         * @deprecated Use inline() instead
+         * @param string $filename
+         * @return \Symfony\Component\HttpFoundation\Response 
+         * @static 
+         */        public static function stream($filename = 'image.jpg')
+        {
+                        /** @var \Barryvdh\Snappy\ImageWrapper $instance */
+                        return $instance->stream($filename);
+        }
+            }
+    }
+
 namespace Butschster\Head\Facades {
             /**
      * Class Meta
@@ -18764,6 +19375,63 @@ namespace HotwiredLaravel\TurboLaravel\Facades {
             }
     }
 
+namespace Intervention\Image\Facades {
+            /**
+     * 
+     *
+     */        class Image {
+                    /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @return self 
+         * @static 
+         */        public static function configure($config = [])
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->configure($config);
+        }
+                    /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */        public static function make($data)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->make($data);
+        }
+                    /**
+         * Creates an empty image canvas
+         *
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */        public static function canvas($width, $height, $background = null)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->canvas($width, $height, $background);
+        }
+                    /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->cache($callback, $lifetime, $returnObj);
+        }
+            }
+    }
+
 namespace Laravel\Socialite\Facades {
             /**
      * 
@@ -18879,6 +19547,1179 @@ namespace Laravel\Socialite\Facades {
         {            //Method inherited from \Illuminate\Support\Manager         
                         /** @var \Laravel\Socialite\SocialiteManager $instance */
                         return $instance->getContainer();
+        }
+            }
+    }
+
+namespace Opcodes\LogViewer\Facades {
+            /**
+     * 
+     *
+     * @see \Opcodes\LogViewer\LogViewerService
+     */        class LogViewer {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function timezone()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->timezone();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function basePathForLogs()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->basePathForLogs();
+        }
+                    /**
+         * 
+         *
+         * @return \Opcodes\LogViewer\LogFileCollection|\Opcodes\LogViewer\LogFile[] 
+         * @static 
+         */        public static function getFiles()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getFiles();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getFilesGroupedByFolder()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getFilesGroupedByFolder();
+        }
+                    /**
+         * Find the file with the given identifier or file name.
+         *
+         * @static 
+         */        public static function getFile($fileIdentifier)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getFile($fileIdentifier);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getFolder($folderIdentifier)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getFolder($folderIdentifier);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function supportsHostsFeature()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->supportsHostsFeature();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function resolveHostsUsing($callback)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->resolveHostsUsing($callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getHosts()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getHosts();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getHost($hostIdentifier)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getHost($hostIdentifier);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function clearFileCache()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->clearFileCache();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getRouteDomain()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getRouteDomain();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getRoutePrefix()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getRoutePrefix();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getRouteMiddleware()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getRouteMiddleware();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function auth($callback = null)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->auth($callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function hasAuthCallback()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->hasAuthCallback();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function lazyScanChunkSize()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->lazyScanChunkSize();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function lazyScanTimeout()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->lazyScanTimeout();
+        }
+                    /**
+         * Get the maximum number of bytes of the log that we should display.
+         *
+         * @static 
+         */        public static function maxLogSize()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->maxLogSize();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setMaxLogSize($bytes)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->setMaxLogSize($bytes);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function extend($type, $class)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->extend($type, $class);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function useLogFileClass($class)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->useLogFileClass($class);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function useLogReaderClass($class)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->useLogReaderClass($class);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function logReaderClass()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->logReaderClass();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setViewLayout($layout)
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->setViewLayout($layout);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getViewLayout()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->getViewLayout();
+        }
+                    /**
+         * Determine if Log Viewer's published assets are up-to-date.
+         *
+         * @throws \RuntimeException
+         * @static 
+         */        public static function assetsAreCurrent()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->assetsAreCurrent();
+        }
+                    /**
+         * Get the current version of the Log Viewer
+         *
+         * @static 
+         */        public static function version()
+        {
+                        /** @var \Opcodes\LogViewer\LogViewerService $instance */
+                        return $instance->version();
+        }
+            }
+    }
+
+namespace OsiemSiedem\Autolink\Facades {
+            /**
+     * 
+     *
+     */        class Autolink {
+                    /**
+         * Convert the URLs into clickable links.
+         *
+         * @param string $text
+         * @param callable|null $callback
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */        public static function convert($text, $callback = null)
+        {
+                        /** @var \OsiemSiedem\Autolink\Autolink $instance */
+                        return $instance->convert($text, $callback);
+        }
+                    /**
+         * Parse the text.
+         *
+         * @param string $text
+         * @return array 
+         * @static 
+         */        public static function parse($text)
+        {
+                        /** @var \OsiemSiedem\Autolink\Autolink $instance */
+                        return $instance->parse($text);
+        }
+                    /**
+         * Render the elements.
+         *
+         * @param string $text
+         * @param array $elements
+         * @param callable|null $callback
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */        public static function render($text, $elements, $callback = null)
+        {
+                        /** @var \OsiemSiedem\Autolink\Autolink $instance */
+                        return $instance->render($text, $elements, $callback);
+        }
+            }
+    }
+
+namespace Rawilk\Settings\Facades {
+            /**
+     * 
+     *
+     * @see \Rawilk\Settings\Settings
+     */        class Settings {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getDriver()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->getDriver();
+        }
+                    /**
+         * Pass in `false` for context when calling `all()` to only return results
+         * that do not have context.
+         *
+         * @static 
+         */        public static function context($context = null)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->context($context);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getTeamId()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->getTeamId();
+        }
+                    /**
+         * Set the team id for teams/groups support. This id is used when querying settings.
+         *
+         * @param int|string|null|\Illuminate\Database\Eloquent\Model $id
+         * @static 
+         */        public static function setTeamId($id)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->setTeamId($id);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function usingTeam($teamId)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->usingTeam($teamId);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function withoutTeams()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->withoutTeams();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getTeamForeignKey()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->getTeamForeignKey();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setTeamForeignKey($foreignKey)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->setTeamForeignKey($foreignKey);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function cacheDefaultValue($cacheDefaultValue = true)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->cacheDefaultValue($cacheDefaultValue);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function forget($key)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->forget($key);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function get($key, $default = null, $resetTempTeam = true)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->get($key, $default, $resetTempTeam);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function all($keys = null)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->all($keys);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function has($key, $resetTempTeam = true)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->has($key, $resetTempTeam);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function set($key, $value = null)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->set($key, $value);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function isFalse($key, $default = false)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->isFalse($key, $default);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function isTrue($key, $default = true)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->isTrue($key, $default);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function flush($keys = null)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->flush($keys);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function disableCache()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->disableCache();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function enableCache()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->enableCache();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function temporarilyDisableCache()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->temporarilyDisableCache();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setCache($cache)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->setCache($cache);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function disableEncryption()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->disableEncryption();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function enableEncryption()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->enableEncryption();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setEncrypter($encrypter)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->setEncrypter($encrypter);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function enableTeams()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->enableTeams();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function disableTeams()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->disableTeams();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function teamsAreEnabled()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->teamsAreEnabled();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function useCacheKeyPrefix($prefix)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->useCacheKeyPrefix($prefix);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getKeyGenerator()
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->getKeyGenerator();
+        }
+                    /**
+         * Generate the key to use for caching a specific setting.
+         * 
+         * This is meant for external usage.
+         *
+         * @static 
+         */        public static function cacheKeyForSetting($key)
+        {
+                        /** @var \Rawilk\Settings\Settings $instance */
+                        return $instance->cacheKeyForSetting($key);
+        }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */        public static function macro($name, $macro)
+        {
+                        \Rawilk\Settings\Settings::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */        public static function mixin($mixin, $replace = true)
+        {
+                        \Rawilk\Settings\Settings::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */        public static function hasMacro($name)
+        {
+                        return \Rawilk\Settings\Settings::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */        public static function flushMacros()
+        {
+                        \Rawilk\Settings\Settings::flushMacros();
+        }
+            }
+    }
+
+namespace Spatie\Html\Facades {
+            /**
+     * 
+     *
+     */        class Html {
+                    /**
+         * 
+         *
+         * @param string|null $href
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\A 
+         * @static 
+         */        public static function a($href = null, $contents = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->a($href, $contents);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $href
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\I 
+         * @static 
+         */        public static function i($contents = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->i($contents);
+        }
+                    /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $contents
+         * @return \Spatie\Html\Elements\P 
+         * @static 
+         */        public static function p($contents = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->p($contents);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $type
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\Button 
+         * @static 
+         */        public static function button($contents = null, $type = null, $name = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->button($contents, $type, $name);
+        }
+                    /**
+         * 
+         *
+         * @param \Illuminate\Support\Collection|\Spatie\Html\iterable|string $classes
+         * @return \Illuminate\Contracts\Support\Htmlable 
+         * @static 
+         */        public static function class($classes)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->class($classes);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param bool $checked
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function checkbox($name = null, $checked = null, $value = '1')
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->checkbox($name, $checked, $value);
+        }
+                    /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|\Spatie\Html\iterable|int|float|null $contents
+         * @return \Spatie\Html\Elements\Div 
+         * @static 
+         */        public static function div($contents = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->div($contents);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function email($name = null, $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->email($name, $value);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function search($name = null, $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->search($name, $value);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @param bool $format
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function date($name = '', $value = null, $format = true)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->date($name, $value, $format);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @param bool $format
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function datetime($name = '', $value = null, $format = true)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->datetime($name, $value, $format);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @param string|null $min
+         * @param string|null $max
+         * @param string|null $step
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function range($name = '', $value = '', $min = null, $max = null, $step = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->range($name, $value, $min, $max, $step);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @param bool $format
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function time($name = '', $value = null, $format = true)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->time($name, $value, $format);
+        }
+                    /**
+         * 
+         *
+         * @param string $tag
+         * @return \Spatie\Html\Elements\Element 
+         * @static 
+         */        public static function element($tag)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->element($tag);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $type
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function input($type = null, $name = null, $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->input($type, $name, $value);
+        }
+                    /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $legend
+         * @return \Spatie\Html\Elements\Fieldset 
+         * @static 
+         */        public static function fieldset($legend = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->fieldset($legend);
+        }
+                    /**
+         * 
+         *
+         * @param string $method
+         * @param string|null $action
+         * @return \Spatie\Html\Elements\Form 
+         * @static 
+         */        public static function form($method = 'POST', $action = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->form($method, $action);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function hidden($name = null, $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->hidden($name, $value);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $src
+         * @param string|null $alt
+         * @return \Spatie\Html\Elements\Img 
+         * @static 
+         */        public static function img($src = null, $alt = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->img($src, $alt);
+        }
+                    /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|\Spatie\Html\iterable|string|null $contents
+         * @param string|null $for
+         * @return \Spatie\Html\Elements\Label 
+         * @static 
+         */        public static function label($contents = null, $for = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->label($contents, $for);
+        }
+                    /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $contents
+         * @return \Spatie\Html\Elements\Legend 
+         * @static 
+         */        public static function legend($contents = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->legend($contents);
+        }
+                    /**
+         * 
+         *
+         * @param string $email
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\A 
+         * @static 
+         */        public static function mailto($email, $text = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->mailto($email, $text);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param \Spatie\Html\iterable $options
+         * @param string|\Spatie\Html\iterable|null $value
+         * @return \Spatie\Html\Elements\Select 
+         * @static 
+         */        public static function multiselect($name = null, $options = [], $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->multiselect($name, $options, $value);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @param string|null $min
+         * @param string|null $max
+         * @param string|null $step
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function number($name = null, $value = null, $min = null, $max = null, $step = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->number($name, $value, $min, $max, $step);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $text
+         * @param string|null $value
+         * @param bool $selected
+         * @return \Spatie\Html\Elements\Option 
+         * @static 
+         */        public static function option($text = null, $value = null, $selected = false)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->option($text, $value, $selected);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function password($name = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->password($name);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param bool $checked
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function radio($name = null, $checked = null, $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->radio($name, $checked, $value);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param \Spatie\Html\iterable $options
+         * @param string|\Spatie\Html\iterable|null $value
+         * @return \Spatie\Html\Elements\Select 
+         * @static 
+         */        public static function select($name = null, $options = [], $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->select($name, $options, $value);
+        }
+                    /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $contents
+         * @return \Spatie\Html\Elements\Span 
+         * @static 
+         */        public static function span($contents = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->span($contents);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\Button 
+         * @static 
+         */        public static function submit($text = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->submit($text);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\Button 
+         * @static 
+         */        public static function reset($text = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->reset($text);
+        }
+                    /**
+         * 
+         *
+         * @param string $number
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\A 
+         * @static 
+         */        public static function tel($number, $text = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->tel($number, $text);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function text($name = null, $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->text($name, $value);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @return \Spatie\Html\Elements\File 
+         * @static 
+         */        public static function file($name = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->file($name);
+        }
+                    /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Textarea 
+         * @static 
+         */        public static function textarea($name = null, $value = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->textarea($name, $value);
+        }
+                    /**
+         * 
+         *
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */        public static function token()
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->token();
+        }
+                    /**
+         * 
+         *
+         * @param \ArrayAccess|array $model
+         * @return \Spatie\Html\Html 
+         * @static 
+         */        public static function model($model)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->model($model);
+        }
+                    /**
+         * 
+         *
+         * @param \ArrayAccess|array $model
+         * @param string|null $method
+         * @param string|null $action
+         * @return \Spatie\Html\Elements\Form 
+         * @static 
+         */        public static function modelForm($model, $method = 'POST', $action = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->modelForm($model, $method, $action);
+        }
+                    /**
+         * 
+         *
+         * @return \Spatie\Html\Html 
+         * @static 
+         */        public static function endModel()
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->endModel();
+        }
+                    /**
+         * 
+         *
+         * @return \Illuminate\Contracts\Support\Htmlable 
+         * @static 
+         */        public static function closeModelForm()
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->closeModelForm();
+        }
+                    /**
+         * Retrieve the value from the current session or assigned model. This is
+         * a public alias for `old`.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @return mixed 
+         * @static 
+         */        public static function value($name, $default = null)
+        {
+                        /** @var \Spatie\Html\Html $instance */
+                        return $instance->value($name, $default);
+        }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */        public static function macro($name, $macro)
+        {
+                        \Spatie\Html\Html::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */        public static function mixin($mixin, $replace = true)
+        {
+                        \Spatie\Html\Html::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */        public static function hasMacro($name)
+        {
+                        return \Spatie\Html\Html::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */        public static function flushMacros()
+        {
+                        \Spatie\Html\Html::flushMacros();
         }
             }
     }
@@ -19251,6 +21092,560 @@ namespace Spatie\LaravelIgnition\Facades {
             }
     }
 
+namespace  {
+            /**
+     * 
+     *
+     * @method static BasePDF setBaseHost(string $baseHost)
+     * @method static BasePDF setBasePath(string $basePath)
+     * @method static BasePDF setCanvas(\Dompdf\Canvas $canvas)
+     * @method static BasePDF setCallbacks(array $callbacks)
+     * @method static BasePDF setCss(\Dompdf\Css\Stylesheet $css)
+     * @method static BasePDF setDefaultView(string $defaultView, array $options)
+     * @method static BasePDF setDom(\DOMDocument $dom)
+     * @method static BasePDF setFontMetrics(\Dompdf\FontMetrics $fontMetrics)
+     * @method static BasePDF setHttpContext(resource|array $httpContext)
+     * @method static BasePDF setPaper(string|float[] $paper, string $orientation = 'portrait')
+     * @method static BasePDF setProtocol(string $protocol)
+     * @method static BasePDF setTree(\Dompdf\Frame\FrameTree $tree)
+     */        class Pdf {
+                    /**
+         * Get the DomPDF instance
+         *
+         * @static 
+         */        public static function getDomPDF()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->getDomPDF();
+        }
+                    /**
+         * Show or hide warnings
+         *
+         * @static 
+         */        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setWarnings($warnings);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadHTML($string, $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadHTML($string, $encoding);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @static 
+         */        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * Add metadata info
+         *
+         * @param array<string, string> $info
+         * @static 
+         */        public static function addInfo($info)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->addInfo($info);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param array<string, mixed> $data
+         * @param array<string, mixed> $mergeData
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadView($view, $data = [], $mergeData = [], $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadView($view, $data, $mergeData, $encoding);
+        }
+                    /**
+         * Set/Change an option (or array of options) in Dompdf
+         *
+         * @param array<string, mixed>|string $attribute
+         * @param null|mixed $value
+         * @static 
+         */        public static function setOption($attribute, $value = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOption($attribute, $value);
+        }
+                    /**
+         * Replace all the Options from DomPDF
+         *
+         * @deprecated Use setOption to override individual options.
+         * @param array<string, mixed> $options
+         * @static 
+         */        public static function setOptions($options)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOptions($options);
+        }
+                    /**
+         * Output the PDF as a string.
+         * 
+         * The options parameter controls the output. Accepted options are:
+         * 
+         * 'compress' = > 1 or 0 - apply content stream compression, this is
+         *    on (1) by default
+         *
+         * @param array<string, int> $options
+         * @return string The rendered PDF as string
+         * @static 
+         */        public static function output($options = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->output($options);
+        }
+                    /**
+         * Save the PDF to a file
+         *
+         * @static 
+         */        public static function save($filename, $disk = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->save($filename, $disk);
+        }
+                    /**
+         * Make the PDF downloadable by the user
+         *
+         * @static 
+         */        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @static 
+         */        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->stream($filename);
+        }
+                    /**
+         * Render the PDF
+         *
+         * @static 
+         */        public static function render()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param array<string> $pc
+         * @static 
+         */        public static function setEncryption($password, $ownerpassword = '', $pc = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setEncryption($password, $ownerpassword, $pc);
+        }
+            }
+    }
+
+namespace Unicodeveloper\Paystack\Facades {
+            /**
+     * 
+     *
+     */        class Paystack {
+                    /**
+         * Get Base Url from Paystack config file
+         *
+         * @static 
+         */        public static function setBaseUrl()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->setBaseUrl();
+        }
+                    /**
+         * Get secret key from Paystack config file
+         *
+         * @static 
+         */        public static function setKey()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->setKey();
+        }
+                    /**
+         * Initiate a payment request to Paystack
+         * Included the option to pass the payload to this method for situations
+         * when the payload is built on the fly (not passed to the controller from a view)
+         *
+         * @return \Paystack 
+         * @static 
+         */        public static function makePaymentRequest($data = null)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->makePaymentRequest($data);
+        }
+                    /**
+         * Get the authorization url from the callback response
+         *
+         * @return \Paystack 
+         * @static 
+         */        public static function getAuthorizationUrl($data = null)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAuthorizationUrl($data);
+        }
+                    /**
+         * Get the authorization callback response
+         * In situations where Laravel serves as an backend for a detached UI, the api cannot redirect
+         * and might need to take different actions based on the success or not of the transaction
+         *
+         * @return array 
+         * @static 
+         */        public static function getAuthorizationResponse($data)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAuthorizationResponse($data);
+        }
+                    /**
+         * True or false condition whether the transaction is verified
+         *
+         * @return boolean 
+         * @static 
+         */        public static function isTransactionVerificationValid($transaction_id = null)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->isTransactionVerificationValid($transaction_id);
+        }
+                    /**
+         * Get Payment details if the transaction was verified successfully
+         *
+         * @return \Unicodeveloper\Paystack\json 
+         * @throws PaymentVerificationFailedException
+         * @static 
+         */        public static function getPaymentData()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getPaymentData();
+        }
+                    /**
+         * Fluent method to redirect to Paystack Payment Page
+         *
+         * @static 
+         */        public static function redirectNow()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->redirectNow();
+        }
+                    /**
+         * Get Access code from transaction callback respose
+         *
+         * @return string 
+         * @static 
+         */        public static function getAccessCode()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAccessCode();
+        }
+                    /**
+         * Generate a Unique Transaction Reference
+         *
+         * @return string 
+         * @static 
+         */        public static function genTranxRef()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->genTranxRef();
+        }
+                    /**
+         * Get all the customers that have made transactions on your platform
+         *
+         * @return array 
+         * @static 
+         */        public static function getAllCustomers()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAllCustomers();
+        }
+                    /**
+         * Get all the plans that you have on Paystack
+         *
+         * @return array 
+         * @static 
+         */        public static function getAllPlans()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAllPlans();
+        }
+                    /**
+         * Get all the transactions that have happened overtime
+         *
+         * @return array 
+         * @static 
+         */        public static function getAllTransactions()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAllTransactions();
+        }
+                    /**
+         * Create a plan
+         *
+         * @static 
+         */        public static function createPlan()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->createPlan();
+        }
+                    /**
+         * Fetch any plan based on its plan id or code
+         *
+         * @param $plan_code
+         * @return array 
+         * @static 
+         */        public static function fetchPlan($plan_code)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->fetchPlan($plan_code);
+        }
+                    /**
+         * Update any plan's details based on its id or code
+         *
+         * @param $plan_code
+         * @return array 
+         * @static 
+         */        public static function updatePlan($plan_code)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->updatePlan($plan_code);
+        }
+                    /**
+         * Create a customer
+         *
+         * @static 
+         */        public static function createCustomer($data = null)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->createCustomer($data);
+        }
+                    /**
+         * Fetch a customer based on id or code
+         *
+         * @param $customer_id
+         * @return array 
+         * @static 
+         */        public static function fetchCustomer($customer_id)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->fetchCustomer($customer_id);
+        }
+                    /**
+         * Update a customer's details based on their id or code
+         *
+         * @param $customer_id
+         * @return array 
+         * @static 
+         */        public static function updateCustomer($customer_id)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->updateCustomer($customer_id);
+        }
+                    /**
+         * Export transactions in .CSV
+         *
+         * @return array 
+         * @static 
+         */        public static function exportTransactions()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->exportTransactions();
+        }
+                    /**
+         * Create a subscription to a plan from a customer.
+         *
+         * @static 
+         */        public static function createSubscription()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->createSubscription();
+        }
+                    /**
+         * Get all the subscriptions made on Paystack.
+         *
+         * @return array 
+         * @static 
+         */        public static function getAllSubscriptions()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAllSubscriptions();
+        }
+                    /**
+         * Get customer subscriptions
+         *
+         * @param integer $customer_id
+         * @return array 
+         * @static 
+         */        public static function getCustomerSubscriptions($customer_id)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getCustomerSubscriptions($customer_id);
+        }
+                    /**
+         * Get plan subscriptions
+         *
+         * @param integer $plan_id
+         * @return array 
+         * @static 
+         */        public static function getPlanSubscriptions($plan_id)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getPlanSubscriptions($plan_id);
+        }
+                    /**
+         * Enable a subscription using the subscription code and token
+         *
+         * @return array 
+         * @static 
+         */        public static function enableSubscription()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->enableSubscription();
+        }
+                    /**
+         * Disable a subscription using the subscription code and token
+         *
+         * @return array 
+         * @static 
+         */        public static function disableSubscription()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->disableSubscription();
+        }
+                    /**
+         * Fetch details about a certain subscription
+         *
+         * @param mixed $subscription_id
+         * @return array 
+         * @static 
+         */        public static function fetchSubscription($subscription_id)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->fetchSubscription($subscription_id);
+        }
+                    /**
+         * Create pages you can share with users using the returned slug
+         *
+         * @static 
+         */        public static function createPage()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->createPage();
+        }
+                    /**
+         * Fetches all the pages the merchant has
+         *
+         * @return array 
+         * @static 
+         */        public static function getAllPages()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getAllPages();
+        }
+                    /**
+         * Fetch details about a certain page using its id or slug
+         *
+         * @param mixed $page_id
+         * @return array 
+         * @static 
+         */        public static function fetchPage($page_id)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->fetchPage($page_id);
+        }
+                    /**
+         * Update the details about a particular page
+         *
+         * @param $page_id
+         * @return array 
+         * @static 
+         */        public static function updatePage($page_id)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->updatePage($page_id);
+        }
+                    /**
+         * Creates a subaccount to be used for split payments . Required    params are business_name , settlement_bank , account_number ,   percentage_charge
+         *
+         * @return array 
+         * @static 
+         */        public static function createSubAccount()
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->createSubAccount();
+        }
+                    /**
+         * Fetches details of a subaccount
+         *
+         * @param \Unicodeveloper\Paystack\subaccount  code
+         * @return array 
+         * @static 
+         */        public static function fetchSubAccount($subaccount_code)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->fetchSubAccount($subaccount_code);
+        }
+                    /**
+         * Lists all the subaccounts associated with the account
+         *
+         * @param $per_page - Specifies how many records to retrieve per page , $page - SPecifies exactly what page to retrieve
+         * @return array 
+         * @static 
+         */        public static function listSubAccounts($per_page, $page)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->listSubAccounts($per_page, $page);
+        }
+                    /**
+         * Updates a subaccount to be used for split payments . Required params are business_name , settlement_bank , account_number , percentage_charge
+         *
+         * @param \Unicodeveloper\Paystack\subaccount  code
+         * @return array 
+         * @static 
+         */        public static function updateSubAccount($subaccount_code)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->updateSubAccount($subaccount_code);
+        }
+                    /**
+         * Get a list of all supported banks and their properties
+         *
+         * @param $country - The country from which to obtain the list of supported banks, $per_page - Specifies how many records to retrieve per page ,
+         * $use_cursor - Flag to enable cursor pagination on the endpoint
+         * @return array 
+         * @static 
+         */        public static function getBanks($country, $per_page = 50, $use_cursor = false)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->getBanks($country, $per_page, $use_cursor);
+        }
+                    /**
+         * Confirm an account belongs to the right customer
+         *
+         * @param $account_number - Account Number, $bank_code - You can get the list of bank codes by calling the List Banks endpoint
+         * @return array 
+         * @static 
+         */        public static function confirmAccount($account_number, $bank_code)
+        {
+                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+                        return $instance->confirmAccount($account_number, $bank_code);
+        }
+            }
+    }
+
 namespace Illuminate\Http {
             /**
      * 
@@ -19361,6 +21756,32 @@ namespace Illuminate\Http {
                         return \Illuminate\Http\Request::wasFromTurboFrame($frame);
         }
             }
+            /**
+     * 
+     *
+     */        class UploadedFile {
+                    /**
+         * 
+         *
+         * @see \CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::bootMacros()
+         * @param mixed $folder
+         * @static 
+         */        public static function storeOnCloudinary($folder = null)
+        {
+                        return \Illuminate\Http\UploadedFile::storeOnCloudinary($folder);
+        }
+                    /**
+         * 
+         *
+         * @see \CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::bootMacros()
+         * @param mixed $folder
+         * @param mixed $publicId
+         * @static 
+         */        public static function storeOnCloudinaryAs($folder = null, $publicId = null)
+        {
+                        return \Illuminate\Http\UploadedFile::storeOnCloudinaryAs($folder, $publicId);
+        }
+            }
     }
 
 namespace Illuminate\Validation {
@@ -19433,6 +21854,37 @@ namespace Illuminate\Routing {
          */        public static function turboStreamView($view, $data = [])
         {
                         return \Illuminate\Routing\ResponseFactory::turboStreamView($view, $data);
+        }
+            }
+    }
+
+namespace Illuminate\Database\Eloquent\Relations {
+            /**
+     * 
+     *
+     */        class HasMany {
+            }
+            /**
+     * 
+     *
+     */        class HasOneOrMany {
+            }
+            /**
+     * 
+     *
+     */        class Relation {
+                    /**
+         * 
+         *
+         * @see \Korridor\LaravelHasManySync\ServiceProvider::boot()
+         * @param array $data
+         * @param bool $deleting
+         * @param bool $throwOnIdNotInScope
+         * @return array 
+         * @static 
+         */        public static function sync($data, $deleting = true, $throwOnIdNotInScope = true)
+        {
+                        return \Illuminate\Database\Eloquent\Relations\Relation::sync($data, $deleting, $throwOnIdNotInScope);
         }
             }
     }
@@ -22949,14 +25401,25 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}
+            class PDF extends \Barryvdh\Snappy\Facades\SnappyPdf {}
+            class SnappyImage extends \Barryvdh\Snappy\Facades\SnappyImage {}
             class Meta extends \Butschster\Head\Facades\Meta {}
             class PackageManager extends \Butschster\Head\Facades\PackageManager {}
             class Authorizer extends \FlixtechsLabs\LaravelAuthorizer\Facades\Authorizer {}
             class StimulusLaravel extends \HotwiredLaravel\StimulusLaravel\Facades\StimulusLaravel {}
             class Turbo extends \HotwiredLaravel\TurboLaravel\Facades\Turbo {}
             class TurboStream extends \HotwiredLaravel\TurboLaravel\Facades\TurboStream {}
+            class Image extends \Intervention\Image\Facades\Image {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
+            class LogViewer extends \Opcodes\LogViewer\Facades\LogViewer {}
+            class Autolink extends \OsiemSiedem\Autolink\Facades\Autolink {}
+            class Settings extends \Rawilk\Settings\Facades\Settings {}
+            class SettingsFactory extends \Rawilk\Settings\Drivers\Factory {}
+            class Html extends \Spatie\Html\Facades\Html {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class LaravelPdf extends \Pdf {}
+            class Paystack extends \Unicodeveloper\Paystack\Facades\Paystack {}
     }
 
 

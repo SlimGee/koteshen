@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Estimate;
 use App\Models\Invoice;
 
 return [
@@ -132,6 +133,10 @@ return [
             Invoice::class => [
                 'filterableAttributes' => ['id', 'number', 'due_at', 'total', 'balance', 'notes', 'status'],
                 'sortableAttributes' => ['created_at', 'due_at', 'total', 'balance'],
+            ],
+            Estimate::class => [
+                'filterableAttributes' => ['id', 'number', 'expires_at', 'total', 'subtotal', 'notes', 'status'],
+                'sortableAttributes' => ['created_at', 'expires_at', 'total', 'subtotal'],
             ],
         ],
     ],

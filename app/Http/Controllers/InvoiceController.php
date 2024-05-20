@@ -102,6 +102,7 @@ class InvoiceController extends Controller
             ...$request->safe()->except('items', 'due_at'),
             'total' => $items->sum('total'),
             'balance' => $items->sum('total'),
+            'subtotal' => $items->sum('total'),
             'status' => 'created',
             'due_at' => $request->validated('due_in') === 'custom' ? $request->validated('due_at') : Carbon::parse($request->validated('due_in')),
         ];
@@ -110,7 +111,7 @@ class InvoiceController extends Controller
 
         $invoice->items()->createMany($items);
 
-        return to_route('app.invoices.index')->with('success', 'Invoices created successfully');
+        return to_route('app.invoices.show', $invoice)->with('success', 'Invoices created successfully');
     }
 
     /**

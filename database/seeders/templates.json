@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Reminder 1 (Base)",
+    "content": "Hi {{client.name}},\n\nJust a friendly reminder that invoice {{invoice.number}} for {{invoice.currency.code}} {{invoice.total}} is due on {{invoice.due_at}}.  Attached is a copy for your reference.\n\nIf payment has already been made, you can disregard this email. Otherwise, please make a secure online payment at your earliest convenience using this link: {{payment_link}}.\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "Reminder 2 (Base)",
+    "content": "Hi {{client.name}}\n\nThis is a reminder that invoice {{invoice.number}} for {{invoice.currency.code}} {{invoice.total}} is currently {{invoice.days_due}} days overdue.  Please let us know when we can expect payment.\n\nIf there are any issues preventing you from using the secure online payment option here: {{payment_link}}, please contact us as soon as possible so we can find a solution.\n\nThank you,\n{{business.name}}"
+  },
+  {
+    "name": "Reminder 3 (Base)",
+    "content": "{{Client Name}},\n\nInvoice {{invoice.number}} is now significantly overdue.  Please arrange payment within {{invoice.pay_in}} to avoid further action. This may include [List Consequences – Late Fees, Collections, etc.].\n\nWe appreciate your immediate attention to this matter. To make a secure online payment, please use this link: {{payment_link}}.\n\nThank you,\n{{business.name}}"
+  },
+  {
+    "name": "Reminder 4 (Koteshen Assist - Base)",
+    "content": "Hi {{client.name}},\n\nThis is a friendly reminder from {{business.name}} about invoice {{invoice.number}}.  You can easily view and pay your invoice securely online here: {{payment_link}}.\n\nWe value your business and appreciate your prompt payment.\n\nThank you,\n{{business.name}}"
+  },
+  {
+    "name": "Reminder 5 Manual",
+    "content": "Hi {{client.name}},\n\nI hope this email finds you well.\n\nI wanted to follow up on invoice {{invoice.number}} for {{invoice.currency.code}} {{invoice.total}}, which was due on {{invoice.due_at}}.  I've attached it again for your convenience.\n\nWould you be able to let me know when I can expect payment?  You can easily pay online here: {{payment_link}}.\n\nPlease let me know if you have any questions.\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "invoice delivery 1",
+    "content": "Hi {{client.name}},\n\nThank you for your continued business!  Your invoice {{invoice.number}} is attached.\n\nTo make things easy, you can also pay online: {{link}}\n\n* Amount Due: {{invoice.balance}}\n* Due Date: {{invoice.due_at}}\n\nLet me know if you have any questions.\n\nBest,\n{{business.name}}"
+  },
+  {
+    "name": "invoice delivery 2",
+    "content": "Hi {{client.name}},\n\nYour invoice {{invoice.number}} is ready for review.  You can find it attached and can also view and pay online here: {{link}}\n\n* Amount Due: {{invoice.total}}\n* Due Date: {{invoice.due_at}}\n\nPlease note: [Insert your most common client question about invoices – payment terms, methods, etc. – and provide the answer upfront]\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "invoice deliver 3",
+    "content": "Hi {{client.name}},\n\nGood news – your invoice {{invoice.number}} is ready!\n\nYou can view, download, and pay securely online with a few clicks: {{payment_link}}\n\n* Amount Due: {{invoice.total}}\n* Due Date: {{invoice.due_at}}\n\nQuestions?  Just hit reply!\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "estimate delivery 1",
+    "content": "Hi {{client.name}},\n\nYour estimate for {{estimate.description}} is ready!\n\nYou can review and download it securely online: {{estimate.link}}\n\nIf you have any questions or would like to proceed, just hit reply to this email.\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "estimate delivery 2",
+    "content": "Hi {{client.name}},\n\nWe've prepared your estimate for {{estimate.description}}.\n\nWith this estimate, you can:\n\n* Review it online\n* Accept it with a click\n* Ask any questions directly through this email\n\nCheck out your estimate here: {{estimate.link}}\n\nThanks,\n{{business.name}}"
+  },
+  {
+    "name": "estimate follow up 1",
+    "content": "Hi {{client.name}},\n\nJust wanted to check if you had a chance to review your estimate.\n\nLet me know if you have any questions or are ready to proceed!\n\nHere's the link again: {{estimate.link}}\n\nThanks,\n{{business.name}}"
+  }
+]

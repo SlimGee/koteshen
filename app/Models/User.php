@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\CausesActivity;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Onboard\Concerns\GetsOnboarded;
 use Spatie\Onboard\Concerns\Onboardable;
 use Spatie\Permission\Traits\HasPermissions;
@@ -19,7 +22,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail, Onboardable
 {
-    use GetsOnboarded, HasFactory, HasPermissions, HasRoles, Notifiable;
+    use CausesActivity, GetsOnboarded, HasFactory, HasPermissions, HasRoles, LogsActivity, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -86,5 +89,14 @@ class User extends Authenticatable implements MustVerifyEmail, Onboardable
     public function earlyAccess(): HasOne
     {
         return $this->hasOne(EarlyAccess::class);
+    }
+
+    /**
+     * Get the log options for the model.
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'email']);
     }
 }

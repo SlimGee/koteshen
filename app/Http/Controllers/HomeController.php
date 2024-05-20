@@ -31,6 +31,27 @@ class HomeController extends Controller
                     ->setImage(asset('images/cover.jpg'))
             );
 
-        return view('app.home.index');
+        $business = auth()->user()->business;
+
+        $outstanding = $business->invoices()->sum('balance');
+        $revenue = $business->payments()->sum('amount');
+        $totalClients = $business->clients()->count();
+        $overdueInvoices = $business->invoices()->overdue()->get()->count();
+        $invoices = $business->invoices()->latest()->limit(6)->get();
+
+        $incomeChart = $business->payments()->get()->groupBy(function ($payment) {
+            return $payment->created_at->format('d M');
+        })->map(function ($payments) {
+            return $payments->sum('amount');
+        });
+
+        return view('app.home.index', [
+            'outstanding' => $outstanding,
+            'revenue' => $revenue,
+            'totalClients' => $totalClients,
+            'overdueInvoices' => $overdueInvoices,
+            'invoices' => $invoices,
+            'incomeChart' => $incomeChart,
+        ]);
     }
 }

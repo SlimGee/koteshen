@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\InvoiceStatus;
 use App\Http\Requests\SendInvoiceRrequest;
 use App\Mail\InvoiceDelivery;
 use App\Models\EmailTemplate;
@@ -12,6 +13,7 @@ use Butschster\Head\Packages\Entities\TwitterCardPackage;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
+use Arr;
 
 class SendInvoiceController extends Controller
 {
@@ -37,16 +39,21 @@ class SendInvoiceController extends Controller
                     ->setImage(asset('images/cover.jpg'))
             );
 
-        $template = EmailTemplate::whereName('Default Invoice Email Template')->first();
+        $template = EmailTemplate::whereName('invoice delivery 1')->first();
 
-        $data = [
-            'name' => $invoice->client->name,
-            'invoice_number' => $invoice->number,
-            'amount' => $invoice->total,
-            'due_date' => $invoice->due_at->format('d M Y'),
-            'business_name' => $invoice->business->name,
-            'link' => route('invoices.preview', $invoice),
-        ];
+        $data = array_merge(
+            Arr::dot([
+                'invoice' => $invoice->toArray(),
+                'client' => Arr::dot($invoice->client->toArray()),
+            ]),
+            [
+                'link' => route('invoices.preview', $invoice),
+                'payment_link' => route('invoices.preview', $invoice),
+                ...Arr::dot([
+                    'business' => $invoice->business->toArray(),
+                ]),
+            ]
+        );
 
         $template->content = str_replace(
             array_map(fn($key) => '{{' . $key . '}}', array_keys($data)),
@@ -67,6 +74,7 @@ class SendInvoiceController extends Controller
         $invoice->update([
             'emailed' => true,
             'emailed_at' => now(),
+            'status' => InvoiceStatus::SENT,
         ]);
 
         return to_route('app.invoices.show', $invoice)->with('success', 'Invoice sent successfully!');

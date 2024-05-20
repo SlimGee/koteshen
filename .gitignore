@@ -6,6 +6,7 @@
 /storage/*.key
 /vendor
 .yarn/unplugged
+.yarn/install-state.gz
 .yarn/build-state.yml
 .env
 .env.backup

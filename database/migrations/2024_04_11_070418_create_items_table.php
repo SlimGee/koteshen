@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('invoice_id')->constrained()->cascadeOnDelete();
+            $table->integer('itemable_id');
+            $table->text('itemable_type');
             $table->string('name');
             $table->string('description')->nullable();
             $table->integer('quantity');

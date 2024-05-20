@@ -164,6 +164,30 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $user_id
+ * @property string|null $plan
+ * @property int $is_subscribed
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\EarlyAccessFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess whereIsSubscribed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess wherePlan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EarlyAccess whereUserId($value)
+ */
+	class EarlyAccess extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $content
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -200,6 +224,8 @@ namespace App\Models{
  * @property \App\Enum\InvoiceStatus $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property bool $emailed
+ * @property \Illuminate\Support\Carbon|null $emailed_at
  * @property-read \App\Models\Business $business
  * @property-read \App\Models\Client $client
  * @property-read \App\Models\Currency $currency
@@ -217,6 +243,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereDueAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereDueIn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereEmailed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereEmailedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereNumber($value)
@@ -280,6 +308,7 @@ namespace App\Models{
  * @property-read mixed $business
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Business> $businesses
  * @property-read int|null $businesses_count
+ * @property-read \App\Models\EarlyAccess|null $earlyAccess
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions

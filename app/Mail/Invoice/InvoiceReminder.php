@@ -1,22 +1,25 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Invoice;
 
+use App\Models\Invoice;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use OsiemSiedem\Autolink\Facades\Autolink;
 
-class Invoice extends Mailable
+class InvoiceReminder extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public Invoice $invoice, public array $payload)
     {
         //
     }
@@ -27,7 +30,9 @@ class Invoice extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Invoice',
+            subject: $this->payload['subject'],
+            to: $this->payload['to'],
+            cc: $this->payload['copy'],
         );
     }
 
@@ -37,7 +42,11 @@ class Invoice extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            markdown: 'mails.invoices.reminder',
+            with: [
+                'invoice' => $this->invoice,
+                'message' => Autolink::convert($this->payload['message']),
+            ]
         );
     }
 
@@ -48,6 +57,8 @@ class Invoice extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromStorageDisk('local', $this->invoice->number . '.pdf'),
+        ];
     }
 }

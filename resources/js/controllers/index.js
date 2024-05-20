@@ -5,6 +5,9 @@
 import { Stimulus } from '../libs/stimulus'
 
 
+import ApexchartsController from './apexcharts_controller'
+Stimulus.register('apexcharts', ApexchartsController)
+
 import ChoicesController from './choices_controller'
 Stimulus.register('choices', ChoicesController)
 
@@ -14,6 +17,15 @@ Stimulus.register('client-type', ClientTypeController)
 import DatepickerController from './datepicker_controller'
 Stimulus.register('datepicker', DatepickerController)
 
+import DropifyController from './dropify_controller'
+Stimulus.register('dropify', DropifyController)
+
+import EstimateController from './estimate_controller'
+Stimulus.register('estimate', EstimateController)
+
+import FilepondController from './filepond_controller'
+Stimulus.register('filepond', FilepondController)
+
 import HelloController from './hello_controller'
 Stimulus.register('hello', HelloController)
 
@@ -22,6 +34,12 @@ Stimulus.register('invoice', InvoiceController)
 
 import LineItemController from './line-item_controller'
 Stimulus.register('line-item', LineItemController)
+
+import MenuController from './menu_controller'
+Stimulus.register('menu', MenuController)
+
+import ResetFormController from './reset-form_controller'
+Stimulus.register('reset-form', ResetFormController)
 
 import SearchController from './search_controller'
 Stimulus.register('search', SearchController)
