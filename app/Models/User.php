@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Jobs\QueuedPasswordResetJob;
 use App\Jobs\QueuedVerifyEmailJob;
+use Flixtechs\Subby\Traits\HasSubscriptions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,7 +23,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail, Onboardable
 {
-    use CausesActivity, GetsOnboarded, HasFactory, HasPermissions, HasRoles, LogsActivity, Notifiable;
+    use CausesActivity, GetsOnboarded, HasFactory, HasPermissions, HasRoles, HasSubscriptions, LogsActivity, Notifiable;
 
     /**
      * The attributes that are mass assignable.

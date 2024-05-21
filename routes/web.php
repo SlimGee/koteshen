@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Billing\ChangePlanController;
 use App\Http\Controllers\Business\BusinessController as BusinessBusinessController;
 use App\Http\Controllers\Estimate\Public\PreviewController;
 use App\Http\Controllers\Estimate\ActivityController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PageController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
@@ -122,6 +124,10 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
         Route::resource('payments', ControllersPaymentController::class);
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::get('/billing', [BillingController::class, 'edit'])->name('billing.edit');
+
+        Route::get('/billing/change-plan', [ChangePlanController::class, 'create'])->name('billing.change-plan.create');
+        Route::post('/billing/{plan}/change-plan', [ChangePlanController::class, 'store'])->name('billing.change-plan.store');
     });
 
 // Laravel 8 & 9

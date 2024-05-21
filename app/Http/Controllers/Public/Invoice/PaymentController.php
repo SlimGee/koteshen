@@ -38,14 +38,6 @@ class PaymentController extends Controller
 
     public function test()
     {
-        $data = [
-            'amount' => 500,
-            'reference' => '4g4g5485g8545jg8gj',
-            'email' => 'given@flixtechs.co.zw',
-            'currency' => 'ZAR',
-            'orderID' => 23456,
-        ];
-
-        return Paystack::getAuthorizationUrl($data)->redirectNow();
+        dd(Paystack::getAllCustomers());
     }
 }
