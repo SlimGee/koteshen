@@ -136,9 +136,11 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed
             ->withoutMiddleware(Subscribed::class);
 
         Route::get('/billing/{invoice}/payments/{plan}', [AppPaymentController::class, 'redirect'])
-            ->name('billing.payments.redirect');
+            ->name('billing.payments.redirect')
+            ->withoutMiddleware(Subscribed::class);
         Route::get('/billing/payments/callback', [AppPaymentController::class, 'callback'])
-            ->name('billing.payments.callback');
+            ->name('billing.payments.callback')
+            ->withoutMiddleware(Subscribed::class);
     });
 
 // Laravel 8 & 9
