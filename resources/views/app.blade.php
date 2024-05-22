@@ -148,11 +148,23 @@
     <div class="w-full lg:ps-64">
 
         <main>
-            <!-- Replace with your content -->
+            <div class="bg-blue-600">
+                <div class="py-2 px-4 mx-auto text-center sm:px-6 lg:px-8 max-w-[85rem]">
+                    <!-- Announcement Banner -->
+                    <a class="inline-block p-1 rounded-full border shadow-md group bg-white/10 border-white/10 ps-4 hover:bg-white/10"
+                        href="#">
+                        <p class="inline-block text-sm text-white me-2">
+                            Koteshen is in beta! Help us improve by providing feedback.
+                        </p>
+                    </a>
+                    <!-- End Announcement Banner -->
+                </div>
+            </div>
+
             <div class="relative py-6 px-3 min-h-screen md:px-8 xl:px-28 bg-slate-50">
                 @yield('content')
             </div>
-            <!-- /End replace -->
+
         </main>
     </div>
 
