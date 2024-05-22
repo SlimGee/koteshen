@@ -30,6 +30,6 @@ class HomeController extends Controller
                     ->setImage(asset('images/banner.jpg'))
             );
 
-        return view('home.index');
+        return view('home.index-beta');
     }
 }
