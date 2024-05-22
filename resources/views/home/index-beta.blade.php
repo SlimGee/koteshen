@@ -526,15 +526,19 @@
         class="pt-20 pb-14 sm:pt-32 sm:pb-20 lg:pb-32">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mx-auto max-w-2xl md:text-center">
-                <h2 class="text-3xl tracking-tight sm:text-4xl font-display text-slate-900">Simplify everyday business
-                    tasks.</h2>
-                <p class="mt-4 text-lg tracking-tight text-slate-700">Because you’d probably be a little confused if we
-                    suggested you complicate your everyday business tasks instead.</p>
+                <h2 class="text-3xl tracking-tight sm:text-4xl font-display text-slate-900">
+                    Better business starts with better tools
+                </h2>
+                <p class="mt-4 text-lg tracking-tight text-slate-700">
+                    The secret is simplicity. We've designed our software to be as easy to use as possible, so you can focus
+                    on your business instead of administrative tasks.
+                </p>
             </div>
             <div class="flex overflow-hidden flex-col gap-y-10 px-4 -mx-4 mt-20 sm:px-6 sm:-mx-6 lg:hidden">
                 <div>
                     <div class="mx-auto max-w-2xl">
-                        <div class="w-9 bg-blue-600 rounded-lg"><svg aria-hidden="true" class="w-9 h-9" fill="none">
+                        <div class="w-9 bg-blue-600 rounded-lg">
+                            <svg aria-hidden="true" class="w-9 h-9" fill="none">
                                 <defs>
                                     <linearGradient id=":R2menla:" x1="11.5" y1="18" x2="36"
                                         y2="15.5" gradientUnits="userSpaceOnUse">
@@ -546,7 +550,7 @@
                                     stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600">Reporting</h3>
+                        <h3 class="mt-6 text-sm font-medium text-blue-600">Recurring invoices</h3>
                         <p class="mt-2 text-xl font-display text-slate-900">Stay on top of things with always up-to-date
                             reporting features.</p>
                         <p class="mt-4 text-sm text-slate-600">We talked about reporting in the section above but we needed
@@ -621,113 +625,71 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden lg:block lg:mt-20">
+
+            <div class="hidden lg:block lg:mt-20" data-controller="tabs"
+                data-tabs-active-tab-class="-mb-px rounded-t border-t border-r border-l">
                 <div class="grid grid-cols-3 gap-x-8" role="tablist" aria-orientation="horizontal">
                     <div class="relative opacity-75 hover:opacity-100">
-                        <div class="w-9 rounded-lg bg-slate-500"><svg aria-hidden="true" class="w-9 h-9" fill="none">
-                                <defs>
-                                    <linearGradient id=":Rarenla:" x1="11.5" y1="18" x2="36"
-                                        y2="15.5" gradientUnits="userSpaceOnUse">
-                                        <stop offset=".194" stop-color="#fff"></stop>
-                                        <stop offset="1" stop-color="#6692F1"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <path d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5" stroke="url(#:Rarenla:)" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-slate-600"><button
-                                class="ui-not-focus-visible:outline-none" id="headlessui-tabs-tab-:Rirenla:"
-                                role="tab" type="button" aria-selected="false" tabindex="-1"
-                                data-headlessui-state="" aria-controls="headlessui-tabs-panel-:Rbbenla:"><span
-                                    class="absolute inset-0"></span>Reporting</button></h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">Stay on top of things with always up-to-date
-                            reporting features.</p>
-                        <p class="mt-4 text-sm text-slate-600">We talked about reporting in the section above but we needed
-                            three items here, so mentioning it one more time for posterity.</p>
-                    </div>
-                    <div class="relative opacity-75 hover:opacity-100">
-                        <div class="w-9 rounded-lg bg-slate-500"><svg aria-hidden="true" class="w-9 h-9" fill="none">
-                                <path opacity=".5"
-                                    d="M8 17a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path opacity=".3"
-                                    d="M8 24a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path d="M8 10a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-slate-600"><button
-                                class="ui-not-focus-visible:outline-none" id="headlessui-tabs-tab-:Rkrenla:"
-                                role="tab" type="button" aria-selected="false" tabindex="-1"
-                                data-headlessui-state="" aria-controls="headlessui-tabs-panel-:Rjbenla:"><span
-                                    class="absolute inset-0"></span>Inventory</button></h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">Never lose track of what’s in stock with
-                            accurate inventory tracking.</p>
-                        <p class="mt-4 text-sm text-slate-600">We don’t offer this as part of our software but that
-                            statement is inarguably true. Accurate inventory tracking would help you for sure.</p>
-                    </div>
-                    <div class="relative">
-                        <div class="w-9 bg-blue-600 rounded-lg"><svg aria-hidden="true" class="w-9 h-9" fill="none">
-                                <path opacity=".5"
-                                    d="M25.778 25.778c.39.39 1.027.393 1.384-.028A11.952 11.952 0 0 0 30 18c0-6.627-5.373-12-12-12S6 11.373 6 18c0 2.954 1.067 5.659 2.838 7.75.357.421.993.419 1.384.028.39-.39.386-1.02.036-1.448A9.959 9.959 0 0 1 8 18c0-5.523 4.477-10 10-10s10 4.477 10 10a9.959 9.959 0 0 1-2.258 6.33c-.35.427-.354 1.058.036 1.448Z"
-                                    fill="#fff"></path>
-                                <path
-                                    d="M12 28.395V28a6 6 0 0 1 12 0v.395A11.945 11.945 0 0 1 18 30c-2.186 0-4.235-.584-6-1.605ZM21 16.5c0-1.933-.5-3.5-3-3.5s-3 1.567-3 3.5 1.343 3.5 3 3.5 3-1.567 3-3.5Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600"><button
-                                class="ui-not-focus-visible:outline-none" id="headlessui-tabs-tab-:Rmrenla:"
-                                role="tab" type="button" aria-selected="true" tabindex="0"
-                                data-headlessui-state="selected" aria-controls="headlessui-tabs-panel-:Rrbenla:"
-                                data-selected=""><span class="absolute inset-0"></span>Contacts</button></h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">Organize all of your contacts, service
-                            providers, and invoices in one place.</p>
-                        <p class="mt-4 text-sm text-slate-600">This also isn’t actually a feature, it’s just some friendly
-                            advice. We definitely recommend that you do this, you’ll feel really organized and professional.
+                        <div class="">
+                            <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                                <i class="text-white bi bi-arrow-repeat"></i>
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-sm font-medium text-slate-600">
+                            <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                                data-action="click->tabs#change">
+                                <span class="absolute inset-0"></span>
+                                Recurring invoices
+                            </button>
+                        </h3>
+                        <p class="mt-2 text-xl font-display text-slate-900">
+                            Save time by automatically billing long-term clients with recurring invoices
+                        </p>
+                        <p class="mt-4 text-sm text-slate-600">
+                            You could do this manually, but why would you? It’s so much easier to just have it done for you.
                         </p>
                     </div>
-                </div>
-                <div class="overflow-hidden relative py-16 px-14 mt-20 xl:px-16 rounded-4xl bg-slate-200">
-                    <div class="flex -mx-5">
-                        <div class="px-5 opacity-60 transition duration-500 ease-in-out ui-not-focus-visible:outline-none"
-                            style="transform: translateX(-200%);" aria-hidden="true" id="headlessui-tabs-panel-:Rbbenla:"
-                            role="tabpanel" tabindex="-1" data-headlessui-state=""
-                            aria-labelledby="headlessui-tabs-tab-:Rirenla:">
-                            <div
-                                class="overflow-hidden bg-white rounded-xl ring-1 shadow-lg w-[52.75rem] shadow-slate-900/5 ring-slate-500/10">
-                                <img alt="" loading="lazy" width="1688" height="856" decoding="async"
-                                    data-nimg="1" class="w-full" style="color:transparent" sizes="52.75rem"
-                                    srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75 3840w"
-                                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75">
+                    <div class="relative opacity-75 hover:opacity-100">
+                        <div class="">
+                            <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                                <i class="text-white bi bi-arrow-up-right-circle-fill"></i>
                             </div>
                         </div>
-                        <div class="px-5 opacity-60 transition duration-500 ease-in-out ui-not-focus-visible:outline-none"
-                            style="transform: translateX(-200%);" aria-hidden="true" id="headlessui-tabs-panel-:Rjbenla:"
-                            role="tabpanel" tabindex="-1" data-headlessui-state=""
-                            aria-labelledby="headlessui-tabs-tab-:Rkrenla:">
-                            <div
-                                class="overflow-hidden bg-white rounded-xl ring-1 shadow-lg w-[52.75rem] shadow-slate-900/5 ring-slate-500/10">
-                                <img alt="" loading="lazy" width="1688" height="856" decoding="async"
-                                    data-nimg="1" class="w-full" style="color:transparent" sizes="52.75rem"
-                                    srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75 3840w"
-                                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75">
-                            </div>
-                        </div>
-                        <div class="px-5 transition duration-500 ease-in-out ui-not-focus-visible:outline-none"
-                            style="transform: translateX(-200%);" aria-hidden="false"
-                            id="headlessui-tabs-panel-:Rrbenla:" role="tabpanel" tabindex="0"
-                            data-headlessui-state="selected" aria-labelledby="headlessui-tabs-tab-:Rmrenla:"
-                            data-selected="">
-                            <div
-                                class="overflow-hidden bg-white rounded-xl ring-1 shadow-lg w-[52.75rem] shadow-slate-900/5 ring-slate-500/10">
-                                <img alt="" loading="lazy" width="1688" height="856" decoding="async"
-                                    data-nimg="1" class="w-full" style="color:transparent" sizes="52.75rem"
-                                    srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75 3840w"
-                                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75">
-                            </div>
-                        </div>
+                        <h3 class="mt-6 text-sm font-medium text-slate-600">
+                            <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                                data-action="click->tabs#change">
+                                <span class="absolute inset-0"></span>
+                                Automated workflows
+                            </button>
+                        </h3>
+                        <p class="mt-2 text-xl font-display text-slate-900">
+                            Automatically convert accepted estimates into payable invoices
+                        </p>
+                        <p class="mt-4 text-sm text-slate-600">
+                            Like we said, it's about keeping the boring mundane tasks on autopilot, and you don't even need
+                            a GPT to do it
+                        </p>
                     </div>
-                    <div class="absolute inset-0 ring-1 ring-inset pointer-events-none rounded-4xl ring-slate-900/10">
+                    <div class="relative">
+                        <div class="">
+                            <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                                <i class="text-white bi bi-bell-fill"></i>
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-sm font-medium">
+                            <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                                data-action="click->tabs#change">
+                                <span class="absolute inset-0"></span>
+                                Alerts and notifications
+                            </button>
+                        </h3>
+                        <p class="mt-2 text-xl font-display text-slate-900">
+                            Get notified when your clients, opens, views, pays or ignores your invoice
+                        </p>
+                        <p class="mt-4 text-sm text-slate-600">
+                            Certainty is key when you’re running a business, so we’ll make sure you know exactly what’s
+                            going on
+                        </p>
                     </div>
                 </div>
             </div>
