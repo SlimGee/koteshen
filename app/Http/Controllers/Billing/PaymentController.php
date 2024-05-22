@@ -41,7 +41,7 @@ class PaymentController extends Controller
             'paid_at' => now(),
             'channel' => $details['data']['channel'],
             'reference' => null,
-            'currency' => $details['data']['currency'],
+            'currency' => $invoice->currency->code,
             'business_id' => $invoice->business_id,
             'user_id' => auth()->id(),
             'client_id' => $invoice->client_id,

@@ -33,7 +33,8 @@ class ChangePlanController extends Controller
             [
                 'name' => 'Subscription for ' . $plan->name . ' plan',
                 'quantity' => 1,
-                'price' => $plan->price,
+                'price' => $user->subscribed() ? $plan->signup_fee : $plan->price,
+                'total' => $user->subscribed() ? $plan->signup_fee : $plan->price,
             ],
         ]);
 
@@ -61,6 +62,8 @@ class ChangePlanController extends Controller
             'status' => InvoiceStatus::DRAFT,
             'number' => null,
         ]);
+
+        $invoice->items()->createMany($items->toArray());
 
         return redirect()->route('app.billing.payments.redirect', [$invoice, $plan]);
     }

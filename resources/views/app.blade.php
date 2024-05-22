@@ -90,7 +90,7 @@
                                     My Account
                                 </a>
                                 <a class="flex gap-x-3.5 items-center py-2 px-3 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 hover:bg-slate-100"
-                                    href="#">
+                                    href="{{ route('app.billing.edit') }}">
                                     <i class="bi bi-currency-dollar"></i>
                                     Billing
                                 </a>
