@@ -51,6 +51,10 @@ class Invoice extends Model
         'saved' => InvoiceSaved::class,
     ];
 
+    protected $attributes = [
+        'number' => null,
+    ];
+
     /**
      * Get the items for the invoice.
      */

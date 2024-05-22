@@ -18,7 +18,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 
@@ -90,7 +90,7 @@
                                     My Account
                                 </a>
                                 <a class="flex gap-x-3.5 items-center py-2 px-3 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 hover:bg-slate-100"
-                                    href="#">
+                                    href="{{ route('app.billing.edit') }}">
                                     <i class="bi bi-currency-dollar"></i>
                                     Billing
                                 </a>
@@ -148,11 +148,23 @@
     <div class="w-full lg:ps-64">
 
         <main>
-            <!-- Replace with your content -->
+            <div class="bg-blue-600">
+                <div class="py-2 px-4 mx-auto text-center sm:px-6 lg:px-8 max-w-[85rem]">
+                    <!-- Announcement Banner -->
+                    <a class="inline-block p-1 rounded-full border shadow-md group bg-white/10 border-white/10 ps-4 hover:bg-white/10"
+                        href="#">
+                        <p class="inline-block text-sm text-white me-2">
+                            Koteshen is in beta! Help us improve by providing feedback.
+                        </p>
+                    </a>
+                    <!-- End Announcement Banner -->
+                </div>
+            </div>
+
             <div class="relative py-6 px-3 min-h-screen md:px-8 xl:px-28 bg-slate-50">
                 @yield('content')
             </div>
-            <!-- /End replace -->
+
         </main>
     </div>
 

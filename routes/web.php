@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Billing\ChangePlanController;
+use App\Http\Controllers\Billing\PaymentController as AppPaymentController;
 use App\Http\Controllers\Business\BusinessController as BusinessBusinessController;
 use App\Http\Controllers\Estimate\Public\PreviewController;
 use App\Http\Controllers\Estimate\ActivityController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PageController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
@@ -37,6 +40,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\RedirectPrelaunch;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
+use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/auth/{social}/redirect', [SocialiteController::class, 'redirect'])
@@ -73,7 +77,7 @@ Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])
 
 Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('avatars.show');
 
-Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
+Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed::class])
     ->prefix('app')
     ->name('app.')
     ->group(function () {
@@ -122,6 +126,19 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class])
         Route::resource('payments', ControllersPaymentController::class);
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::get('/billing', [BillingController::class, 'edit'])->name('billing.edit');
+
+        Route::get('/billing/change-plan', [ChangePlanController::class, 'create'])
+            ->name('billing.change-plan.create')
+            ->withoutMiddleware(Subscribed::class);
+        Route::get('/billing/{plan}/change-plan', [ChangePlanController::class, 'store'])
+            ->name('billing.change-plan.store')
+            ->withoutMiddleware(Subscribed::class);
+
+        Route::get('/billing/{invoice}/payments/{plan}', [AppPaymentController::class, 'redirect'])
+            ->name('billing.payments.redirect');
+        Route::get('/billing/payments/callback', [AppPaymentController::class, 'callback'])
+            ->name('billing.payments.callback');
     });
 
 // Laravel 8 & 9
