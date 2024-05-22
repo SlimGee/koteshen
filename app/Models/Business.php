@@ -20,7 +20,9 @@ class Business extends Model
      *
      * @var array
      */
-    protected $guarded = [];
+    protected $guarded = [
+        'is_primary',
+    ];
 
     /**
      * The attributes that should be cast.
@@ -29,6 +31,7 @@ class Business extends Model
      */
     protected $casts = [
         'phone' => RawPhoneNumberCast::class . ':phone_country',
+        'is_primary' => 'boolean',
     ];
 
     /**
@@ -37,6 +40,11 @@ class Business extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
     }
 
     /**

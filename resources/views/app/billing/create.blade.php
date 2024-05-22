@@ -26,10 +26,12 @@
                     <div class="mx-auto mb-10 max-w-2xl text-center">
                         <h2
                             class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-700 md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
-                            Simple, transparent pricing
+                            Just a few more steps to get started
                         </h2>
-                        <p class="mt-2 text-gray-800 lg:text-lg dark:text-neutral-200">Whatever your status, our offers
-                            evolve according to your needs.</p>
+                        <p class="mt-2 text-gray-800 lg:text-lg dark:text-neutral-200">
+                            Select the plan that best fits your needs and budget. You can change or cancel your plan at any
+                            time.
+                        </p>
                     </div>
                     <!-- End Title -->
 
@@ -77,7 +79,7 @@
                                 </ul>
 
                                 <a class="mt-6" href="{{ route('app.billing.change-plan.store', $plan) }}"
-                                    data-turbo-method="post">
+                                    data-turbo="false">
                                     <x-button>
                                         Choose plan
                                     </x-button>

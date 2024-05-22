@@ -39,6 +39,8 @@ class Deploy extends Command
         $this->info('Creating/updating default roles and permissions...');
 
         $this->call('permission:create-role', ['name' => 'super admin']);
+        $this->call('permission:create-role', ['name' => 'primary']);
+
         $this->call('permission:create-role', [
             'name' => 'admin',
             'permissions' => implode('|', [
@@ -79,6 +81,9 @@ class Deploy extends Command
         if (Currency::count() < 1) {
             $this->call('db:seed', ['class' => 'CurrencySeeder']);
         }
+
+        $this->call(CreatePrimaryBusiness::class);
+        $this->call(ConfigureSubscriptions::class);
 
         $this->info('Done! Application is now ready to be deployed.');
         $this->call('up');
