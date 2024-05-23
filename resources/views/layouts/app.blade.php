@@ -40,7 +40,7 @@
 
 </head>
 
-<body>
+<body class="overflow-x-hidden w-full">
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')

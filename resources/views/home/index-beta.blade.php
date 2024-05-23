@@ -3,7 +3,7 @@
 @section('content')
     <div id="home" class="overflow-hidden relative bg-slate-900 pt-[120px] md:pt-[130px] lg:pt-[160px]">
         <div class="container mx-auto">
-            <div class="flex flex-wrap items-center -mx-4">
+            <div class="flex flex-wrap items-center md:-mx-4">
                 <div class="px-4 w-full">
                     <div class="mx-auto text-center hero-content wow fadeInUp max-w-[780px]" data-wow-delay=".2s">
                         <h1
@@ -35,7 +35,7 @@
                 <div class="px-4 w-full">
                     <div class="relative z-10 mx-auto wow fadeInUp max-w-[845px]" data-wow-delay=".25s">
                         <div class="mt-16">
-                            <img src="assets/images/hero/hero-image.png" alt="hero"
+                            <img src="{{ asset('assets/images/hero/hero-image.png') }}" alt="hero"
                                 class="mx-auto max-w-full rounded-t-xl rounded-tr-xl" />
                         </div>
                         <div class="absolute bottom-0 -left-9 z-[-1]">
@@ -375,10 +375,7 @@
     </div>
 
     <section id="features" aria-label="Features for running your books"
-        class="overflow-hidden relative pt-20 pb-28 sm:py-32 bg-blue-accent-700">
-        <img alt="" loading="lazy" width="2245" height="1636" decoding="async" data-nimg="1"
-            class="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]" style="color:transparent"
-            src="/_next/static/media/background-features.5f7a9ac9.jpg">
+        class="overflow-hidden overflow-x-hidden relative pt-20 pb-28 sm:py-32 bg-blue-accent-700">
         <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
                 <h2 class="text-3xl tracking-tight text-white sm:text-4xl md:text-5xl font-display">
@@ -389,10 +386,10 @@
                 </p>
             </div>
             <div data-controller="tabs" data-tabs-active-tab-class="bg-white lg:ring-1 lg:ring-inset lg:bg-white/10"
-                class="grid grid-cols-1 gap-y-2 items-center pt-10 mt-16 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0">
-                <div class="flex overflow-x-auto pb-4 -mx-4 sm:overflow-visible sm:pb-0 sm:mx-0 lg:col-span-5">
+                class="grid grid-cols-1 gap-y-2 items-center pt-10 mt-16 w-full sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0">
+                <div class="flex pb-4 -mx-4 sm:pb-0 sm:mx-0 lg:col-span-5">
                     <div
-                        class="flex relative z-10 gap-x-4 px-4 whitespace-nowrap sm:px-0 sm:mx-auto lg:block lg:gap-x-0 lg:gap-y-1 lg:mx-0 lg:whitespace-normal">
+                        class="flex overflow-x-scroll relative z-10 gap-x-4 py-5 px-4 whitespace-nowrap sm:px-0 sm:mx-auto lg:block lg:gap-x-0 lg:gap-y-1 lg:mx-0 lg:whitespace-normal">
 
                         <div data-tabs-target="tab" data-action="click->tabs#change"
                             class="relative py-1 px-4 rounded-full lg:p-6 lg:rounded-r-none lg:rounded-l-xl group lg:ring-white/10 lg:hover:bg-white/5 hover:bg-white/10">
@@ -523,7 +520,7 @@
 
 
     <section id="secondary-features" aria-label="Features for simplifying everyday business tasks"
-        class="pt-20 pb-14 sm:pt-32 sm:pb-20 lg:pb-32">
+        class="pt-20 pb-14 w-full sm:pt-32 sm:pb-20 lg:pb-32">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mx-auto max-w-2xl md:text-center">
                 <h2 class="text-3xl tracking-tight sm:text-4xl font-display text-slate-900">
@@ -537,99 +534,6 @@
             <div class="flex overflow-hidden flex-col gap-y-10 px-4 -mx-4 mt-20 sm:px-6 sm:-mx-6 lg:hidden">
                 <div>
                     <div class="mx-auto max-w-2xl">
-                        <div class="w-9 bg-blue-600 rounded-lg">
-                            <svg aria-hidden="true" class="w-9 h-9" fill="none">
-                                <defs>
-                                    <linearGradient id=":R2menla:" x1="11.5" y1="18" x2="36"
-                                        y2="15.5" gradientUnits="userSpaceOnUse">
-                                        <stop offset=".194" stop-color="#fff"></stop>
-                                        <stop offset="1" stop-color="#6692F1"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <path d=" m30 15-4 5-4-11-4 18-4-11-4 7-4-5" stroke="url(#:R2menla:)" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600">Recurring invoices</h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">Stay on top of things with always up-to-date
-                            reporting features.</p>
-                        <p class="mt-4 text-sm text-slate-600">We talked about reporting in the section above but we needed
-                            three items here, so mentioning it one more time for posterity.</p>
-                    </div>
-                    <div class="relative pb-10 mt-10">
-                        <div class="absolute bottom-0 -inset-x-4 top-8 sm:-inset-x-6 bg-slate-200"></div>
-                        <div
-                            class="overflow-hidden relative mx-auto bg-white rounded-xl ring-1 shadow-lg w-[52.75rem] shadow-slate-900/5 ring-slate-500/10">
-                            <img alt="" loading="lazy" width="1688" height="856" decoding="async"
-                                data-nimg="1" class="w-full" style="color:transparent" sizes="52.75rem"
-                                srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75 3840w"
-                                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="mx-auto max-w-2xl">
-                        <div class="w-9 bg-blue-600 rounded-lg"><svg aria-hidden="true" class="w-9 h-9" fill="none">
-                                <path opacity=".5"
-                                    d="M8 17a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path opacity=".3"
-                                    d="M8 24a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path d="M8 10a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600">Inventory</h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">Never lose track of what’s in stock with
-                            accurate inventory tracking.</p>
-                        <p class="mt-4 text-sm text-slate-600">We don’t offer this as part of our software but that
-                            statement is inarguably true. Accurate inventory tracking would help you for sure.</p>
-                    </div>
-                    <div class="relative pb-10 mt-10">
-                        <div class="absolute bottom-0 -inset-x-4 top-8 sm:-inset-x-6 bg-slate-200"></div>
-                        <div
-                            class="overflow-hidden relative mx-auto bg-white rounded-xl ring-1 shadow-lg w-[52.75rem] shadow-slate-900/5 ring-slate-500/10">
-                            <img alt="" loading="lazy" width="1688" height="856" decoding="async"
-                                data-nimg="1" class="w-full" style="color:transparent" sizes="52.75rem"
-                                srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75 3840w"
-                                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="mx-auto max-w-2xl">
-                        <div class="w-9 bg-blue-600 rounded-lg"><svg aria-hidden="true" class="w-9 h-9" fill="none">
-                                <path opacity=".5"
-                                    d="M25.778 25.778c.39.39 1.027.393 1.384-.028A11.952 11.952 0 0 0 30 18c0-6.627-5.373-12-12-12S6 11.373 6 18c0 2.954 1.067 5.659 2.838 7.75.357.421.993.419 1.384.028.39-.39.386-1.02.036-1.448A9.959 9.959 0 0 1 8 18c0-5.523 4.477-10 10-10s10 4.477 10 10a9.959 9.959 0 0 1-2.258 6.33c-.35.427-.354 1.058.036 1.448Z"
-                                    fill="#fff"></path>
-                                <path
-                                    d="M12 28.395V28a6 6 0 0 1 12 0v.395A11.945 11.945 0 0 1 18 30c-2.186 0-4.235-.584-6-1.605ZM21 16.5c0-1.933-.5-3.5-3-3.5s-3 1.567-3 3.5 1.343 3.5 3 3.5 3-1.567 3-3.5Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600">Contacts</h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">Organize all of your contacts, service
-                            providers, and invoices in one place.</p>
-                        <p class="mt-4 text-sm text-slate-600">This also isn’t actually a feature, it’s just some friendly
-                            advice. We definitely recommend that you do this, you’ll feel really organized and professional.
-                        </p>
-                    </div>
-                    <div class="relative pb-10 mt-10">
-                        <div class="absolute bottom-0 -inset-x-4 top-8 sm:-inset-x-6 bg-slate-200"></div>
-                        <div
-                            class="overflow-hidden relative mx-auto bg-white rounded-xl ring-1 shadow-lg w-[52.75rem] shadow-slate-900/5 ring-slate-500/10">
-                            <img alt="" loading="lazy" width="1688" height="856" decoding="async"
-                                data-nimg="1" class="w-full" style="color:transparent" sizes="52.75rem"
-                                srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75 3840w"
-                                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hidden lg:block lg:mt-20" data-controller="tabs"
-                data-tabs-active-tab-class="-mb-px rounded-t border-t border-r border-l">
-                <div class="grid grid-cols-3 gap-x-8" role="tablist" aria-orientation="horizontal">
-                    <div class="relative opacity-75 hover:opacity-100">
                         <div class="">
                             <div class="inline-block p-3 bg-blue-600 rounded-lg">
                                 <i class="text-white bi bi-arrow-repeat"></i>
@@ -649,59 +553,133 @@
                             You could do this manually, but why would you? It’s so much easier to just have it done for you.
                         </p>
                     </div>
-                    <div class="relative opacity-75 hover:opacity-100">
-                        <div class="">
-                            <div class="inline-block p-3 bg-blue-600 rounded-lg">
-                                <i class="text-white bi bi-arrow-up-right-circle-fill"></i>
-                            </div>
+
+                </div>
+                <div>
+                    <div class="">
+                        <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                            <i class="text-white bi bi-arrow-up-right-circle-fill"></i>
                         </div>
-                        <h3 class="mt-6 text-sm font-medium text-slate-600">
-                            <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
-                                data-action="click->tabs#change">
-                                <span class="absolute inset-0"></span>
-                                Automated workflows
-                            </button>
-                        </h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">
-                            Automatically convert accepted estimates into payable invoices
-                        </p>
-                        <p class="mt-4 text-sm text-slate-600">
-                            Like we said, it's about keeping the boring mundane tasks on autopilot, and you don't even need
-                            a GPT to do it
-                        </p>
                     </div>
-                    <div class="relative">
-                        <div class="">
-                            <div class="inline-block p-3 bg-blue-600 rounded-lg">
-                                <i class="text-white bi bi-bell-fill"></i>
-                            </div>
-                        </div>
-                        <h3 class="mt-6 text-sm font-medium">
-                            <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
-                                data-action="click->tabs#change">
-                                <span class="absolute inset-0"></span>
-                                Alerts and notifications
-                            </button>
-                        </h3>
-                        <p class="mt-2 text-xl font-display text-slate-900">
-                            Get notified when your clients, opens, views, pays or ignores your invoice
-                        </p>
-                        <p class="mt-4 text-sm text-slate-600">
-                            Certainty is key when you’re running a business, so we’ll make sure you know exactly what’s
-                            going on
-                        </p>
-                    </div>
+                    <h3 class="mt-6 text-sm font-medium text-slate-600">
+                        <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                            data-action="click->tabs#change">
+                            <span class="absolute inset-0"></span>
+                            Automated workflows
+                        </button>
+                    </h3>
+                    <p class="mt-2 text-xl font-display text-slate-900">
+                        Automatically convert accepted estimates into payable invoices
+                    </p>
+                    <p class="mt-4 text-sm text-slate-600">
+                        Like we said, it's about keeping the boring mundane tasks on autopilot, and you don't even need
+                        a GPT to do it
+                    </p>
                 </div>
             </div>
+            <div>
+                <div class="mx-auto max-w-2xl">
+                    <div class="">
+                        <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                            <i class="text-white bi bi-bell-fill"></i>
+                        </div>
+                    </div>
+                    <h3 class="mt-6 text-sm font-medium">
+                        <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                            data-action="click->tabs#change">
+                            <span class="absolute inset-0"></span>
+                            Alerts and notifications
+                        </button>
+                    </h3>
+                    <p class="mt-2 text-xl font-display text-slate-900">
+                        Get notified when your clients, opens, views, pays or ignores your invoice
+                    </p>
+                    <p class="mt-4 text-sm text-slate-600">
+                        Certainty is key when you’re running a business, so we’ll make sure you know exactly what’s
+                        going on
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hidden lg:block lg:mt-20" data-controller="tabs"
+            data-tabs-active-tab-class="-mb-px rounded-t border-t border-r border-l">
+            <div class="grid grid-cols-3 gap-x-8" role="tablist" aria-orientation="horizontal">
+                <div class="relative opacity-75 hover:opacity-100">
+                    <div class="">
+                        <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                            <i class="text-white bi bi-arrow-repeat"></i>
+                        </div>
+                    </div>
+                    <h3 class="mt-6 text-sm font-medium text-slate-600">
+                        <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                            data-action="click->tabs#change">
+                            <span class="absolute inset-0"></span>
+                            Recurring invoices
+                        </button>
+                    </h3>
+                    <p class="mt-2 text-xl font-display text-slate-900">
+                        Save time by automatically billing long-term clients with recurring invoices
+                    </p>
+                    <p class="mt-4 text-sm text-slate-600">
+                        You could do this manually, but why would you? It’s so much easier to just have it done for you.
+                    </p>
+                </div>
+                <div class="relative opacity-75 hover:opacity-100">
+                    <div class="">
+                        <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                            <i class="text-white bi bi-arrow-up-right-circle-fill"></i>
+                        </div>
+                    </div>
+                    <h3 class="mt-6 text-sm font-medium text-slate-600">
+                        <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                            data-action="click->tabs#change">
+                            <span class="absolute inset-0"></span>
+                            Automated workflows
+                        </button>
+                    </h3>
+                    <p class="mt-2 text-xl font-display text-slate-900">
+                        Automatically convert accepted estimates into payable invoices
+                    </p>
+                    <p class="mt-4 text-sm text-slate-600">
+                        Like we said, it's about keeping the boring mundane tasks on autopilot, and you don't even need
+                        a GPT to do it
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="">
+                        <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                            <i class="text-white bi bi-bell-fill"></i>
+                        </div>
+                    </div>
+                    <h3 class="mt-6 text-sm font-medium">
+                        <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                            data-action="click->tabs#change">
+                            <span class="absolute inset-0"></span>
+                            Alerts and notifications
+                        </button>
+                    </h3>
+                    <p class="mt-2 text-xl font-display text-slate-900">
+                        Get notified when your clients, opens, views, pays or ignores your invoice
+                    </p>
+                    <p class="mt-4 text-sm text-slate-600">
+                        Certainty is key when you’re running a business, so we’ll make sure you know exactly what’s
+                        going on
+                    </p>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 
     <section id="pricing" aria-label="Pricing" class="py-20 sm:py-32 bg-slate-900">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="md:text-center">
-                <h2 class="text-3xl tracking-tight text-white sm:text-4xl font-display"><span
-                        class="relative whitespace-nowrap"><svg aria-hidden="true" viewBox="0 0 281 40"
-                            preserveAspectRatio="none" class="absolute left-0 top-1/2 w-full h-[1em] fill-blue-400">
+                <h2 class="text-3xl tracking-tight text-white sm:text-4xl font-display">
+                    <span class="relative whitespace-nowrap">
+                        <svg aria-hidden="true" viewBox="0 0 281 40" preserveAspectRatio="none"
+                            class="absolute left-0 top-1/2 w-full h-[1em] fill-blue-400">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M240.172 22.994c-8.007 1.246-15.477 2.23-31.26 4.114-18.506 2.21-26.323 2.977-34.487 3.386-2.971.149-3.727.324-6.566 1.523-15.124 6.388-43.775 9.404-69.425 7.31-26.207-2.14-50.986-7.103-78-15.624C10.912 20.7.988 16.143.734 14.657c-.066-.381.043-.344 1.324.456 10.423 6.506 49.649 16.322 77.8 19.468 23.708 2.65 38.249 2.95 55.821 1.156 9.407-.962 24.451-3.773 25.101-4.692.074-.104.053-.155-.058-.135-1.062.195-13.863-.271-18.848-.687-16.681-1.389-28.722-4.345-38.142-9.364-15.294-8.15-7.298-19.232 14.802-20.514 16.095-.934 32.793 1.517 47.423 6.96 13.524 5.033 17.942 12.326 11.463 18.922l-.859.874.697-.006c2.681-.026 15.304-1.302 29.208-2.953 25.845-3.07 35.659-4.519 54.027-7.978 9.863-1.858 11.021-2.048 13.055-2.145a61.901 61.901 0 0 0 4.506-.417c1.891-.259 2.151-.267 1.543-.047-.402.145-2.33.913-4.285 1.707-4.635 1.882-5.202 2.07-8.736 2.903-3.414.805-19.773 3.797-26.404 4.829Zm40.321-9.93c.1-.066.231-.085.29-.041.059.043-.024.096-.183.119-.177.024-.219-.007-.107-.079ZM172.299 26.22c9.364-6.058 5.161-12.039-12.304-17.51-11.656-3.653-23.145-5.47-35.243-5.576-22.552-.198-33.577 7.462-21.321 14.814 12.012 7.205 32.994 10.557 61.531 9.831 4.563-.116 5.372-.288 7.337-1.559Z">
                             </path>
@@ -714,10 +692,10 @@
                 </p>
             </div>
             <div
-                class="grid grid-cols-1 gap-y-10 -mx-4 mt-16 max-w-2xl sm:mx-auto lg:grid-cols-3 lg:-mx-8 lg:max-w-none xl:gap-x-8 xl:mx-0">
+                class="grid grid-cols-1 gap-y-10 mt-16 max-w-2xl sm:mx-auto md:-mx-4 lg:grid-cols-3 lg:-mx-8 lg:max-w-none xl:gap-x-8 xl:mx-0">
                 @foreach ($plans as $plan)
                     <section
-                        class="flex flex-col px-6 rounded-3xl sm:px-8 lg:py-8 @if ($loop->index == 1) bg-blue-600 @endif">
+                        class="flex flex-col px-6 rounded-3xl sm:px-8 py-6 lg:py-8 @if ($loop->index == 1) bg-blue-600 @endif">
                         <h3 class="mt-5 text-lg text-white font-display">{{ $plan->name }}</h3>
                         <p class="mt-2 text-base @if ($loop->index == 1) text-white @else text-slate-400 @endif">
                             {{ $plan->description }}
@@ -827,8 +805,7 @@
                                 <div class="mb-[30px]">
                                     <label for="message"
                                         class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Message*</label>
-                                    <x-form.textarea class="w-full" name="message"
-                                        placeholder="type your message here"
+                                    <x-form.textarea class="w-full" name="message" placeholder="type your message here"
                                         data-controller="textarea-autogrow">{{ old('message') }}</x-form.textarea>
                                 </div>
                                 <div class="mb-0">
