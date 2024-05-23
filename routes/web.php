@@ -14,6 +14,7 @@ use App\Http\Controllers\Estimate\StatusController;
 use App\Http\Controllers\Onboarding\BusinessController;
 use App\Http\Controllers\Payment\PaymentController as PaymentPaymentController;
 use App\Http\Controllers\Public\Invoice\PaymentController;
+use App\Http\Controllers\Public\ContactController;
 use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PageController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
@@ -76,6 +77,8 @@ Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])
     );
 
 Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('avatars.show');
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed::class])
     ->prefix('app')

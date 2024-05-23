@@ -705,334 +705,62 @@
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M240.172 22.994c-8.007 1.246-15.477 2.23-31.26 4.114-18.506 2.21-26.323 2.977-34.487 3.386-2.971.149-3.727.324-6.566 1.523-15.124 6.388-43.775 9.404-69.425 7.31-26.207-2.14-50.986-7.103-78-15.624C10.912 20.7.988 16.143.734 14.657c-.066-.381.043-.344 1.324.456 10.423 6.506 49.649 16.322 77.8 19.468 23.708 2.65 38.249 2.95 55.821 1.156 9.407-.962 24.451-3.773 25.101-4.692.074-.104.053-.155-.058-.135-1.062.195-13.863-.271-18.848-.687-16.681-1.389-28.722-4.345-38.142-9.364-15.294-8.15-7.298-19.232 14.802-20.514 16.095-.934 32.793 1.517 47.423 6.96 13.524 5.033 17.942 12.326 11.463 18.922l-.859.874.697-.006c2.681-.026 15.304-1.302 29.208-2.953 25.845-3.07 35.659-4.519 54.027-7.978 9.863-1.858 11.021-2.048 13.055-2.145a61.901 61.901 0 0 0 4.506-.417c1.891-.259 2.151-.267 1.543-.047-.402.145-2.33.913-4.285 1.707-4.635 1.882-5.202 2.07-8.736 2.903-3.414.805-19.773 3.797-26.404 4.829Zm40.321-9.93c.1-.066.231-.085.29-.041.059.043-.024.096-.183.119-.177.024-.219-.007-.107-.079ZM172.299 26.22c9.364-6.058 5.161-12.039-12.304-17.51-11.656-3.653-23.145-5.47-35.243-5.576-22.552-.198-33.577 7.462-21.321 14.814 12.012 7.205 32.994 10.557 61.531 9.831 4.563-.116 5.372-.288 7.337-1.559Z">
                             </path>
-                        </svg><span class="relative">Simple pricing,</span></span> <!-- -->for everyone.</h2>
-                <p class="mt-4 text-lg text-slate-400">It doesn’t matter what size your business is, our software won’t
-                    work well for you.</p>
+                        </svg>
+                        <span class="relative">Simple pricing,</span></span> <!-- -->for everyone.
+                </h2>
+                <p class="mt-4 text-lg text-slate-400">
+                    Look, we know you’re tired of complicated pricing plans that make you feel <br> like you need a degree
+                    in finance or chatGPT to understand them.
+                </p>
             </div>
             <div
                 class="grid grid-cols-1 gap-y-10 -mx-4 mt-16 max-w-2xl sm:mx-auto lg:grid-cols-3 lg:-mx-8 lg:max-w-none xl:gap-x-8 xl:mx-0">
-                <section class="flex flex-col px-6 rounded-3xl sm:px-8 lg:py-8">
-                    <h3 class="mt-5 text-lg text-white font-display">Starter</h3>
-                    <p class="mt-2 text-base text-slate-400">Good for anyone who is self-employed and just getting
-                        started.</p>
-                    <p class="order-first text-5xl font-light tracking-tight text-white font-display">$9</p>
-                    <ul role="list" class="flex flex-col order-last gap-y-3 mt-10 text-sm text-slate-200">
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Send 10 quotes and invoices</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Connect up to 2 bank accounts</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Track up to 15 expenses per month</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Manual payroll support</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Export up to 3 reports</span></li>
-                    </ul><a
-                        class="inline-flex justify-center items-center py-2 px-4 mt-8 text-sm text-white rounded-full ring-1 focus:outline-none focus-visible:outline-white group ring-slate-700 hover:ring-slate-500 active:ring-slate-700 active:text-slate-400"
-                        variant="outline" color="white" aria-label="Get started with the Starter plan for $9"
-                        href="/register">Get started</a>
-                </section>
-                <section class="flex flex-col order-first py-8 px-6 bg-blue-600 rounded-3xl sm:px-8 lg:order-none">
-                    <h3 class="mt-5 text-lg text-white font-display">Small business</h3>
-                    <p class="mt-2 text-base text-white">Perfect for small / medium sized businesses.</p>
-                    <p class="order-first text-5xl font-light tracking-tight text-white font-display">$15</p>
-                    <ul role="list" class="flex flex-col order-last gap-y-3 mt-10 text-sm text-white">
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 text-white fill-current stroke-current">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Send 25 quotes and invoices</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 text-white fill-current stroke-current">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Connect up to 5 bank accounts</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 text-white fill-current stroke-current">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Track up to 50 expenses per month</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 text-white fill-current stroke-current">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Automated payroll support</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 text-white fill-current stroke-current">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Export up to 12 reports</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 text-white fill-current stroke-current">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Bulk reconcile transactions</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 text-white fill-current stroke-current">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Track in multiple currencies</span></li>
-                    </ul><a
-                        class="inline-flex justify-center items-center py-2 px-4 mt-8 text-sm font-semibold bg-white rounded-full hover:bg-blue-50 focus:outline-none focus-visible:outline-white active:bg-blue-200 group text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 active:text-slate-600"
-                        variant="solid" color="white" aria-label="Get started with the Small business plan for $15"
-                        href="/register">Get started</a>
-                </section>
-                <section class="flex flex-col px-6 rounded-3xl sm:px-8 lg:py-8">
-                    <h3 class="mt-5 text-lg text-white font-display">Enterprise</h3>
-                    <p class="mt-2 text-base text-slate-400">For even the biggest enterprise companies.</p>
-                    <p class="order-first text-5xl font-light tracking-tight text-white font-display">$39</p>
-                    <ul role="list" class="flex flex-col order-last gap-y-3 mt-10 text-sm text-slate-200">
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Send unlimited quotes and invoices</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Connect up to 15 bank accounts</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Track up to 200 expenses per month</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Automated payroll support</span></li>
-                        <li class="flex"><svg aria-hidden="true"
-                                class="flex-none w-6 h-6 fill-current stroke-current text-slate-400">
-                                <path
-                                    d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                                    stroke-width="0"></path>
-                                <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                            </svg><span class="ml-4">Export up to 25 reports, including TPS</span></li>
-                    </ul><a
-                        class="inline-flex justify-center items-center py-2 px-4 mt-8 text-sm text-white rounded-full ring-1 focus:outline-none focus-visible:outline-white group ring-slate-700 hover:ring-slate-500 active:ring-slate-700 active:text-slate-400"
-                        variant="outline" color="white" aria-label="Get started with the Enterprise plan for $39"
-                        href="/register">Get started</a>
-                </section>
+                @foreach ($plans as $plan)
+                    <section
+                        class="flex flex-col px-6 rounded-3xl sm:px-8 lg:py-8 @if ($loop->index == 1) bg-blue-600 @endif">
+                        <h3 class="mt-5 text-lg text-white font-display">{{ $plan->name }}</h3>
+                        <p class="mt-2 text-base @if ($loop->index == 1) text-white @else text-slate-400 @endif">
+                            {{ $plan->description }}
+                        </p>
+                        <p class="order-first text-5xl font-light tracking-tight text-white font-display">
+                            <span class="mr-1 text-lg font-semibold">$</span>{{ $plan->price }} <span
+                                class="mr-1 -ml-3 text-xl font-semibold"> /
+                                {{ $plan->invoice_interval }}</span>
+
+                        </p>
+                        <ul role="list" class="flex flex-col order-last gap-y-3 mt-10 text-sm text-slate-200">
+                            @foreach ($plan->features as $feature)
+                                <li class="flex">
+                                    <i class="text-xl bi bi-check2"></i>
+                                    <span class="ml-4">
+                                        @if ($feature->value == 1)
+                                            {{ $feature->name }}
+                                        @else
+                                            {{ $feature->name }} {{ $feature->value }}
+                                        @endif
+                                    </span>
+                                </li>
+                            @endforeach
+                        </ul>
+                        @if ($loop->index == 1)
+                            <a class="inline-flex justify-center items-center py-2 px-4 mt-8 text-sm font-semibold bg-white rounded-full hover:bg-blue-50 focus:outline-none focus-visible:outline-white active:bg-blue-200 group text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 active:text-slate-600"
+                                variant="outline" color="white" aria-label="Get started with the Starter plan for $9"
+                                href="{{ route('app.billing.change-plan.store', $plan) }}">
+                                Get started
+                            </a>
+                        @else
+                            <a class="inline-flex justify-center items-center py-2 px-4 mt-8 text-sm text-white rounded-full ring-1 focus:outline-none focus-visible:outline-white group ring-slate-700 hover:ring-slate-500 active:ring-slate-700 active:text-slate-400"
+                                variant="outline" color="white" aria-label="Get started with the Starter plan for $9"
+                                href="{{ route('app.billing.change-plan.store', $plan) }}">
+                                Get started
+                            </a>
+                        @endif
+                    </section>
+                @endforeach
             </div>
         </div>
     </section>
-    <!-- FAQ -->
-    <div class="py-10 px-4 mx-auto sm:px-6 lg:py-14 lg:px-8 max-w-[85rem]">
-        <!-- Title -->
-        <div class="mx-auto mb-10 max-w-2xl lg:mb-14">
-            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">You might be wondering...</h2>
-        </div>
-        <!-- End Title -->
 
-        <div class="mx-auto max-w-2xl divide-y divide-gray-200 dark:divide-neutral-700">
-            <div class="py-8 first:pt-0 last:pb-0">
-                <div class="flex gap-x-5">
-                    <svg class="flex-shrink-0 mt-1 text-gray-500 size-6 dark:text-neutral-500"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                        <path d="M12 17h.01" />
-                    </svg>
-
-                    <div>
-                        <h3 class="font-semibold text-gray-800 md:text-lg dark:text-neutral-200">
-                            Can I cancel at anytime?
-                        </h3>
-                        <p class="mt-1 text-gray-500 dark:text-neutral-500">
-                            Yes, you can cancel anytime no questions are asked while you cancel but we would highly
-                            appreciate if you will give us some feedback.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="py-8 first:pt-0 last:pb-0">
-                <div class="flex gap-x-5">
-                    <svg class="flex-shrink-0 mt-1 text-gray-500 size-6 dark:text-neutral-500"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                        <path d="M12 17h.01" />
-                    </svg>
-
-                    <div>
-                        <h3 class="font-semibold text-gray-800 md:text-lg dark:text-neutral-200">
-                            My team has credits. How do we use them?
-                        </h3>
-                        <p class="mt-1 text-gray-500 dark:text-neutral-500">
-                            Once your team signs up for a subscription plan. This is where we sit down, grab a cup of coffee
-                            and dial in the details.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="py-8 first:pt-0 last:pb-0">
-                <div class="flex gap-x-5">
-                    <svg class="flex-shrink-0 mt-1 text-gray-500 size-6 dark:text-neutral-500"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                        <path d="M12 17h.01" />
-                    </svg>
-
-                    <div>
-                        <h3 class="font-semibold text-gray-800 md:text-lg dark:text-neutral-200">
-                            How does Preline's pricing work?
-                        </h3>
-                        <p class="mt-1 text-gray-500 dark:text-neutral-500">
-                            Our subscriptions are tiered. Understanding the task at hand and ironing out the wrinkles is
-                            key.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="py-8 first:pt-0 last:pb-0">
-                <div class="flex gap-x-5">
-                    <svg class="flex-shrink-0 mt-1 text-gray-500 size-6 dark:text-neutral-500"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                        <path d="M12 17h.01" />
-                    </svg>
-
-                    <div>
-                        <h3 class="font-semibold text-gray-800 md:text-lg dark:text-neutral-200">
-                            How secure is Preline?
-                        </h3>
-                        <p class="mt-1 text-gray-500 dark:text-neutral-500">
-                            Protecting the data you trust to Preline is our first priority. This part is really crucial in
-                            keeping the project in line to completion.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="py-8 first:pt-0 last:pb-0">
-                <div class="flex gap-x-5">
-                    <svg class="flex-shrink-0 mt-1 text-gray-500 size-6 dark:text-neutral-500"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                        <path d="M12 17h.01" />
-                    </svg>
-
-                    <div>
-                        <h3 class="font-semibold text-gray-800 md:text-lg dark:text-neutral-200">
-                            How do I get access to a theme I purchased?
-                        </h3>
-                        <p class="mt-1 text-gray-500 dark:text-neutral-500">
-                            If you lose the link for a theme you purchased, don't panic! We've got you covered. You can
-                            login to your account, tap your avatar in the upper right corner, and tap Purchases. If you
-                            didn't create a login or can't remember the information, you can use our handy Redownload page,
-                            just remember to use the same email you originally made your purchases with.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="py-8 first:pt-0 last:pb-0">
-                <div class="flex gap-x-5">
-                    <svg class="flex-shrink-0 mt-1 text-gray-500 size-6 dark:text-neutral-500"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                        <path d="M12 17h.01" />
-                    </svg>
-
-                    <div>
-                        <h3 class="font-semibold text-gray-800 md:text-lg dark:text-neutral-200">
-                            Upgrade License Type
-                        </h3>
-                        <p class="mt-1 text-gray-500 dark:text-neutral-500">
-                            There may be times when you need to upgrade your license from the original type you purchased
-                            and we have a solution that ensures you can apply your original purchase cost to the new license
-                            purchase.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ====== Contact Start ====== -->
     <section id="contact" class="relative py-20 md:py-[120px]">
         <div class="absolute top-0 left-0 w-full h-full -z-[1] dark:bg-dark"></div>
         <div class="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-[#E9F9FF] dark:bg-dark-700 lg:h-[45%] xl:h-1/2"></div>
@@ -1042,31 +770,13 @@
                     <div class="ud-contact-content-wrapper">
                         <div class="mb-12 ud-contact-title lg:mb-[150px]">
                             <span class="block mb-6 text-base font-medium dark:text-white text-dark">
-                                CONTACT US
+                                CONTACT ME
                             </span>
                             <h2 class="font-semibold dark:text-white max-w-[260px] text-[35px] leading-[1.14] text-dark">
-                                Let's talk about your problem.
+                                Hi, I'm <span class="text-blue-600">Steve</span>, <br> Let's Talk
                             </h2>
                         </div>
-                        <div class="flex flex-wrap justify-between mb-12 lg:mb-0">
-                            <div class="flex mb-8 max-w-full w-[330px]">
-                                <div class="mr-6 text-blue-600 text-[32px]">
-                                    <svg width="29" height="35" viewBox="0 0 29 35" class="fill-current">
-                                        <path
-                                            d="M14.5 0.710938C6.89844 0.710938 0.664062 6.72656 0.664062 14.0547C0.664062 19.9062 9.03125 29.5859 12.6406 33.5234C13.1328 34.0703 13.7891 34.3437 14.5 34.3437C15.2109 34.3437 15.8672 34.0703 16.3594 33.5234C19.9688 29.6406 28.3359 19.9062 28.3359 14.0547C28.3359 6.67188 22.1016 0.710938 14.5 0.710938ZM14.9375 32.2109C14.6641 32.4844 14.2812 32.4844 14.0625 32.2109C11.3828 29.3125 2.57812 19.3594 2.57812 14.0547C2.57812 7.71094 7.9375 2.625 14.5 2.625C21.0625 2.625 26.4219 7.76562 26.4219 14.0547C26.4219 19.3594 17.6172 29.2578 14.9375 32.2109Z" />
-                                        <path
-                                            d="M14.5 8.58594C11.2734 8.58594 8.59375 11.2109 8.59375 14.4922C8.59375 17.7188 11.2187 20.3984 14.5 20.3984C17.7812 20.3984 20.4062 17.7734 20.4062 14.4922C20.4062 11.2109 17.7266 8.58594 14.5 8.58594ZM14.5 18.4297C12.3125 18.4297 10.5078 16.625 10.5078 14.4375C10.5078 12.25 12.3125 10.4453 14.5 10.4453C16.6875 10.4453 18.4922 12.25 18.4922 14.4375C18.4922 16.625 16.6875 18.4297 14.5 18.4297Z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h5 class="text-lg font-semibold dark:text-white mb-[18px] text-dark">
-                                        Our Location
-                                    </h5>
-                                    <p class="text-base text-gray-600 dark:text-dark-6">
-                                        401 Broadway, 24th Floor, Orchard Cloud View, London
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="flex flex-wrap justify-end mb-12 lg:mb-0">
                             <div class="flex mb-8 max-w-full w-[330px]">
                                 <div class="mr-6 text-blue-600 text-[32px]">
                                     <svg width="34" height="25" viewBox="0 0 34 25" class="fill-current">
@@ -1079,10 +789,7 @@
                                         How Can We Help?
                                     </h5>
                                     <p class="text-base text-gray-600 dark:text-dark-6">
-                                        info@yourdomain.com
-                                    </p>
-                                    <p class="mt-1 text-base text-gray-600 dark:text-dark-6">
-                                        contact@yourdomain.com
+                                        given@koteshen.com
                                     </p>
                                 </div>
                             </div>
@@ -1091,48 +798,50 @@
                 </div>
                 <div class="px-4 w-full lg:w-5/12 xl:w-4/12">
                     <div class="py-10 px-8 bg-white rounded-lg shadow sm:py-12 sm:px-10 lg:p-10 lg:py-12 lg:px-10 dark:shadow-none wow fadeInUp md:p-[60px] 2xl:p-[60px] dark:bg-dark-2"
-                        data-wow-delay=".2s
-              ">
-                        <h3
-                            class="mb-8 text-2xl font-semibold dark:text-white text-dark md:text-[28px] md:leading-[1.42]">
+                        data-wow-delay=".2s">
+                        <h3 class="mb-8 text-2xl font-semibold dark:text-white text-dark md:text-[28px] md:leading-[1.42]">
                             Send us a Message
                         </h3>
-                        <form>
-                            <div class="mb-[22px]">
-                                <label for="fullName" class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Full
-                                    Name*</label>
-                                <input type="text" name="fullName" placeholder="Adam Gelius"
-                                    class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-gray-600 placeholder:text-gray-600/60 focus:border-blue-600 focus:outline-none dark:border-dark-3 dark:text-dark-6" />
-                            </div>
-                            <div class="mb-[22px]">
-                                <label for="email"
-                                    class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Email*</label>
-                                <input type="email" name="email" placeholder="example@yourmail.com"
-                                    class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-gray-600 placeholder:text-gray-600/60 focus:border-blue-600 focus:outline-none dark:border-dark-3 dark:text-dark-6" />
-                            </div>
-                            <div class="mb-[22px]">
-                                <label for="phone"
-                                    class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Phone*</label>
-                                <input type="text" name="phone" placeholder="+885 1254 5211 552"
-                                    class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-gray-600 placeholder:text-gray-600/60 focus:border-blue-600 focus:outline-none dark:border-dark-3 dark:text-dark-6" />
-                            </div>
-                            <div class="mb-[30px]">
-                                <label for="message"
-                                    class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Message*</label>
-                                <textarea name="message" rows="1" placeholder="type your message here"
-                                    class="w-full resize-none border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-gray-600 placeholder:text-gray-600/60 focus:border-blue-600 focus:outline-none dark:border-dark-3 dark:text-dark-6"></textarea>
-                            </div>
-                            <div class="mb-0">
-                                <button type="submit"
-                                    class="inline-flex justify-center items-center py-3 px-10 text-base font-medium text-white bg-blue-600 rounded-md transition duration-300 ease-in-out hover:bg-blue-dark">
-                                    Send
-                                </button>
-                            </div>
-                        </form>
+                        <x-turbo::frame id="contact-form">
+                            @include('includes.flash')
+                            <form method="post" action="{{ route('contact.store') }}">
+                                @csrf
+                                <div class="mb-[22px]">
+                                    <label for="fullName" class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Full
+                                        Name*</label>
+                                    <x-form.input type="text" name="name" placeholder="Adam Gelius"
+                                        class="w-full" />
+                                </div>
+                                <div class="mb-[22px]">
+                                    <label for="email"
+                                        class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Email*</label>
+                                    <x-form.input type="email" name="email" placeholder="example@yourmail.com"
+                                        class="w-full" />
+                                </div>
+                                <div class="mb-[22px]">
+                                    <label for="phone"
+                                        class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Phone*</label>
+                                    <x-form.input type="text" name="phone" placeholder="+263 78 5211 552"
+                                        class="w-full" />
+                                </div>
+                                <div class="mb-[30px]">
+                                    <label for="message"
+                                        class="block mb-4 text-sm text-gray-600 dark:text-dark-6">Message*</label>
+                                    <x-form.textarea class="w-full" name="message"
+                                        placeholder="type your message here"
+                                        data-controller="textarea-autogrow">{{ old('message') }}</x-form.textarea>
+                                </div>
+                                <div class="mb-0">
+                                    <button type="submit"
+                                        class="inline-flex justify-center items-center py-3 px-10 text-base font-medium text-white bg-blue-600 rounded-md transition duration-300 ease-in-out hover:bg-blue-dark">
+                                        Send
+                                    </button>
+                                </div>
+                            </form>
+                        </x-turbo::frame>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ====== Contact End ====== -->
 @endsection

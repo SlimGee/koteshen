@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
+use Flixtechs\Subby\Models\Plan;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
@@ -29,7 +30,8 @@ class HomeController extends Controller
                     ->setDescription('Ditch clunky spreadsheets and invoicing dread. Koteshen automates your billing, so you get paid faster, reduce errors, and gain the financial clarity you need.')
                     ->setImage(asset('images/banner.jpg'))
             );
+        $plans = Plan::all();
 
-        return view('home.index-beta');
+        return view('home.index-beta', ['plans' => $plans]);
     }
 }
