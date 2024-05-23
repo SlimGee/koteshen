@@ -519,8 +519,7 @@
     </section>
 
 
-    <section id="secondary-features" aria-label="Features for simplifying everyday business tasks"
-        class="pt-20 pb-14 w-full sm:pt-32 sm:pb-20 lg:pb-32">
+    <section id="secondary-features" class="pt-20 pb-14 w-full sm:pt-32 sm:pb-20 lg:pb-32">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mx-auto max-w-2xl md:text-center">
                 <h2 class="text-3xl tracking-tight sm:text-4xl font-display text-slate-900">
@@ -531,7 +530,7 @@
                     on your business instead of administrative tasks.
                 </p>
             </div>
-            <div class="flex overflow-hidden flex-col gap-y-10 px-4 -mx-4 mt-20 sm:px-6 sm:-mx-6 lg:hidden">
+            <div class="flex flex-col gap-y-10 px-4 -mx-4 mt-20 sm:px-6 sm:-mx-6 lg:hidden">
                 <div>
                     <div class="mx-auto max-w-2xl">
                         <div class="">
@@ -576,34 +575,36 @@
                         a GPT to do it
                     </p>
                 </div>
-            </div>
-            <div>
-                <div class="mx-auto max-w-2xl">
-                    <div class="">
-                        <div class="inline-block p-3 bg-blue-600 rounded-lg">
-                            <i class="text-white bi bi-bell-fill"></i>
-                        </div>
-                    </div>
-                    <h3 class="mt-6 text-sm font-medium">
-                        <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
-                            data-action="click->tabs#change">
-                            <span class="absolute inset-0"></span>
-                            Alerts and notifications
-                        </button>
-                    </h3>
-                    <p class="mt-2 text-xl font-display text-slate-900">
-                        Get notified when your clients, opens, views, pays or ignores your invoice
-                    </p>
-                    <p class="mt-4 text-sm text-slate-600">
-                        Certainty is key when you’re running a business, so we’ll make sure you know exactly what’s
-                        going on
-                    </p>
-                </div>
 
+                <div>
+                    <div class="mx-auto max-w-2xl">
+                        <div class="">
+                            <div class="inline-block p-3 bg-blue-600 rounded-lg">
+                                <i class="text-white bi bi-bell-fill"></i>
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-sm font-medium">
+                            <button class="ui-not-focus-visible:outline-none" data-tabs-target="tab"
+                                data-action="click->tabs#change">
+                                <span class="absolute inset-0"></span>
+                                Alerts and notifications
+                            </button>
+                        </h3>
+                        <p class="mt-2 text-xl font-display text-slate-900">
+                            Get notified when your clients, opens, views, pays or ignores your invoice
+                        </p>
+                        <p class="mt-4 text-sm text-slate-600">
+                            Certainty is key when you’re running a business, so we’ll make sure you know exactly what’s
+                            going on
+                        </p>
+                    </div>
+
+                </div>
             </div>
+
         </div>
 
-        <div class="hidden lg:block lg:mt-20" data-controller="tabs"
+        <div class="container hidden mx-auto lg:flex lg:px-12 lg:mt-20" data-controller="tabs"
             data-tabs-active-tab-class="-mb-px rounded-t border-t border-r border-l">
             <div class="grid grid-cols-3 gap-x-8" role="tablist" aria-orientation="horizontal">
                 <div class="relative opacity-75 hover:opacity-100">
