@@ -4,9 +4,13 @@ namespace App\Console\Commands;
 
 use App\Models\Business;
 use App\Models\Client;
+use App\Models\Comment;
 use App\Models\Country;
 use App\Models\Currency;
+use App\Models\Estimate;
 use App\Models\Invoice;
+use App\Models\Item;
+use App\Models\Payment;
 use App\Models\User;
 use FlixtechsLabs\LaravelAuthorizer\Facades\Authorizer;
 use Illuminate\Console\Command;
@@ -57,6 +61,10 @@ class Deploy extends Command
                 ...Authorizer::getPermissionsFor(Business::class),
                 ...Authorizer::getPermissionsFor(Client::class),
                 ...Authorizer::getPermissionsFor(Invoice::class),
+                ...Authorizer::getPermissionsFor(Estimate::class),
+                ...Authorizer::getPermissionsFor(Payment::class),
+                ...Authorizer::getPermissionsFor(Comment::class),
+                ...Authorizer::getPermissionsFor(Item::class),
             ]),
         ]);
 
