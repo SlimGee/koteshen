@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-if (!function_exists('convert_array_access_to_dot_notation')) {
+if (!function_exists('convert_array_access')) {
     function convert_array_access($str)
     {
         $string = preg_replace('/\[(\w+)\]/', '.$1', $str, 1);
