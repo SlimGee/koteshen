@@ -51,11 +51,7 @@ class PaymentController extends Controller
 
         $user = User::find(auth()->id());
 
-        if ($user->subscribed()) {
-            $user->subscription('main')->changePlan($plan);
-        } else {
-            $user->newSubscription('main', $plan, $plan->description, $plan->description);
-        }
+        $user->subscribe($plan);
 
         return redirect()->route('app.billing.edit')->with('success', 'You have successfully subscribed to ' . $plan->name . ' plan');
     }

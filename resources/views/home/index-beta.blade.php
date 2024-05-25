@@ -18,7 +18,7 @@
                             <li>
                                 <a href="{{ route('register') }}"
                                     class="inline-flex justify-center items-center px-7 text-base font-medium text-center bg-white rounded-md transition duration-300 ease-in-out hover:text-gray-600 py-[14px] text-dark shadow-1 hover:bg-gray-2">
-                                    Sign up for just $9.99
+                                    Start 15 day trial, no credit required
                                 </a>
                             </li>
                             <li>
@@ -28,6 +28,10 @@
                                     Watch demo
                                 </a>
                             </li>
+                            <p class="font-medium text-green-600">
+                                We're offering 50% off on all plans to the first 100 customers — {{ 100 - $count }}
+                                remaining
+                            </p>
                         </ul>
                     </div>
                 </div>
@@ -701,11 +705,14 @@
                         <p class="mt-2 text-base @if ($loop->index == 1) text-white @else text-slate-400 @endif">
                             {{ $plan->description }}
                         </p>
+                        <p class="mt-4 text-base font-semibold text-white">
+                            Try for {{ $plan->trial_period }} {{ $plan->trial_interval }}. No credit card required
+                        </p>
+
                         <p class="order-first text-5xl font-light tracking-tight text-white font-display">
                             <span class="mr-1 text-lg font-semibold">$</span>{{ $plan->price }} <span
                                 class="mr-1 -ml-3 text-xl font-semibold"> /
                                 {{ $plan->invoice_interval }}</span>
-
                         </p>
                         <ul role="list" class="flex flex-col order-last gap-y-3 mt-10 text-sm text-slate-200">
                             @foreach ($plan->features as $feature)
@@ -724,14 +731,14 @@
                         @if ($loop->index == 1)
                             <a class="inline-flex justify-center items-center py-2 px-4 mt-8 text-sm font-semibold bg-white rounded-full hover:bg-blue-50 focus:outline-none focus-visible:outline-white active:bg-blue-200 group text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 active:text-slate-600"
                                 variant="outline" color="white" aria-label="Get started with the Starter plan for $9"
-                                href="{{ route('app.billing.change-plan.store', $plan) }}">
-                                Get started
+                                href="{{ route('register', ['plan' => $plan->id]) }}">
+                                Start free trial
                             </a>
                         @else
                             <a class="inline-flex justify-center items-center py-2 px-4 mt-8 text-sm text-white rounded-full ring-1 focus:outline-none focus-visible:outline-white group ring-slate-700 hover:ring-slate-500 active:ring-slate-700 active:text-slate-400"
                                 variant="outline" color="white" aria-label="Get started with the Starter plan for $9"
-                                href="{{ route('app.billing.change-plan.store', $plan) }}">
-                                Get started
+                                href="{{ route('register', ['plan' => $plan->id]) }}">
+                                Start free trial
                             </a>
                         @endif
                     </section>

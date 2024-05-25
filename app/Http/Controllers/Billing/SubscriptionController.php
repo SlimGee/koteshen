@@ -4,28 +4,27 @@ namespace App\Http\Controllers\Billing;
 
 use App\Http\Controllers\Billing\Concerns\CreatesInvoices;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Flixtechs\Subby\Models\Plan;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
-class ChangePlanController extends Controller
+class SubscriptionController extends Controller
 {
     use CreatesInvoices;
 
     public function create(): Renderable
     {
-        $plans = Plan::all();
-
-        return view('app.billing.create', ['plans' => $plans]);
+        return view('app.subscription.create', [
+            'plans' => Plan::all(),
+        ]);
     }
 
     public function store(Plan $plan): RedirectResponse
     {
-        $user = User::find(auth()->id());
+        if (auth()->user()->subscriptions()->count() === 0) {
+            auth()->user()->newSubscription('main', $plan, $plan->description, $plan->description);
 
-        if ($user->isSubscribedTo($plan->id)) {
-            return redirect()->route('app.billing.edit')->with('error', 'You are already subscribed to this plan!');
+            return redirect()->intended(route('app.home.index'))->with('success', 'You have started your free trial');
         }
 
         return redirect()->route('app.billing.payments.redirect', [$this->createInvoice($plan), $plan]);
