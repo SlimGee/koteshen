@@ -21,7 +21,7 @@ class ImageController extends Controller
         $path = $request
             ->validated('image')
             // ->bytepoint()
-            ->storePublicly('logos', 'public');
+            ->storePublicly('uploads', 'public');
 
         return response($path, 200)->header('Content-Type', 'text/plain');
     }
@@ -50,8 +50,8 @@ class ImageController extends Controller
     {
         $media = $request->query('media');
 
-        if (Storage::exists($media)) {
-            Storage::delete($media);
+        if (Storage::disk('public')->exists($media)) {
+            Storage::disk('public')->delete($media);
 
             return response()->noContent();
         }

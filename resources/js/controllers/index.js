@@ -35,6 +35,21 @@ Stimulus.register('line-item', LineItemController)
 import MenuController from './menu_controller'
 Stimulus.register('menu', MenuController)
 
+import Milkdown__Controllers__LinkController from './milkdown/controllers/link_controller'
+Stimulus.register('milkdown--controllers--link', Milkdown__Controllers__LinkController)
+
+import Milkdown__Controllers__SlashController from './milkdown/controllers/slash_controller'
+Stimulus.register('milkdown--controllers--slash', Milkdown__Controllers__SlashController)
+
+import Milkdown__Controllers__ToolbarController from './milkdown/controllers/toolbar_controller'
+Stimulus.register('milkdown--controllers--toolbar', Milkdown__Controllers__ToolbarController)
+
+import Milkdown__Controllers__TooltipController from './milkdown/controllers/tooltip_controller'
+Stimulus.register('milkdown--controllers--tooltip', Milkdown__Controllers__TooltipController)
+
+import MilkdownController from './milkdown_controller'
+Stimulus.register('milkdown', MilkdownController)
+
 import ResetFormController from './reset-form_controller'
 Stimulus.register('reset-form', ResetFormController)
 

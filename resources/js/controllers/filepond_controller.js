@@ -25,6 +25,10 @@ export default class extends Controller {
         revert: String,
         current: Array,
         label: String,
+        config: {
+            type: Object,
+            default: {},
+        },
         field: {
             type: String,
             default: "image",
@@ -33,10 +37,12 @@ export default class extends Controller {
     connect() {
         const pond = FilePond.create(this.inputTarget, {
             labelIdle: this.labelValue,
-            imagePreviewHeight: 100,
+            imagePreviewHeight: this.configValue.imagePreviewHeight || 100,
             imageCropAspectRatio: "1:1",
-            imageResizeTargetWidth: 200,
-            imageResizeTargetHeight: 200,
+            imageResizeTargetWidth:
+                this.configValue.imageResizeTargetWidth || 200,
+            imageResizeTargetHeight:
+                this.configValue.imageResizeTargetHeight || 200,
             stylePanelLayout: "compact square",
             styleLoadIndicatorPosition: "center bottom",
             styleProgressIndicatorPosition: "right bottom",

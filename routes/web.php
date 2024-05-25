@@ -146,6 +146,11 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed
             ->withoutMiddleware(Subscribed::class);
     });
 
+Route::prefix('admin')
+    ->middleware(['auth'])
+    ->name('admin.')
+    ->group(base_path('routes/admin.php'));
+
 // Laravel 8 & 9
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 // Laravel 8 & 9
