@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <div class="flex relative justify-between items-center sm:-mx-4">
                 <div class="px-4 w-60 max-w-full">
-                    <a href="index.html" class="block py-5 w-full navbar-logo">
+                    <a href="{{ route('home.index') }}" class="block py-5 w-full navbar-logo">
                         <img src="{{ asset('images/logo/koteshen_cropped.png') }}" alt="logo"
                             class="w-full header-logo" />
                     </a>
@@ -37,6 +37,13 @@
                                         Contact
                                     </a>
                                 </li>
+                                <li class="relative group">
+                                    <a href="{{ route('posts.index') }}"
+                                        class="flex py-2 mx-8 text-base font-medium lg:inline-flex lg:py-6 lg:px-0 lg:mr-0 lg:ml-7 lg:text-white xl:ml-10 dark:text-white group-hover:text-blue-600 ud-menu-scroll text-dark lg:group-hover:text-white lg:group-hover:opacity-70">
+                                        Blog
+                                    </a>
+                                </li>
+
                             </ul>
                         </nav>
                     </div>

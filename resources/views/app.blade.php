@@ -41,7 +41,8 @@
 
 </head>
 
-<body class="relative min-h-screen font-sans bg-white" {{ stimulus_controller('menu') }}>
+<body class="relative min-h-screen font-sans bg-white" {{ stimulus_controller('menu') }}
+    data-menu-toggle-class="-translate-x-full">
 
     <header
         class="flex sticky inset-x-0 top-0 flex-wrap py-2.5 w-full text-sm bg-white border-b sm:flex-nowrap sm:justify-start sm:py-4 z-[48] lg:ps-64 dark:bg-neutral-800 dark:border-neutral-700">

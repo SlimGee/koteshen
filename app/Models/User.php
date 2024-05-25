@@ -69,6 +69,11 @@ class User extends Authenticatable implements MustVerifyEmail, Onboardable
         return $this->hasMany(Business::class);
     }
 
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function business(): Attribute
     {
         return Attribute::make(get: fn() => $this->businesses()->where('current', true)->first());

@@ -12,5 +12,6 @@ Stimulus.register("tabs", Tabs);
 Stimulus.debug = false;
 
 window.Stimulus = Stimulus;
+const application = Stimulus;
 
-export { Stimulus };
+export { Stimulus, application };

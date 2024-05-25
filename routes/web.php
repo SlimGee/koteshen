@@ -17,6 +17,7 @@ use App\Http\Controllers\Public\Invoice\PaymentController;
 use App\Http\Controllers\Public\ContactController;
 use App\Http\Controllers\Public\HomeController as AppHomeController;
 use App\Http\Controllers\Public\PageController;
+use App\Http\Controllers\Public\PostController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\BillingController;
@@ -77,8 +78,9 @@ Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])
     );
 
 Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('avatars.show');
-
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::resource('posts', PostController::class)->only(['index', 'show']);
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed::class])
     ->prefix('app')
@@ -146,8 +148,9 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed
             ->withoutMiddleware(Subscribed::class);
     });
 
-// Laravel 8 & 9
+Route::prefix('admin')
+    ->middleware(['auth'])
+    ->name('admin.')
+    ->group(base_path('routes/admin.php'));
+
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
-// Laravel 8 & 9
-Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
-Route::get('/test-pay', [PaymentController::class, 'test']);
