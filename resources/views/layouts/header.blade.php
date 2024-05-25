@@ -37,6 +37,13 @@
                                         Contact
                                     </a>
                                 </li>
+                                <li class="relative group">
+                                    <a href="{{ route('posts.index') }}"
+                                        class="flex py-2 mx-8 text-base font-medium lg:inline-flex lg:py-6 lg:px-0 lg:mr-0 lg:ml-7 lg:text-white xl:ml-10 dark:text-white group-hover:text-blue-600 ud-menu-scroll text-dark lg:group-hover:text-white lg:group-hover:opacity-70">
+                                        Blog
+                                    </a>
+                                </li>
+
                             </ul>
                         </nav>
                     </div>
