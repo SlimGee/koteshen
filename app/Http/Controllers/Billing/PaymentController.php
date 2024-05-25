@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Billing;
 
+use App\Facades\Aux\ExchangeRates;
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\User;
@@ -13,7 +14,7 @@ class PaymentController extends Controller
     public function redirect(Invoice $invoice, Plan $plan)
     {
         $data = [
-            'amount' => round($invoice->balance * 18 * 100),
+            'amount' => round($invoice->balance * ExchangeRates::against('ZAR') * 100),
             'email' => $invoice->client->email,
             'currency' => 'ZAR',
             'channels' => ['card'],
@@ -30,6 +31,7 @@ class PaymentController extends Controller
     public function callback()
     {
         $details = Paystack::getPaymentData();
+
         if ($details['status'] !== true) {
             return redirect()->route('app.billing.edit')->with('error', 'Payment failed');
         }
@@ -37,7 +39,7 @@ class PaymentController extends Controller
         $invoice = Invoice::find($details['data']['metadata']['invoice_id']);
 
         $invoice->payments()->create([
-            'amount' => ($details['data']['amount'] / 100) / 18,
+            'amount' => ($details['data']['amount'] / 100) / ExchangeRates::against('ZAR'),
             'paid_at' => now(),
             'channel' => $details['data']['channel'],
             'reference' => null,
@@ -55,6 +57,7 @@ class PaymentController extends Controller
             $user->cards()->updateOrCreate(['signature' => $details['data']['authorization']['signature']],
                 [
                     'email' => $user->email,
+                    'default' => $user->cards()->count() == 0,
                     ...$details['data']['authorization'],
                 ]);
         }

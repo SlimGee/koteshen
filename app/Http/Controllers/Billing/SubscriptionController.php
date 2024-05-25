@@ -22,7 +22,7 @@ class SubscriptionController extends Controller
     public function store(Plan $plan): RedirectResponse
     {
         if (auth()->user()->subscriptions()->count() === 0) {
-            auth()->user()->newSubscription('main', $plan, $plan->description, $plan->description);
+            auth()->user()->subscribe($plan);
 
             return redirect()->intended(route('app.home.index'))->with('success', 'You have started your free trial');
         }

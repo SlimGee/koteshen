@@ -99,7 +99,9 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeC
             Route::get('/billing/payments/callback', [AppPaymentController::class, 'callback'])
                 ->name('billing.payments.callback');
             Route::get('/billing/renew', [RenewSubscriptionController::class, 'store'])
-                ->name('subscriptions.renew');
+                ->name('subscriptions.renew')
+                ->middleware(['throttle:3,1']);
+
             Route::get('/billing/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
             Route::post('/billing/{plan}/subscribe', [SubscriptionController::class, 'store'])->name('subscriptions.store');
         });
@@ -149,3 +151,5 @@ Route::prefix('admin')
     ->group(base_path('routes/admin.php'));
 
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
+
+Route::get('/test', [PaymentController::class, 'test']);

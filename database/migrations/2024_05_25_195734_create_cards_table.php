@@ -29,6 +29,7 @@ return new class extends Migration {
             $table->string('receiver_bank')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('email');
+            $table->boolean('default')->default(false);
             $table->timestamps();
         });
     }

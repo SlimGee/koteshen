@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Public\Invoice;
 
+use App\Facades\Aux\ExchangeRates;
 use App\Http\Controllers\Controller;
 use Unicodeveloper\Paystack\Facades\Paystack;
 
@@ -38,6 +39,12 @@ class PaymentController extends Controller
 
     public function test()
     {
-        dd(Paystack::getAllCustomers());
+        $card = auth()->user()->cards()->first();
+        dd(ExchangeRates::against('ZAR'));
+        dd(Paystack::chargeAuthorization([
+            'email' => $card->email,
+            'amount' => 10000,
+            'authorization_code' => $card->authorization_code,
+        ])->getResponse());
     }
 }

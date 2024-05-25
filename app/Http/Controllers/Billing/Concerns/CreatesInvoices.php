@@ -5,14 +5,18 @@ namespace App\Http\Controllers\Billing\Concerns;
 use App\Enum\ClientType;
 use App\Enum\InvoiceStatus;
 use App\Models\Currency;
+use App\Models\User;
 use App\Services\PrimaryBusiness;
 use Flixtechs\Subby\Models\Plan;
+use InvalidArgumentException;
 
 trait CreatesInvoices
 {
-    public function createInvoice(Plan $plan)
+    public function createInvoice(Plan $plan, ?User $user = null)
     {
-        $user = auth()->user();
+        $user = $user ?? auth()->user();
+
+        throw_if(is_null($user), new InvalidArgumentException('User must be provided if not authenticated'));
 
         $items = collect([
             [

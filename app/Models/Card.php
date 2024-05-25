@@ -12,6 +12,13 @@ class Card extends Model
 
     protected $guarded = [];
 
+    public function casts(): array
+    {
+        return [
+            'default' => 'boolean',
+        ];
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
