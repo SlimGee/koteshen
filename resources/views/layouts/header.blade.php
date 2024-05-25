@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <div class="flex relative justify-between items-center sm:-mx-4">
                 <div class="px-4 w-60 max-w-full">
-                    <a href="index.html" class="block py-5 w-full navbar-logo">
+                    <a href="{{ route('home.index') }}" class="block py-5 w-full navbar-logo">
                         <img src="{{ asset('images/logo/koteshen_cropped.png') }}" alt="logo"
                             class="w-full header-logo" />
                     </a>

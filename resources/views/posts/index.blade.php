@@ -10,19 +10,17 @@
                 <div class="px-4 w-full">
                     <div class="text-center">
                         <h1 class="mb-4 text-3xl font-bold text-white sm:text-4xl text-dark md:text-[40px] md:leading-[1.2]">
-                            Blog Grid</h1>
+                            Blog
+                        </h1>
                         <p class="mb-5 text-base text-white dark:text-dark-6">
-                            There are many variations of passages of Lorem Ipsum available.
+                            Invoicing and billing advice, news and more
                         </p>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ====== Banner Section End -->
 
-    <!-- ====== Blog Section Start -->
     <section class="pt-20 pb-10 lg:pb-20 lg:pt-[120px] dark:bg-dark">
         <div class="container mx-auto">
             <div class="flex flex-wrap md:-mx-4">
