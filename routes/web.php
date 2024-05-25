@@ -93,7 +93,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed
             ->group(function () {
                 Route::resource('business', BusinessController::class)
                     ->only(['create', 'store'])
-                    ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class]);
+                    ->withoutMiddleware([Subscribed::class, RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class]);
             });
 
         Route::resource('clients', ClientController::class);
