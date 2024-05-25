@@ -49,8 +49,32 @@
                     </a>
                 </div>
             </section>
+            @if ($cards->isNotEmpty())
+                <section class="py-6">
 
+                    <div class="flex flex-wrap space-x-2">
+                        @foreach ($cards as $card)
+                            <div class="overflow-hidden bg-white rounded border shadow-sm">
+                                <div class="py-4 px-6 border-b border-gray-200 dark:border-neutral-700">
+                                    <h2 class="text-lg font-semibold text-gray-800 dark:text-neutral-200">
+                                        {{ Str::upper($card->brand) }} ending in {{ $card->last4 }}
+                                    </h2>
+                                    <p class="text-base font-medium text-gray-700">
+                                        {{ $card->exp_month }} / {{ $card->exp_year }}
+                                    </p>
+                                    <div class="mt-2">
+                                        <a href="{{ route('app.cards.destroy', $card) }}" data-turbo-method="delete"
+                                            data-turbo-confirm="Are you sure? This might cause some problems when renewing your plan">
+                                            <x-button class="bg-red-600 !text-xs !px-1.5 !py-1">Remove card</x-button>
+                                        </a>
+                                    </div>
+                                </div>
 
+                            </div>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
 
             <section class="py-6">
 

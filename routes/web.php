@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Billing\CardController;
 use App\Http\Controllers\Billing\PaymentController as AppPaymentController;
 use App\Http\Controllers\Billing\RenewSubscriptionController;
 use App\Http\Controllers\Billing\SubscriptionController;
@@ -139,6 +140,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeC
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::get('/billing', [BillingController::class, 'edit'])->name('billing.edit');
+        Route::delete('/cards/{card}', [CardController::class, 'destroy'])->name('cards.destroy');
     });
 
 Route::prefix('admin')

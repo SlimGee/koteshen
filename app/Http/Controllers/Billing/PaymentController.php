@@ -16,6 +16,7 @@ class PaymentController extends Controller
             'amount' => round($invoice->balance * 18 * 100),
             'email' => $invoice->client->email,
             'currency' => 'ZAR',
+            'channels' => ['card'],
             'callback_url' => route('app.billing.payments.callback'),
             'metadata' => [
                 'invoice_id' => $invoice->id,
@@ -29,7 +30,6 @@ class PaymentController extends Controller
     public function callback()
     {
         $details = Paystack::getPaymentData();
-
         if ($details['status'] !== true) {
             return redirect()->route('app.billing.edit')->with('error', 'Payment failed');
         }
@@ -50,6 +50,14 @@ class PaymentController extends Controller
         $plan = Plan::find($details['data']['metadata']['plan_id']);
 
         $user = User::find(auth()->id());
+
+        if ($details['data']['authorization']['reusable']) {
+            $user->cards()->updateOrCreate(['signature' => $details['data']['authorization']['signature']],
+                [
+                    'email' => $user->email,
+                    ...$details['data']['authorization'],
+                ]);
+        }
 
         $user->subscribe($plan);
 

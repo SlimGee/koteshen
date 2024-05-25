@@ -79,6 +79,11 @@ class User extends Authenticatable implements MustVerifyEmail, Onboardable
         return Attribute::make(get: fn() => $this->businesses()->where('current', true)->first());
     }
 
+    public function cards(): HasMany
+    {
+        return $this->hasMany(Card::class);
+    }
+
     public function sendEmailVerificationNotification()
     {
         // dispactches the job to the queue passing it this User object

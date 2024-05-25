@@ -26,9 +26,11 @@ class BillingController extends Controller
                 ->paginate();
         }
 
+        $cards = auth()->user()->cards;
+
         return view('app.billing.edit', [
             'user' => auth()->user(),
-            'client' => $client,
+            'cards' => $cards,
             'payments' => $payments,
         ]);
     }
