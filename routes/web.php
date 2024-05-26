@@ -100,7 +100,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeC
                 ->name('billing.payments.callback');
             Route::get('/billing/renew', [RenewSubscriptionController::class, 'store'])
                 ->name('subscriptions.renew')
-                ->middleware(['throttle:3,1']);
+                ->middleware(['throttle:6,1']);
 
             Route::get('/billing/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
             Route::post('/billing/{plan}/subscribe', [SubscriptionController::class, 'store'])->name('subscriptions.store');

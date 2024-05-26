@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Public\Invoice;
 
-use App\Facades\Aux\ExchangeRates;
 use App\Http\Controllers\Controller;
+use App\Jobs\SubscriptionPaymentQueuerJob;
 use Unicodeveloper\Paystack\Facades\Paystack;
 
 class PaymentController extends Controller
@@ -39,12 +39,6 @@ class PaymentController extends Controller
 
     public function test()
     {
-        $card = auth()->user()->cards()->first();
-        dd(ExchangeRates::against('ZAR'));
-        dd(Paystack::chargeAuthorization([
-            'email' => $card->email,
-            'amount' => 10000,
-            'authorization_code' => $card->authorization_code,
-        ])->getResponse());
+        SubscriptionPaymentQueuerJob::dispatch(now()->addMonths(5));
     }
 }

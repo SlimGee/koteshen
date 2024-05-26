@@ -16,10 +16,10 @@ class RenewSubscriptionController extends Controller
     {
         $plan = Plan::find(auth()->user()->subscription()->plan_id);
 
-        if (auth()->user()->cards->defaultCard) {
+        if (auth()->user()->defaultCard) {
             SubscriptionRenewalPaymentJob::dispatch(auth()->user()->subscription()->id);
 
-            return back(fallback: route('app.home.index'))->with('success', 'We are processing your payment');
+            return to_route('app.billing.edit')->with('success', 'We are processing your payment');
         }
 
         return redirect()->route('app.billing.payments.redirect', [$this->createInvoice($plan), $plan]);

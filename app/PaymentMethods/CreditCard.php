@@ -28,7 +28,7 @@ class CreditCard implements PaymentMethodService
 
         if (!is_null($card)) {
             // Email the user to update their card details
-            // return;
+            return;
         }
 
         $details = Paystack::chargeAuthorization([
@@ -39,7 +39,7 @@ class CreditCard implements PaymentMethodService
 
         if ($details['status'] !== true) {
             // Email the user to update their card details
-            //  return;
+            return;
         }
 
         $subscripton = ($this->planSubscriptionSchedule ?? $this->planSubscription);
