@@ -12,13 +12,25 @@ class BillingController extends Controller
     {
         Meta::prependTitle('Billing');
 
-        $client = PrimaryBusiness::get()->clients()->where('email', auth()->user()->email)->first();
+        $client = PrimaryBusiness::get()
+            ->clients()
+            ->where('email', auth()->user()->email)
+            ->first();
 
-        $payments = $client->payments()->orderBy('created_at', 'desc')->paginate();
+        if (is_null($client)) {
+            $payments = collect([]);
+        } else {
+            $payments = $client
+                ->payments()
+                ->orderBy('created_at', 'desc')
+                ->paginate();
+        }
+
+        $cards = auth()->user()->cards;
 
         return view('app.billing.edit', [
             'user' => auth()->user(),
-            'client' => $client,
+            'cards' => $cards,
             'payments' => $payments,
         ]);
     }

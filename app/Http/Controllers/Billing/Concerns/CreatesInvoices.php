@@ -1,40 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Billing;
+namespace App\Http\Controllers\Billing\Concerns;
 
 use App\Enum\ClientType;
 use App\Enum\InvoiceStatus;
-use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use App\Models\User;
 use App\Services\PrimaryBusiness;
 use Flixtechs\Subby\Models\Plan;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\RedirectResponse;
+use InvalidArgumentException;
 
-class ChangePlanController extends Controller
+trait CreatesInvoices
 {
-    public function create(): Renderable
+    public function createInvoice(Plan $plan, ?User $user = null)
     {
-        $plans = Plan::all();
+        $user = $user ?? auth()->user();
 
-        return view('app.billing.create', ['plans' => $plans]);
-    }
-
-    public function store(Plan $plan): RedirectResponse
-    {
-        $user = User::find(auth()->id());
-
-        if ($user->isSubscribedTo($plan->id)) {
-            return redirect()->route('app.billing.edit')->with('error', 'You are already subscribed to this plan!');
-        }
+        throw_if(is_null($user), new InvalidArgumentException('User must be provided if not authenticated'));
 
         $items = collect([
             [
                 'name' => 'Subscription for ' . $plan->name . ' plan',
                 'quantity' => 1,
-                'price' => $user->subscribed() ? $plan->signup_fee : $plan->price,
-                'total' => $user->subscribed() ? $plan->signup_fee : $plan->price,
+                'price' => $user->subscriptions()->count() !== 0 ? $plan->price : $plan->signup_fee,
+                'total' => $user->subscriptions()->count() !== 0 ? $plan->price : $plan->signup_fee,
             ],
         ]);
 
@@ -65,6 +54,6 @@ class ChangePlanController extends Controller
 
         $invoice->items()->createMany($items->toArray());
 
-        return redirect()->route('app.billing.payments.redirect', [$invoice, $plan]);
+        return $invoice;
     }
 }

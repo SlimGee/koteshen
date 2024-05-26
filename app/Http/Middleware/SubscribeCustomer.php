@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use Flixtechs\Subby\Models\Plan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Closure;
 
-class Subscribed
+class SubscribeCustomer
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,14 @@ class Subscribed
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user()?->subscribed()) {
-            // Redirect user to billing page and ask them to subscribe...
-            Session::put('url.intended', $request->url());
+        if (session()->has('selected_plan')) {
+            $plan = Plan::find(session()->get('selected_plan'));
 
-            return to_route('app.subscriptions.create')->with('error', 'You need to subscribe to access this page');
+            if (!is_null($plan)) {
+                session()->forget('selected_plan');
+
+                return to_route('app.billing.change-plan.store', $plan);
+            }
         }
 
         return $next($request);

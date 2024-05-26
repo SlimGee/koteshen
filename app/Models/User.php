@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Jobs\QueuedPasswordResetJob;
 use App\Jobs\QueuedVerifyEmailJob;
+use App\Models\Concerns\Billing\HasCreditCards;
 use App\Models\Concerns\Billing\HasPaidSubscriptions;
 use Flixtechs\Subby\Traits\HasSubscriptions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -25,7 +26,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmail, Onboardable
 {
     use CausesActivity, GetsOnboarded, HasFactory, HasPermissions, HasRoles, HasSubscriptions, LogsActivity, Notifiable;
-    use HasPaidSubscriptions;
+    use HasCreditCards, HasPaidSubscriptions;
 
     /**
      * The attributes that are mass assignable.

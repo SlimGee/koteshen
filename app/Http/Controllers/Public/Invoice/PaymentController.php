@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public\Invoice;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SubscriptionPaymentQueuerJob;
 use Unicodeveloper\Paystack\Facades\Paystack;
 
 class PaymentController extends Controller
@@ -38,6 +39,6 @@ class PaymentController extends Controller
 
     public function test()
     {
-        dd(Paystack::getAllCustomers());
+        SubscriptionPaymentQueuerJob::dispatch(now()->addMonths(5));
     }
 }

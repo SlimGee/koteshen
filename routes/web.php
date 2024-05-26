@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\Billing\ChangePlanController;
+use App\Http\Controllers\Billing\CardController;
 use App\Http\Controllers\Billing\PaymentController as AppPaymentController;
+use App\Http\Controllers\Billing\RenewSubscriptionController;
+use App\Http\Controllers\Billing\SubscriptionController;
 use App\Http\Controllers\Business\BusinessController as BusinessBusinessController;
 use App\Http\Controllers\Estimate\Public\PreviewController;
 use App\Http\Controllers\Estimate\ActivityController;
@@ -42,6 +44,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\RedirectPrelaunch;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
+use App\Http\Middleware\SubscribeCustomer;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
 
@@ -66,35 +69,42 @@ Route::get('/estimates/{estimate}/download', [DownloadController::class, 'show']
 Route::get('/estimates/{estimate}/preview', [PreviewController::class, 'show'])
     ->name('estimates.preview');
 
-Route::post('/imagess/uploads', [ImageController::class, 'store'])->name(
-    'images.store',
-);
-Route::get('/imagess/uploads', [ImageController::class, 'show'])->name(
-    'images.show',
-);
+Route::post('/imagess/uploads', [ImageController::class, 'store'])->name('images.store');
+Route::get('/imagess/uploads', [ImageController::class, 'show'])->name('images.show');
 Route::delete('/imagess/uploads', [ImageController::class, 'destroy'])
-    ->name(
-        'images.destroy'
-    );
+    ->name('images.destroy');
 
 Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('avatars.show');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::resource('posts', PostController::class)->only(['index', 'show']);
 
-Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed::class])
+Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeCustomer::class, Subscribed::class])
     ->prefix('app')
     ->name('app.')
     ->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-        Route::prefix('onboarding')
-            ->name('onboarding.')
-            ->group(function () {
-                Route::resource('business', BusinessController::class)
-                    ->only(['create', 'store'])
-                    ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class]);
-            });
+        Route::withoutMiddleware([Subscribed::class, SubscribeCustomer::class])->group(function () {
+            Route::prefix('onboarding')
+                ->name('onboarding.')
+                ->group(function () {
+                    Route::resource('business', BusinessController::class)
+                        ->only(['create', 'store'])
+                        ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class]);
+                });
+
+            Route::get('/billing/{invoice}/payments/{plan}', [AppPaymentController::class, 'redirect'])
+                ->name('billing.payments.redirect');
+            Route::get('/billing/payments/callback', [AppPaymentController::class, 'callback'])
+                ->name('billing.payments.callback');
+            Route::get('/billing/renew', [RenewSubscriptionController::class, 'store'])
+                ->name('subscriptions.renew')
+                ->middleware(['throttle:6,1']);
+
+            Route::get('/billing/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
+            Route::post('/billing/{plan}/subscribe', [SubscriptionController::class, 'store'])->name('subscriptions.store');
+        });
 
         Route::resource('clients', ClientController::class);
 
@@ -132,20 +142,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, Subscribed
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::get('/billing', [BillingController::class, 'edit'])->name('billing.edit');
-
-        Route::get('/billing/change-plan', [ChangePlanController::class, 'create'])
-            ->name('billing.change-plan.create')
-            ->withoutMiddleware(Subscribed::class);
-        Route::get('/billing/{plan}/change-plan', [ChangePlanController::class, 'store'])
-            ->name('billing.change-plan.store')
-            ->withoutMiddleware(Subscribed::class);
-
-        Route::get('/billing/{invoice}/payments/{plan}', [AppPaymentController::class, 'redirect'])
-            ->name('billing.payments.redirect')
-            ->withoutMiddleware(Subscribed::class);
-        Route::get('/billing/payments/callback', [AppPaymentController::class, 'callback'])
-            ->name('billing.payments.callback')
-            ->withoutMiddleware(Subscribed::class);
+        Route::delete('/cards/{card}', [CardController::class, 'destroy'])->name('cards.destroy');
     });
 
 Route::prefix('admin')
@@ -154,3 +151,5 @@ Route::prefix('admin')
     ->group(base_path('routes/admin.php'));
 
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
+
+Route::get('/test', [PaymentController::class, 'test']);

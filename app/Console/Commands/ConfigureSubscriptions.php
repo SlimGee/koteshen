@@ -87,7 +87,7 @@ class ConfigureSubscriptions extends Command
                     'trial_interval' => 'day',
                     'grace_period' => 1,
                     'grace_interval' => 'day',
-                    'tier' => 3,
+                    'tier' => 2,
                     'currency' => 'USD',
                 ],
                 'features' => [
@@ -152,7 +152,7 @@ class ConfigureSubscriptions extends Command
                     'trial_interval' => 'day',
                     'grace_period' => 1,
                     'grace_interval' => 'day',
-                    'tier' => 4,
+                    'tier' => 3,
                     'currency' => 'USD',
                 ],
                 'features' => [

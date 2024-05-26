@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 return [
     'main_subscription_tag' => 'main',
@@ -15,7 +13,6 @@ return [
         'plan_subscription_schedules' => 'plan_subscription_schedules',
         'plan_subscription_usage' => 'plan_subscription_usage',
     ],
-
     // Models
     'models' => [
         'plan' => \Flixtechs\Subby\Models\Plan::class,
@@ -26,10 +23,10 @@ return [
         'plan_subscription_schedule' => \Flixtechs\Subby\Models\PlanSubscriptionSchedule::class,
         'plan_subscription_usage' => \Flixtechs\Subby\Models\PlanSubscriptionUsage::class,
     ],
-
     'services' => [
         'payment_methods' => [
-            'free' => \Flixtechs\Subby\Services\PaymentMethods\Free::class
-        ]
-    ]
+            'free' => \Flixtechs\Subby\Services\PaymentMethods\Free::class,
+            'credit_card' => \App\PaymentMethods\CreditCard::class,
+        ],
+    ],
 ];

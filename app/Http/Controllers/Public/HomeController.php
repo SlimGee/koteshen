@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
@@ -32,6 +33,11 @@ class HomeController extends Controller
             );
         $plans = Plan::all();
 
-        return view('home.index-beta', ['plans' => $plans]);
+        $count = User::count();
+
+        return view('home.index-beta', [
+            'plans' => $plans,
+            'count' => $count,
+        ]);
     }
 }

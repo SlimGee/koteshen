@@ -1,6 +1,7 @@
 <?php
 
 use App\Console\Commands\GenerateRecurringInvoices;
+use App\Jobs\SubscriptionPaymentQueuerJob;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
@@ -10,3 +11,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Schedule::command(GenerateRecurringInvoices::class)->everyMinute();
+Schedule::job(new SubscriptionPaymentQueuerJob(now()->addDay()))->daily();

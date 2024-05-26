@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Country;
 use App\Models\Currency;
 use App\Models\User;
+use App\Paystack\Paystack;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind('laravel-paystack', function () {
+            return new Paystack;
+        });
+
+        $this->app->singleton('exchange-rates', function () {
+            return new \App\Aux\ExchageRates;
+        });
     }
 
     /**
