@@ -11,6 +11,7 @@ use App\Models\Estimate;
 use App\Models\Invoice;
 use App\Models\Item;
 use App\Models\Payment;
+use App\Models\Tax;
 use App\Models\User;
 use FlixtechsLabs\LaravelAuthorizer\Facades\Authorizer;
 use Illuminate\Console\Command;
@@ -65,6 +66,7 @@ class Deploy extends Command
                 ...Authorizer::getPermissionsFor(Payment::class),
                 ...Authorizer::getPermissionsFor(Comment::class),
                 ...Authorizer::getPermissionsFor(Item::class),
+                ...Authorizer::getPermissionsFor(Tax::class),
             ]),
         ]);
 
