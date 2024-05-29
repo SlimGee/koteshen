@@ -6,5 +6,9 @@ export default class extends Controller {
 
     connect() {
         this.dispatch("created");
+        this.element.insertAdjacentHTML(
+            "beforeend",
+            `<input type="text" name="tax_records[${this.index}][name]" value="${this.nameTarget.value}">`,
+        );
     }
 }

@@ -355,7 +355,7 @@
                             </div>
                         </div>
 
-                        <div class="" {{ stimulus_target('tax', 'toggle') }}>
+                        <div {{ stimulus_target('tax', 'toggle') }}>
                             <button type="button" {{ stimulus_action('tax', 'create') }}
                                 class="text-sm font-bold text-blue-800">
                                 Add tax

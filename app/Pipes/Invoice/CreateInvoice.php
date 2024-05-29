@@ -22,7 +22,7 @@ class CreateInvoice
             ->business
             ->invoices()
             ->create([
-                ...$request->safe()->except('items', 'due_at'),
+                ...$request->withoutOtherFields(),
                 'total' => $items->sum('total'),
                 'balance' => $items->sum('total'),
                 'subtotal' => $items->sum('total'),

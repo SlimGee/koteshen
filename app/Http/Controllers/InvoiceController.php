@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Invoice;
 use App\Pipes\Invoice\CreateInvoice;
 use App\Pipes\Invoice\CreateItems;
+use App\Pipes\Invoice\CreateTax;
 use App\Pipes\Invoice\MapItems;
 use App\Transport\Invoice\CreateInvoiceTransport;
 use Butschster\Head\Facades\Meta;
@@ -109,6 +110,7 @@ class InvoiceController extends Controller
                 MapItems::class,
                 CreateInvoice::class,
                 CreateItems::class,
+                CreateTax::class,
             ])
             ->thenReturn();
 
