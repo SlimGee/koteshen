@@ -305,7 +305,7 @@
 
                     </div>
                     <div class="flex justify-center mt-3">
-                        <x-secondary-button class="justify-center w-full !border-x-0 !border-b-0"
+                        <x-secondary-button class="justify-center w-full !border-x-0 !border-b-0 !rounded-t-none"
                             data-action="invoice#addLineItem">
                             + Add Line Item
                         </x-secondary-button>
@@ -313,8 +313,8 @@
                 </div>
 
                 <div class="flex justify-end mt-8"
-                    {{ stimulus_action('invoice', 'updateTotal', 'line-item:total@window') }}>
-                    <div class="space-y-4 w-full md:w-7/12">
+                    data-action="line-item:total@window->invoice#updateTotal tax-record:created@window->invoice#updateTotal">
+                    <div class="space-y-4 w-full md:w-7/12" {{ stimulus_controller('tax', ['taxes' => $taxes]) }}>
                         <div class="flex justify-between items-start">
                             <div>
                                 <h2>Subtotal</h2>
@@ -324,14 +324,49 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between items-start">
+                        <template {{ stimulus_target('tax', 'template') }}>
+                            <div class="flex justify-between items-start" {{ stimulus_controller('tax-record') }}>
+                                <div>
+                                    <h2>NAME</h2>
+                                </div>
+                                <div>
+                                    <span data-rate="RATE" data-invoice-target="taxes">AMOUNT</span>
+                                </div>
+                            </div>
+                        </template>
+
+
+                        <template {{ stimulus_target('tax', 'formTemplate') }}>
                             <div>
-                                <h2>Tax</h2>
+                                <x-form.select class="w-full" data-choices-target="element" data-tax-target="form">
+
+                                </x-form.select>
+                            </div>
+                        </template>
+
+                        <div class="flex hidden space-x-3" {{ stimulus_target('tax', 'items') }}>
+                            <div class="w-full" data-tax-target="formContainer">
+
                             </div>
                             <div>
-                                <span>0.00</span>
+                                <x-secondary-button type="button" data-action="tax#select" class="mt-1">
+                                    Add
+                                </x-secondary-button>
                             </div>
                         </div>
+
+                        <div class="" {{ stimulus_target('tax', 'toggle') }}>
+                            <button type="button" {{ stimulus_action('tax', 'create') }}
+                                class="text-sm font-bold text-blue-800">
+                                Add tax
+                            </button>
+                        </div>
+
+                        <div>
+                            <x-form.label>Discount(%)</x-form.label>
+                            <x-form.input name="discount" data-invoice-target="discount" class="mt-1 w-full" />
+                        </div>
+
                         <div class="flex justify-between items-start">
                             <div>
                                 <h2 class="font-semibold text-slate-900">
@@ -364,8 +399,10 @@
                 <div class="my-8 w-full border-t"></div>
 
                 <div class="">
-                    <div class="text-sm"><span class="text-sm font-semibold text-slate-900">Email:</span>
-                        {{ $business->user->email }}</div>
+                    <div class="text-sm">
+                        <span class="text-sm font-semibold text-slate-900">Email:</span>
+                        {{ $business->user->email }}
+                    </div>
                 </div>
 
                 <div class="flex justify-between items-center mt-8">

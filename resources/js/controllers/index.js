@@ -56,5 +56,11 @@ Stimulus.register('reset-form', ResetFormController)
 import SearchController from './search_controller'
 Stimulus.register('search', SearchController)
 
+import TaxRecordController from './tax-record_controller'
+Stimulus.register('tax-record', TaxRecordController)
+
+import TaxController from './tax_controller'
+Stimulus.register('tax', TaxController)
+
 import ToastController from './toast_controller'
 Stimulus.register('toast', ToastController)

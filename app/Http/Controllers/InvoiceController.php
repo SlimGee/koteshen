@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Invoice;
+use App\Pipes\Invoice\CreateInvoice;
+use App\Pipes\Invoice\CreateItems;
+use App\Pipes\Invoice\MapItems;
+use App\Transport\Invoice\CreateInvoiceTransport;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use MichaelRubel\EnhancedPipeline\Pipeline;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -79,12 +84,14 @@ class InvoiceController extends Controller
             );
 
         $clients = auth()->user()->business->clients;
+        $taxes = auth()->user()->business->taxes;
 
         session()->put('url.intended', url()->current());
 
         return view('app.invoices.create', [
             'clients' => $clients,
             'business' => auth()->user()->business,
+            'taxes' => $taxes,
         ]);
     }
 
@@ -93,27 +100,19 @@ class InvoiceController extends Controller
      */
     public function store(StoreInvoiceRequest $request): RedirectResponse
     {
-        $items = collect($request->validated('items'))->map(
-            fn($item) => [
-                ...$item,
-                'total' => $item['quantity'] * $item['price'],
-            ]
-        );
+        $transport = CreateInvoiceTransport::make()->setRequest($request);
 
-        $data = [
-            ...$request->safe()->except('items', 'due_at'),
-            'total' => $items->sum('total'),
-            'balance' => $items->sum('total'),
-            'subtotal' => $items->sum('total'),
-            'status' => 'created',
-            'due_at' => $request->validated('due_in') === 'custom' ? $request->validated('due_at') : Carbon::parse($request->validated('due_in')),
-        ];
+        Pipeline::make()
+            ->withTransaction()
+            ->send($transport)
+            ->through([
+                MapItems::class,
+                CreateInvoice::class,
+                CreateItems::class,
+            ])
+            ->thenReturn();
 
-        $invoice = auth()->user()->business->invoices()->create($data);
-
-        $invoice->items()->createMany($items);
-
-        return to_route('app.invoices.show', $invoice)->with('success', 'Invoices created successfully');
+        return to_route('app.invoices.show', $transport->getInvoice())->with('success', 'Invoices created successfully');
     }
 
     /**
@@ -170,12 +169,14 @@ class InvoiceController extends Controller
             );
 
         $clients = auth()->user()->business->clients;
+        $taxes = auth()->user()->business->taxes;
         session()->put('url.intended', url()->current());
 
         return view('app.invoices.edit', [
             'invoice' => $invoice,
             'clients' => $clients,
             'business' => auth()->user()->business,
+            'taxes' => $taxes,
         ]);
     }
 

@@ -16,6 +16,8 @@ export default class extends Controller {
         "subtotal",
         "balance",
         "currency",
+        "taxes",
+        "discount",
     ];
 
     static values = {
@@ -78,7 +80,7 @@ export default class extends Controller {
     }
 
     updateTotal() {
-        const total = Array.from(this.lineItemTargets)
+        let before = Array.from(this.lineItemTargets)
             .reduce((acc, item) => {
                 const price = parseFloat(
                     item.querySelector("[name=total]").value,
@@ -87,9 +89,29 @@ export default class extends Controller {
             }, 0)
             .toFixed(this.currencyValue.rounding || 2);
 
-        this.totalTarget.textContent = total;
-        this.balanceTarget.textContent = total;
-        this.subtotalTarget.textContent = total;
+        const rate = Number(this.discountTarget.value);
+        const discount = (rate / 100) * before;
+
+        let subtotal = before - discount;
+
+        this.subtotalTarget.textContent = Number(before).toFixed(2);
+        let total = Number(subtotal);
+        let additions = 0;
+
+        this.taxesTargets.forEach((tax) => {
+            const rate = parseFloat(tax.dataset.rate);
+            console.log(rate);
+            const amount = (rate / 100) * subtotal;
+            additions += amount;
+            tax.textContent = amount.toFixed(2);
+        });
+
+        total = Number(total) + Number(additions);
+
+        this.balanceTarget.textContent = total.toFixed(2);
+        this.totalTarget.textContent = total.toFixed(2);
+
+        this.dispatch("total", { detail: total });
     }
 
     selectClient({ target }) {

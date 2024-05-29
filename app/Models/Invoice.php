@@ -97,6 +97,14 @@ class Invoice extends Model
     }
 
     /**
+     * The tax records for this invoice
+     */
+    public function tax(): MorphMany
+    {
+        return $this->morphMany(TaxRecord::class, 'taxable');
+    }
+
+    /**
      * Make the number attribute
      */
     public function number(): Attribute
