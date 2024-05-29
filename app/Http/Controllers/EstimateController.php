@@ -47,6 +47,8 @@ class EstimateController extends Controller
             ->setDescription('Create and manage invoices for your business')
             ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
 
+        session()->put('url.intended', url()->current());
+
         return view('app.estimates.create', [
             'clients' => auth()->user()->business->clients,
             'currencies' => Currency::all(),
@@ -108,6 +110,8 @@ class EstimateController extends Controller
         Meta::prependTitle('Edit ' . $estimate->number)
             ->setDescription('Create and manage invoices for your business')
             ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
+
+        session()->put('url.intended', url()->current());
 
         return view('app.estimates.edit', [
             'estimate' => $estimate,

@@ -115,7 +115,8 @@
                         <div class="flex justify-between items-center">
                             <x-form.label for="customer">To</x-form.label>
                             <span>
-                                <a href="#" class="text-sm font-bold text-blue-500">New Client</a>
+                                <a href="{{ route('app.clients.create') }}" class="text-sm font-bold text-blue-500">New
+                                    Client</a>
                             </span>
                         </div>
                         <div {{ stimulus_target('invoice', 'select') }} class="mt-2">

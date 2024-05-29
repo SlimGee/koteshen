@@ -80,6 +80,8 @@ class InvoiceController extends Controller
 
         $clients = auth()->user()->business->clients;
 
+        session()->put('url.intended', url()->current());
+
         return view('app.invoices.create', [
             'clients' => $clients,
             'business' => auth()->user()->business,
@@ -168,6 +170,7 @@ class InvoiceController extends Controller
             );
 
         $clients = auth()->user()->business->clients;
+        session()->put('url.intended', url()->current());
 
         return view('app.invoices.edit', [
             'invoice' => $invoice,
