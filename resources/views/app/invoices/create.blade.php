@@ -21,8 +21,9 @@
             'currencies' => $currencies,
         ]) }}>
         <form action="{{ route('app.invoices.store') }}" method="post">
+
             @csrf
-            <div class="p-4 py-10 w-full bg-white rounded border md:w-6/12">
+            <div class="p-4 py-6 w-full max-w-3xl bg-white rounded border shadow-sm md:px-6">
                 <div class="flex justify-between items-start mb-10">
                     <h1 class="text-lg font-semibold md:text-2xl text-slate-700">Invoices</h1>
 
@@ -167,7 +168,7 @@
                     <div {{ stimulus_target('invoice', 'lineItemsContainer') }}>
                         <template {{ stimulus_target('invoice', 'lineItemTemplate') }}>
 
-                            <div class="grid grid-cols-12 py-6 border-b-2" {{ stimulus_target('invoice', 'lineItem') }}
+                            <div class="grid grid-cols-12 py-6 border-b" {{ stimulus_target('invoice', 'lineItem') }}
                                 {{ stimulus_controller('line-item') }}>
                                 <div class="col-span-full px-2 sm:col-span-5 sm:py-3"
                                     {{ stimulus_action('line-item', 'setCurrentCurrency', 'invoice:client-selected@window') }}>
@@ -188,7 +189,7 @@
 
                                     <div class="flex items-center mt-1">
                                         <x-form.input class="w-full" id="rate" name="items[INDEX][price]"
-                                            type="text" :value="0" data-line-item-target="price"
+                                            type="text" data-line-item-target="price"
                                             data-action="line-item#updateTotal" />
                                     </div>
                                 </div>
@@ -304,8 +305,8 @@
                         @endforeach
 
                     </div>
-                    <div class="flex justify-center mt-3">
-                        <x-secondary-button class="justify-center w-full !border-x-0 !border-b-0 !rounded-t-none"
+                    <div class="flex justify-center">
+                        <x-secondary-button class="justify-center w-full !border-x-0 !border-none !rounded-t-none"
                             data-action="invoice#addLineItem">
                             + Add Line Item
                         </x-secondary-button>
@@ -331,6 +332,7 @@
                                 </div>
                                 <div>
                                     <span data-rate="RATE" data-invoice-target="taxes">AMOUNT</span>
+                                    <input type="hidden" name="tax_ids[]" value="TAXID">
                                 </div>
                             </div>
                         </template>

@@ -24,11 +24,12 @@ class CreateTax
             ->each(function ($tax) use ($invoice) {
                 $amount = ($tax->rate / 100) * $invoice->subtotal;
                 $invoice->total += $amount;
-                dd($amount, $invoice->subtotal, $invoice->total);
+
                 $invoice->tax()->create([
                     'name' => $tax->name,
                     'rate' => $tax->rate,
                     'amount' => $amount,
+                    'business_id' => $invoice->business_id,
                 ]);
             });
 
