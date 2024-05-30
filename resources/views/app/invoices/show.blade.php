@@ -360,26 +360,30 @@
                                             {{ Number::format($invoice->total, $invoice->currency->decimal_digits) }}
                                         </dd>
                                     </dl>
+                                    @foreach ($invoice->tax as $tax)
+                                        <dl class="grid gap-x-3 sm:grid-cols-5">
+                                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                                {{ $tax->name }} ({{ $tax->rate }}%):
+                                            </dt>
+                                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
+                                                {{ $invoice->currency->symbol }}{{ $tax->amount }}
+                                            </dd>
+                                        </dl>
+                                    @endforeach
 
                                     <dl class="grid gap-x-3 sm:grid-cols-5">
-                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Tax:</dt>
-                                        <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$39.00</dd>
-                                    </dl>
-
-                                    <dl class="grid gap-x-3 sm:grid-cols-5">
-                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Amount
-                                            paid:
+                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                            Amount paid:
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
                                             {{ $invoice->currency->symbol }}
                                             {{ Number::format($invoice->total - $invoice->balance, $invoice->currency->decimal_digits) }}
-
                                         </dd>
                                     </dl>
 
                                     <dl class="grid gap-x-3 sm:grid-cols-5">
-                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Due
-                                            balance:
+                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                            Due balance:
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
                                             {{ $invoice->currency->symbol }}
@@ -406,10 +410,6 @@
                         </div>
 
                     </div>
-                    <!-- End Card -->
-
-                    <!-- Buttons -->
-                    <!-- End Buttons -->
                 </div>
             </div>
         </div>
