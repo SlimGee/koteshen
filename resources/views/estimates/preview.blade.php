@@ -8,7 +8,7 @@
                 <!-- Grid -->
                 <div class="flex justify-between">
                     <div class="max-w-32">
-                        <img src="{{ asset($estimate->business->logo) }}" alt="logo" class="object-contain">
+                        <img src="{{ Storage::url($estimate->business->logo) }}" alt="logo" class="object-contain">
                     </div>
                     <!-- Col -->
 
@@ -146,35 +146,29 @@
                                         {{ Number::format($estimate->subtotal, $estimate->currency->decimal_digits) }}
                                     </dd>
                                 </dl>
+                                @foreach ($estimate->tax as $tax)
+                                    <dl class="grid gap-x-3 sm:grid-cols-5">
+                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                            {{ $tax->name }} ({{ $tax->rate }} %):
+                                        </dt>
+                                        <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
+                                            {{ $estimate->currency->symbol }}{{ Number::format($tax->amount, $estimate->currency->decimal_digits) }}
+                                        </dd>
+                                    </dl>
+                                @endforeach
+                                @if ($estimate->discount)
+                                    <dl class="grid gap-x-3 sm:grid-cols-5">
+                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                            Discount ({{ $estimate->discount->rate }}%):
+                                        </dt>
+                                        <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
+                                            -{{ $estimate->currency->symbol }}{{ Number::format($estimate->discount->amount, $estimate->currency->decimal_digits) }}
+                                        </dd>
+                                    </dl>
+                                @endif
 
                                 <dl class="grid gap-x-3 sm:grid-cols-5">
                                     <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Total:
-                                    </dt>
-                                    <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                        {{ $estimate->currency->symbol }}
-                                        {{ Number::format($estimate->total, $estimate->currency->decimal_digits) }}
-                                    </dd>
-                                </dl>
-
-                                <dl class="grid gap-x-3 sm:grid-cols-5">
-                                    <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Tax:</dt>
-                                    <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$39.00</dd>
-                                </dl>
-
-                                <dl class="grid gap-x-3 sm:grid-cols-5">
-                                    <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Amount
-                                        paid:
-                                    </dt>
-                                    <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                        {{ $estimate->currency->symbol }}
-                                        {{ Number::format($estimate->total - $estimate->balance, $estimate->currency->decimal_digits) }}
-
-                                    </dd>
-                                </dl>
-
-                                <dl class="grid gap-x-3 sm:grid-cols-5">
-                                    <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Due
-                                        balance:
                                     </dt>
                                     <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
                                         {{ $estimate->currency->symbol }}
@@ -204,6 +198,20 @@
                 <!-- End Card -->
 
                 <!-- Buttons -->
+                <div class="flex gap-x-3 justify-end mt-6">
+                    <a class="inline-flex gap-2 justify-center items-center py-2 px-3 text-sm font-medium text-gray-700 align-middle bg-white rounded-lg border shadow-sm transition-all hover:bg-gray-50 focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white focus:outline-none dark:bg-neutral-800 dark:hover:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                        href="{{ route('estimates.download', $estimate) }}">
+                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" x2="12" y1="15" y2="3" />
+                        </svg>
+                        Download PDF
+                    </a>
+
+                </div>
                 <!-- End Buttons -->
             </div>
         </div>

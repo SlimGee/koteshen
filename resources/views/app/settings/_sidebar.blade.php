@@ -19,9 +19,11 @@
                 </a>
             </li>
             <li>
-                <a class="flex gap-x-3.5 items-center py-2 px-2.5 w-full text-sm rounded-lg hover:bg-gray-100 text-neutral-700 dark:hover:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300"
-                    href="#">
-                    Tax
+                <a @class([
+                    'flex gap-x-3.5 items-center py-2 px-2.5 text-sm font-medium rounded dark:text-white hover:bg-blue-400 hover:text-white dark:bg-neutral-700',
+                    'bg-blue-600  text-white ' => Route::is('app.taxes.index'),
+                ]) href="{{ route('app.taxes.index') }}">
+                    Tax Settings
                 </a>
             </li>
 

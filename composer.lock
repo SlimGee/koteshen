@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd8848d8f7daf67cfbdb24ea70a80b47",
+    "content-hash": "f660824917e8eea26961c0ce58441d51",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4379,6 +4379,75 @@
                 "source": "https://github.com/meyfa/php-svg/tree/v0.9.1"
             },
             "time": "2019-07-30T18:41:25+00:00"
+        },
+        {
+            "name": "michael-rubel/laravel-enhanced-pipeline",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michael-rubel/laravel-enhanced-pipeline.git",
+                "reference": "c42937d6a67e146c13a73d8d097bc424edb1920a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michael-rubel/laravel-enhanced-pipeline/zipball/c42937d6a67e146c13a73d8d097bc424edb1920a",
+                "reference": "c42937d6a67e146c13a73d8d097bc424edb1920a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0|^11.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.12"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.0|^8.0",
+                "orchestra/testbench": "^8.0|^9.0",
+                "phpunit/phpunit": "^9.5|^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MichaelRubel\\EnhancedPipeline\\EnhancedPipelineServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MichaelRubel\\EnhancedPipeline\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Rubel",
+                    "email": "contact@observer.name",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Laravel Pipeline with DB transaction support, events and additional methods.",
+            "homepage": "https://github.com/michael-rubel/laravel-enhanced-pipeline",
+            "keywords": [
+                "laravel",
+                "laravel-enhanced-pipeline",
+                "michael-rubel"
+            ],
+            "support": {
+                "issues": "https://github.com/michael-rubel/laravel-enhanced-pipeline/issues",
+                "source": "https://github.com/michael-rubel/laravel-enhanced-pipeline/tree/4.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/observername",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-03-17T13:39:41+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -29,6 +29,7 @@
         "maddhatter/laravel-view-generator": "dev-master",
         "mailerlite/mailerlite-php": "^1.0.3",
         "meilisearch/meilisearch-php": "^1.7",
+        "michael-rubel/laravel-enhanced-pipeline": "^4.0",
         "moosend/phpwrapper": "200069478",
         "opcodesio/log-viewer": "^3.8",
         "osiemsiedem/laravel-autolink": "^8.0",

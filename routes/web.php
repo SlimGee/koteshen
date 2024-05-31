@@ -42,6 +42,7 @@ use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\TaxController;
 use App\Http\Middleware\RedirectPrelaunch;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
 use App\Http\Middleware\SubscribeCustomer;
@@ -143,6 +144,8 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeC
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::get('/billing', [BillingController::class, 'edit'])->name('billing.edit');
         Route::delete('/cards/{card}', [CardController::class, 'destroy'])->name('cards.destroy');
+
+        Route::resource('taxes', TaxController::class);
     });
 
 Route::prefix('admin')

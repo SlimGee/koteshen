@@ -147,7 +147,7 @@
                             <div class="mt-5">
                                 <a href="{{ route('app.estimates.create') }}">
                                     <x-button type="button">
-                                        Create a new invoice
+                                        Create a new estimate
                                     </x-button>
                                 </a>
                             </div>

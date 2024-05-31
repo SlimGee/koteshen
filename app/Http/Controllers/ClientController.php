@@ -87,7 +87,7 @@ class ClientController extends Controller
             ->clients()
             ->create($request->validated());
 
-        return redirect()->route('app.clients.index')->with('success', 'You have successfully created a client.');
+        return redirect()->intended(route('app.clients.index'))->with('success', 'You have successfully created a client.');
     }
 
     /**

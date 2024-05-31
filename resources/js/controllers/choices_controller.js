@@ -75,4 +75,8 @@ export default class extends Controller {
     update({ detail }) {
         this.instance.setChoiceByValue(detail.toString());
     }
+
+    disconnect() {
+        this.instance?.destroy();
+    }
 }

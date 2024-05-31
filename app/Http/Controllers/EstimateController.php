@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Enum\EstimateStatus;
 use App\Http\Requests\StoreEstimateRequest;
 use App\Http\Requests\UpdateEstimateRequest;
 use App\Models\Currency;
 use App\Models\Estimate;
+use App\Pipes\Estimate\CreateDiscount;
+use App\Pipes\Estimate\CreateEstimate;
+use App\Pipes\Estimate\CreateItems;
+use App\Pipes\Estimate\CreateTax;
+use App\Pipes\Estimate\MapItems;
+use App\Pipes\Estimate\UpdateEstimate;
+use App\Transport\Estimate\EstimateTransport;
 use Butschster\Head\Facades\Meta;
-use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use MichaelRubel\EnhancedPipeline\Pipeline;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -47,10 +53,13 @@ class EstimateController extends Controller
             ->setDescription('Create and manage invoices for your business')
             ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
 
+        session()->put('url.intended', url()->current());
+
         return view('app.estimates.create', [
             'clients' => auth()->user()->business->clients,
             'currencies' => Currency::all(),
             'business' => auth()->user()->business,
+            'taxes' => auth()->user()->business->taxes,
         ]);
     }
 
@@ -59,31 +68,21 @@ class EstimateController extends Controller
      */
     public function store(StoreEstimateRequest $request): RedirectResponse
     {
-        $items = collect($request->validated('items'))->map(
-            fn($item) => [
-                ...$item,
-                'total' => $item['quantity'] * $item['price'],
-            ]
-        );
+        $transport = EstimateTransport::make()->setRequest($request);
 
-        $data = [
-            ...$request->safe()->except('items', 'expires_at'),
-            'total' => $items->sum('total'),
-            'subtotal' => $items->sum('total'),
-            'date' => now(),
-            'status' => EstimateStatus::DRAFT,
-            'expires_at' => $request->validated('expires_in') === 'custom' ? $request->validated('expires_at') : Carbon::parse($request->validated('expires_in')),
-        ];
+        Pipeline::make()
+            ->withTransaction()
+            ->send($transport)
+            ->through([
+                MapItems::class,
+                CreateEstimate::class,
+                CreateItems::class,
+                CreateDiscount::class,
+                CreateTax::class,
+            ])
+            ->thenReturn();
 
-        $estimate = auth()
-            ->user()
-            ->business
-            ->estimates()
-            ->create($data);
-
-        $estimate->items()->createMany($items);
-
-        return to_route('app.estimates.show', $estimate)->with('success', 'You have successfully added a new estimate');
+        return to_route('app.estimates.show', $transport->getEstimate())->with('success', 'You have successfully added a new estimate');
     }
 
     /**
@@ -109,11 +108,14 @@ class EstimateController extends Controller
             ->setDescription('Create and manage invoices for your business')
             ->setKeywords(['billing', 'invoicing', 'online payments', 'small business']);
 
+        session()->put('url.intended', url()->current());
+
         return view('app.estimates.edit', [
             'estimate' => $estimate,
             'clients' => auth()->user()->business->clients,
             'currencies' => Currency::all(),
             'business' => auth()->user()->business,
+            'taxes' => auth()->user()->business->taxes,
         ]);
     }
 
@@ -122,25 +124,19 @@ class EstimateController extends Controller
      */
     public function update(UpdateEstimateRequest $request, Estimate $estimate): RedirectResponse
     {
-        $items = collect($request->validated('items'))->map(
-            fn($item) => [
-                ...$item,
-                'total' => $item['quantity'] * $item['price'],
-            ]
-        );
+        $transport = EstimateTransport::make()->setEstimate($estimate)->setRequest($request);
 
-        $data = [
-            ...$request->safe()->except('items', 'expires_at'),
-            'total' => $items->sum('total'),
-            'subtotal' => $items->sum('total'),
-            'date' => now(),
-            'status' => EstimateStatus::DRAFT,
-            'expires_at' => $request->validated('expires_in') === 'custom' ? $request->validated('expires_at') : Carbon::parse($request->validated('expires_in')),
-        ];
-
-        $estimate->update($data);
-
-        $estimate->items()->sync($items->toArray());
+        Pipeline::make()
+            ->withTransaction()
+            ->send($transport)
+            ->through([
+                MapItems::class,
+                UpdateEstimate::class,
+                CreateItems::class,
+                CreateDiscount::class,
+                CreateTax::class,
+            ])
+            ->thenReturn();
 
         return to_route('app.estimates.show', $estimate)->with('success', 'You have updated this estimate');
     }

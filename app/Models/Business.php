@@ -91,6 +91,17 @@ class Business extends Model
         return $this->hasMany(Estimate::class);
     }
 
+    /**
+     * Get the taxes for this business
+     */
+    public function taxes(): HasMany
+    {
+        return $this->hasMany(Tax::class);
+    }
+
+    /**
+     * The payments that belong to this business
+     */
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);

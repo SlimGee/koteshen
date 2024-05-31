@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -54,6 +56,27 @@ class Estimate extends Model
     public function business(): BelongsTo
     {
         return $this->belongsTo(Business::class);
+    }
+
+    /**
+     * get the taxes for this Model
+     */
+    public function taxes(): MorphToMany
+    {
+        return $this->morphToMany(Tax::class, 'taxable');
+    }
+
+    /**
+     * The tax records for this invoice
+     */
+    public function tax(): MorphMany
+    {
+        return $this->morphMany(TaxRecord::class, 'taxable');
+    }
+
+    public function discount(): MorphOne
+    {
+        return $this->morphOne(Discount::class, 'discountable');
     }
 
     /**
