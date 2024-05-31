@@ -8,7 +8,7 @@
         ]) }}>
         <form action="{{ route('app.estimates.store') }}" method="post">
             @csrf
-            <div class="p-4 py-10 w-full bg-white rounded border md:w-6/12">
+            <div class="p-4 w-full max-w-4xl bg-white rounded border shadow-sm md:p-6">
                 <div class="flex justify-between items-start mb-10">
                     <h1 class="text-lg font-semibold md:text-2xl text-slate-700">Estimate</h1>
 
@@ -158,7 +158,7 @@
                     <div {{ stimulus_target('estimate', 'lineItemsContainer') }}>
                         <template {{ stimulus_target('estimate', 'lineItemTemplate') }}>
 
-                            <div class="grid grid-cols-12 py-6 border-b-2" {{ stimulus_target('estimate', 'lineItem') }}
+                            <div class="grid grid-cols-12 py-6 border-b" {{ stimulus_target('estimate', 'lineItem') }}
                                 {{ stimulus_controller('line-item') }}>
                                 <div class="col-span-full px-2 sm:col-span-5 sm:py-3"
                                     {{ stimulus_action('line-item', 'setCurrentCurrency', 'estimate:client-selected@window') }}>
@@ -179,7 +179,7 @@
 
                                     <div class="flex items-center mt-1">
                                         <x-form.input class="w-full" id="rate" name="items[INDEX][price]"
-                                            type="text" :value="0" data-line-item-target="price"
+                                            type="text" data-line-item-target="price"
                                             data-action="line-item#updateTotal" />
                                     </div>
                                 </div>
@@ -231,19 +231,19 @@
 
 
                         @foreach (old('items', []) as $index => $value)
-                            <div class="grid grid-cols-12 py-6 border-b-2" {{ stimulus_target('estimate', 'lineItem') }}
+                            <div class="grid grid-cols-12 py-6 border-b" {{ stimulus_target('estimate', 'lineItem') }}
                                 {{ stimulus_controller('line-item') }}>
                                 <div class="col-span-full px-2 sm:col-span-5 sm:py-3"
                                     {{ stimulus_action('line-item', 'setCurrentCurrency', 'estimate:client-selected@window') }}>
                                     <x-form.label class="sm:hidden">Description</x-form.label>
                                     <x-form.input class="mt-1 w-full !p-2.5" id="description" :name="'items[' . $index . '][name]'"
-                                        type="text" placeholder="Item name" />
+                                        type="text" placeholder="Item name" :value="$value['name'] ?? ''" />
                                 </div>
                                 <div class="col-span-full py-1 px-2 sm:col-span-1 sm:py-3 sm:px-1">
                                     <x-form.label class="sm:hidden">Quantity</x-form.label>
 
                                     <x-form.input class="mt-1 w-full" id="quantity" :name="'items[' . $index . '][quantity]'" type="text"
-                                        value="1" data-line-item-target="quantity"
+                                        :value="$value['quantity'] ?? 1" data-line-item-target="quantity"
                                         data-action="line-item#updateTotal" />
                                 </div>
                                 <div class="col-span-full py-1 px-2 sm:col-span-2 sm:py-3 sm:px-1">
@@ -251,7 +251,7 @@
 
                                     <div class="flex items-center mt-1">
                                         <x-form.input class="w-full" id="rate" :name="'items[' . $index . '][price]'" type="text"
-                                            :value="0" data-line-item-target="price"
+                                            :value="$value['price'] ?? ''" data-line-item-target="price"
                                             data-action="line-item#updateTotal" />
                                     </div>
                                 </div>
@@ -302,8 +302,8 @@
                         @endforeach
 
                     </div>
-                    <div class="flex justify-center mt-3">
-                        <x-secondary-button class="justify-center w-full !border-x-0 !border-b-0"
+                    <div class="flex justify-center">
+                        <x-secondary-button class="justify-center w-full !rounded-t-none !shadow-none"
                             data-action="estimate#addLineItem">
                             + Add Line Item
                         </x-secondary-button>
@@ -354,7 +354,7 @@
 
                 <div class="mt-4">
                     <x-form.label for="notes">
-                        Estimate Note (<a href="#" class="text-sm font-bold text-blue-800">Default Note</a>)
+                        Estimate Note {{-- (<a href="#" class="text-sm font-bold text-blue-800">Default Note</a>) --}}
                     </x-form.label>
                     <x-form.textarea class="mt-1 w-full" id="notes" name="notes" rows="3"></x-form.textarea>
                 </div>
@@ -368,13 +368,13 @@
 
                 <div class="flex justify-between items-center mt-8">
                     <div class="hidden sm:inline">
-                        <a href="#" class="text-sm font-medium text-blue-800">Edit default footer</a>
+                        {{-- <a href="#" class="text-sm font-medium text-blue-800">Edit default footer</a> --}}
                     </div>
 
                     <div>
-                        <x-secondary-button type="submit">
+                        {{-- <x-secondary-button type="submit">
                             Save and send
-                        </x-secondary-button>
+                        </x-secondary-button> --}}
 
                         <x-button type="submit">
                             Save Estimate
