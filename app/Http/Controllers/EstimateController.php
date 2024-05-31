@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enum\EstimateStatus;
 use App\Http\Requests\StoreEstimateRequest;
 use App\Http\Requests\UpdateEstimateRequest;
 use App\Models\Currency;
@@ -12,9 +11,9 @@ use App\Pipes\Estimate\CreateEstimate;
 use App\Pipes\Estimate\CreateItems;
 use App\Pipes\Estimate\CreateTax;
 use App\Pipes\Estimate\MapItems;
+use App\Pipes\Estimate\UpdateEstimate;
 use App\Transport\Estimate\EstimateTransport;
 use Butschster\Head\Facades\Meta;
-use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use MichaelRubel\EnhancedPipeline\Pipeline;
@@ -125,25 +124,19 @@ class EstimateController extends Controller
      */
     public function update(UpdateEstimateRequest $request, Estimate $estimate): RedirectResponse
     {
-        $items = collect($request->validated('items'))->map(
-            fn($item) => [
-                ...$item,
-                'total' => $item['quantity'] * $item['price'],
-            ]
-        );
+        $transport = EstimateTransport::make()->setEstimate($estimate)->setRequest($request);
 
-        $data = [
-            ...$request->safe()->except('items', 'expires_at'),
-            'total' => $items->sum('total'),
-            'subtotal' => $items->sum('total'),
-            'date' => now(),
-            'status' => EstimateStatus::DRAFT,
-            'expires_at' => $request->validated('expires_in') === 'custom' ? $request->validated('expires_at') : Carbon::parse($request->validated('expires_in')),
-        ];
-
-        $estimate->update($data);
-
-        $estimate->items()->sync($items->toArray());
+        Pipeline::make()
+            ->withTransaction()
+            ->send($transport)
+            ->through([
+                MapItems::class,
+                UpdateEstimate::class,
+                CreateItems::class,
+                CreateDiscount::class,
+                CreateTax::class,
+            ])
+            ->thenReturn();
 
         return to_route('app.estimates.show', $estimate)->with('success', 'You have updated this estimate');
     }

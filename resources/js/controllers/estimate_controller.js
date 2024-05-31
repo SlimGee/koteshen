@@ -90,9 +90,11 @@ export default class extends Controller {
             .toFixed(this.currencyValue.rounding || 2);
 
         const rate = Number(this.discountTarget.value);
-        const discount = (rate / 100) * before;
+        const discount = ((rate / 100) * before).toFixed(2);
 
         let subtotal = before - discount;
+
+        console.log(discount);
 
         this.subtotalTarget.textContent = Number(before).toFixed(2);
         let total = Number(subtotal);

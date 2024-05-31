@@ -17,12 +17,12 @@ class CreateTax
         $estimate->taxes()->sync($transport->getRequest()->validated('tax_ids', []));
         $estimate->tax()->delete();
 
+        $taxPayable = 0;
         $estimate
             ->taxes()
-            ->each(function ($tax) use ($estimate) {
-                $amount = ($tax->rate / 100) * $estimate->subtotal;
-                $estimate->total += $amount;
-
+            ->each(function ($tax) use ($estimate, &$taxPayable) {
+                $amount = ($tax->rate / 100) * $estimate->total;
+                $taxPayable += $amount;
                 $estimate->tax()->updateOrCreate(
                     ['tax_id' => $tax->id], [
                         'name' => $tax->name,
@@ -34,6 +34,7 @@ class CreateTax
                 );
             });
 
+        $estimate->total += $taxPayable;
         $estimate->save();
 
         return $next($transport);

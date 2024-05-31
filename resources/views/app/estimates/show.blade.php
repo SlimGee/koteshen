@@ -395,10 +395,7 @@
                         </div>
 
                     </div>
-                    <!-- End Card -->
 
-                    <!-- Buttons -->
-                    <!-- End Buttons -->
                 </div>
             </div>
         </div>

@@ -33,6 +33,14 @@ class UpdateEstimateRequest extends FormRequest
             'expires_at' => 'required_if:due_in,custom|nullable|date',
             'expires_in' => 'required|string|in:now,7 days,14 days,30 days,60 days,90 days,custom',
             'description' => 'required|string',
+            'discount' => 'sometimes|nullable|numeric|min:0|max:100',
+            'tax_ids' => 'sometimes|array',
+            'tax_ids.*' => 'required|exists:taxes,id',
         ];
+    }
+
+    public function estimateParams(): array
+    {
+        return $this->safe()->except('tax_ids', 'discount', 'items', 'expires_at');
     }
 }
