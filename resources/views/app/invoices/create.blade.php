@@ -394,7 +394,7 @@
 
                 <div class="mt-4">
                     <x-form.label for="notes">
-                        Invoice Note (<a href="#" class="text-sm font-bold text-blue-800">Default Note</a>)
+                        Invoice Note {{-- (<a href="#" class="text-sm font-bold text-blue-800">Default Note</a>) --}}
                     </x-form.label>
                     <x-form.textarea class="mt-1 w-full" id="notes" name="notes" rows="3"></x-form.textarea>
                 </div>
@@ -410,7 +410,7 @@
 
                 <div class="flex justify-between items-center mt-8">
                     <div>
-                        <a href="#" class="text-sm font-medium text-blue-800">Edit default footer</a>
+                        {{-- <a href="#" class="text-sm font-medium text-blue-800">Edit default footer</a> --}}
                     </div>
 
                     <div>
