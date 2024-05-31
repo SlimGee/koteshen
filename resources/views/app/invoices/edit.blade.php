@@ -380,9 +380,9 @@
 
                         <div>
                             <x-form.label>Discount(%)</x-form.label>
-                            <x-form.input name="discount" data-invoice-target="discount" class="mt-1 w-full" />
+                            <x-form.input name="discount" data-invoice-target="discount" :value="$invoice->discount?->rate"
+                                class="mt-1 w-full" data-action="invoice#updateTotal" />
                         </div>
-
 
                         <div class="flex justify-between items-start">
                             <div>
@@ -417,8 +417,10 @@
                 <div class="my-8 w-full border-t"></div>
 
                 <div class="">
-                    <div class="text-sm"><span class="text-sm font-semibold text-slate-900">Email:</span>
-                        {{ $business->user->email }}</div>
+                    <div class="text-sm">
+                        <span class="text-sm font-semibold text-slate-900">Email:</span>
+                        {{ $business->user->email }}
+                    </div>
                 </div>
 
                 <div class="flex justify-between items-center mt-8">

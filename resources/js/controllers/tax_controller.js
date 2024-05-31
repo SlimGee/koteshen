@@ -14,7 +14,14 @@ export default class extends Controller {
 
     static values = { taxes: Array, selected: Array };
 
-    connect() {}
+    connect() {
+        this.taxesValue = this.taxesValue.filter((tax) => {
+            return !this.selectedValue
+                .map((selected) => selected.tax_id)
+                .includes(tax.id);
+        });
+        this.selectedValue.forEach((selected) => this.selectFrom(selected));
+    }
 
     create() {
         const options = this.taxesValue.map((tax) => {
@@ -29,6 +36,15 @@ export default class extends Controller {
             .setAttribute("data-controller", "choices");
         this.itemsTarget.classList.remove("hidden");
         this.toggleTarget.classList.add("hidden");
+    }
+
+    selectFrom(object) {
+        this.add(object);
+        this.taxesValue = this.taxesValue.filter((tax) => tax.id !== object.id);
+        this.itemsTarget.classList.add("hidden");
+        if (this.taxesValue.length > 0) {
+            this.toggleTarget.classList.remove("hidden");
+        }
     }
 
     select() {
