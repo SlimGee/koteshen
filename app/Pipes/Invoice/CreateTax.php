@@ -29,10 +29,12 @@ class CreateTax
                     'name' => $tax->name,
                     'rate' => $tax->rate,
                     'amount' => $amount,
+                    'tax_id' => $tax->id,
                     'business_id' => $invoice->business_id,
                 ]);
             });
 
+        $invoice->balance = $invoice->total;
         $invoice->save();
 
         return $next($transport);

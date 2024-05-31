@@ -347,8 +347,7 @@
                                         <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Subtotal:
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                            {{ $invoice->currency->symbol }}
-                                            {{ Number::format($invoice->subtotal, $invoice->currency->decimal_digits) }}
+                                            {{ $invoice->currency->symbol }}{{ Number::format($invoice->subtotal, $invoice->currency->decimal_digits) }}
                                         </dd>
                                     </dl>
 
@@ -356,8 +355,7 @@
                                         <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Total:
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                            {{ $invoice->currency->symbol }}
-                                            {{ Number::format($invoice->total, $invoice->currency->decimal_digits) }}
+                                            {{ $invoice->currency->symbol }}{{ Number::format($invoice->total, $invoice->currency->decimal_digits) }}
                                         </dd>
                                     </dl>
                                     @foreach ($invoice->tax as $tax)
@@ -371,13 +369,23 @@
                                         </dl>
                                     @endforeach
 
+                                    @if ($invoice->discount)
+                                        <dl class="grid gap-x-3 sm:grid-cols-5">
+                                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                                Discount ({{ $invoice->discount->rate }}%):
+                                            </dt>
+                                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
+                                                -{{ $invoice->currency->symbol }}{{ Number::format($invoice->discount->amount) }}
+                                            </dd>
+                                        </dl>
+                                    @endif
+
                                     <dl class="grid gap-x-3 sm:grid-cols-5">
                                         <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
                                             Amount paid:
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                            {{ $invoice->currency->symbol }}
-                                            {{ Number::format($invoice->total - $invoice->balance, $invoice->currency->decimal_digits) }}
+                                            {{ $invoice->currency->symbol }}{{ Number::format($invoice->total - $invoice->balance, $invoice->currency->decimal_digits) }}
                                         </dd>
                                     </dl>
 
@@ -386,8 +394,7 @@
                                             Due balance:
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                            {{ $invoice->currency->symbol }}
-                                            {{ Number::format($invoice->balance, $invoice->currency->decimal_digits) }}
+                                            {{ $invoice->currency->symbol }}{{ Number::format($invoice->balance, $invoice->currency->decimal_digits) }}
                                         </dd>
                                     </dl>
                                 </div>

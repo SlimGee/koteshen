@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Invoice;
+use App\Pipes\Invoice\CreateDiscount;
 use App\Pipes\Invoice\CreateInvoice;
 use App\Pipes\Invoice\CreateItems;
 use App\Pipes\Invoice\CreateTax;
@@ -111,6 +112,7 @@ class InvoiceController extends Controller
                 CreateInvoice::class,
                 CreateItems::class,
                 CreateTax::class,
+                CreateDiscount::class,
             ])
             ->thenReturn();
 

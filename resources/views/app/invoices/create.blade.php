@@ -246,17 +246,17 @@
                                 <div class="col-span-5 py-3 px-2"
                                     {{ stimulus_action('line-item', 'setCurrentCurrency', 'invoice:client-selected@window') }}>
                                     <x-form.input class="mt-1 w-full !p-2.5" id="description" :name="'items[' . $index . '][name]'"
-                                        type="text" placeholder="Item name" />
+                                        type="text" placeholder="Item name" :value="$value['name'] ?? ''" />
                                 </div>
                                 <div class="col-span-1 py-3 px-1">
                                     <x-form.input class="mt-1 w-full" id="quantity" :name="'items[' . $index . '][quantity]'" type="text"
-                                        value="1" data-line-item-target="quantity"
+                                        :value="$value['quantity'] ?? ''" data-line-item-target="quantity"
                                         data-action="line-item#updateTotal" />
                                 </div>
                                 <div class="col-span-2 py-3 px-1">
                                     <div class="flex items-center mt-1">
                                         <x-form.input class="w-full" id="rate" :name="'items[' . $index . '][price]'" type="text"
-                                            :value="0" data-line-item-target="price"
+                                            :value="$value['price'] ?? ''" data-line-item-target="price"
                                             data-action="line-item#updateTotal" />
                                     </div>
                                 </div>
@@ -366,7 +366,8 @@
 
                         <div>
                             <x-form.label>Discount(%)</x-form.label>
-                            <x-form.input name="discount" data-invoice-target="discount" class="mt-1 w-full" />
+                            <x-form.input name="discount" data-invoice-target="discount" class="mt-1 w-full"
+                                data-action="invoice#updateTotal" />
                         </div>
 
                         <div class="flex justify-between items-start">

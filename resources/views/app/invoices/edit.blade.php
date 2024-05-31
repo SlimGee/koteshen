@@ -327,7 +327,8 @@
 
                 <div class="flex justify-end mt-8"
                     {{ stimulus_action('invoice', 'updateTotal', 'line-item:total@window') }}>
-                    <div class="space-y-4 w-full md:w-7/12">
+                    <div class="space-y-4 w-full md:w-7/12"
+                        {{ stimulus_controller('tax', ['taxes' => $taxes, 'selected' => $invoice->tax]) }}>
                         <div class="flex justify-between items-start">
                             <div>
                                 <h2>Subtotal</h2>
@@ -337,14 +338,52 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between items-start">
+
+                        <template {{ stimulus_target('tax', 'template') }}>
+                            <div class="flex justify-between items-start" {{ stimulus_controller('tax-record') }}>
+                                <div>
+                                    <h2>NAME</h2>
+                                </div>
+                                <div>
+                                    <span data-rate="RATE" data-invoice-target="taxes">AMOUNT</span>
+                                    <input type="hidden" name="tax_ids[]" value="TAXID">
+                                </div>
+                            </div>
+                        </template>
+
+
+                        <template {{ stimulus_target('tax', 'formTemplate') }}>
                             <div>
-                                <h2>Tax</h2>
+                                <x-form.select class="w-full" data-choices-target="element" data-tax-target="form">
+
+                                </x-form.select>
+                            </div>
+                        </template>
+
+                        <div class="flex hidden space-x-3" {{ stimulus_target('tax', 'items') }}>
+                            <div class="w-full" data-tax-target="formContainer">
+
                             </div>
                             <div>
-                                <span>0.00</span>
+                                <x-secondary-button type="button" data-action="tax#select" class="mt-1">
+                                    Add
+                                </x-secondary-button>
                             </div>
                         </div>
+
+                        <div {{ stimulus_target('tax', 'toggle') }}>
+                            <button type="button" {{ stimulus_action('tax', 'create') }}
+                                class="text-sm font-bold text-blue-800">
+                                Add tax
+                            </button>
+                        </div>
+
+                        <div>
+                            <x-form.label>Discount(%)</x-form.label>
+                            <x-form.input name="discount" data-invoice-target="discount" class="mt-1 w-full" />
+                        </div>
+
+
                         <div class="flex justify-between items-start">
                             <div>
                                 <h2 class="font-semibold text-slate-900">

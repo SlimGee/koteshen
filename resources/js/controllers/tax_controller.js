@@ -11,7 +11,9 @@ export default class extends Controller {
         "formTemplate",
         "formContainer",
     ];
-    static values = { taxes: Array };
+
+    static values = { taxes: Array, selected: Array };
+
     connect() {}
 
     create() {

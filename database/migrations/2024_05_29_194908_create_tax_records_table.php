@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->decimal('amount');
             $table->unsignedInteger('taxable_id');
             $table->string('taxable_type');
+            $table->foreignId('tax_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('business_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
