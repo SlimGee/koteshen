@@ -2,7 +2,6 @@
 
 namespace App\Pipes\Invoice;
 
-use App\Models\Tax;
 use App\Transport\Invoice\CreateInvoiceTransport;
 use Closure;
 
@@ -15,23 +14,24 @@ class CreateTax
     {
         $invoice = $transport->getInvoice();
 
-        $transport
-            ->getRequest()
-            ->safe()
-            ->collect('tax_ids')
-            ->map(fn($id) => Tax::find($id))
-            ->filter()
+        $invoice->taxes()->sync($transport->getRequest()->validated('tax_ids', []));
+        $invoice->tax()->delete();
+
+        $invoice
+            ->taxes()
             ->each(function ($tax) use ($invoice) {
                 $amount = ($tax->rate / 100) * $invoice->subtotal;
                 $invoice->total += $amount;
 
-                $invoice->tax()->create([
-                    'name' => $tax->name,
-                    'rate' => $tax->rate,
-                    'amount' => $amount,
-                    'tax_id' => $tax->id,
-                    'business_id' => $invoice->business_id,
-                ]);
+                $invoice->tax()->updateOrCreate(
+                    ['tax_id' => $tax->id], [
+                        'name' => $tax->name,
+                        'rate' => $tax->rate,
+                        'amount' => $amount,
+                        'tax_id' => $tax->id,
+                        'business_id' => $invoice->business_id,
+                    ]
+                );
             });
 
         $invoice->balance = $invoice->total;

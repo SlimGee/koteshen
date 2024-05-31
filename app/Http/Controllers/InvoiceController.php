@@ -10,11 +10,11 @@ use App\Pipes\Invoice\CreateInvoice;
 use App\Pipes\Invoice\CreateItems;
 use App\Pipes\Invoice\CreateTax;
 use App\Pipes\Invoice\MapItems;
+use App\Pipes\Invoice\UpdateInvoice;
 use App\Transport\Invoice\CreateInvoiceTransport;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
-use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use MichaelRubel\EnhancedPipeline\Pipeline;
@@ -111,8 +111,8 @@ class InvoiceController extends Controller
                 MapItems::class,
                 CreateInvoice::class,
                 CreateItems::class,
-                CreateTax::class,
                 CreateDiscount::class,
+                CreateTax::class,
             ])
             ->thenReturn();
 
@@ -189,26 +189,22 @@ class InvoiceController extends Controller
      */
     public function update(UpdateInvoiceRequest $request, Invoice $invoice)
     {
-        $items = collect($request->validated('items'))->map(
-            fn($item) => [
-                ...$item,
-                'total' => $item['quantity'] * $item['price'],
-            ]
-        );
+        $transport = CreateInvoiceTransport::make()->setRequest($request);
+        $transport->setInvoice($invoice);
 
-        $data = [
-            ...$request->safe()->except('items', 'due_at'),
-            'total' => $items->sum('total'),
-            'balance' => $items->sum('total'),
-            'status' => 'created',
-            'due_at' => $request->validated('due_in') === 'custom' ? $request->validated('due_at') : Carbon::parse($request->validated('due_in')),
-        ];
+        Pipeline::make()
+            ->withTransaction()
+            ->send($transport)
+            ->through([
+                MapItems::class,
+                UpdateInvoice::class,
+                CreateItems::class,
+                CreateDiscount::class,
+                CreateTax::class,
+            ])
+            ->thenReturn();
 
-        $invoice->update($data);
-
-        $invoice->items()->sync($items->toArray());
-
-        return to_route('app.invoices.show', $invoice)->with('success', 'Invoice updated successfully');
+        return to_route('app.invoices.show', $transport->getInvoice())->with('success', 'Invoice updated successfully');
     }
 
     /**

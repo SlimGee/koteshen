@@ -32,7 +32,15 @@ class UpdateInvoiceRequest extends FormRequest
             'number' => 'nullable|string',
             'notes' => 'nullable|string',
             'due_at' => 'required_if:due_in,custom|nullable|date',
-            'due_in' => 'required|string|in:now,7 days,14 days,30 days,60 days,90 days,custom',
+            'due_in' => 'required|string|in:now,7 days,14 days,30 days,45 days,60 days,90 days,custom',
+            'discount' => 'sometimes|nullable|numeric|min:0|max:100',
+            'tax_ids' => 'sometimes|array',
+            'tax_ids.*' => 'required|exists:taxes,id',
         ];
+    }
+
+    public function withoutOtherFields(): array
+    {
+        return $this->safe()->except('items', 'due_at', 'tax_ids', 'discount');
     }
 }

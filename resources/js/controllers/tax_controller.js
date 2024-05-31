@@ -15,12 +15,17 @@ export default class extends Controller {
     static values = { taxes: Array, selected: Array };
 
     connect() {
+        this.selectedValue.forEach((selected) => {
+            this.selectFrom(
+                this.taxesValue.find((tax) => selected.tax_id == tax.id),
+            );
+        });
+
         this.taxesValue = this.taxesValue.filter((tax) => {
             return !this.selectedValue
                 .map((selected) => selected.tax_id)
                 .includes(tax.id);
         });
-        this.selectedValue.forEach((selected) => this.selectFrom(selected));
     }
 
     create() {

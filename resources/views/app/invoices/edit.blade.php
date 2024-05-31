@@ -126,7 +126,7 @@
                         <div {{ stimulus_target('invoice', 'select') }} class="mt-2">
                             <x-form.select name="client_id" class="w-full" data-controller="choices"
                                 data-action="invoice#selectClient">
-                                <option selected>Select client</option>
+
                                 @foreach ($clients as $client)
                                     <option value="{{ $client->id }}" @selected(old('client_id', $invoice->client_id) == $client->id)>
                                         {{ $client->name }}
@@ -326,7 +326,7 @@
                 </div>
 
                 <div class="flex justify-end mt-8"
-                    {{ stimulus_action('invoice', 'updateTotal', 'line-item:total@window') }}>
+                    data-action="line-item:total@window->invoice#updateTotal tax-record:created@window->invoice#updateTotal">
                     <div class="space-y-4 w-full md:w-7/12"
                         {{ stimulus_controller('tax', ['taxes' => $taxes, 'selected' => $invoice->tax]) }}>
                         <div class="flex justify-between items-start">

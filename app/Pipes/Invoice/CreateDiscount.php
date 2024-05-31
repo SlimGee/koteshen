@@ -18,7 +18,7 @@ class CreateDiscount
                 'amount' => ($discount / 100) * $transport->getInvoice()->subtotal,
             ]);
 
-            $transport->getInvoice()->total -= ($discount / 100) * $transport->getInvoice()->subtotal;
+            $transport->getInvoice()->total = $transport->getInvoice()->subtotal - ($discount / 100) * $transport->getInvoice()->subtotal;
             $transport->getInvoice()->balance = $transport->getInvoice()->total;
 
             $transport->getInvoice()->save();

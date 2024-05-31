@@ -15,7 +15,7 @@ class CreateItems
         $transport
             ->getInvoice()
             ->items()
-            ->createMany($transport->getItems());
+            ->sync($transport->getItems()->toArray());
 
         return $next($transport);
     }
