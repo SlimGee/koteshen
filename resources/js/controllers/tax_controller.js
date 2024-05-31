@@ -68,7 +68,6 @@ export default class extends Controller {
     }
 
     add(taxObject) {
-        console.log(JSON.stringify(JSON.stringify(taxObject)));
         const template = this.templateTarget.innerHTML;
         const html = template
             .replace(/NAME/g, `${taxObject.name} (%${taxObject.rate})`)

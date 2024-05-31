@@ -77,7 +77,6 @@ export default class extends Controller {
     }
 
     disconnect() {
-        console.log(this.instance);
         this.instance?.destroy();
     }
 }

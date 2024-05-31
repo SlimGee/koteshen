@@ -79,6 +79,10 @@ export default class extends Controller {
             );
     }
 
+    taxesTargetDisconnected() {
+        this.updateTotal();
+    }
+
     updateTotal() {
         let before = Array.from(this.lineItemTargets)
             .reduce((acc, item) => {
@@ -100,7 +104,6 @@ export default class extends Controller {
 
         this.taxesTargets.forEach((tax) => {
             const rate = parseFloat(tax.dataset.rate);
-            console.log(rate);
             const amount = (rate / 100) * subtotal;
             additions += amount;
             tax.textContent = amount.toFixed(2);

@@ -326,7 +326,7 @@
                 </div>
 
                 <div class="flex justify-end mt-8"
-                    data-action="line-item:total@window->invoice#updateTotal tax-record:created@window->invoice#updateTotal">
+                    data-action="line-item:total@window->invoice#updateTotal tax-record:created@window->invoice#updateTotal tax-record:removed@window->invoice#updateTotal">
                     <div class="space-y-4 w-full md:w-7/12"
                         {{ stimulus_controller('tax', ['taxes' => $taxes, 'selected' => $invoice->tax]) }}>
                         <div class="flex justify-between items-start">
@@ -342,7 +342,10 @@
                         <template {{ stimulus_target('tax', 'template') }}>
                             <div class="flex justify-between items-start" {{ stimulus_controller('tax-record') }}>
                                 <div>
-                                    <h2>NAME</h2>
+                                    <h2 class="inline">NAME</h2>
+                                    <button type="button" class="inline" data-action="tax-record#remove">
+                                        <i class="text-red-500 bi bi-trash"></i>
+                                    </button>
                                 </div>
                                 <div>
                                     <span data-rate="RATE" data-invoice-target="taxes">AMOUNT</span>

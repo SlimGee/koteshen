@@ -7,4 +7,8 @@ export default class extends Controller {
     connect() {
         this.dispatch("created");
     }
+
+    remove() {
+        this.element.remove();
+    }
 }

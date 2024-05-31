@@ -328,7 +328,10 @@
                         <template {{ stimulus_target('tax', 'template') }}>
                             <div class="flex justify-between items-start" {{ stimulus_controller('tax-record') }}>
                                 <div>
-                                    <h2>NAME</h2>
+                                    <h2 class="inline">NAME</h2>
+                                    <button type="button" class="inline" data-action="tax-record#remove">
+                                        <i class="text-red-500 bi bi-trash"></i>
+                                    </button>
                                 </div>
                                 <div>
                                     <span data-rate="RATE" data-invoice-target="taxes">AMOUNT</span>
