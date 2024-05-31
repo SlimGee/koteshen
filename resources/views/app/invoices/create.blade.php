@@ -23,7 +23,7 @@
         <form action="{{ route('app.invoices.store') }}" method="post">
 
             @csrf
-            <div class="p-4 py-6 w-full max-w-3xl bg-white rounded border shadow-sm md:px-6">
+            <div class="p-4 py-6 w-full max-w-4xl bg-white rounded border shadow-sm md:px-6">
                 <div class="flex justify-between items-start mb-10">
                     <h1 class="text-lg font-semibold md:text-2xl text-slate-700">Invoices</h1>
 
