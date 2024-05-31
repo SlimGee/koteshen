@@ -34,6 +34,8 @@ class StoreEstimateRequest extends FormRequest
             'expires_at' => 'required_if:due_in,custom|nullable|date',
             'expires_in' => 'required|string|in:now,7 days,14 days,30 days,60 days,90 days,custom',
             'description' => 'required|string',
+            'tax_ids' => 'sometimes|array',
+            'tax_ids.*' => 'required|exists:taxes,id',
         ];
     }
 }

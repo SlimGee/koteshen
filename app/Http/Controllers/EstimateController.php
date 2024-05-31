@@ -53,6 +53,7 @@ class EstimateController extends Controller
             'clients' => auth()->user()->business->clients,
             'currencies' => Currency::all(),
             'business' => auth()->user()->business,
+            'taxes' => auth()->user()->business->taxes,
         ]);
     }
 
@@ -118,6 +119,7 @@ class EstimateController extends Controller
             'clients' => auth()->user()->business->clients,
             'currencies' => Currency::all(),
             'business' => auth()->user()->business,
+            'taxes' => auth()->user()->business->taxes,
         ]);
     }
 
