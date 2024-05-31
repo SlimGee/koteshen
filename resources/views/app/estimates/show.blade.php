@@ -346,35 +346,29 @@
                                             {{ Number::format($estimate->subtotal, $estimate->currency->decimal_digits) }}
                                         </dd>
                                     </dl>
+                                    @foreach ($estimate->tax as $tax)
+                                        <dl class="grid gap-x-3 sm:grid-cols-5">
+                                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                                {{ $tax->name }} ({{ $tax->rate }} %):
+                                            </dt>
+                                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
+                                                {{ $estimate->currency->symbol }}{{ Number::format($tax->amount, $estimate->currency->decimal_digits) }}
+                                            </dd>
+                                        </dl>
+                                    @endforeach
+                                    @if ($estimate->discount)
+                                        <dl class="grid gap-x-3 sm:grid-cols-5">
+                                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">
+                                                Discount ({{ $estimate->discount->rate }}%):
+                                            </dt>
+                                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
+                                                -{{ $estimate->currency->symbol }}{{ Number::format($estimate->discount->amount, $estimate->currency->decimal_digits) }}
+                                            </dd>
+                                        </dl>
+                                    @endif
 
                                     <dl class="grid gap-x-3 sm:grid-cols-5">
                                         <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Total:
-                                        </dt>
-                                        <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                            {{ $estimate->currency->symbol }}
-                                            {{ Number::format($estimate->total, $estimate->currency->decimal_digits) }}
-                                        </dd>
-                                    </dl>
-
-                                    <dl class="grid gap-x-3 sm:grid-cols-5">
-                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Tax:</dt>
-                                        <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$39.00</dd>
-                                    </dl>
-
-                                    <dl class="grid gap-x-3 sm:grid-cols-5">
-                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Amount
-                                            paid:
-                                        </dt>
-                                        <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
-                                            {{ $estimate->currency->symbol }}
-                                            {{ Number::format($estimate->total - $estimate->balance, $estimate->currency->decimal_digits) }}
-
-                                        </dd>
-                                    </dl>
-
-                                    <dl class="grid gap-x-3 sm:grid-cols-5">
-                                        <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Due
-                                            balance:
                                         </dt>
                                         <dd class="col-span-2 text-gray-500 dark:text-neutral-500">
                                             {{ $estimate->currency->symbol }}
