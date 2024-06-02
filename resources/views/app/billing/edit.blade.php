@@ -152,6 +152,9 @@
 
                                         <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
                                             @foreach ($payments as $payment)
+                                                @if (!$payment->payable)
+                                                    @continue
+                                                @endif
                                                 <tr>
                                                     <td class="w-72 h-px whitespace-nowrap">
                                                         <div class="py-3 px-6">

@@ -13,6 +13,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(SaveSelectedPlan::class);
+        $middleware->validateCsrfTokens(except: [
+            'gateway/*',
+            'http://example.com/foo/bar',
+            'http://example.com/foo/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

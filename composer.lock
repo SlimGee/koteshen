@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f660824917e8eea26961c0ce58441d51",
+    "content-hash": "67556deed4d926470837e89c95bcfbce",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -686,6 +686,60 @@
                 }
             ],
             "time": "2023-12-20T15:40:13+00:00"
+        },
+        {
+            "name": "codevirtus/pesepay",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codevirtus/pesepay-php.git",
+                "reference": "869d0a6b4a6fbb0d777faa2653a304d3dc70aa22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codevirtus/pesepay-php/zipball/869d0a6b4a6fbb0d777faa2653a304d3dc70aa22",
+                "reference": "869d0a6b4a6fbb0d777faa2653a304d3dc70aa22",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codevirtus\\Payments\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean P. T. Huvaya",
+                    "email": "developer@codevirtus.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Michael T. Tsuro",
+                    "email": "developer@codevirtus.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Pesepay online payment integration package",
+            "homepage": "https://github.com/codevirtus/pesepay",
+            "keywords": [
+                "codevirtus",
+                "pesepay"
+            ],
+            "support": {
+                "issues": "https://github.com/codevirtus/pesepay-php/issues",
+                "source": "https://github.com/codevirtus/pesepay-php/tree/1.0.1"
+            },
+            "time": "2021-10-22T10:10:10+00:00"
         },
         {
             "name": "convertkit/convertkitapi",

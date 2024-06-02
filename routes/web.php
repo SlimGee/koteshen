@@ -155,4 +155,6 @@ Route::prefix('admin')
 
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 
-Route::get('/test', [PaymentController::class, 'test']);
+Route::get('/test', [SubscriptionController::class, 'test']);
+Route::get('/gateway/return', [SubscriptionController::class, 'callback']);
+Route::post('/gateway/callback', [SubscriptionController::class, 'webook'])->name('pesepay.callback');
