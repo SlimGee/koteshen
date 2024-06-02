@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Codevirtus\Payments\Pesepay;
+use App\Pesepay\Pesepay;
 use Illuminate\Support\ServiceProvider;
 
 class PesepayServiceProvider extends ServiceProvider
@@ -13,11 +13,7 @@ class PesepayServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind('laravel-pesepay', function () {
-            $pesepay = new Pesepay(config('services.pesepay.key'), config('services.pesepay.secret'));
-            $pesepay->returnUrl = 'https://koteshen.test/gateway/return';
-            $pesepay->resultUrl = 'http://koteshen.test/gateway/return';
-
-            return $pesepay;
+            return new Pesepay;
         });
     }
 

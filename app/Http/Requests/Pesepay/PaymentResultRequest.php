@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Pesepay;
 
-use App\Models\Pesepay\Transaction;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PaymentResultRequest extends FormRequest
@@ -12,8 +11,7 @@ class PaymentResultRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Transaction::where('reference', $this->referenceNumber)
-            ->exists();
+        return true;
     }
 
     /**
@@ -26,7 +24,6 @@ class PaymentResultRequest extends FormRequest
         return [
             'referenceNumber' => ['required', 'string'],
             'dateOfTransaction' => ['required', 'numeric'],
-            'applicationId' => ['required', 'string'],
             'applicationName' => ['required', 'string'],
             'amountDetails' => ['required', 'array'],
             'amountDetails.amount' => ['required', 'numeric'],
@@ -44,9 +41,6 @@ class PaymentResultRequest extends FormRequest
             'resultUrl' => ['required', 'url'],
             'returnUrl' => ['required', 'url'],
             'pollUrl' => ['nullable', 'url'],
-            'transcationMetadata' => ['required', 'array'],
-            'transactionMetada.applicationId' => ['sometimes', 'nullable', 'string'],
-            'transactionMetada.returnUrl' => ['sometimes', 'nullable', 'string'],
         ];
     }
 

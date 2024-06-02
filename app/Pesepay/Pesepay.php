@@ -4,6 +4,7 @@ namespace App\Pesepay;
 
 use App\Models\Pesepay\Transaction;
 use Illuminate\Support\Facades\Http;
+use RuntimeException;
 
 class Pesepay
 {
@@ -73,25 +74,27 @@ class Pesepay
             'content-type' => 'application/json',
         ])->post($this->baseUrl . '/v1/payments/initiate', ['payload' => $encrypted]);
 
-        $data = $this->decryptData($response->json()['payload']);
+        throw_if($response->status() >= 400, new RuntimeException('Failed to initiate payment'));
+
+        $decrypted = $this->decryptData($response->json()['payload']);
+
+        $this->redirectUrl = $decrypted['redirectUrl'];
+        $this->pollUrl = $decrypted['pollUrl'];
+        $this->reference = $decrypted['referenceNumber'];
 
         Transaction::create([
-            'reference_number' => $data['referenceNumber'],
-            'poll_url' => $data['pollUrl'],
-            'redirect_url' => $data['redirectUrl'],
+            'reference_number' => $decrypted['referenceNumber'],
+            'poll_url' => $decrypted['pollUrl'],
+            'redirect_url' => $decrypted['redirectUrl'],
             'metadata' => $data['metadata'] ?? [],
         ]);
-
-        $this->redirectUrl = $data['redirectUrl'];
-        $this->pollUrl = $data['pollUrl'];
-        $this->reference = $data['referenceNumber'];
 
         return $this;
     }
 
     public function verifyTransaction(string $reference): array|bool
     {
-        $transaction = Transaction::where('reference', $reference)->first();
+        $transaction = Transaction::where('reference_number', $reference)->first();
 
         if (!$transaction) {
             return false;
@@ -107,6 +110,11 @@ class Pesepay
         }
 
         return array_merge(['metadata' => $transaction->metadata], $this->decryptData($response->json()['payload']));
+    }
+
+    public function makePayment(array $data)
+    {
+        // wip
     }
 
     public function getPollUrl()
@@ -140,8 +148,8 @@ class Pesepay
                 'currencyCode' => $data['currency'],
             ],
             'reasonForPayment' => $data['reason'],
-            'resultUrl' => ' https://sbct9yix61.sharedwithexpose.com' . route('pesepay.callback', absolute: false),
-            'returnUrl' => 'https://koteshen.test/gateway/return',
+            'resultUrl' => $data['result_url'] ?? $this->resultUrl,
+            'returnUrl' => $data['return_url'] ?? $this->resultUrl,
         ];
     }
 

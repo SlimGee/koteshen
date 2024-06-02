@@ -21393,12 +21393,31 @@ namespace Unicodeveloper\Paystack\Facades {
      *
      */        class Paystack {
                     /**
+         * 
+         *
+         * @static 
+         */        public static function chargeAuthorization($data)
+        {
+                        /** @var \App\Paystack\Paystack $instance */
+                        return $instance->chargeAuthorization($data);
+        }
+                    /**
+         * Get the whole response from a get operation
+         *
+         * @return array 
+         * @static 
+         */        public static function getResponse()
+        {
+                        /** @var \App\Paystack\Paystack $instance */
+                        return $instance->getResponse();
+        }
+                    /**
          * Get Base Url from Paystack config file
          *
          * @static 
          */        public static function setBaseUrl()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->setBaseUrl();
         }
                     /**
@@ -21406,8 +21425,8 @@ namespace Unicodeveloper\Paystack\Facades {
          *
          * @static 
          */        public static function setKey()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->setKey();
         }
                     /**
@@ -21418,8 +21437,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return \Paystack 
          * @static 
          */        public static function makePaymentRequest($data = null)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->makePaymentRequest($data);
         }
                     /**
@@ -21428,8 +21447,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return \Paystack 
          * @static 
          */        public static function getAuthorizationUrl($data = null)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAuthorizationUrl($data);
         }
                     /**
@@ -21440,8 +21459,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getAuthorizationResponse($data)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAuthorizationResponse($data);
         }
                     /**
@@ -21450,8 +21469,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return boolean 
          * @static 
          */        public static function isTransactionVerificationValid($transaction_id = null)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->isTransactionVerificationValid($transaction_id);
         }
                     /**
@@ -21461,8 +21480,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @throws PaymentVerificationFailedException
          * @static 
          */        public static function getPaymentData()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getPaymentData();
         }
                     /**
@@ -21470,8 +21489,8 @@ namespace Unicodeveloper\Paystack\Facades {
          *
          * @static 
          */        public static function redirectNow()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->redirectNow();
         }
                     /**
@@ -21480,8 +21499,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return string 
          * @static 
          */        public static function getAccessCode()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAccessCode();
         }
                     /**
@@ -21490,8 +21509,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return string 
          * @static 
          */        public static function genTranxRef()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->genTranxRef();
         }
                     /**
@@ -21500,8 +21519,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getAllCustomers()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAllCustomers();
         }
                     /**
@@ -21510,8 +21529,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getAllPlans()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAllPlans();
         }
                     /**
@@ -21520,8 +21539,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getAllTransactions()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAllTransactions();
         }
                     /**
@@ -21529,8 +21548,8 @@ namespace Unicodeveloper\Paystack\Facades {
          *
          * @static 
          */        public static function createPlan()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->createPlan();
         }
                     /**
@@ -21540,8 +21559,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function fetchPlan($plan_code)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->fetchPlan($plan_code);
         }
                     /**
@@ -21551,8 +21570,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function updatePlan($plan_code)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->updatePlan($plan_code);
         }
                     /**
@@ -21560,8 +21579,8 @@ namespace Unicodeveloper\Paystack\Facades {
          *
          * @static 
          */        public static function createCustomer($data = null)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->createCustomer($data);
         }
                     /**
@@ -21571,8 +21590,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function fetchCustomer($customer_id)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->fetchCustomer($customer_id);
         }
                     /**
@@ -21582,8 +21601,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function updateCustomer($customer_id)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->updateCustomer($customer_id);
         }
                     /**
@@ -21592,8 +21611,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function exportTransactions()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->exportTransactions();
         }
                     /**
@@ -21601,8 +21620,8 @@ namespace Unicodeveloper\Paystack\Facades {
          *
          * @static 
          */        public static function createSubscription()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->createSubscription();
         }
                     /**
@@ -21611,8 +21630,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getAllSubscriptions()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAllSubscriptions();
         }
                     /**
@@ -21622,8 +21641,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getCustomerSubscriptions($customer_id)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getCustomerSubscriptions($customer_id);
         }
                     /**
@@ -21633,8 +21652,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getPlanSubscriptions($plan_id)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getPlanSubscriptions($plan_id);
         }
                     /**
@@ -21643,8 +21662,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function enableSubscription()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->enableSubscription();
         }
                     /**
@@ -21653,8 +21672,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function disableSubscription()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->disableSubscription();
         }
                     /**
@@ -21664,8 +21683,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function fetchSubscription($subscription_id)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->fetchSubscription($subscription_id);
         }
                     /**
@@ -21673,8 +21692,8 @@ namespace Unicodeveloper\Paystack\Facades {
          *
          * @static 
          */        public static function createPage()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->createPage();
         }
                     /**
@@ -21683,8 +21702,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getAllPages()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getAllPages();
         }
                     /**
@@ -21694,8 +21713,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function fetchPage($page_id)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->fetchPage($page_id);
         }
                     /**
@@ -21705,8 +21724,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function updatePage($page_id)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->updatePage($page_id);
         }
                     /**
@@ -21715,8 +21734,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function createSubAccount()
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->createSubAccount();
         }
                     /**
@@ -21726,8 +21745,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function fetchSubAccount($subaccount_code)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->fetchSubAccount($subaccount_code);
         }
                     /**
@@ -21737,8 +21756,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function listSubAccounts($per_page, $page)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->listSubAccounts($per_page, $page);
         }
                     /**
@@ -21748,8 +21767,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function updateSubAccount($subaccount_code)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->updateSubAccount($subaccount_code);
         }
                     /**
@@ -21760,8 +21779,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function getBanks($country, $per_page = 50, $use_cursor = false)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->getBanks($country, $per_page, $use_cursor);
         }
                     /**
@@ -21771,8 +21790,8 @@ namespace Unicodeveloper\Paystack\Facades {
          * @return array 
          * @static 
          */        public static function confirmAccount($account_number, $bank_code)
-        {
-                        /** @var \Unicodeveloper\Paystack\Paystack $instance */
+        {            //Method inherited from \Unicodeveloper\Paystack\Paystack         
+                        /** @var \App\Paystack\Paystack $instance */
                         return $instance->confirmAccount($account_number, $bank_code);
         }
             }

@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Billing\Pesepay\PaymentController as AliasedPaymentController;
 use App\Http\Controllers\Billing\CardController;
-use App\Http\Controllers\Billing\PaymentController as AppPaymentController;
 use App\Http\Controllers\Billing\RenewSubscriptionController;
 use App\Http\Controllers\Billing\SubscriptionController;
 use App\Http\Controllers\Business\BusinessController as BusinessBusinessController;
@@ -95,10 +95,13 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeC
                         ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class]);
                 });
 
-            Route::get('/billing/{invoice}/payments/{plan}', [AppPaymentController::class, 'redirect'])
+            Route::get('/billing/{invoice}/payments/{plan}', [AliasedPaymentController::class, 'redirect'])
                 ->name('billing.payments.redirect');
-            Route::get('/billing/payments/callback', [AppPaymentController::class, 'callback'])
+
+            Route::any('/billing/payments/callback', [AliasedPaymentController::class, 'callback'])
+                ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class, 'auth'])
                 ->name('billing.payments.callback');
+
             Route::get('/billing/renew', [RenewSubscriptionController::class, 'store'])
                 ->name('subscriptions.renew')
                 ->middleware(['throttle:6,1']);
@@ -154,7 +157,3 @@ Route::prefix('admin')
     ->group(base_path('routes/admin.php'));
 
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
-
-Route::get('/test', [SubscriptionController::class, 'test']);
-Route::get('/gateway/return', [SubscriptionController::class, 'callback']);
-Route::post('/gateway/callback', [SubscriptionController::class, 'webook'])->name('pesepay.callback');
