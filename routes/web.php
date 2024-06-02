@@ -100,6 +100,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeC
 
             Route::any('/billing/payments/callback', [AliasedPaymentController::class, 'callback'])
                 ->withoutMiddleware([RedirectToUnfinishedOnboardingStep::class, RedirectPrelaunch::class, 'auth'])
+                ->middleware('signed')
                 ->name('billing.payments.callback');
 
             Route::get('/billing/renew', [RenewSubscriptionController::class, 'store'])

@@ -25,7 +25,10 @@ class ContactMail extends Mailable implements ShouldQueue
     {
         return new Envelope(
             subject: 'Contact Mail - Koteshen',
-            to: config('mail.to.address'),
+            to: [
+                'name' => 'Koteshen',
+                'email' => 'given@flixtechs.co.zw',
+            ],
         );
     }
 

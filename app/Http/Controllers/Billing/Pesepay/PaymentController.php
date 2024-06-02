@@ -9,6 +9,7 @@ use App\Pesepay\Facade\Pesepay;
 use App\Processes\Billing\Pesepay\SubscriptionPaymentProcess;
 use App\Transport\Pesepay\PaymentTransport;
 use Flixtechs\Subby\Models\Plan;
+use Illuminate\Support\Facades\URL;
 
 class PaymentController extends Controller
 {
@@ -18,7 +19,7 @@ class PaymentController extends Controller
             'amount' => auth()->user()->hasRole('super admin') ? 0.1 : $invoice->balance,
             'currency' => 'USD',
             'reason' => 'Koteshen ' . $plan->name . ' subscription',
-            'result_url' => 'https://5e71-41-174-95-140.ngrok-free.app' . route('app.billing.payments.callback', absolute: false),
+            'result_url' => URL::temporarySignedRoute('app.billing.payments.callback', now()->addMinutes(3)),
             'return_url' => route('app.billing.edit'),
             'metadata' => [
                 'invoice_id' => $invoice->id,
