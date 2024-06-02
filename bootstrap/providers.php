@@ -5,5 +5,6 @@ return [
     App\Providers\FortifyServiceProvider::class,
     App\Providers\MailerLiteServiceProvider::class,
     App\Providers\MetaTagsServiceProvider::class,
+    App\Providers\PesepayServiceProvider::class,
     App\Providers\TelescopeServiceProvider::class,
 ];

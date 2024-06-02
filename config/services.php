@@ -38,4 +38,8 @@ return [
     'mailerlite' => [
         'key' => env('MAILERLITE_API_KEY'),
     ],
+    'pesepay' => [
+        'key' => env('PESEPAY_API_KEY'),
+        'secret' => env('PESEPAY_API_SECRET'),
+    ],
 ];

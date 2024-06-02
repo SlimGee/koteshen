@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f660824917e8eea26961c0ce58441d51",
+    "content-hash": "883b04aff1f1ad6196d265b4f6e8d25e",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -686,6 +686,60 @@
                 }
             ],
             "time": "2023-12-20T15:40:13+00:00"
+        },
+        {
+            "name": "codevirtus/pesepay",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codevirtus/pesepay-php.git",
+                "reference": "869d0a6b4a6fbb0d777faa2653a304d3dc70aa22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codevirtus/pesepay-php/zipball/869d0a6b4a6fbb0d777faa2653a304d3dc70aa22",
+                "reference": "869d0a6b4a6fbb0d777faa2653a304d3dc70aa22",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codevirtus\\Payments\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean P. T. Huvaya",
+                    "email": "developer@codevirtus.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Michael T. Tsuro",
+                    "email": "developer@codevirtus.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Pesepay online payment integration package",
+            "homepage": "https://github.com/codevirtus/pesepay",
+            "keywords": [
+                "codevirtus",
+                "pesepay"
+            ],
+            "support": {
+                "issues": "https://github.com/codevirtus/pesepay-php/issues",
+                "source": "https://github.com/codevirtus/pesepay-php/tree/1.0.1"
+            },
+            "time": "2021-10-22T10:10:10+00:00"
         },
         {
             "name": "convertkit/convertkitapi",
@@ -7769,6 +7823,82 @@
                 }
             ],
             "time": "2024-02-26T08:33:29+00:00"
+        },
+        {
+            "name": "spatie/laravel-webhook-client",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-webhook-client.git",
+                "reference": "14c7f77012c8649009be52f6adc1efcfe812ff03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-webhook-client/zipball/14c7f77012c8649009be52f6adc1efcfe812ff03",
+                "reference": "14c7f77012c8649009be52f6adc1efcfe812ff03",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "^9.0 || ^10.0 || ^11.0",
+                "illuminate/database": "^9.0 || ^10.0 || ^11.0",
+                "illuminate/support": "^9.0 || ^10.0 || ^11.0",
+                "php": "^8.1 || ^8.2",
+                "spatie/laravel-package-tools": "^1.11"
+            },
+            "require-dev": {
+                "larastan/larastan": "^1.0.4 || ^2.2",
+                "orchestra/testbench": "^7.0 || ^8.0 || ^9.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.3 || ^10.5",
+                "spatie/laravel-ray": "^1.24"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Spatie\\WebhookClient\\WebhookClientServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\WebhookClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Receive webhooks in Laravel apps",
+            "homepage": "https://github.com/spatie/laravel-webhook-client",
+            "keywords": [
+                "laravel-webhook-client",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-webhook-client/issues",
+                "source": "https://github.com/spatie/laravel-webhook-client/tree/3.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-05-21T12:49:49+00:00"
         },
         {
             "name": "spatie/temporary-directory",
