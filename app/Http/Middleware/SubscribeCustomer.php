@@ -22,7 +22,7 @@ class SubscribeCustomer
             if (!is_null($plan)) {
                 session()->forget('selected_plan');
 
-                return to_route('app.billing.change-plan.store', $plan);
+                return to_route('app.subscriptions.store', $plan);
             }
         }
 

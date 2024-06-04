@@ -108,7 +108,7 @@ Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeC
                 ->middleware(['throttle:6,1']);
 
             Route::get('/billing/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
-            Route::post('/billing/{plan}/subscribe', [SubscriptionController::class, 'store'])->name('subscriptions.store');
+            Route::any('/billing/{plan}/subscribe', [SubscriptionController::class, 'store'])->name('subscriptions.store');
         });
 
         Route::resource('clients', ClientController::class);
