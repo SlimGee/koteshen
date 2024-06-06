@@ -44,7 +44,7 @@ const tools = [
     {
         icon: "link",
         action: (ctx) => {
-            ctx.get(commandsCtx).call(toggleLinkCommand.key);
+            ctx.get(commandsCtx).call(toggleLinkCommand.key, { href: "#" });
         },
     },
 ];

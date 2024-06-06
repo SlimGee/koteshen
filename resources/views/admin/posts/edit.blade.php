@@ -82,7 +82,8 @@
                         <x-form.label>Status</x-form.label>
                         <x-form.select name="status" class="w-full" data-controller="choices">
                             @foreach (App\Enum\PostStatus::cases() as $status)
-                                <option value="{{ $status->value }}" @selected(old('status', $post->status->value) == $status->value)>{{ $status->value }}
+                                <option value="{{ $status->value }}" @selected(old('status', $post->status->value) == $status->value)>
+                                    {{ $status->value }}
                                 </option>
                             @endforeach
                         </x-form.select>
