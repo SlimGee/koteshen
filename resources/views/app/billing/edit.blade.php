@@ -8,7 +8,7 @@
 
         @include('app.settings._sidebar')
 
-        <div class="w-full max-w-3xl">
+        <div class="w-full max-w-2xl">
 
             <section class="container p-5 max-w-3xl bg-white rounded border shadow-sm">
 

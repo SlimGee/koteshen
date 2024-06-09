@@ -37,6 +37,7 @@ use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoiceStatusController;
 use App\Http\Controllers\PaymentController as ControllersPaymentController;
+use App\Http\Controllers\PricingController;
 use App\Http\Controllers\RecurringInvoiceController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
@@ -79,6 +80,7 @@ Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('a
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::resource('posts', PostController::class)->only(['index', 'show']);
+Route::get('/pricing', [PricingController::class, 'index'])->name('pricing.index');
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeCustomer::class, Subscribed::class])
     ->prefix('app')

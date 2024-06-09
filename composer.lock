@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "883b04aff1f1ad6196d265b4f6e8d25e",
+    "content-hash": "f763e435e04cc83fd17cc61a9233b03b",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1631,6 +1631,70 @@
             "time": "2024-03-15T19:43:15+00:00"
         },
         {
+            "name": "flixtechs/abandon",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SlimGee/abandon.git",
+                "reference": "dc552ce21a24284b945be0e68d9ed8faf5453a99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SlimGee/abandon/zipball/dc552ce21a24284b945be0e68d9ed8faf5453a99",
+                "reference": "dc552ce21a24284b945be0e68d9ed8faf5453a99",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^11.0|^10.0|^9.0|^8.0|^7.0|^6.0|^5.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0|^0.9",
+                "orchestra/testbench": "^8.0|^7.0|^6.0|^5.0|^4.0|^3.0",
+                "phpunit/phpunit": "^9.0|^8.0|^7.0|^6.0|^5.0|^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jackiedo\\Cart\\CartServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cart": "Jackiedo\\Cart\\Facades\\Cart"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Helpers/helpers.php"
+                ],
+                "psr-4": {
+                    "Jackiedo\\Cart\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Given ncube",
+                    "email": "given@flixtechs.co.zw"
+                }
+            ],
+            "description": "A package used to create and manage carts (such as shopping, recently viewed, compared items...) in Laravel application.",
+            "keywords": [
+                "cart",
+                "laravel",
+                "shopping",
+                "shoppingcart"
+            ],
+            "support": {
+                "source": "https://github.com/SlimGee/abandon/tree/0.0.1"
+            },
+            "time": "2024-06-06T22:41:07+00:00"
+        },
+        {
             "name": "flixtechs/laravel-subby",
             "version": "1.0.1",
             "source": {
@@ -1847,6 +1911,73 @@
                 "source": "https://github.com/giggsey/libphonenumber-for-php-lite"
             },
             "time": "2024-05-16T09:01:25+00:00"
+        },
+        {
+            "name": "gordi256/laravel-promocodes",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gordi256/laravel-promocodes.git",
+                "reference": "760a2de9a218bc72f5384bc7ab839ff11a9366cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gordi256/laravel-promocodes/zipball/760a2de9a218bc72f5384bc7ab839ff11a9366cc",
+                "reference": "760a2de9a218bc72f5384bc7ab839ff11a9366cc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/broadcasting": "^11.0",
+                "illuminate/console": "^11.0",
+                "illuminate/container": "^11.0",
+                "illuminate/database": "^11.0",
+                "illuminate/queue": "^11.0",
+                "illuminate/support": "^11.0",
+                "php": "^8.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NagSamayam\\Promocodes\\PromocodesServiceProvider"
+                    ],
+                    "aliases": {
+                        "Promocodes": "NagSamayam\\Promocodes\\Facades\\Promocodes"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "NagSamayam\\Promocodes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nageswara Rao",
+                    "email": "nag.samayam@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Coupons and promotional codes generator",
+            "homepage": "https://github.com/gordi256/laravel-promocodes",
+            "keywords": [
+                "coupons",
+                "laravel",
+                "nagsamayam",
+                "promocodes"
+            ],
+            "support": {
+                "source": "https://github.com/gordi256/laravel-promocodes/tree/main"
+            },
+            "time": "2024-04-26T05:03:04+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -14286,9 +14417,8 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "hotwired-laravel/turbo-laravel": 10,
         "maddhatter/laravel-view-generator": 20
     },
     "prefer-stable": true,

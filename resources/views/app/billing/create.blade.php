@@ -35,18 +35,6 @@
                     </div>
                     <!-- End Title -->
 
-                    <!-- Switch -->
-                    <div class="flex justify-center items-center">
-
-                        <input type="checkbox" id="pricing-switch"
-                            class="relative p-px h-7 text-transparent bg-gray-100 rounded-full border-transparent transition-colors duration-200 ease-in-out cursor-pointer checked:text-purple-600 checked:bg-none checked:border-purple-600 focus:ring-purple-600 disabled:opacity-50 disabled:pointer-events-none w-[3.25rem] before:inline-block before:size-6 before:bg-white before:translate-x-0 before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:bg-neutral-800 dark:border-neutral-800 dark:checked:bg-purple-500 dark:checked:border-purple-500 dark:focus:ring-offset-gray-600 dark:before:bg-neutral-400 dark:checked:before:bg-white checked:before:bg-white checked:before:translate-x-full focus:checked:border-purple-600"
-                            checked disabled>
-
-                        <label for="pricing-switch" class="text-sm text-gray-600 min-w-14 ms-3 dark:text-neutral-400">
-                            Monthly
-                        </label>
-                    </div>
-                    <!-- End Switch -->
 
                     <!-- Grid -->
                     <div

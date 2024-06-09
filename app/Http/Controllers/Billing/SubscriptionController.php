@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Billing;
 
 use App\Http\Controllers\Billing\Concerns\CreatesInvoices;
 use App\Http\Controllers\Controller;
+use Butschster\Head\Facades\Meta;
 use Flixtechs\Subby\Models\Plan;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +15,8 @@ class SubscriptionController extends Controller
 
     public function create(): Renderable
     {
+        Meta::prependTitle('Select a plan');
+
         return view('app.subscription.create', [
             'plans' => Plan::all(),
         ]);
