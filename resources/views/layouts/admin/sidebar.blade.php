@@ -27,6 +27,15 @@
                 </a>
             </li>
 
+            <li>
+                <a @class([
+                    'flex gap-x-3 items-center py-2 px-2.5 text-sm text-white rounded-lg  hover:text-white hover:bg-blue-600',
+                    'bg-blue-600' => Route::is('admin.promo-codes.*'),
+                ]) href="{{ route('admin.promo-codes.index') }}">
+                    <i class="bi bi-bag-check"></i>
+                    Promo Codes
+                </a>
+            </li>
         </ul>
     </nav>
 </div>
