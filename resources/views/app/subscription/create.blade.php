@@ -25,30 +25,15 @@
                     <!-- Title -->
                     <div class="mx-auto mb-10 max-w-2xl text-center">
                         <h2
-                            class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-700 md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
-                            Just one more step to get started
+                            class="text-3xl font-bold leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
+                            @if (auth()->user()->subscriptions()->count() === 0)
+                                Select a plan to start trial
+                            @else
+                                Upgrade Your Account
+                            @endif
                         </h2>
-                        <p class="mt-2 text-gray-800 lg:text-lg dark:text-neutral-200">
-                            Select the plan that best fits your needs and budget. You can change or cancel your plan at any
-                            time.
-                        </p>
                     </div>
-                    <!-- End Title -->
 
-                    <!-- Switch -->
-                    <div class="flex justify-center items-center">
-
-                        <input type="checkbox" id="pricing-switch"
-                            class="relative p-px h-7 text-transparent bg-gray-100 rounded-full border-transparent transition-colors duration-200 ease-in-out cursor-pointer checked:text-purple-600 checked:bg-none checked:border-purple-600 focus:ring-purple-600 disabled:opacity-50 disabled:pointer-events-none w-[3.25rem] before:inline-block before:size-6 before:bg-white before:translate-x-0 before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:bg-neutral-800 dark:border-neutral-800 dark:checked:bg-purple-500 dark:checked:border-purple-500 dark:focus:ring-offset-gray-600 dark:before:bg-neutral-400 dark:checked:before:bg-white checked:before:bg-white checked:before:translate-x-full focus:checked:border-purple-600"
-                            checked disabled>
-
-                        <label for="pricing-switch" class="text-sm text-gray-600 min-w-14 ms-3 dark:text-neutral-400">
-                            Monthly
-                        </label>
-                    </div>
-                    <!-- End Switch -->
-
-                    <!-- Grid -->
                     <div
                         class="grid gap-3 my-6 mx-auto max-w-5xl sm:grid-cols-2 md:gap-6 md:mt-12 lg:grid-cols-3 lg:gap-3 lg:items-stretch xl:gap-6">
 
@@ -56,7 +41,6 @@
                             @if (auth()->user()->subscriptions()->count() > 0 && auth()->user()->subscription()->plan_id == $plan->id)
                                 @continue
                             @endif
-                            <!-- Card -->
                             <div class="flex flex-col p-8 text-center rounded border border-slate-200">
                                 <h4 class="text-lg font-medium text-slate-800">{{ $plan->name }}</h4>
                                 <p class="mt-2 text-sm text-slate-600">{{ $plan->description }}</p>
@@ -71,22 +55,20 @@
                                         <li class="flex mx-auto space-x-2">
                                             <i class="text-blue-600 bi bi-check2"></i>
                                             <span class="text-slate-800">
-                                                @if ($feature->value == 1)
-                                                    {{ $feature->name }}
-                                                @else
-                                                    {{ $feature->name }} {{ $feature->value }}
-                                                @endif
+
+
+                                                {{ $feature->name }}
                                             </span>
                                         </li>
                                     @endforeach
                                 </ul>
 
-                                <form method="post" class="mt-6" action="{{ route('app.subscriptions.store', $plan) }}"
-                                    data-turbo="false">
+                                <form method="post" class="pt-6 mt-auto"
+                                    action="{{ route('app.subscriptions.store', $plan) }}" data-turbo="false">
                                     @csrf
                                     <x-button type="submit" class="justify-center w-full">
                                         @if (auth()->user()->subscriptions()->count() === 0 && $plan->hasTrial())
-                                            Start 15 day free trial
+                                            Try free for 15 days
                                         @else
                                             @if (auth()->user()->subscription()->plan->tier < $plan->tier)
                                                 Upgrade

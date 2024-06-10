@@ -9,8 +9,8 @@
         @include('app.settings._sidebar')
 
 
-        <div class="flex flex-col">
-            <div class="overflow-x-auto -m-1.5">
+        <div class="flex flex-col w-full max-w-2xl">
+            <div class="container overflow-x-auto w-full">
                 <div class="inline-block p-1.5 min-w-full align-middle">
                     <div
                         class="overflow-hidden bg-white rounded border border-gray-200 shadow-sm dark:bg-neutral-800 dark:border-neutral-700">

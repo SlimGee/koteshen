@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index(): Renderable
     {
-        Meta::prependTitle('Intelligent Billing & Invoicing for Small Businesses')
+        Meta::prependTitle('Dashboard')
             ->setDescription('Create and send professional invoices in minutes. Get paid faster with automated reminders and online payments.')
             ->setKeywords(['billing', 'invoicing', 'online payments', 'small business'])
             ->registerPackage(

@@ -49,10 +49,19 @@
             @include('includes.flash')
 
             <div class="w-full md:flex-1">
-                <nav class="hidden justify-between items-center p-4 h-16 bg-white border-b md:flex">
-                    <div>
-                    </div>
-                    <div class="flex items-center space-x-3">
+                <nav class="hidden items-center p-4 h-16 bg-white border-b md:flex">
+                    <div class="container mx-auto">
+                        <div class="justify-between md:flex">
+                            <div class="px-4 w-48 max-w-full">
+                                <a href="{{ route('home.index') }}" class="block py-5 w-full navbar-logo">
+                                    <img src="{{ asset('images/logo/koteshen_cropped.png') }}" alt="logo"
+                                        class="w-full header-logo" />
+                                </a>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                            </div>
+                        </div>
                     </div>
                 </nav>
                 <main>

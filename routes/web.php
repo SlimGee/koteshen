@@ -23,6 +23,7 @@ use App\Http\Controllers\Public\PostController;
 use App\Http\Controllers\Public\PreviewInvoiceController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DownloadInvoiceController;
@@ -37,12 +38,15 @@ use App\Http\Controllers\InvoiceCommentController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoiceStatusController;
 use App\Http\Controllers\PaymentController as ControllersPaymentController;
+use App\Http\Controllers\PricingController;
 use App\Http\Controllers\RecurringInvoiceController;
+use App\Http\Controllers\RedeemCouponController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendReminderController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\TaxController;
+use App\Http\Middleware\PreventCheckoutWhenCartIsEmpty;
 use App\Http\Middleware\RedirectPrelaunch;
 use App\Http\Middleware\RedirectToUnfinishedOnboardingStep;
 use App\Http\Middleware\SubscribeCustomer;
@@ -79,6 +83,15 @@ Route::get('/avatar/{user}', [GenerateAvatarController::class, 'show'])->name('a
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::resource('posts', PostController::class)->only(['index', 'show']);
+Route::get('/pricing', [PricingController::class, 'index'])->name('pricing.index');
+Route::get('/checkout', [CheckoutController::class, 'create'])
+    ->name('checkout')
+    ->middleware(PreventCheckoutWhenCartIsEmpty::class);
+Route::post('/checkout', [CheckoutController::class, 'store'])
+    ->name('checkout.store')
+    ->middleware(PreventCheckoutWhenCartIsEmpty::class);
+
+Route::post('/redeem', [RedeemCouponController::class, 'store'])->name('redeem');
 
 Route::middleware(['auth', RedirectToUnfinishedOnboardingStep::class, SubscribeCustomer::class, Subscribed::class])
     ->prefix('app')

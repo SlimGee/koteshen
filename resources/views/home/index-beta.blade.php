@@ -719,11 +719,7 @@
                                 <li class="flex">
                                     <i class="text-xl bi bi-check2"></i>
                                     <span class="ml-4">
-                                        @if ($feature->value == 1)
-                                            {{ $feature->name }}
-                                        @else
-                                            {{ $feature->name }} {{ $feature->value }}
-                                        @endif
+                                        {{ $feature->name }}
                                     </span>
                                 </li>
                             @endforeach

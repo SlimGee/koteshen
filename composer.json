@@ -14,7 +14,9 @@
         "convertkit/convertkitapi": "^2.0",
         "flixtechs-labs/laravel-authorizer": "^0.1.0",
         "flixtechs-labs/stimulus-extra": "^0.0.5",
+        "flixtechs/abandon": "^0.0.1",
         "flixtechs/laravel-subby": "^1.0",
+        "gordi256/laravel-promocodes": "dev-main",
         "h4cc/wkhtmltoimage-amd64": "^0.12.4",
         "h4cc/wkhtmltopdf-amd64": "^0.12.4",
         "hotwired-laravel/turbo-laravel": "^2.0.0-beta1",
@@ -103,6 +105,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

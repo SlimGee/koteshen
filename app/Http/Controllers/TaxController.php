@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaxRequest;
 use App\Http\Requests\UpdateTaxRequest;
 use App\Models\Tax;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -16,6 +17,8 @@ class TaxController extends Controller
      */
     public function index(): Renderable
     {
+        Meta::prependTitle('Tax Settings');
+
         $taxes = QueryBuilder::for(auth()->user()->business->taxes())
             ->defaultSort('-created_at')
             ->allowedSorts(['rate', 'name'])

@@ -8,19 +8,21 @@ use App\Models\Currency;
 use App\Models\User;
 use App\Services\PrimaryBusiness;
 use Flixtechs\Subby\Models\Plan;
+use Jackiedo\Cart\Facades\Cart;
 use InvalidArgumentException;
 
 trait CreatesInvoices
 {
-    public function createInvoice(Plan $plan, ?User $user = null)
+    public function createInvoice(?Plan $plan = null, ?User $user = null)
     {
         $user = $user ?? auth()->user();
+        $plan = $plan ?? Plan::find(collect(Cart::getItems())->last()->get('id'));
 
         throw_if(is_null($user), new InvalidArgumentException('User must be provided if not authenticated'));
 
         $items = collect([
             [
-                'name' => 'Subscription for ' . $plan->name . ' plan',
+                'name' => 'Koteshen ' . $plan->name . ' subscription',
                 'quantity' => 1,
                 'price' => $user->subscriptions()->count() !== 0 ? $plan->price : $plan->signup_fee,
                 'total' => $user->subscriptions()->count() !== 0 ? $plan->price : $plan->signup_fee,

@@ -33,7 +33,7 @@ class ConfigureSubscriptions extends Command
                     'name' => 'Starter',
                     'description' => 'For individuals and small businesses just getting started.',
                     'price' => 9.99,
-                    'signup_fee' => 4.99,
+                    'signup_fee' => 9.99,
                     'invoice_period' => 1,
                     'invoice_interval' => 'month',
                     'trial_period' => 15,
@@ -46,19 +46,19 @@ class ConfigureSubscriptions extends Command
                 'features' => [
                     [
                         'tag' => 'clients',
-                        'name' => 'Clients available',
+                        'name' => 'Up to 10 clients',
                         'value' => 10,
                         'sort_order' => 1,
                     ],
                     [
                         'tag' => 'invoices',
-                        'name' => 'Invoices available',
+                        'name' => 'Send up to 15 invoices per month',
                         'value' => 15,
                         'sort_order' => 2,
                     ],
                     [
                         'tag' => 'estimates',
-                        'name' => 'Estimates available',
+                        'name' => 'Send Unlimited estimates',
                         'value' => true,
                         'sort_order' => 3,
                     ],
@@ -80,7 +80,7 @@ class ConfigureSubscriptions extends Command
                     'name' => 'Business',
                     'description' => 'For established businesses looking to optimize.',
                     'price' => 29.99,
-                    'signup_fee' => 14.99,
+                    'signup_fee' => 29.99,
                     'invoice_period' => 1,
                     'invoice_interval' => 'month',
                     'trial_period' => 15,
@@ -93,19 +93,19 @@ class ConfigureSubscriptions extends Command
                 'features' => [
                     [
                         'tag' => 'clients',
-                        'name' => 'Clients available',
+                        'name' => 'Up to 60 clients',
                         'value' => 60,
                         'sort_order' => 1,
                     ],
                     [
                         'tag' => 'invoices',
-                        'name' => 'Invoices available',
+                        'name' => 'Send unlimtied invoices',
                         'value' => true,
                         'sort_order' => 2,
                     ],
                     [
                         'tag' => 'estimates',
-                        'name' => 'Estimates available',
+                        'name' => 'Send unlimited estimats',
                         'value' => true,
                         'sort_order' => 3,
                     ],
@@ -118,6 +118,12 @@ class ConfigureSubscriptions extends Command
                     [
                         'tag' => 'reminders',
                         'name' => 'Payment reminders',
+                        'value' => true,
+                        'sort_order' => 5,
+                    ],
+                    [
+                        'tag' => 'ai_features',
+                        'name' => 'AI features',
                         'value' => true,
                         'sort_order' => 5,
                     ],
@@ -145,7 +151,7 @@ class ConfigureSubscriptions extends Command
                     'name' => 'Enterprise',
                     'description' => 'For large businesses looking to innovate.',
                     'price' => 60,
-                    'signup_fee' => 29.99,
+                    'signup_fee' => 60,
                     'invoice_period' => 1,
                     'invoice_interval' => 'month',
                     'trial_period' => 15,
@@ -158,13 +164,13 @@ class ConfigureSubscriptions extends Command
                 'features' => [
                     [
                         'tag' => 'clients',
-                        'name' => 'Clients available',
+                        'name' => 'Unlimted clients',
                         'value' => true,
                         'sort_order' => 1,
                     ],
                     [
                         'tag' => 'invoices',
-                        'name' => 'Invoices available',
+                        'name' => 'Unlimted invoices',
                         'value' => true,
                         'sort_order' => 2,
                     ],
@@ -183,6 +189,12 @@ class ConfigureSubscriptions extends Command
                     [
                         'tag' => 'reminders',
                         'name' => 'Payment reminders',
+                        'value' => true,
+                        'sort_order' => 5,
+                    ],
+                    [
+                        'tag' => 'ai_features',
+                        'name' => 'AI features',
                         'value' => true,
                         'sort_order' => 5,
                     ],

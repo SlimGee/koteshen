@@ -49,13 +49,14 @@
                     </div>
                     <div class="flex justify-end items-center pr-16 lg:pr-0">
                         <div class="hidden sm:flex">
-                            <a href="{{ route('login') }}"
+                            <a href="{{ route('app.home.index') }}"
                                 class="py-2 text-base font-medium text-white hover:opacity-70 loginBtn px-[22px]">
                                 Sign In
                             </a>
-                            <a href="{{ route('register') }}"
-                                class="py-2 px-6 text-base font-medium text-white bg-white bg-opacity-20 rounded-md duration-300 ease-in-out hover:bg-opacity-100 signUpBtn hover:text-dark">
-                                Sign Up
+                            <a href="{{ route('register') }}">
+                                <x-button>
+                                    Sign Up
+                                </x-button>
                             </a>
                         </div>
                     </div>

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use NagSamayam\Promocodes\Traits\AppliesPromocode;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
@@ -25,6 +26,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail, Onboardable
 {
+    use AppliesPromocode;
     use CausesActivity, GetsOnboarded, HasFactory, HasPermissions, HasRoles, HasSubscriptions, LogsActivity, Notifiable;
     use HasCreditCards, HasPaidSubscriptions;
 
