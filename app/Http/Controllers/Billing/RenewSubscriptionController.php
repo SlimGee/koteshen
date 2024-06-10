@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SubscriptionRenewalPaymentJob;
 use Flixtechs\Subby\Models\Plan;
 use Illuminate\Http\RedirectResponse;
+use Jackiedo\Cart\Facades\Cart;
 
 class RenewSubscriptionController extends Controller
 {
@@ -22,6 +23,13 @@ class RenewSubscriptionController extends Controller
             return to_route('app.billing.edit')->with('success', 'We are processing your payment');
         }
 
-        return redirect()->route('app.billing.payments.redirect', [$this->createInvoice($plan), $plan]);
+        Cart::addItem([
+            'id' => $plan->id,
+            'title' => 'Koteshen ' . $plan->name . ' subscription',
+            'quantity' => 1,
+            'price' => $plan->price,
+        ]);
+
+        return redirect()->route('checkout');
     }
 }

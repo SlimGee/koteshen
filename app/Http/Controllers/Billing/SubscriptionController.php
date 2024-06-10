@@ -8,6 +8,7 @@ use Butschster\Head\Facades\Meta;
 use Flixtechs\Subby\Models\Plan;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Jackiedo\Cart\Facades\Cart;
 
 class SubscriptionController extends Controller
 {
@@ -30,6 +31,13 @@ class SubscriptionController extends Controller
             return redirect()->intended(route('app.home.index'))->with('success', 'You have started your free trial');
         }
 
-        return redirect()->route('app.billing.payments.redirect', [$this->createInvoice($plan), $plan]);
+        Cart::addItem([
+            'id' => $plan->id,
+            'title' => $plan->name,
+            'quantity' => 1,
+            'price' => $plan->price,
+        ]);
+
+        return redirect()->route('checkout');
     }
 }

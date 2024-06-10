@@ -102,7 +102,23 @@
                                             </div>
                                         </th>
 
+                                        <th scope="col" class="py-3 px-6 text-start">
+                                            <div class="flex gap-x-2 items-center">
+                                                <span
+                                                    class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-neutral-200">
+                                                    Type
+                                                </span>
+                                            </div>
+                                        </th>
 
+                                        <th scope="col" class="py-3 px-6 text-start">
+                                            <div class="flex gap-x-2 items-center">
+                                                <span
+                                                    class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-neutral-200">
+                                                    Discount
+                                                </span>
+                                            </div>
+                                        </th>
 
                                         <th scope="col" class="py-3 px-6 text-start">
                                             <div class="flex gap-x-2 items-center">
@@ -150,6 +166,24 @@
                                                     </span>
                                                 </div>
                                             </td>
+
+                                            <td class="whitespace-nowrap size-px">
+                                                <div class="py-3 px-6">
+                                                    <span class="text-sm text-gray-600 dark:text-neutral-400">
+                                                        {{ $code->type->value }}
+                                                    </span>
+                                                </div>
+                                            </td>
+
+                                            <td class="whitespace-nowrap size-px">
+                                                <div class="py-3 px-6">
+                                                    <span class="text-sm text-gray-600 dark:text-neutral-400">
+                                                        {{ $code->getDetail('percent_off') }}% OFF
+                                                    </span>
+                                                </div>
+                                            </td>
+
+
 
                                             <td class="whitespace-nowrap size-px">
                                                 <div class="py-3 px-6">

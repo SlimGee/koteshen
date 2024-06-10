@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
+use NagSamayam\Promocodes\Enums\PromocodeStatus;
 use NagSamayam\Promocodes\Enums\PromocodeType;
 use NagSamayam\Promocodes\Facades\Promocodes;
 use NagSamayam\Promocodes\Models\Promocode;
@@ -49,8 +50,13 @@ class PromoCodeController extends Controller
             ->type(PromocodeType::PERCENT->value)
             ->create();
 
-        $codes->each->markAsActive(auth()->user()->id);
-        $codes->each->forceFill(['type' => PromocodeType::PERCENT->value])->save();
+        $codes->each(function ($code) {
+            tap($code->forceFill([
+                'status' => PromocodeStatus::ACTIVE,
+                'updated_by_admin_id' => auth()->user()->id,
+                'type' => PromocodeType::PERCENT,
+            ]))->save();
+        });
 
         return to_route('admin.promo-codes.index')->with('success', 'Done!');
     }
